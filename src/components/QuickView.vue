@@ -34,6 +34,7 @@ const data = ref({
   vehicles: null,
   weapons: null,
   tunableDefaults: null,
+  tunableTypes: null,
 });
 
 /**
@@ -61,6 +62,7 @@ async function handleQuickViewInit() {
     const vehicles = await request("/data/vehicles.json");
     const weapons = await request("/data/weapons.json");
     const tunableDefaults = await request("/data/tunable_defaults.json");
+    const tunableTypes = await request("/data/tunable_types.json");
 
     data.value = {
       loading: false,
@@ -71,6 +73,7 @@ async function handleQuickViewInit() {
       vehicles,
       weapons,
       tunableDefaults,
+      tunableTypes,
     };
   } catch (error) {
     emit("error", "An unknown error occurred. (9A5D1051)", error);
@@ -140,31 +143,28 @@ function getTunable(key, context = null) {
 }
 
 /**
- * Tries to retrieve multiple tunables.
+ * Tries to retrieve a tunable.
  *
- * @param {string[]} query The queries to search for.
+ * @param {string} query The query to search for.
  */
-function findTunables(query = []) {
+function findTunable(query) {
   try {
     const tunables = props.tunables;
-    if (tunables === undefined) return [];
+    if (tunables === undefined) return null;
 
-    const results = [];
     for (const item in tunables) {
       for (const key in tunables[item]) {
-        for (const term in query) {
-          if (key.toLowerCase().includes(query[term].toLowerCase())) {
-            results.push({
-              key,
-              value: tunables[item][key],
-              context: item,
-            });
-          }
+        if (key.toLowerCase() === query.toLowerCase()) {
+          return {
+            key,
+            value: tunables[item][key],
+            context: item,
+          };
         }
       }
     }
 
-    return results;
+    return null;
   } catch (error) {
     emit("error", "An unknown error occurred. (F89A8514)", error);
   }
@@ -484,21 +484,21 @@ function getGunVan() {
 function getSales() {
   try {
     const results = {};
+    for (const tunableType of data.value.tunableTypes) {
+      const tunable = findTunable(tunableType.key);
+      if (!tunable) continue;
 
-    const vehicleSales = findTunables(["BIN_PRICE", "TRADE_PRICE", "NEW_SPORTS_CARS", "VC_SALE_PRICE"]);
-    for (const vehicleSale of vehicleSales) {
-      const salesTitle = vehicleSale.context === "MP_FM_MEMBERSHIP" ? "vehicle_sales_plus" : "vehicle_sales";
-      const vehicle = vehicleSale.key.split("_").pop();
+      const salesTitle = tunable.context === "MP_FM_MEMBERSHIP" ? `${tunableType.type}_plus` : tunableType.type;
+      const baseValue = getTunableDefault(tunableType.key);
 
       results[salesTitle] = results[salesTitle] || {};
-      results[salesTitle][vehicle] = results[salesTitle][vehicle] || [];
+      results[salesTitle][tunableType.display] = results[salesTitle][tunableType.display] || [];
 
-      const baseValue = getTunableDefault(vehicleSale.key);
       if (baseValue) {
-        const percentage = 100 - Math.round((vehicleSale.value / baseValue) * 100);
-        results[salesTitle][vehicle].push([vehicleSale.value, percentage]);
+        const percentage = 100 - Math.round((tunable.value / baseValue) * 100);
+        results[salesTitle][tunableType.display].push([tunable.value, percentage]);
       } else {
-        results[salesTitle][vehicle].push([vehicleSale.value, null]);
+        results[salesTitle][tunableType.display].push([tunable.value, null]);
       }
     }
 
@@ -520,6 +520,10 @@ function getSalesTitle(title) {
         return "Vehicle Sales";
       case "vehicle_sales_plus":
         return "Vehicle Sales (GTA+)";
+      case "weapon_sales":
+        return "Weapon Sales";
+      case "weapon_sales_plus":
+        return "Weapon Sales (GTA+)";
       default:
         return "Miscellaneous";
     }
@@ -529,11 +533,11 @@ function getSalesTitle(title) {
 }
 
 /**
- * Retrieves the text to display for vehicle sales.
+ * Retrieves the text to display for cash sales.
  *
  * @returns string
  */
-function formatVehicleSale(discounts) {
+function formatCashSale(discounts) {
   try {
     const fc = Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format;
 
@@ -618,7 +622,14 @@ const sales = computed(() => getSales());
                 <template v-if="key === 'vehicle_sales' || key === 'vehicle_sales_plus'">
                   <ul class="list-disc mb-4">
                     <template v-for="(discounts, vehicle) in category" :key="vehicle">
-                      <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatVehicleSale(discounts) }}</li>
+                      <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
+                    </template>
+                  </ul>
+                </template>
+                <template v-else-if="key === 'weapon_sales' || key === 'weapon_sales_plus'">
+                  <ul class="list-disc mb-4">
+                    <template v-for="(discounts, weapon) in category" :key="weapon">
+                      <li class="ml-8">{{ getWeaponName(weapon) }}: {{ formatCashSale(discounts) }}</li>
                     </template>
                   </ul>
                 </template>
