@@ -1,7 +1,7 @@
 {
-  "private": true,
-  "name": "rdo-compendium-api-tunables",
+  "name": "rdo-compendium-tunables",
   "version": "1.0.18",
+  "private": true,
   "scripts": {
     "build": "vite build",
     "dev": "vite",
