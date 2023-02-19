@@ -7,15 +7,7 @@ import CardHeader from "./Cards/CardHeader.vue";
 import CardFooter from "./Cards/CardFooter.vue";
 
 import { useStore } from "../stores/settings.js";
-import { computed } from "vue";
-
-import dailyObjectives from "../data/daily_objectives.json";
-import rcTimeTrials from "../data/rc_time_trials.json";
-import hswTimeTrials from "../data/hsw_time_trials.json";
-import timeTrials from "../data/time_trials.json";
-import vehicles from "../data/vehicles.json";
-import weapons from "../data/weapons.json";
-import tunableDefaults from "../data/tunable_defaults.json";
+import { computed, onMounted, ref } from "vue";
 
 const emit = defineEmits(["error"]);
 
@@ -31,6 +23,74 @@ const props = defineProps({
 });
 
 const settings = useStore();
+
+const data = ref({
+  loading: true,
+
+  dailyObjectives: null,
+  rcTimeTrials: null,
+  hswTimeTrials: null,
+  timeTrials: null,
+  vehicles: null,
+  weapons: null,
+  tunableDefaults: null,
+});
+
+/**
+ * Triggers a game update to initialize the difference display.
+ */
+onMounted(() => {
+  try {
+    handleQuickViewInit();
+  } catch (error) {
+    emit("error", "An unknown error occurred. (6D1FCF8B)", error);
+  }
+});
+
+/**
+ * Handles the quick view init event.
+ */
+async function handleQuickViewInit() {
+  try {
+    data.value.loading = true;
+
+    const dailyObjectives = await request("/data/daily_objectives.json");
+    const rcTimeTrials = await request("/data/rc_time_trials.json");
+    const hswTimeTrials = await request("/data/hsw_time_trials.json");
+    const timeTrials = await request("/data/time_trials.json");
+    const vehicles = await request("/data/vehicles.json");
+    const weapons = await request("/data/weapons.json");
+    const tunableDefaults = await request("/data/tunable_defaults.json");
+
+    data.value = {
+      loading: false,
+      dailyObjectives,
+      rcTimeTrials,
+      hswTimeTrials,
+      timeTrials,
+      vehicles,
+      weapons,
+      tunableDefaults,
+    };
+  } catch (error) {
+    emit("error", "An unknown error occurred. (9A5D1051)", error);
+  }
+}
+
+/**
+ * Makes a request to the specified URL.
+ *
+ * @param {string} url The URL to make the request to.
+ * @returns {Promise<any>}
+ */
+async function request(url) {
+  try {
+    const response = await fetch(`${url}?${Math.floor(Date.now() / 1000)}`);
+    return await response.json();
+  } catch (error) {
+    emit("error", "An unknown error occurred. (1B69EB10)", error);
+  }
+}
 
 /**
  * Handles the hide quick view event.
@@ -116,7 +176,8 @@ function findTunables(query = []) {
  */
 function getTunableDefault(key) {
   try {
-    return tunableDefaults[key] ?? null;
+    if (!data.value.tunableDefaults) return null;
+    return data.value.tunableDefaults[key] ?? null;
   } catch (error) {
     emit("error", "An unknown error occurred. (8A01F8A0)", error);
   }
@@ -132,8 +193,8 @@ function getVehicleTunable(tunable) {
   try {
     const value = getTunable(`${tunable}_MODEL_HASH`);
     if (value === null || value === -1) return null;
-
-    return vehicles[value] ?? value;
+    if (!data.value.vehicles) return value;
+    return data.value.vehicles[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (D24280B2)", error);
   }
@@ -149,8 +210,8 @@ function getDailyObjective(day) {
   try {
     const value = getTunable(`DAILY_OBJECTIVE_${day.toUpperCase()}_1`);
     if (value === null || value === -1) return null;
-
-    return dailyObjectives[value] ?? value;
+    if (!data.value.dailyObjectives) return value;
+    return data.value.dailyObjectives[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (144BBEE1)", error);
   }
@@ -164,7 +225,8 @@ function getDailyObjective(day) {
  */
 function getWeaponName(value) {
   try {
-    return weapons[value] ?? value;
+    if (!data.value.weapons) return value;
+    return data.value.weapons[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (58B1CCC5)", error);
   }
@@ -178,7 +240,8 @@ function getWeaponName(value) {
  */
 function getVehicleName(value) {
   try {
-    return vehicles[value] ?? value;
+    if (!data.value.vehicles) return value;
+    return data.value.vehicles[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (58B1CCC5)", error);
   }
@@ -194,8 +257,8 @@ function getRcTimeTrial() {
   try {
     const value = getTunable("RCTIMETRIALVARIATION");
     if (value === null || value === -1) return null;
-
-    return rcTimeTrials[value] ?? value;
+    if (!data.value.rcTimeTrials) return value;
+    return data.value.rcTimeTrials[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (1013FD58)", error);
   }
@@ -211,8 +274,8 @@ function getHswTimeTrial() {
   try {
     const value = getTunable("HSW_TIME_TRIAL_SUBVARIATION");
     if (value === null || value === -1) return null;
-
-    return hswTimeTrials[value] ?? value;
+    if (!data.value.hswTimeTrials) return value;
+    return data.value.hswTimeTrials[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (9BE71C1E)", error);
   }
@@ -228,8 +291,8 @@ function getTimeTrial() {
   try {
     const value = getTunable("TIMETRIALVARIATION");
     if (value === null || value === -1) return null;
-
-    return timeTrials[value] ?? value;
+    if (!data.value.timeTrials) return value;
+    return data.value.timeTrials[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (BF45361D)", error);
   }
@@ -516,7 +579,7 @@ const sales = computed(() => getSales());
       </CardHeader>
     </template>
     <template #default>
-      <template v-if="!loading && tunables">
+      <template v-if="!loading && !data.loading && tunables">
         <Accordion id="sales">
           <template #title>
             <div class="flex justify-between items-center w-full">
