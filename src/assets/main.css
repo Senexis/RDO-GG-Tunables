@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a, button {
+  @apply select-none text-sky-600;
+}
+
+a:hover, button:hover {
+  @apply text-sky-400;
+}
+
+code {
+  @apply text-red-400 font-mono;
+}
+
+/* Tweak the scroll bar. */
+@media screen and (min-width: 640px) {
+  ::-webkit-scrollbar {
+    @apply w-4 h-4;
+  }
+  
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    @apply bg-slate-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 bg-clip-content border-4 border-solid border-transparent rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+  }  
+}
+
+/* Hide individual types of changes. */
+.hide-added .jsondiffpatch-added,
+.hide-deleted .jsondiffpatch-deleted,
+.hide-modified .jsondiffpatch-modified,
+.hide-unchanged .jsondiffpatch-unchanged {
+  @apply hidden;
+}
+
+/* Hide individual keys. */
+.hide-bonus [data-key="bonus"],
+.hide-content [data-key="contentlists"],
+.hide-tunables [data-key="tunables"],
+.hide-verbose [data-key="8B7D3320"],
+.hide-verbose [data-key*="FM_CORONA"],
+.hide-verbose [data-key*="NPCFLOWINVITE"],
+.hide-verbose [data-key*="SALE_HASH_LABELS"] {
+  @apply hidden;
+}
+
+/* Custom JSON diff patch tweaks. */
+.jsondiffpatch-delta {
+  @apply p-0;
+}
+
+.jsondiffpatch-delta div,
+.jsondiffpatch-delta li {
+  @apply leading-4 my-px mx-0 whitespace-nowrap;
+}
+
+.jsondiffpatch-movedestination,
+.jsondiffpatch-unchanged {
+  @apply opacity-80;
+}
+
+.jsondiffpatch-deleted .jsondiffpatch-property-name,
+.jsondiffpatch-deleted pre,
+.jsondiffpatch-modified .jsondiffpatch-left-value pre,
+.jsondiffpatch-textdiff-deleted {
+  background: rgb(128, 48, 48);
+  color: rgb(201, 209, 217);
+  @apply rounded-sm;
+}
+
+.jsondiffpatch-added .jsondiffpatch-property-name,
+.jsondiffpatch-added .jsondiffpatch-value pre,
+.jsondiffpatch-modified .jsondiffpatch-right-value pre,
+.jsondiffpatch-textdiff-added {
+  background: rgb(29, 87, 45);
+  color: rgb(201, 209, 217);
+  @apply rounded-sm;
+}
+
+.jsondiffpatch-property-name {
+  color: rgb(126, 231, 135);
+}
+
+.jsondiffpatch-value {
+  color: rgb(165, 214, 255);
+}
+
+.jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after,
+.jsondiffpatch-property-name:after,
+.jsondiffpatch-value pre:after {
+  @apply text-white;
+}
+
+.jsondiffpatch-property-name:before {
+  content: '"';
+  @apply text-white;
+}
+
+.jsondiffpatch-property-name:after {
+  content: '": ';
+}
+
+.jsondiffpatch-child-node-type-array>.jsondiffpatch-property-name:after {
+  content: '": [';
+}
+
+.jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after {
+  content: '": {';
+}

@@ -1,0 +1,794 @@
+<script setup>
+import { ArrowPathIcon, EyeSlashIcon, ExclamationTriangleIcon } from "@heroicons/vue/24/outline";
+
+import Accordion from "./Accordion.vue";
+import Card from "./Cards/Card.vue";
+import CardHeader from "./Cards/CardHeader.vue";
+import CardFooter from "./Cards/CardFooter.vue";
+
+import { useStore } from "../stores/settings.js";
+import { computed } from "vue";
+
+import dailyObjectives from "../data/daily_objectives.json";
+import rcTimeTrials from "../data/rc_time_trials.json";
+import hswTimeTrials from "../data/hsw_time_trials.json";
+import timeTrials from "../data/time_trials.json";
+import vehicles from "../data/vehicles.json";
+import weapons from "../data/weapons.json";
+import tunableDefaults from "../data/tunable_defaults.json";
+
+const emit = defineEmits(["error"]);
+
+const props = defineProps({
+  loading: {
+    type: Boolean,
+    required: true,
+  },
+  tunables: {
+    type: Object,
+    default: null,
+  },
+});
+
+const settings = useStore();
+
+/**
+ * Handles the hide quick view event.
+ *
+ * @returns {void}
+ */
+function handleHideQuickView() {
+  try {
+    settings.quickView = false;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (892CDFE2)", error);
+  }
+}
+
+/**
+ * Retrieves the value of a tunable.
+ *
+ * @param {string} key The tunables key to retrieve the value for.
+ * @returns {string|null}
+ */
+function getTunable(key, context = null) {
+  try {
+    const tunables = props.tunables;
+
+    if (tunables === undefined) return null;
+
+    if (context === null) {
+      for (const item in tunables) {
+        if (tunables[item][key] === undefined) {
+          continue;
+        }
+
+        return tunables[item][key];
+      }
+
+      return null;
+    } else {
+      if (!tunables[context] || tunables[context][key] === undefined) {
+        return null;
+      }
+
+      return tunables[context][key];
+    }
+  } catch (error) {
+    emit("error", "An unknown error occurred. (8A01F8A0)", error);
+  }
+}
+
+/**
+ * Tries to retrieve multiple tunables.
+ *
+ * @param {string[]} query The queries to search for.
+ */
+function findTunables(query = []) {
+  const tunables = props.tunables;
+
+  if (tunables === undefined) return [];
+
+  const results = [];
+
+  for (const item in tunables) {
+    for (const key in tunables[item]) {
+      for (const term in query) {
+        if (key.toLowerCase().includes(query[term].toLowerCase())) {
+          results.push({
+            key,
+            value: tunables[item][key],
+            context: item,
+          });
+        }
+      }
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Retrieves the default value of a tunable.
+ *
+ * @param {string} key The tunables key to retrieve the default value for.
+ * @returns {string|null}
+ */
+function getTunableDefault(key) {
+  try {
+    return tunableDefaults[key] ?? null;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (8A01F8A0)", error);
+  }
+}
+
+/**
+ * Retrieves the vehicle for a tunable.
+ *
+ * @param {string} tunable The tunable to retrieve the vehicle for.
+ * @returns {string|null}
+ */
+function getVehicleTunable(tunable) {
+  try {
+    const value = getTunable(`${tunable}_MODEL_HASH`);
+    if (value === null || value === -1) return null;
+
+    return vehicles[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (D24280B2)", error);
+  }
+}
+
+/**
+ * Retrieves the daily objective for a day.
+ *
+ * @param {string} day The day to retrieve the daily objective for.
+ * @returns {string|null}
+ */
+function getDailyObjective(day) {
+  try {
+    const value = getTunable(`DAILY_OBJECTIVE_${day.toUpperCase()}_1`);
+    if (value === null || value === -1) return null;
+
+    return dailyObjectives[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (144BBEE1)", error);
+  }
+}
+
+/**
+ * Retrieves the weapon name for a weapon.
+ *
+ * @param {string} value The weapon to retrieve the name for.
+ * @returns {string}
+ */
+function getWeaponName(value) {
+  try {
+    return weapons[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (58B1CCC5)", error);
+  }
+}
+
+/**
+ * Retrieves the vehicle name for a vehicle.
+ *
+ * @param {string} value The vehicle to retrieve the name for.
+ * @returns {string}
+ */
+function getVehicleName(value) {
+  try {
+    return vehicles[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (58B1CCC5)", error);
+  }
+}
+
+/**
+ * Retrieves the RC time trial for a tunable.
+ *
+ * @param {string} tunable The tunable to retrieve the RC time trial for.
+ * @returns {string|null}
+ */
+function getRcTimeTrial() {
+  try {
+    const value = getTunable("RCTIMETRIALVARIATION");
+    if (value === null || value === -1) return null;
+
+    return rcTimeTrials[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (1013FD58)", error);
+  }
+}
+
+/**
+ * Retrieves the HSW time trial for a tunable.
+ *
+ * @param {string} tunable The tunable to retrieve the HSW time trial for.
+ * @returns {string|null}
+ */
+function getHswTimeTrial() {
+  try {
+    const value = getTunable("HSW_TIME_TRIAL_SUBVARIATION");
+    if (value === null || value === -1) return null;
+
+    return hswTimeTrials[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (9BE71C1E)", error);
+  }
+}
+
+/**
+ * Retrieves the time trial for a tunable.
+ *
+ * @param {string} tunable The tunable to retrieve the time trial for.
+ * @returns {string|null}
+ */
+function getTimeTrial() {
+  try {
+    const value = getTunable("TIMETRIALVARIATION");
+    if (value === null || value === -1) return null;
+
+    return timeTrials[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (BF45361D)", error);
+  }
+}
+
+/**
+ * Retrieves the car meet prize objective.
+ *
+ * @returns {string|null}
+ */
+function getCarMeetPrizeObjective() {
+  try {
+    const id = getTunable("CAR_MEET_PRIZE_VEHICLE_CHALLENGE_ID");
+    const paramOne = getTunable("CAR_MEET_PRIZE_VEHICLE_CHALLENGE_PARAM_ONE");
+    const paramTwo = getTunable("CAR_MEET_PRIZE_VEHICLE_CHALLENGE_PARAM_TWO");
+
+    if (id === null || paramOne === null || paramTwo === null) {
+      return null;
+    }
+
+    switch (id) {
+      case 0:
+        if (paramTwo === 1) {
+          return `LS Car Meet Series: Place top ${paramOne}.`;
+        } else {
+          return `LS Car Meet Series: Place top ${paramOne} for ${paramTwo} days in a row.`;
+        }
+      case 1:
+        if (paramTwo === 1) {
+          return `Street Race Series: Place top ${paramOne}.`;
+        } else {
+          return `Street Race Series: Place top ${paramOne} for ${paramTwo} days in a row.`;
+        }
+      case 2:
+        if (paramTwo === 1) {
+          return `Pursuit Series: Place top ${paramOne}.`;
+        } else {
+          return `Pursuit Series: Place top ${paramOne} for ${paramTwo} days in a row.`;
+        }
+      case 3:
+        if (paramOne === 1 && paramTwo === 1) {
+          return `Sprints: Win 1 race.`;
+        } else if (paramOne === 1 && paramTwo > 1) {
+          return `Sprints: Win 1 race for ${paramTwo} days in a row.`;
+        } else if (paramOne > 1 && paramTwo === 1) {
+          return `Sprints: Win ${paramOne} races.`;
+        } else {
+          return `Sprints: Win ${paramOne} races for ${paramTwo} days in a row.`;
+        }
+      case 4:
+        if (paramTwo === 1) {
+          return `LS Car Meet Series: Place top ${paramOne}.`;
+        } else {
+          return `LS Car Meet Series: Place top ${paramOne} in ${paramTwo} races.`;
+        }
+      case 5:
+        if (paramTwo === 1) {
+          return `Street Race Series: Place top ${paramOne}.`;
+        } else {
+          return `Street Race Series: Place top ${paramOne} in ${paramTwo} races.`;
+        }
+      case 6:
+        if (paramTwo === 1) {
+          return `Pursuit Series: Place top ${paramOne}.`;
+        } else {
+          return `Pursuit Series: Place top ${paramOne} in ${paramTwo} races.`;
+        }
+      case 7:
+        if (paramTwo === 1) {
+          return `Sprints: Win ${paramOne} race.`;
+        } else {
+          return `Sprints: Win ${paramOne} races.`;
+        }
+      default:
+        return null;
+    }
+  } catch (error) {
+    emit("error", "An unknown error occurred. (E9F80C5D)", error);
+  }
+}
+
+/**
+ * Retrieves the gun van inventory.
+ *
+ * @returns {object}
+ */
+function getGunVan() {
+  try {
+    const result = {
+      weapons: [
+        { item: "WEAPON_BAT", discount: null, discount_plus: null },
+        { item: "WEAPON_KNIFE", discount: null, discount_plus: null },
+        { item: "WEAPON_RAILGUNXM3", discount: null, discount_plus: null },
+        { item: "WEAPON_MICROSMG", discount: null, discount_plus: null },
+        { item: "WEAPON_PUMPSHOTGUN", discount: null, discount_plus: null },
+      ],
+      throwables: [{ item: "WEAPON_STICKYBOMB", discount: null, discount_plus: null }],
+      body_armor: [
+        { item: "WT_BA_0", discount: null, discount_plus: null },
+        { item: "WT_BA_1", discount: null, discount_plus: null },
+        { item: "WT_BA_2", discount: null, discount_plus: null },
+        { item: "WT_BA_3", discount: null, discount_plus: null },
+        { item: "WT_BA_4", discount: null, discount_plus: null },
+      ],
+    };
+
+    for (let i = 0; i < 10; i++) {
+      const item = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_TYPE_${i}`);
+      if (item) {
+        result["weapons"][i] = {
+          item: item,
+          discount: null,
+          discount_plus: null,
+        };
+      }
+
+      if (!result["weapons"][i]) continue;
+
+      const discount = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_DISCOUNT_${i}`, "BASE_GLOBALS");
+      if (discount) {
+        result["weapons"][i].discount = discount;
+      }
+
+      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_DISCOUNT_${i}`, "MP_FM_MEMBERSHIP");
+      if (discount_plus) {
+        result["weapons"][i].discount_plus = discount_plus;
+      }
+    }
+
+    for (let i = 0; i < 3; i++) {
+      const item = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_TYPE_${i}`);
+      if (item) {
+        result["throwables"][i] = {
+          item: item,
+          discount: null,
+          discount_plus: null,
+        };
+      }
+
+      if (!result["throwables"][i]) continue;
+
+      const discount = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_DISCOUNT_${i}`, "BASE_GLOBALS");
+      if (discount) {
+        result["throwables"][i].discount = discount;
+      }
+
+      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_DISCOUNT_${i}`, "MP_FM_MEMBERSHIP");
+      if (discount_plus) {
+        result["throwables"][i].discount_plus = discount_plus;
+      }
+    }
+
+    for (let i = 0; i < 5; i++) {
+      const item = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_TYPE_${i}`);
+      if (item) {
+        result["body_armor"][i] = {
+          item: item,
+          discount: null,
+          discount_plus: null,
+        };
+      }
+
+      if (!result["body_armor"][i]) continue;
+
+      const discount = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_${i}`, "BASE_GLOBALS");
+      if (discount) {
+        result["body_armor"][i].discount = discount;
+      }
+
+      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_${i}`, "MP_FM_MEMBERSHIP");
+      if (discount_plus) {
+        result["body_armor"][i].discount_plus = discount_plus;
+      }
+    }
+
+    return result;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (C0350559)", error);
+  }
+}
+
+/**
+ * Retrieves the sales for the current tunables.
+ *
+ * @returns {object}
+ */
+function getSales() {
+  const results = {};
+
+  const vehicleSales = findTunables(["BIN_PRICE", "TRADE_PRICE", "NEW_SPORTS_CARS", "VC_SALE_PRICE"]);
+  for (const vehicleSale of vehicleSales) {
+    const salesTitle = vehicleSale.context === "MP_FM_MEMBERSHIP" ? "vehicle_sales_plus" : "vehicle_sales";
+    const vehicle = vehicleSale.key.split("_").pop();
+
+    results[salesTitle] = results[salesTitle] || {};
+    results[salesTitle][vehicle] = results[salesTitle][vehicle] || [];
+
+    const baseValue = getTunableDefault(vehicleSale.key);
+    if (baseValue) {
+      const percentage = 100 - Math.round((vehicleSale.value / baseValue) * 100);
+      results[salesTitle][vehicle].push([vehicleSale.value, percentage]);
+    } else {
+      results[salesTitle][vehicle].push([vehicleSale.value, null]);
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Retrieves the title for the sales section.
+ *
+ * @returns string
+ */
+function getSalesTitle(title) {
+  switch (title) {
+    case "vehicle_sales":
+      return "Vehicle Sales";
+    case "vehicle_sales_plus":
+      return "Vehicle Sales (GTA+)";
+    default:
+      return "Miscellaneous";
+  }
+}
+
+/**
+ * Retrieves the text to display for vehicle sales.
+ *
+ * @returns string
+ */
+function formatVehicleSale(discounts) {
+  const fc = Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format;
+
+  return discounts
+    .sort((a, b) => a[0] - b[0])
+    .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
+    .map((i) => `${fc(i[0])} ${i[1] ? `(${i[1]}%)` : ""}`.trim())
+    .join(" - ");
+}
+
+const carMeetPrizeObjective = computed(() => getCarMeetPrizeObjective());
+const carMeetPrizeVehicle = computed(() => getVehicleTunable("CAR_MEET_PRIZE_VEHICLE"));
+const promoTestDriveVehicle1 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_1"));
+const promoTestDriveVehicle2 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_2"));
+const promoTestDriveVehicle3 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_3"));
+const hswTestRide = computed(() => getVehicleTunable("HSW_TEST_RIDE"));
+const casinoPrizeVehicle = computed(() => getVehicleTunable("CASINO_PRIZE_VEHICLE"));
+const luxuryShowcaseVehicle1 = computed(() => getVehicleTunable("LUXURY_SHOWCASE_VEHICLE_1"));
+const luxuryShowcaseVehicle2 = computed(() => getVehicleTunable("LUXURY_SHOWCASE_VEHICLE_2"));
+const simeonTestDriveVehicle1 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_1"));
+const simeonTestDriveVehicle2 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_2"));
+const simeonTestDriveVehicle3 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_3"));
+const simeonTestDriveVehicle4 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_4"));
+const simeonTestDriveVehicle5 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_5"));
+const dailyObjectiveMon = computed(() => getDailyObjective("MON"));
+const dailyObjectiveTue = computed(() => getDailyObjective("TUE"));
+const dailyObjectiveWed = computed(() => getDailyObjective("WED"));
+const dailyObjectiveThu = computed(() => getDailyObjective("THU"));
+const dailyObjectiveFri = computed(() => getDailyObjective("FRI"));
+const dailyObjectiveSat = computed(() => getDailyObjective("SAT"));
+const dailyObjectiveSun = computed(() => getDailyObjective("SUN"));
+const timeTrial = computed(() => getTimeTrial());
+const hswTimeTrial = computed(() => getHswTimeTrial());
+const rcTimeTrial = computed(() => getRcTimeTrial());
+const gunVan = computed(() => getGunVan());
+const sales = computed(() => getSales());
+</script>
+
+<template>
+  <Card v-if="settings.quickView">
+    <template #header>
+      <CardHeader class="flex flex-row items-center justify-between">
+        <h1 class="truncate">Quick View</h1>
+        <div class="whitespace-nowrap">
+          <button
+            @click="handleHideQuickView"
+            type="button"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+          >
+            <span class="sr-only">Hide Quick View</span>
+            <EyeSlashIcon class="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+      </CardHeader>
+    </template>
+    <template #default>
+      <template v-if="!loading && tunables">
+        <Accordion id="sales">
+          <template #title>
+            <div class="flex justify-between items-center w-full">
+              <span>Sales</span>
+              <span class="inline-flex items-center rounded-full bg-yellow-700 px-2.5 py-0.5 text-xs uppercase font-mono text-white mr-2">
+                Experimental
+              </span>
+            </div>
+          </template>
+          <template #default>
+            <div class="text-yellow-500 border border-yellow-600 bg-yellow-500/10 rounded-lg p-2 mb-4 flex items-start gap-2">
+              <ExclamationTriangleIcon class="mt-1.5 w-7 h-7 inline-block flex-none" />
+              <span>
+                This feature is experimental. The results will likely not be as you expect and may display incomplete or incorrect data.<br />Keep
+                an eye on this feature over time to see new types of sales being added, as well as tweaks to its accuracy being made.
+              </span>
+            </div>
+
+            <template v-if="sales && Object.keys(sales).length">
+              <template v-for="(category, key) in sales" :key="key">
+                <h3 class="my-1 font-bold">{{ getSalesTitle(key) }}</h3>
+                <template v-if="key === 'vehicle_sales' || key === 'vehicle_sales_plus'">
+                  <ul class="list-disc mb-4">
+                    <template v-for="(discounts, vehicle) in category" :key="vehicle">
+                      <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatVehicleSale(discounts) }}</li>
+                    </template>
+                  </ul>
+                </template>
+                <template v-else>
+                  <ul class="list-disc mb-4">
+                    <template v-for="line in category" :key="line">
+                      <li class="ml-8">{{ line }}</li>
+                    </template>
+                  </ul>
+                </template>
+              </template>
+            </template>
+            <template v-else>
+              <p class="mb-4">No sales found.</p>
+            </template>
+
+            <p class="text-sm text-slate-400 italic">
+              Note: This is a generated list based on certain manually defined conditions and will need updates over time.<br />
+              For more accurate updates on the latest sales and bonuses, follow
+              <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.
+            </p>
+          </template>
+        </Accordion>
+        <template v-if="timeTrial || hswTimeTrial || rcTimeTrial">
+          <Accordion id="time_trials">
+            <template #title>Time Trials</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="timeTrial">
+                  <li class="ml-8"><strong>Time Trial:</strong> {{ timeTrial }}</li>
+                </template>
+                <template v-if="hswTimeTrial">
+                  <li class="ml-8"><strong>HSW Time Trial:</strong> {{ hswTimeTrial }}</li>
+                </template>
+                <template v-if="rcTimeTrial">
+                  <li class="ml-8"><strong>RC Bandito Time Trial:</strong> {{ rcTimeTrial }}</li>
+                </template>
+              </ul>
+              <a href="https://gtaweb.eu/gtao-map/ls/6x5kxtvuwilukg" target="_blank" rel="noopener noreferrer">
+                See the locations on GTAWeb.eu
+              </a>
+            </template>
+          </Accordion>
+        </template>
+        <template v-if="gunVan && getTunable('XM22_GUN_VAN_STOCK_ID')">
+          <Accordion id="gun_van">
+            <template #title>Gun Van</template>
+            <template #default>
+              <h3 class="my-1 font-bold">Weapons</h3>
+              <ul class="list-disc">
+                <template v-for="item in gunVan.weapons" :key="item">
+                  <li class="ml-8">
+                    {{ getWeaponName(item.item) }}
+                    <template v-if="item.discount && item.discount_plus">
+                      (<span>{{ Math.floor(item.discount * 100) }}%</span>,
+                      <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
+                    </template>
+                    <template v-else-if="item.discount">
+                      (<span>{{ Math.floor(item.discount * 100) }}%</span>)
+                    </template>
+                  </li>
+                </template>
+              </ul>
+              <h3 class="my-1 font-bold">Throwables</h3>
+              <ul class="list-disc">
+                <template v-for="item in gunVan.throwables" :key="item">
+                  <li class="ml-8">
+                    {{ getWeaponName(item.item) }}
+                    <template v-if="item.discount && item.discount_plus">
+                      (<span>{{ Math.floor(item.discount * 100) }}%</span>,
+                      <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
+                    </template>
+                    <template v-else-if="item.discount">
+                      (<span>{{ Math.floor(item.discount * 100) }}%</span>)
+                    </template>
+                  </li>
+                </template>
+              </ul>
+              <h3 class="my-1 font-bold">Body Armor</h3>
+              <ul class="list-disc">
+                <template v-for="item in gunVan.body_armor" :key="item">
+                  <li class="ml-8">
+                    {{ getWeaponName(item.item) }}
+                    <template v-if="item.discount && item.discount_plus">
+                      (<span>{{ Math.floor(item.discount * 100) }}%</span>,
+                      <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
+                    </template>
+                    <template v-else-if="item.discount">
+                      (<span>{{ Math.floor(item.discount * 100) }}%</span>)
+                    </template>
+                  </li>
+                </template>
+              </ul>
+              <a href="https://gtaweb.eu/gtao-map/ls/2" target="_blank" rel="noopener noreferrer">See the location on GTAWeb.eu</a>
+            </template>
+          </Accordion>
+        </template>
+        <template v-if="casinoPrizeVehicle">
+          <Accordion id="casino">
+            <template #title>Casino</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="casinoPrizeVehicle">
+                  <li class="ml-8"><strong>Podium Vehicle:</strong> {{ casinoPrizeVehicle }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template
+          v-if="
+            carMeetPrizeObjective ||
+            carMeetPrizeVehicle ||
+            promoTestDriveVehicle1 ||
+            promoTestDriveVehicle2 ||
+            promoTestDriveVehicle3 ||
+            hswTestRide
+          "
+        >
+          <Accordion id="ls_car_meet">
+            <template #title>LS Car Meet</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="carMeetPrizeObjective">
+                  <li class="ml-8">
+                    <strong>Prize Ride Objective:</strong>
+                    {{ carMeetPrizeObjective }}
+                  </li>
+                </template>
+                <template v-if="carMeetPrizeVehicle">
+                  <li class="ml-8"><strong>Prize Ride:</strong> {{ carMeetPrizeVehicle }}</li>
+                </template>
+                <template v-if="promoTestDriveVehicle1">
+                  <li class="ml-8"><strong>Test Ride 1:</strong> {{ promoTestDriveVehicle1 }}</li>
+                </template>
+                <template v-if="promoTestDriveVehicle2">
+                  <li class="ml-8"><strong>Test Ride 2:</strong> {{ promoTestDriveVehicle2 }}</li>
+                </template>
+                <template v-if="promoTestDriveVehicle3">
+                  <li class="ml-8"><strong>Test Ride 3:</strong> {{ promoTestDriveVehicle3 }}</li>
+                </template>
+                <template v-if="hswTestRide">
+                  <li class="ml-8"><strong>Premium Test Ride:</strong> {{ hswTestRide }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template v-if="luxuryShowcaseVehicle1 || luxuryShowcaseVehicle2">
+          <Accordion id="luxury_autos_showroom">
+            <template #title>Luxury Autos Showroom</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="luxuryShowcaseVehicle1">
+                  <li class="ml-8"><strong>Vehicle 1:</strong> {{ luxuryShowcaseVehicle1 }}</li>
+                </template>
+                <template v-if="luxuryShowcaseVehicle2">
+                  <li class="ml-8"><strong>Vehicle 2:</strong> {{ luxuryShowcaseVehicle2 }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template
+          v-if="
+            simeonTestDriveVehicle1 ||
+            simeonTestDriveVehicle2 ||
+            simeonTestDriveVehicle3 ||
+            simeonTestDriveVehicle4 ||
+            simeonTestDriveVehicle5
+          "
+        >
+          <Accordion id="premium_deluxe_motorsport_showroom">
+            <template #title>Premium Deluxe Motorsport Showroom</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="simeonTestDriveVehicle1">
+                  <li class="ml-8"><strong>Vehicle 1:</strong> {{ simeonTestDriveVehicle1 }}</li>
+                </template>
+                <template v-if="simeonTestDriveVehicle2">
+                  <li class="ml-8"><strong>Vehicle 2:</strong> {{ simeonTestDriveVehicle2 }}</li>
+                </template>
+                <template v-if="simeonTestDriveVehicle3">
+                  <li class="ml-8"><strong>Vehicle 3:</strong> {{ simeonTestDriveVehicle3 }}</li>
+                </template>
+                <template v-if="simeonTestDriveVehicle4">
+                  <li class="ml-8"><strong>Vehicle 4:</strong> {{ simeonTestDriveVehicle4 }}</li>
+                </template>
+                <template v-if="simeonTestDriveVehicle5">
+                  <li class="ml-8"><strong>Vehicle 5:</strong> {{ simeonTestDriveVehicle5 }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template
+          v-if="
+            dailyObjectiveMon ||
+            dailyObjectiveTue ||
+            dailyObjectiveWed ||
+            dailyObjectiveThu ||
+            dailyObjectiveFri ||
+            dailyObjectiveSat ||
+            dailyObjectiveSun
+          "
+        >
+          <Accordion id="daily_objectives">
+            <template #title>Daily Objectives</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="dailyObjectiveMon">
+                  <li class="ml-8"><strong>Monday:</strong> {{ dailyObjectiveMon }}</li>
+                </template>
+                <template v-if="dailyObjectiveTue">
+                  <li class="ml-8"><strong>Tuesday:</strong> {{ dailyObjectiveTue }}</li>
+                </template>
+                <template v-if="dailyObjectiveWed">
+                  <li class="ml-8"><strong>Wednesday:</strong> {{ dailyObjectiveWed }}</li>
+                </template>
+                <template v-if="dailyObjectiveThu">
+                  <li class="ml-8"><strong>Thursday:</strong> {{ dailyObjectiveThu }}</li>
+                </template>
+                <template v-if="dailyObjectiveFri">
+                  <li class="ml-8"><strong>Friday:</strong> {{ dailyObjectiveFri }}</li>
+                </template>
+                <template v-if="dailyObjectiveSat">
+                  <li class="ml-8"><strong>Saturday:</strong> {{ dailyObjectiveSat }}</li>
+                </template>
+                <template v-if="dailyObjectiveSun">
+                  <li class="ml-8"><strong>Sunday:</strong> {{ dailyObjectiveSun }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+      </template>
+      <template v-else>
+        <div class="bg-slate-900 px-2 py-2 sm:p-4 flex flex-col items-center justify-center gap-2">
+          <ArrowPathIcon class="block animate-spin h-12 w-12" aria-hidden="true" />
+          <p class="text-lg font-medium">Loading...</p>
+        </div>
+      </template>
+    </template>
+    <template #footer>
+      <CardFooter>
+        <div class="truncate text-sm leading-tight">Let us know on Twitter if there's something you want added!</div>
+      </CardFooter>
+    </template>
+  </Card>
+</template>
