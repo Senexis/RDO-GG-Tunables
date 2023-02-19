@@ -9,10 +9,10 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     emptyOutDir: false,
-    outDir: fileURLToPath(new URL("../docs/tunables", import.meta.url)),
+    outDir: fileURLToPath(new URL("./build", import.meta.url)),
     rollupOptions: {
       input: {
-        index: fileURLToPath(new URL("./changes.html", import.meta.url)),
+        index: fileURLToPath(new URL("./index.html", import.meta.url)),
       },
     },
   },
@@ -26,7 +26,7 @@ export default defineConfig({
     },
   },
   server: {
-    open: "/tunables/changes.html",
+    open: "/index.html",
   },
-  base: "/tunables/",
+  base: "/",
 });

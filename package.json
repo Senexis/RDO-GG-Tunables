@@ -3,7 +3,7 @@
   "name": "rdo-compendium-api-tunables",
   "version": "1.0.18",
   "scripts": {
-    "build": "npm version patch && rm -rf ../docs/tunables/assets && vite build",
+    "build": "vite build",
     "dev": "vite",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "preview": "vite preview"
