@@ -32,8 +32,8 @@ const props = defineProps({
           </div>
           <div class="mt-2">
             <p class="text-sm">
-              If this issue persists, try reloading the page without options. If that doesn't solve the issue, please let us know using
-              @Tunables on Twitter and make sure to provide the full URL.
+              If this issue persists, try reloading the page without options. If that doesn't solve the issue, please report this issue on
+              GitHub.
             </p>
           </div>
         </div>
@@ -57,12 +57,12 @@ const props = defineProps({
       </div>
       <div class="flex gap-3">
         <a
-          href="https://twitter.com/Tunables"
+          href="https://github.com/Senexis/RDO-GG-Tunables/issues"
           target="_blank"
           rel="noopener noreferrer"
           class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-base font-medium text-slate-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
         >
-          Twitter
+          GitHub
         </a>
       </div>
     </div>

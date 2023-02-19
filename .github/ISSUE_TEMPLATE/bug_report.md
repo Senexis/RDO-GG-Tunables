@@ -34,5 +34,8 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
+**Full URL**
+Please provide the full URL of the page you are experiencing the issue on.
+
 **Additional context**
 Add any other context about the problem here.

@@ -145,27 +145,29 @@ function getTunable(key, context = null) {
  * @param {string[]} query The queries to search for.
  */
 function findTunables(query = []) {
-  const tunables = props.tunables;
+  try {
+    const tunables = props.tunables;
+    if (tunables === undefined) return [];
 
-  if (tunables === undefined) return [];
-
-  const results = [];
-
-  for (const item in tunables) {
-    for (const key in tunables[item]) {
-      for (const term in query) {
-        if (key.toLowerCase().includes(query[term].toLowerCase())) {
-          results.push({
-            key,
-            value: tunables[item][key],
-            context: item,
-          });
+    const results = [];
+    for (const item in tunables) {
+      for (const key in tunables[item]) {
+        for (const term in query) {
+          if (key.toLowerCase().includes(query[term].toLowerCase())) {
+            results.push({
+              key,
+              value: tunables[item][key],
+              context: item,
+            });
+          }
         }
       }
     }
-  }
 
-  return results;
+    return results;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (F89A8514)", error);
+  }
 }
 
 /**
@@ -480,26 +482,30 @@ function getGunVan() {
  * @returns {object}
  */
 function getSales() {
-  const results = {};
+  try {
+    const results = {};
 
-  const vehicleSales = findTunables(["BIN_PRICE", "TRADE_PRICE", "NEW_SPORTS_CARS", "VC_SALE_PRICE"]);
-  for (const vehicleSale of vehicleSales) {
-    const salesTitle = vehicleSale.context === "MP_FM_MEMBERSHIP" ? "vehicle_sales_plus" : "vehicle_sales";
-    const vehicle = vehicleSale.key.split("_").pop();
+    const vehicleSales = findTunables(["BIN_PRICE", "TRADE_PRICE", "NEW_SPORTS_CARS", "VC_SALE_PRICE"]);
+    for (const vehicleSale of vehicleSales) {
+      const salesTitle = vehicleSale.context === "MP_FM_MEMBERSHIP" ? "vehicle_sales_plus" : "vehicle_sales";
+      const vehicle = vehicleSale.key.split("_").pop();
 
-    results[salesTitle] = results[salesTitle] || {};
-    results[salesTitle][vehicle] = results[salesTitle][vehicle] || [];
+      results[salesTitle] = results[salesTitle] || {};
+      results[salesTitle][vehicle] = results[salesTitle][vehicle] || [];
 
-    const baseValue = getTunableDefault(vehicleSale.key);
-    if (baseValue) {
-      const percentage = 100 - Math.round((vehicleSale.value / baseValue) * 100);
-      results[salesTitle][vehicle].push([vehicleSale.value, percentage]);
-    } else {
-      results[salesTitle][vehicle].push([vehicleSale.value, null]);
+      const baseValue = getTunableDefault(vehicleSale.key);
+      if (baseValue) {
+        const percentage = 100 - Math.round((vehicleSale.value / baseValue) * 100);
+        results[salesTitle][vehicle].push([vehicleSale.value, percentage]);
+      } else {
+        results[salesTitle][vehicle].push([vehicleSale.value, null]);
+      }
     }
-  }
 
-  return results;
+    return results;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (31D92717)", error);
+  }
 }
 
 /**
@@ -508,13 +514,17 @@ function getSales() {
  * @returns string
  */
 function getSalesTitle(title) {
-  switch (title) {
-    case "vehicle_sales":
-      return "Vehicle Sales";
-    case "vehicle_sales_plus":
-      return "Vehicle Sales (GTA+)";
-    default:
-      return "Miscellaneous";
+  try {
+    switch (title) {
+      case "vehicle_sales":
+        return "Vehicle Sales";
+      case "vehicle_sales_plus":
+        return "Vehicle Sales (GTA+)";
+      default:
+        return "Miscellaneous";
+    }
+  } catch (error) {
+    emit("error", "An unknown error occurred. (04CAE23B)", error);
   }
 }
 
@@ -524,13 +534,17 @@ function getSalesTitle(title) {
  * @returns string
  */
 function formatVehicleSale(discounts) {
-  const fc = Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format;
+  try {
+    const fc = Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format;
 
-  return discounts
-    .sort((a, b) => a[0] - b[0])
-    .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
-    .map((i) => `${fc(i[0])} ${i[1] ? `(${i[1]}%)` : ""}`.trim())
-    .join(" - ");
+    return discounts
+      .sort((a, b) => a[0] - b[0])
+      .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
+      .map((i) => `${fc(i[0])} ${i[1] ? `(${i[1]}%)` : ""}`.trim())
+      .join(" - ");
+  } catch (error) {
+    emit("error", "An unknown error occurred. (C37D9727)", error);
+  }
 }
 
 const carMeetPrizeObjective = computed(() => getCarMeetPrizeObjective());

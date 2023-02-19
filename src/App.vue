@@ -399,12 +399,16 @@ watch(title, (state) => {
 watch(
   errorModal,
   (state) => {
-    if (state.show) return;
-    setTimeout(() => {
-      if (errorModal.value.show) return;
-      errorModal.value.title = null;
-      errorModal.value.body = null;
-    }, 500);
+    try {
+      if (state.show) return;
+      setTimeout(() => {
+        if (errorModal.value.show) return;
+        errorModal.value.title = null;
+        errorModal.value.body = null;
+      }, 500);
+    } catch (error) {
+      showErrorModal("An unknown error occurred. (E6B7C58D)", error);
+    }
   },
   { deep: true }
 );

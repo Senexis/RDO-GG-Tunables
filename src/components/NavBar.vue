@@ -7,7 +7,8 @@ const emit = defineEmits(["configure", "download"]);
 const navigation = [
   { name: "RDO.GG", href: "https://rdo.gg/", external: true },
   { name: "API", href: "https://rdo.gg/api/#tag/tunables", external: true },
-  { name: "@Tunables", href: "https://twitter.com/Tunables", external: true },
+  { name: "Twitter", href: "https://twitter.com/Tunables", external: true },
+  { name: "GitHub", href: "https://github.com/Senexis/RDO-GG-Tunables", external: true },
 ];
 </script>
 
@@ -20,7 +21,7 @@ const navigation = [
             <img class="h-8 w-auto" src="https://rdo.gg/img/menu.png" alt="Tunables" />
           </div>
           <div class="hidden sm:block">
-            <div class="flex space-x-4">
+            <div class="flex space-x-2">
               <a
                 v-for="item in navigation"
                 :key="item.name"
