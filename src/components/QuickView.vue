@@ -209,8 +209,8 @@ function getVehicleTunable(tunable) {
   try {
     const value = getTunable(`${tunable}_MODEL_HASH`);
     if (value === null || value === -1) return null;
-    if (!data.value.vehicles) return value;
-    return data.value.vehicles[value] ?? value;
+    if (!data.value.labels) return value;
+    return data.value.labels[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (D24280B2)", error);
   }
