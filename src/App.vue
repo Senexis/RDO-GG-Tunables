@@ -30,7 +30,10 @@ const settings = useStore();
 const url = new URL(window.location);
 
 // eslint-disable-next-line no-undef
-const version = APP_VERSION;
+const appVersion = APP_VERSION;
+
+// eslint-disable-next-line no-undef
+const appChange = APP_CHANGE;
 
 /**
  * Contains the selected game.
@@ -840,7 +843,7 @@ function showErrorModal(body, error = null) {
 
   <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"> </DownloadModal>
 
-  <SettingsModal :open="settingsModal.show" @close="settingsModal.show = false" :version="version">
+  <SettingsModal :open="settingsModal.show" @close="settingsModal.show = false" :version="appVersion" :change="appChange">
     <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">General</h3>
 
     <div class="divide-y divide-slate-600 mb-4">

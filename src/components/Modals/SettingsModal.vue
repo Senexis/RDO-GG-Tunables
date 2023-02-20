@@ -12,6 +12,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  change: {
+    type: String,
+    default: "",
+  },
 });
 </script>
 
@@ -20,12 +24,15 @@ const props = defineProps({
     <div class="bg-slate-900 text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
       <template v-if="props.version">
-        <span class="text-xs opacity-60">
+        <p class="text-xs opacity-60">
           App version:
           <a :href="`https://github.com/Senexis/RDO-GG-Tunables/commit/${props.version}`" target="_blank" rel="noopener noreferrer">
             {{ props.version }}
           </a>
-        </span>
+        </p>
+        <template v-if="props.change">
+          <p class="text-xs opacity-60">Latest change: {{ props.change }}</p>
+        </template>
       </template>
     </div>
     <div class="bg-slate-800 text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

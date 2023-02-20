@@ -617,7 +617,7 @@ const sales = computed(() => getSales());
             <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
               <template v-if="sales && Object.keys(sales).length">
                 <template v-for="(category, key) in sales" :key="key">
-                  <Accordion>
+                  <Accordion :id="`sales_${key}`">
                     <template #title>
                       <div class="flex justify-between items-center w-full">
                         <span>{{ getSalesTitle(key) }}</span>
