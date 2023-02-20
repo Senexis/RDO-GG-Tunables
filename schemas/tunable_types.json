@@ -26,6 +26,7 @@
         "type": "string",
         "enum": [
           "vehicle_sales",
+          "vehicle_upgrade_sales",
           "weapon_sales"
         ]
       },

@@ -521,6 +521,10 @@ function getSalesTitle(title) {
         return "Vehicle Sales";
       case "vehicle_sales_plus":
         return "Vehicle Sales (GTA+)";
+      case "vehicle_upgrade_sales":
+        return "Vehicle Upgrade Sales";
+      case "vehicle_upgrade_sales_plus":
+        return "Vehicle Upgrade Sales (GTA+)";
       case "weapon_sales":
         return "Weapon Sales";
       case "weapon_sales_plus":
@@ -613,6 +617,13 @@ const sales = computed(() => getSales());
               <template v-for="(category, key) in sales" :key="key">
                 <h3 class="my-1 font-bold">{{ getSalesTitle(key) }}</h3>
                 <template v-if="key === 'vehicle_sales' || key === 'vehicle_sales_plus'">
+                  <ul class="list-disc mb-4">
+                    <template v-for="(discounts, vehicle) in category" :key="vehicle">
+                      <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
+                    </template>
+                  </ul>
+                </template>
+                <template v-else-if="key === 'vehicle_upgrade_sales' || key === 'vehicle_upgrade_sales_plus'">
                   <ul class="list-disc mb-4">
                     <template v-for="(discounts, vehicle) in category" :key="vehicle">
                       <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>

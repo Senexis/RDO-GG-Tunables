@@ -3175,6 +3175,281 @@
     "display": "TAMPA"
   },
   {
+    "key": "MOD_SHOP_UPGRADE_VAPID_CHINO_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "CHINO2"
+  },
+  {
+    "key": "MOD_SHOP_UPGRADE_ALBANY_PRIMO_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "PRIMO2"
+  },
+  {
+    "key": "MOD_SHOP_UPGRADE_DECLASSE_MOONBEAM_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "MOONBEAM2"
+  },
+  {
+    "key": "MOD_SHOP_UPGRADE_WILLARD_FACTION_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "FACTION2"
+  },
+  {
+    "key": "MOD_SHOP_UPGRADE_ALBANY_BUCCANEER_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "BUCCANEER2"
+  },
+  {
+    "key": "MOD_SHOP_UPGRADE_DECLASSE_VOODOO_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "VOODOO"
+  },
+  {
+    "key": "BENNYSWEBSITE_KARIN_SULTAN_RS_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "SULTANRS"
+  },
+  {
+    "key": "UPGRADE_BRAVADO_BANSHEE_900R_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "BANSHEE2"
+  },
+  {
+    "key": "CAR_MODS_WILLARD_FACTION_CUSTOM_DONK_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "FACTION3"
+  },
+  {
+    "key": "CAR_MODS_VAPID_MINIVAN_CUSTOM_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "MINIVAN2"
+  },
+  {
+    "key": "CAR_MODS_DECLASSE_SABRE_TURBO_CUSTOM_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "SABREGT2"
+  },
+  {
+    "key": "CAR_MODS_VAPID_SLAMVAN_CUSTOM_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "SLAMVAN3"
+  },
+  {
+    "key": "CAR_MODS_DECLASSE_TORNADO_CUSTOM_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "TORNADO5"
+  },
+  {
+    "key": "CAR_MODS_DUNDREARY_VIRGO_CLASSIC_CUSTOM_UPGRADE",
+    "type": "vehicle_upgrade_sales",
+    "display": "VIRGO2"
+  },
+  {
+    "key": "IMPEXP_COMET3_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "COMET3"
+  },
+  {
+    "key": "IMPEXP_DIABLOUS2_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "DIABLOUS2"
+  },
+  {
+    "key": "IMPEXP_FCR2_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "FCR2"
+  },
+  {
+    "key": "IMPEXP_ITALIGTB2_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "ITALIGTB2"
+  },
+  {
+    "key": "IMPEXP_SPECTER2_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "SPECTER2"
+  },
+  {
+    "key": "IMPEXP_NERO2_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "NERO2"
+  },
+  {
+    "key": "IMPEXP_ELEGY_UPGRADE_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "ELEGY"
+  },
+  {
+    "key": "424298680",
+    "type": "vehicle_upgrade_sales",
+    "display": "TECHNICAL3"
+  },
+  {
+    "key": "2123626407",
+    "type": "vehicle_upgrade_sales",
+    "display": "INSURGENT3"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_GLENDALE",
+    "type": "vehicle_upgrade_sales",
+    "display": "BRUISER"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_RATLOADER",
+    "type": "vehicle_upgrade_sales",
+    "display": "MONSTER3"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_IMPALER",
+    "type": "vehicle_upgrade_sales",
+    "display": "IMPALER2"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_ISSI",
+    "type": "vehicle_upgrade_sales",
+    "display": "ISSI4"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_GARGOYLE",
+    "type": "vehicle_upgrade_sales",
+    "display": "DEATHBIKE"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_DOMINATOR",
+    "type": "vehicle_upgrade_sales",
+    "display": "DOMINATOR4"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_APOCALYPSE_SLAMVAN",
+    "type": "vehicle_upgrade_sales",
+    "display": "SLAMVAN4"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_GARGOYLE",
+    "type": "vehicle_upgrade_sales",
+    "display": "DEATHBIKE3"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_GARGOYLE",
+    "type": "vehicle_upgrade_sales",
+    "display": "DEATHBIKE2"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_IMPALER",
+    "type": "vehicle_upgrade_sales",
+    "display": "IMPALER3"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_GLENDALE",
+    "type": "vehicle_upgrade_sales",
+    "display": "BRUISER2"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_SLAMVAN",
+    "type": "vehicle_upgrade_sales",
+    "display": "SLAMVAN5"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_ISSI",
+    "type": "vehicle_upgrade_sales",
+    "display": "ISSI5"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_RATLOADER",
+    "type": "vehicle_upgrade_sales",
+    "display": "MONSTER4"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_SCIFI_DOMINATOR",
+    "type": "vehicle_upgrade_sales",
+    "display": "DOMINATOR5"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_IMPALER",
+    "type": "vehicle_upgrade_sales",
+    "display": "IMPALER4"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_GLENDALE",
+    "type": "vehicle_upgrade_sales",
+    "display": "BRUISER3"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_SLAMVAN",
+    "type": "vehicle_upgrade_sales",
+    "display": "SLAMVAN6"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_ISSI",
+    "type": "vehicle_upgrade_sales",
+    "display": "ISSI6"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_RATLOADER",
+    "type": "vehicle_upgrade_sales",
+    "display": "MONSTER5"
+  },
+  {
+    "key": "AW_UPGRADE_PRICE_CONSUMERISM_DOMINATOR",
+    "type": "vehicle_upgrade_sales",
+    "display": "DOMINATOR6"
+  },
+  {
+    "key": "SUM_UPGRADE_PRICE_YOUGA3",
+    "type": "vehicle_upgrade_sales",
+    "display": "YOUGA3"
+  },
+  {
+    "key": "SUM_UPGRADE_PRICE_GAUNTLET5",
+    "type": "vehicle_upgrade_sales",
+    "display": "GAUNTLET5"
+  },
+  {
+    "key": "SUM_UPGRADE_PRICE_MANANA2",
+    "type": "vehicle_upgrade_sales",
+    "display": "MANANA2"
+  },
+  {
+    "key": "SUM_UPGRADE_PRICE_PEYOTE3",
+    "type": "vehicle_upgrade_sales",
+    "display": "PEYOTE3"
+  },
+  {
+    "key": "SUM_UPGRADE_PRICE_YOSEMITE3",
+    "type": "vehicle_upgrade_sales",
+    "display": "YOSEMITE3"
+  },
+  {
+    "key": "SUM_UPGRADE_PRICE_GLENDALE2",
+    "type": "vehicle_upgrade_sales",
+    "display": "GLENDALE2"
+  },
+  {
+    "key": "SUM2_UPGRADE_PRICE_TENF2",
+    "type": "vehicle_upgrade_sales",
+    "display": "TENF2"
+  },
+  {
+    "key": "SUM2_UPGRADE_PRICE_WEEVIL2",
+    "type": "vehicle_upgrade_sales",
+    "display": "WEEVIL2"
+  },
+  {
+    "key": "SUM2_UPGRADE_PRICE_BRIOSO3",
+    "type": "vehicle_upgrade_sales",
+    "display": "BRIOSO3"
+  },
+  {
+    "key": "SUM2_UPGRADE_PRICE_SENTINEL4",
+    "type": "vehicle_upgrade_sales",
+    "display": "SENTINEL4"
+  },
+  {
+    "key": "ACID_LAB_UPGRADE_EQUIPMENT_PRICE",
+    "type": "vehicle_upgrade_sales",
+    "display": "BRICKADE2"
+  },
+  {
     "key": "1233397362",
     "type": "weapon_sales",
     "display": "WEAPON_CERAMICPISTOL"
