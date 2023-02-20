@@ -20,7 +20,12 @@ const props = defineProps({
     <div class="bg-slate-900 text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
       <template v-if="props.version">
-        <span class="text-xs text-gray-700">v{{ props.version }}</span>
+        <span class="text-xs opacity-60">
+          App version:
+          <a :href="`https://github.com/Senexis/RDO-GG-Tunables/commit/${props.version}`" target="_blank" rel="noopener noreferrer">
+            {{ props.version }}
+          </a>
+        </span>
       </template>
     </div>
     <div class="bg-slate-800 text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
