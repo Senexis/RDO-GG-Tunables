@@ -25,8 +25,8 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-      - name: Install AJV CLI
-        run: npm install -g ajv-cli
+      - name: Install packages
+        run: npm install
       - name: Validate JSON schema
         run: |
           ajv validate -s schemas/tunable_types.json -d public/data/tunable_types.json
