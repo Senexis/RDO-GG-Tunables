@@ -609,14 +609,6 @@ const sales = computed(() => getSales());
             </div>
           </template>
           <template #default>
-            <div class="text-yellow-500 border border-yellow-600 bg-yellow-500/10 rounded-lg p-2 mb-4 flex items-start gap-2">
-              <ExclamationTriangleIcon class="mt-1.5 w-7 h-7 inline-block flex-none" />
-              <span>
-                This feature is experimental. The results will likely not be as you expect and may display incomplete or incorrect data.<br />Keep
-                an eye on this feature over time to see new types of sales being added, as well as tweaks to its accuracy being made.
-              </span>
-            </div>
-
             <template v-if="sales && Object.keys(sales).length">
               <template v-for="(category, key) in sales" :key="key">
                 <h3 class="my-1 font-bold">{{ getSalesTitle(key) }}</h3>
@@ -647,10 +639,21 @@ const sales = computed(() => getSales());
               <p class="mb-4">No sales found.</p>
             </template>
 
-            <p class="text-sm text-slate-400 italic">
-              Note: This is a generated list based on certain manually defined conditions and will need updates over time.<br />
-              For more accurate updates on the latest sales and bonuses, follow
-              <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.
+            <p class="text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
+              <ExclamationTriangleIcon class="hidden md:block w-6 h-6 text-yellow-600" />
+              <span>
+                <strong>Note:</strong> This is a <strong>generated, likely incomplete</strong> list based on
+                <a
+                  href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  certain manually defined conditions
+                </a>
+                and will need updates over time.<br />
+                For more accurate updates on the latest sales and bonuses as well as items that may be missing from this list, follow
+                <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.</span
+              >
             </p>
           </template>
         </Accordion>

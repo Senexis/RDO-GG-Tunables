@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-a, button {
-  @apply select-none text-sky-600;
+a {
+  @apply text-sky-600;
 }
 
-a:hover, button:hover {
+a:hover {
   @apply text-sky-400;
 }
 
