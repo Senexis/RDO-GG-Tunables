@@ -14,8 +14,10 @@ Import URL: `https://raw.githubusercontent.com/DurtyFree/gta-v-data-dumps/master
 
 ```js
 function query(data) {
-  data = _.map(data, (item) => [item?.Name?.toUpperCase(), `${item?.ManufacturerDisplayName ?? ""} ${item?.DisplayName ?? ""}`.trim()]);
-  return _.chain(data.filter((i) => i[1] !== ""))
+  data = _.map(data, (item) => [item?.Name?.toUpperCase(), `${item?.ManufacturerDisplayName ?? ""} ${item?.DisplayName ?? ""}`.trim()])
+    .filter((i) => i[1] !== "")
+    .sort((a, b) => a[0].localeCompare(b[0]));
+  return _.chain(data)
     .keyBy(0)
     .mapValues(1)
     .value();
@@ -27,8 +29,10 @@ Import URL: `https://raw.githubusercontent.com/DurtyFree/gta-v-data-dumps/master
 
 ```js
 function query(data) {
-  data = _.map(data, (item) => [item?.Name?.toUpperCase(), item?.TranslatedLabel?.English ?? ""]);
-  return _.chain(data.filter((i) => i[1] !== "" && i[1]?.toUpperCase() !== "INVALID"))
+  data = _.map(data, (item) => [item?.Name?.toUpperCase(), item?.TranslatedLabel?.English ?? ""])
+    .filter((i) => i[1] !== "" && i[1]?.toUpperCase() !== "INVALID")
+    .sort((a, b) => a[0].localeCompare(b[0]));
+  return _.chain(data)
     .keyBy(0)
     .mapValues(1)
     .value();
