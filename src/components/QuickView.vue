@@ -57,22 +57,20 @@ async function handleQuickViewInit() {
     data.value.loading = true;
 
     const dailyObjectives = await request("/data/daily_objectives.json");
-    const rcTimeTrials = await request("/data/rc_time_trials.json");
     const hswTimeTrials = await request("/data/hsw_time_trials.json");
+    const labels = await request("/data/labels.json");
+    const rcTimeTrials = await request("/data/rc_time_trials.json");
     const timeTrials = await request("/data/time_trials.json");
-    const vehicles = await request("/data/vehicles.json");
-    const weapons = await request("/data/weapons.json");
     const tunableDefaults = await request("/data/tunable_defaults.json");
     const tunableTypes = await request("/data/tunable_types.json");
 
     data.value = {
       loading: false,
       dailyObjectives,
-      rcTimeTrials,
       hswTimeTrials,
+      labels,
+      rcTimeTrials,
       timeTrials,
-      vehicles,
-      weapons,
       tunableDefaults,
       tunableTypes,
     };
@@ -140,6 +138,21 @@ function getTunable(key, context = null) {
     }
   } catch (error) {
     emit("error", "An unknown error occurred. (8A01F8A0)", error);
+  }
+}
+
+/**
+ * Retrieves the text for a label.
+ *
+ * @param {string} value The label to retrieve the text for.
+ * @returns {string}
+ */
+function getLabel(value) {
+  try {
+    if (!data.value.labels) return value;
+    return data.value.labels[value] ?? value;
+  } catch (error) {
+    emit("error", "An unknown error occurred. (BD8056FF)", error);
   }
 }
 
@@ -217,36 +230,6 @@ function getDailyObjective(day) {
     return data.value.dailyObjectives[value] ?? value;
   } catch (error) {
     emit("error", "An unknown error occurred. (144BBEE1)", error);
-  }
-}
-
-/**
- * Retrieves the weapon name for a weapon.
- *
- * @param {string} value The weapon to retrieve the name for.
- * @returns {string}
- */
-function getWeaponName(value) {
-  try {
-    if (!data.value.weapons) return value;
-    return data.value.weapons[value] ?? value;
-  } catch (error) {
-    emit("error", "An unknown error occurred. (58B1CCC5)", error);
-  }
-}
-
-/**
- * Retrieves the vehicle name for a vehicle.
- *
- * @param {string} value The vehicle to retrieve the name for.
- * @returns {string}
- */
-function getVehicleName(value) {
-  try {
-    if (!data.value.vehicles) return value;
-    return data.value.vehicles[value] ?? value;
-  } catch (error) {
-    emit("error", "An unknown error occurred. (58B1CCC5)", error);
   }
 }
 
@@ -517,6 +500,14 @@ function getSales() {
 function getSalesTitle(title) {
   try {
     switch (title) {
+      case "biker_business_sales":
+        return "Biker Business Sales";
+      case "biker_business_sales_plus":
+        return "Biker Business Sales (GTA+)";
+      case "bunker_sales":
+        return "Bunker Sales";
+      case "bunker_sales_plus":
+        return "Bunker Sales (GTA+)";
       case "vehicle_sales":
         return "Vehicle Sales";
       case "vehicle_sales_plus":
@@ -636,34 +627,11 @@ const sales = computed(() => getSales());
                       </div>
                     </template>
                     <template #default>
-                      <template v-if="key === 'vehicle_sales' || key === 'vehicle_sales_plus'">
-                        <ul class="list-disc">
-                          <template v-for="(discounts, vehicle) in category" :key="vehicle">
-                            <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
-                          </template>
-                        </ul>
-                      </template>
-                      <template v-else-if="key === 'vehicle_upgrade_sales' || key === 'vehicle_upgrade_sales_plus'">
-                        <ul class="list-disc">
-                          <template v-for="(discounts, vehicle) in category" :key="vehicle">
-                            <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
-                          </template>
-                        </ul>
-                      </template>
-                      <template v-else-if="key === 'weapon_sales' || key === 'weapon_sales_plus'">
-                        <ul class="list-disc">
-                          <template v-for="(discounts, weapon) in category" :key="weapon">
-                            <li class="ml-8">{{ getWeaponName(weapon) }}: {{ formatCashSale(discounts) }}</li>
-                          </template>
-                        </ul>
-                      </template>
-                      <template v-else>
-                        <ul class="list-disc">
-                          <template v-for="line in category" :key="line">
-                            <li class="ml-8">{{ line }}</li>
-                          </template>
-                        </ul>
-                      </template>
+                      <ul class="list-disc">
+                        <template v-for="(discounts, item) in category" :key="item">
+                          <li class="ml-8">{{ getLabel(item) }}: {{ formatCashSale(discounts) }}</li>
+                        </template>
+                      </ul>
                     </template>
                   </Accordion>
                 </template>
@@ -703,7 +671,7 @@ const sales = computed(() => getSales());
               <ul class="list-disc">
                 <template v-for="item in gunVan.weapons" :key="item">
                   <li class="ml-8">
-                    {{ getWeaponName(item.item) }}
+                    {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
                       <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
@@ -718,7 +686,7 @@ const sales = computed(() => getSales());
               <ul class="list-disc">
                 <template v-for="item in gunVan.throwables" :key="item">
                   <li class="ml-8">
-                    {{ getWeaponName(item.item) }}
+                    {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
                       <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
@@ -733,7 +701,7 @@ const sales = computed(() => getSales());
               <ul class="list-disc">
                 <template v-for="item in gunVan.body_armor" :key="item">
                   <li class="ml-8">
-                    {{ getWeaponName(item.item) }}
+                    {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
                       <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)

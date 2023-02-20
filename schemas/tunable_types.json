@@ -25,6 +25,8 @@
         "title": "Type of Tunable",
         "type": "string",
         "enum": [
+          "biker_business_sales",
+          "bunker_sales",
           "vehicle_sales",
           "vehicle_upgrade_sales",
           "weapon_sales"

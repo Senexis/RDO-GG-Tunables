@@ -3873,5 +3873,165 @@
     "key": "XM22_WM29_COST",
     "type": "weapon_sales",
     "display": "WEAPON_PISTOLXM3"
+  },
+  {
+    "key": "BIKER_BUSINESS_PALETO_BAY_WEED_FARM",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_WEED_1"
+  },
+  {
+    "key": "BIKER_BUSINESS_PALETO_BAY_METH_LAB",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_METH_1"
+  },
+  {
+    "key": "BIKER_BUSINESS_PALETO_BAY_COCAINE_LOCKUP",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CRACK_1"
+  },
+  {
+    "key": "BIKER_BUSINESS_PALETO_BAY_DOCUMENT_FORGERY_OFFICE",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_FAKEID_1"
+  },
+  {
+    "key": "BIKER_BUSINESS_PALETO_BAY_COUNTERFEIT_CASH_FACTOY",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CASH_1"
+  },
+  {
+    "key": "BIKER_BUSINESS_CITY_WEED_FARM",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_WEED_2"
+  },
+  {
+    "key": "BIKER_BUSINESS_CITY_METH_LAB",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_METH_2"
+  },
+  {
+    "key": "BIKER_BUSINESS_CITY_COCAINE_LOCKUP",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CRACK_2"
+  },
+  {
+    "key": "BIKER_BUSINESS_CITY_DOCUMENT_FORGERY_OFFICE",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_FAKEID_2"
+  },
+  {
+    "key": "BIKER_BUSINESS_CITY_COUNTERFEIT_CASH_FACTOY",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CASH_2"
+  },
+  {
+    "key": "BIKER_BUSINESS_COUNTRYSIDE_WEED_FARM",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_WEED_3"
+  },
+  {
+    "key": "BIKER_BUSINESS_COUNTRYSIDE_METH_LAB",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_METH_3"
+  },
+  {
+    "key": "BIKER_BUSINESS_COUNTRYSIDE_COCAINE_LOCKUP",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CRACK_3"
+  },
+  {
+    "key": "BIKER_BUSINESS_COUNTRYSIDE_DOCUMENT_FORGERY_OFFICE",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_FAKEID_3"
+  },
+  {
+    "key": "BIKER_BUSINESS_COUNTRYSIDE_COUNTERFEIT_CASH_FACTOY",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CASH_3"
+  },
+  {
+    "key": "BIKER_BUSINESS_ELYSIAN_WEED_FARM",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_WEED_4"
+  },
+  {
+    "key": "BIKER_BUSINESS_ELYSIAN_METH_LAB",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_METH_4"
+  },
+  {
+    "key": "BIKER_BUSINESS_ELYSIAN_COCAINE_LOCKUP",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CRACK_4"
+  },
+  {
+    "key": "BIKER_BUSINESS_ELYSIAN_DOCUMENT_FORGERY_OFFICE",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_FAKEID_4"
+  },
+  {
+    "key": "BIKER_BUSINESS_ELYSIAN_COUNTERFEIT_CASH_FACTOY",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_CASH_4"
+  },
+  {
+    "key": "XM22_BIN_PRICE_BRICKADE2",
+    "type": "biker_business_sales",
+    "display": "MP_BWH_ACID"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_GRAND_SENORA_OILFIELDS_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_1"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_GRAND_SENORA_DESERT_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_2"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_ROUTE_68_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_3"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_FARMHOUSE_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_4"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_SMOKE_TREE_ROAD_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_5"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_THOMSON_SCRAPYARD_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_6"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_GRAPESEED_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_7"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_PALETO_FOREST_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_9"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_RATON_CANYON_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_10"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_LAGO_ZANCUDO_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_11"
+  },
+  {
+    "key": "GR_BUNKER_PROPERTY_CHUMASH_BUNKER",
+    "type": "bunker_sales",
+    "display": "MP_BUNKER_12"
   }
 ]
