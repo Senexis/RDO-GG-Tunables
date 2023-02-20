@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://tunables.rdo.gg/data/tunable_types.json",
+    "title": "Tunable Types",
+    "type": "array",
+    "default": [],
+    "items": {
+        "title": "Tunable Definition",
+        "type": "object",
+        "required": [
+            "key",
+            "type",
+            "display"
+        ],
+        "properties": {
+            "key": {
+                "title": "Key of Tunable",
+                "type": "string",
+                "examples": [
+                    "2020894392",
+                    "ADVANCED_RIFLE_MODIFIER",
+                    "APARTMENT_WEBSITE_BENEFACTOR_SCHAFTER_LWB"
+                ]
+            },
+            "type": {
+                "title": "Type of Tunable",
+                "type": "string",
+                "enum": [
+                    "vehicle_sales",
+                    "weapon_sales"
+                ]
+            },
+            "display": {
+                "title": "Hash to Display",
+                "type": "string",
+                "examples": [
+                    "BRICKADE2",
+                    "WEAPON_CERAMICPISTOL"
+                ]
+            }
+        }
+    }
+}
