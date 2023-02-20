@@ -861,7 +861,10 @@ function showErrorModal(body, error = null) {
         <SettingsModalToggle v-model="settings.verbose">
           <template #title>Verbose Items</template>
           <template #description>
-            Whether to show <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail">certain verbose items</button>.
+            Whether to show
+            <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail" class="text-sky-600 hover:text-sky-400">
+              certain verbose items</button
+            >.
           </template>
         </SettingsModalToggle>
         <div v-if="settingsModal.verboseDetail" class="py-2">
