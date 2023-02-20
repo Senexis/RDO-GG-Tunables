@@ -17,6 +17,9 @@ export const useStore = defineStore("settings", {
         "sales",
       ],
 
+      // Banners.
+      bannersDismissed: [],
+
       // Types of changes.
       added: true,
       deleted: true,
@@ -28,10 +31,6 @@ export const useStore = defineStore("settings", {
       content: true,
       tunables: true,
       verbose: false,
-
-      // Banners.
-      newSiteBanner: true,
-      newQuickView: true,
     };
   },
 });

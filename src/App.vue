@@ -151,6 +151,17 @@ const latestUrl = computed(
 );
 
 /**
+ * The currently active (shown) banner.
+ *
+ * @type {import("vue").ComputedRef<string | null>}
+ */
+const activeBanner = computed(() => {
+  const banners = ["new-site", "new-quick-view", "open-source"];
+  const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
+  return activeBanners.length > 0 ? activeBanners[0] : null;
+});
+
+/**
  * The index of the latest tunables in the all tunables array.
  *
  * @type {import("vue").ComputedRef<number | null>}
@@ -797,7 +808,7 @@ function showErrorModal(body, error = null) {
     </Card>
   </main>
 
-  <Banner id="new-site" :show="settings.newSiteBanner" @close="settings.newSiteBanner = false">
+  <Banner id="new-site" :show="activeBanner === 'new-site'">
     Welcome to the new website! Check out all the settings using the
     <Cog6ToothIcon class="inline w-5 h-5" /> button.<br />
     <span class="text-sm text-slate-300">
@@ -805,12 +816,22 @@ function showErrorModal(body, error = null) {
     </span>
   </Banner>
 
-  <Banner id="new-site" :show="game === 'gta' && !settings.newSiteBanner && settings.newQuickView" @close="settings.newQuickView = false">
+  <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
     Newly added: the Quick View panel! See some popular items at a glance. Feel free to hide it using the
     <EyeSlashIcon class="inline w-5 h-5" /> button.<br />
     <span class="text-sm text-slate-300">
       Tip: Change your mind? You can always re-enable the Quick View panel in the settings menu (<Cog6ToothIcon class="inline w-5 h-5" />).
     </span>
+  </Banner>
+
+  <Banner
+    id="open-source"
+    :show="activeBanner === 'open-source'"
+    button-text="Visit GitHub"
+    button-link="https://github.com/Senexis/RDO-GG-Tunables"
+    :button-external="true"
+  >
+    This website is now open source! Feel free to browse or contribute to the project on GitHub.
   </Banner>
 
   <ErrorModal :open="errorModal.show" @close="errorModal.show = false" @confirm="errorModal.show = false">
