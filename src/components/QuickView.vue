@@ -8,6 +8,7 @@ import CardFooter from "./Cards/CardFooter.vue";
 
 import { useStore } from "../stores/settings.js";
 import { computed, onMounted, ref } from "vue";
+import { orderObject } from "../utilities/general";
 
 const emit = defineEmits(["error"]);
 
@@ -502,7 +503,7 @@ function getSales() {
       }
     }
 
-    return results;
+    return orderObject(results, true);
   } catch (error) {
     emit("error", "An unknown error occurred. (31D92717)", error);
   }
