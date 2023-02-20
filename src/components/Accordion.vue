@@ -1,22 +1,26 @@
 <script setup>
 import { PlusIcon, MinusIcon } from "@heroicons/vue/24/outline";
 
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "../stores/settings.js";
 
 const props = defineProps({
   id: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
+const openFallback = ref(false);
+
 const settings = useStore();
 const open = computed(() => {
+  if (!props.id) return openFallback.value;
   return settings.quickViewOpen.includes(props.id);
 });
 
 function toggleOpen() {
+  if (!props.id) return (openFallback.value = !openFallback.value);
   if (open.value) {
     settings.quickViewOpen = settings.quickViewOpen.filter((id) => id !== props.id);
   } else {

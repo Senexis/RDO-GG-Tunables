@@ -604,53 +604,9 @@ const sales = computed(() => getSales());
     <template #default>
       <template v-if="!loading && !data.loading && tunables">
         <Accordion id="sales">
-          <template #title>
-            <div class="flex justify-between items-center w-full">
-              <span>Sales</span>
-              <span class="inline-flex items-center rounded-full bg-yellow-700 px-2.5 py-0.5 text-xs uppercase font-mono text-white mr-2">
-                Experimental
-              </span>
-            </div>
-          </template>
+          <template #title>Sales & Bonuses</template>
           <template #default>
-            <template v-if="sales && Object.keys(sales).length">
-              <template v-for="(category, key) in sales" :key="key">
-                <h3 class="my-1 font-bold">{{ getSalesTitle(key) }}</h3>
-                <template v-if="key === 'vehicle_sales' || key === 'vehicle_sales_plus'">
-                  <ul class="list-disc mb-4">
-                    <template v-for="(discounts, vehicle) in category" :key="vehicle">
-                      <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
-                    </template>
-                  </ul>
-                </template>
-                <template v-else-if="key === 'vehicle_upgrade_sales' || key === 'vehicle_upgrade_sales_plus'">
-                  <ul class="list-disc mb-4">
-                    <template v-for="(discounts, vehicle) in category" :key="vehicle">
-                      <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
-                    </template>
-                  </ul>
-                </template>
-                <template v-else-if="key === 'weapon_sales' || key === 'weapon_sales_plus'">
-                  <ul class="list-disc mb-4">
-                    <template v-for="(discounts, weapon) in category" :key="weapon">
-                      <li class="ml-8">{{ getWeaponName(weapon) }}: {{ formatCashSale(discounts) }}</li>
-                    </template>
-                  </ul>
-                </template>
-                <template v-else>
-                  <ul class="list-disc mb-4">
-                    <template v-for="line in category" :key="line">
-                      <li class="ml-8">{{ line }}</li>
-                    </template>
-                  </ul>
-                </template>
-              </template>
-            </template>
-            <template v-else>
-              <p class="mb-4">No sales found.</p>
-            </template>
-
-            <p class="text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
+            <p class="mb-4 text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
               <ExclamationTriangleIcon class="hidden md:block w-6 h-6 text-yellow-600" />
               <span>
                 <strong>Note:</strong> This is a <strong>generated, likely incomplete</strong> list based on
@@ -659,13 +615,63 @@ const sales = computed(() => getSales());
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  certain manually defined conditions
+                  certain conditions
                 </a>
                 and will need updates over time.<br />
                 For more accurate updates on the latest sales and bonuses as well as items that may be missing from this list, follow
                 <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.</span
               >
             </p>
+
+            <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
+              <template v-if="sales && Object.keys(sales).length">
+                <template v-for="(category, key) in sales" :key="key">
+                  <Accordion>
+                    <template #title>
+                      <div class="flex justify-between items-center w-full">
+                        <span>{{ getSalesTitle(key) }}</span>
+                        <span class="inline-flex items-center rounded-full bg-sky-700 px-2.5 py-0.5 text-xs font-medium text-white">
+                          {{ Object.keys(category).length === 1 ? "1 item" : `${Object.keys(category).length} items` }}
+                        </span>
+                      </div>
+                    </template>
+                    <template #default>
+                      <template v-if="key === 'vehicle_sales' || key === 'vehicle_sales_plus'">
+                        <ul class="list-disc">
+                          <template v-for="(discounts, vehicle) in category" :key="vehicle">
+                            <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
+                          </template>
+                        </ul>
+                      </template>
+                      <template v-else-if="key === 'vehicle_upgrade_sales' || key === 'vehicle_upgrade_sales_plus'">
+                        <ul class="list-disc">
+                          <template v-for="(discounts, vehicle) in category" :key="vehicle">
+                            <li class="ml-8">{{ getVehicleName(vehicle) }}: {{ formatCashSale(discounts) }}</li>
+                          </template>
+                        </ul>
+                      </template>
+                      <template v-else-if="key === 'weapon_sales' || key === 'weapon_sales_plus'">
+                        <ul class="list-disc">
+                          <template v-for="(discounts, weapon) in category" :key="weapon">
+                            <li class="ml-8">{{ getWeaponName(weapon) }}: {{ formatCashSale(discounts) }}</li>
+                          </template>
+                        </ul>
+                      </template>
+                      <template v-else>
+                        <ul class="list-disc">
+                          <template v-for="line in category" :key="line">
+                            <li class="ml-8">{{ line }}</li>
+                          </template>
+                        </ul>
+                      </template>
+                    </template>
+                  </Accordion>
+                </template>
+              </template>
+              <template v-else>
+                <p class="mb-4">No sales found.</p>
+              </template>
+            </div>
           </template>
         </Accordion>
         <template v-if="timeTrial || hswTimeTrial || rcTimeTrial">
