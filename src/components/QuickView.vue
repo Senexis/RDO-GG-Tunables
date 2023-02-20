@@ -499,27 +499,17 @@ function getSales() {
  */
 function getSalesTitle(title) {
   try {
-    switch (title) {
+    switch (title.replace(/_plus$/g, "")) {
       case "biker_business_sales":
         return "Biker Business Sales";
-      case "biker_business_sales_plus":
-        return "Biker Business Sales (GTA+)";
       case "bunker_sales":
         return "Bunker Sales";
-      case "bunker_sales_plus":
-        return "Bunker Sales (GTA+)";
       case "vehicle_sales":
         return "Vehicle Sales";
-      case "vehicle_sales_plus":
-        return "Vehicle Sales (GTA+)";
       case "vehicle_upgrade_sales":
         return "Vehicle Upgrade Sales";
-      case "vehicle_upgrade_sales_plus":
-        return "Vehicle Upgrade Sales (GTA+)";
       case "weapon_sales":
         return "Weapon Sales";
-      case "weapon_sales_plus":
-        return "Weapon Sales (GTA+)";
       default:
         return "Miscellaneous";
     }
@@ -620,7 +610,14 @@ const sales = computed(() => getSales());
                   <Accordion :id="`sales_${key}`">
                     <template #title>
                       <div class="flex justify-between items-center w-full">
-                        <span>{{ getSalesTitle(key) }}</span>
+                        <div class="flex gap-2">
+                          <span>{{ getSalesTitle(key) }}</span>
+                          <template v-if="key.endsWith('_plus')">
+                            <span class="inline-flex items-center rounded-full bg-yellow-700 px-2.5 py-0.5 text-xs font-medium text-white">
+                              GTA+
+                            </span>
+                          </template>
+                        </div>
                         <span class="inline-flex items-center rounded-full bg-sky-700 px-2.5 py-0.5 text-xs font-medium text-white">
                           {{ Object.keys(category).length === 1 ? "1 item" : `${Object.keys(category).length} items` }}
                         </span>
