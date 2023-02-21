@@ -57,7 +57,7 @@
   {
     "key": "APARTMENT_WEBSITE_BUCKINGHAM_SUPERVOLITO_CARBON",
     "type": "vehicle_sales",
-    "display": "SUPERVOLITO"
+    "display": "SUPERVOLITO2"
   },
   {
     "key": "APARTMENT_WEBSITE_DECLASSE_MAMBA",
@@ -72,37 +72,37 @@
   {
     "key": "APARTMENT_WEBSITE_ENUS_COGNOSCENTI_55",
     "type": "vehicle_sales",
-    "display": "COGNOSCENTI"
+    "display": "COG55"
   },
   {
     "key": "APARTMENT_WEBSITE_ENUS_COGNOSCENTI_55_ARMORED",
     "type": "vehicle_sales",
-    "display": "COGNOSCENTI"
+    "display": "COG552"
   },
   {
     "key": "APARTMENT_WEBSITE_ENUS_COGNOSCENTI_ARMORED",
     "type": "vehicle_sales",
-    "display": "COGNOSCENTI"
+    "display": "COGNOSCENTI2"
   },
   {
     "key": "APARTMENT_WEBSITE_GALLIVANTER_BALLER_LE",
     "type": "vehicle_sales",
-    "display": "BALLER"
+    "display": "BALLER3"
   },
   {
     "key": "APARTMENT_WEBSITE_GALLIVANTER_BALLER_LE_ARMORED",
     "type": "vehicle_sales",
-    "display": "BALLER"
+    "display": "BALLER5"
   },
   {
     "key": "APARTMENT_WEBSITE_GALLIVANTER_BALLER_LE_LWB",
     "type": "vehicle_sales",
-    "display": "BALLER"
+    "display": "BALLER4"
   },
   {
     "key": "APARTMENT_WEBSITE_GALLIVANTER_BALLER_LWB_ARMORED",
     "type": "vehicle_sales",
-    "display": "BALLER"
+    "display": "BALLER6"
   },
   {
     "key": "APARTMENT_WEBSITE_IMPONTE_NIGHT_SHADE",
@@ -122,7 +122,7 @@
   {
     "key": "ASSAULT_VEHICLES_DINKA_JESTER_CLASSIC",
     "type": "vehicle_sales",
-    "display": "JESTER"
+    "display": "JESTER3"
   },
   {
     "key": "ASSAULT_VEHICLES_LAMPADATI_MICHELLI_GT",
@@ -157,7 +157,7 @@
   {
     "key": "ASSAULT_VEHICLES_VAPID_DOMINATOR_GTX",
     "type": "vehicle_sales",
-    "display": "DOMINATOR"
+    "display": "DOMINATOR3"
   },
   {
     "key": "ASSAULT_VEHICLES_VAPID_ELLIE",
@@ -217,27 +217,27 @@
   {
     "key": "AW_BUY_IT_NOW_PRICE_CONSUMERISM_BRUTUS",
     "type": "vehicle_sales",
-    "display": "BRUTUS"
+    "display": "BRUTUS3"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_CONSUMERISM_CERBERUS",
     "type": "vehicle_sales",
-    "display": "CERBERUS"
+    "display": "CERBERUS3"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_CONSUMERISM_IMPERATOR",
     "type": "vehicle_sales",
-    "display": "IMPERATOR"
+    "display": "IMPERATOR3"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_CONSUMERISM_SCARAB",
     "type": "vehicle_sales",
-    "display": "SCARAB"
+    "display": "SCARAB3"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_CONSUMERISM_ZR380",
     "type": "vehicle_sales",
-    "display": "ZR380"
+    "display": "ZR3803"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_IMPALER",
@@ -247,27 +247,27 @@
   {
     "key": "AW_BUY_IT_NOW_PRICE_SCIFI_BRUTUS",
     "type": "vehicle_sales",
-    "display": "BRUTUS"
+    "display": "BRUTUS2"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_SCIFI_CERBERUS",
     "type": "vehicle_sales",
-    "display": "CERBERUS"
+    "display": "CERBERUS2"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_SCIFI_IMPERATOR",
     "type": "vehicle_sales",
-    "display": "IMPERATOR"
+    "display": "IMPERATOR2"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_SCIFI_SCARAB",
     "type": "vehicle_sales",
-    "display": "SCARAB"
+    "display": "SCARAB2"
   },
   {
     "key": "AW_BUY_IT_NOW_PRICE_SCIFI_ZR380",
     "type": "vehicle_sales",
-    "display": "ZR380"
+    "display": "ZR3802"
   },
   {
     "key": "AW_SALE_PRICE_BANDITO",
@@ -342,27 +342,27 @@
   {
     "key": "AW_TRADE_PRICE_CONSUMERISM_BRUTUS",
     "type": "vehicle_sales",
-    "display": "BRUTUS"
+    "display": "BRUTUS3"
   },
   {
     "key": "AW_TRADE_PRICE_CONSUMERISM_CERBERUS",
     "type": "vehicle_sales",
-    "display": "CERBERUS"
+    "display": "CERBERUS3"
   },
   {
     "key": "AW_TRADE_PRICE_CONSUMERISM_IMPERATOR",
     "type": "vehicle_sales",
-    "display": "IMPERATOR"
+    "display": "IMPERATOR3"
   },
   {
     "key": "AW_TRADE_PRICE_CONSUMERISM_SCARAB",
     "type": "vehicle_sales",
-    "display": "SCARAB"
+    "display": "SCARAB3"
   },
   {
     "key": "AW_TRADE_PRICE_CONSUMERISM_ZR380",
     "type": "vehicle_sales",
-    "display": "ZR380"
+    "display": "ZR3803"
   },
   {
     "key": "AW_TRADE_PRICE_DOMINATOR",
@@ -392,32 +392,32 @@
   {
     "key": "AW_TRADE_PRICE_RATLOADER",
     "type": "vehicle_sales",
-    "display": "RATLOADER"
+    "display": "RATLOADER2"
   },
   {
     "key": "AW_TRADE_PRICE_SCIFI_BRUTUS",
     "type": "vehicle_sales",
-    "display": "BRUTUS"
+    "display": "BRUTUS2"
   },
   {
     "key": "AW_TRADE_PRICE_SCIFI_CERBERUS",
     "type": "vehicle_sales",
-    "display": "CERBERUS"
+    "display": "CERBERUS2"
   },
   {
     "key": "AW_TRADE_PRICE_SCIFI_IMPERATOR",
     "type": "vehicle_sales",
-    "display": "IMPERATOR"
+    "display": "IMPERATOR2"
   },
   {
     "key": "AW_TRADE_PRICE_SCIFI_SCARAB",
     "type": "vehicle_sales",
-    "display": "SCARAB"
+    "display": "SCARAB2"
   },
   {
     "key": "AW_TRADE_PRICE_SCIFI_ZR380",
     "type": "vehicle_sales",
-    "display": "ZR380"
+    "display": "ZR3802"
   },
   {
     "key": "AW_TRADE_PRICE_SLAMVAN",
@@ -432,17 +432,17 @@
   {
     "key": "BB_BUY_IT_NOW_PRICE_HIGH_END_VEHICLES_MAMMOTH_PATRIOT_STRETCH",
     "type": "vehicle_sales",
-    "display": "STRETCH"
+    "display": "PATRIOT2"
   },
   {
     "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP",
     "type": "vehicle_sales",
-    "display": "BLIMP"
+    "display": "BLIMP3"
   },
   {
     "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_FESTIVAL_BUS",
     "type": "vehicle_sales",
-    "display": "BUS"
+    "display": "PBUS2"
   },
   {
     "key": "BB_BUY_IT_NOW_PRICE_WEAPONIZED_VEHICLES_DECLASSE_SCRAMJET",
@@ -452,17 +452,17 @@
   {
     "key": "BB_BUY_IT_NOW_PRICE_WEAPONIZED_VEHICLES_MAIBATSU_MULE_CUSTOM",
     "type": "vehicle_sales",
-    "display": "MULE"
+    "display": "MULE4"
   },
   {
     "key": "BB_BUY_IT_NOW_PRICE_WEAPONIZED_VEHICLES_MTL_POUNDER_CUSTOM",
     "type": "vehicle_sales",
-    "display": "POUNDER"
+    "display": "POUNDER2"
   },
   {
     "key": "BB_BUY_IT_NOW_PRICE_WEAPONIZED_VEHICLES_PEGASSI_OPPRESSOR_MK_II",
     "type": "vehicle_sales",
-    "display": "OPPRESSOR"
+    "display": "OPPRESSOR2"
   },
   {
     "key": "BB_TRADE_PRICE_EXISTING_VEHICLES_BEEJAY_XL",
@@ -522,7 +522,7 @@
   {
     "key": "BB_TRADE_PRICE_HIGH_END_VEHICLES_MAMMOTH_PATRIOT_STRETCH",
     "type": "vehicle_sales",
-    "display": "STRETCH"
+    "display": "PATRIOT2"
   },
   {
     "key": "BB_TRADE_PRICE_HIGH_END_VEHICLES_OCELOT_SWINGER",
@@ -532,12 +532,12 @@
   {
     "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP",
     "type": "vehicle_sales",
-    "display": "BLIMP"
+    "display": "BLIMP3"
   },
   {
     "key": "BB_TRADE_PRICE_MISC_VEHICLES_FESTIVAL_BUS",
     "type": "vehicle_sales",
-    "display": "BUS"
+    "display": "PBUS2"
   },
   {
     "key": "BB_TRADE_PRICE_WEAPONIZED_VEHICLES_B_11_STRIKEFORCE",
@@ -547,12 +547,12 @@
   {
     "key": "BB_TRADE_PRICE_WEAPONIZED_VEHICLES_MAIBATSU_MULE_CUSTOM",
     "type": "vehicle_sales",
-    "display": "MULE"
+    "display": "MULE4"
   },
   {
     "key": "BB_TRADE_PRICE_WEAPONIZED_VEHICLES_MTL_POUNDER_CUSTOM",
     "type": "vehicle_sales",
-    "display": "POUNDER"
+    "display": "POUNDER2"
   },
   {
     "key": "BB_TRADE_PRICE_WEAPONIZED_VEHICLES_PEGASSI_HVY_MENACER",
@@ -562,7 +562,7 @@
   {
     "key": "BB_TRADE_PRICE_WEAPONIZED_VEHICLES_PEGASSI_OPPRESSOR_MK_II",
     "type": "vehicle_sales",
-    "display": "OPPRESSOR"
+    "display": "OPPRESSOR2"
   },
   {
     "key": "BENNYSWEBSITE_KARIN_SULTAN_BENNYS",
@@ -602,7 +602,7 @@
   {
     "key": "BIKER_WEBSITE_NAGASAKI_STREET_BLAZER",
     "type": "vehicle_sales",
-    "display": "BLAZER"
+    "display": "BLAZER4"
   },
   {
     "key": "BIKER_WEBSITE_PEGASSI_ESSKEY",
@@ -622,12 +622,12 @@
   {
     "key": "BIKER_WEBSITE_SHITZU_HAKUCHOU_DRAG",
     "type": "vehicle_sales",
-    "display": "HAKUCHOU"
+    "display": "HAKUCHOU2"
   },
   {
     "key": "BIKER_WEBSITE_WESTERN_DAEMON_CUSTOM",
     "type": "vehicle_sales",
-    "display": "DAEMON"
+    "display": "DAEMON2"
   },
   {
     "key": "BIKER_WEBSITE_WESTERN_NIGHTBLADE",
@@ -717,7 +717,7 @@
   {
     "key": "BUSINESS_VEHICLES_MINIVAN",
     "type": "vehicle_sales",
-    "display": "MINIVAN"
+    "display": "MINIVAN2"
   },
   {
     "key": "BUSINESS_VEHICLES_PREMIER",
@@ -782,7 +782,7 @@
   {
     "key": "CGTONG_DINKA_BLISTA_COMPACT",
     "type": "vehicle_sales",
-    "display": "BLISTA"
+    "display": "BLISTA2"
   },
   {
     "key": "CGTONG_DODO",
@@ -802,7 +802,7 @@
   {
     "key": "CGTONG_SUBMERSIBLE",
     "type": "vehicle_sales",
-    "display": "SUBMERSIBLE"
+    "display": "SUBMERSIBLE2"
   },
   {
     "key": "CH_BIN_PRICE_ASBO",
@@ -1147,7 +1147,7 @@
   {
     "key": "DLC_VEHICLE_UBERMACHT_SENTINEL",
     "type": "vehicle_sales",
-    "display": "SENTINEL"
+    "display": "SENTINEL2"
   },
   {
     "key": "DLC_VEHICLE_UBERMACHT_SENTINEL_XS",
@@ -1187,12 +1187,12 @@
   {
     "key": "EXEC1_BENEFACTOR_XLS_ARMORED",
     "type": "vehicle_sales",
-    "display": "XLS"
+    "display": "XLS2"
   },
   {
     "key": "EXEC1_BRAVADO_RUMPO_CUSTOM",
     "type": "vehicle_sales",
-    "display": "RUMPO"
+    "display": "RUMPO3"
   },
   {
     "key": "EXEC1_BUCKINGHAM_NIMBUS",
@@ -1222,7 +1222,7 @@
   {
     "key": "EXEC1_ENUS_WINDSOR_DROP",
     "type": "vehicle_sales",
-    "display": "WINDSOR"
+    "display": "WINDSOR2"
   },
   {
     "key": "EXEC1_GROTTI_BESTIA",
@@ -1377,7 +1377,7 @@
   {
     "key": "GR_NEW_FULLY_WEAPONIZED_VEHICLES_BF_DUNE_FAV",
     "type": "vehicle_sales",
-    "display": "DUNE"
+    "display": "DUNE3"
   },
   {
     "key": "GR_NEW_FULLY_WEAPONIZED_VEHICLES_BRAVADO_HALF_TRACK",
@@ -1387,7 +1387,7 @@
   {
     "key": "GR_NEW_FULLY_WEAPONIZED_VEHICLES_DECLASSE_WEAPONIZED_TAMPA",
     "type": "vehicle_sales",
-    "display": "TAMPA"
+    "display": "TAMPA3"
   },
   {
     "key": "GR_NEW_FULLY_WEAPONIZED_VEHICLES_HVY_APC",
@@ -1412,7 +1412,7 @@
   {
     "key": "GR_NEW_SPORTS_CARS_GROTTI_CHEETAH_CLASSIC",
     "type": "vehicle_sales",
-    "display": "CHEETAH"
+    "display": "CHEETAH2"
   },
   {
     "key": "GR_NEW_SPORTS_CARS_OCELOT_XA_21",
@@ -1427,12 +1427,12 @@
   {
     "key": "GR_TRUCK_PROPERTY_JOBUILT_HAULER_CUSTOM",
     "type": "vehicle_sales",
-    "display": "HAULER"
+    "display": "HAULER2"
   },
   {
     "key": "GR_TRUCK_PROPERTY_JOBUILT_PHANTOM_CUSTOM",
     "type": "vehicle_sales",
-    "display": "PHANTOM"
+    "display": "PHANTOM3"
   },
   {
     "key": "H2_VEHICLES_BUY_IT_NOW_PRICE_AKULA",
@@ -1557,7 +1557,7 @@
   {
     "key": "H2_VEHICLES_PRICE_SENTINEL_CLASSIC",
     "type": "vehicle_sales",
-    "display": "SENTINEL"
+    "display": "SENTINEL3"
   },
   {
     "key": "H2_VEHICLES_PRICE_STREITER",
@@ -1572,7 +1572,7 @@
   {
     "key": "H2_VEHICLES_PRICE_YOSEMITE",
     "type": "vehicle_sales",
-    "display": "YOSEMITE"
+    "display": "YOSEMITE3"
   },
   {
     "key": "H2_VEHICLES_TRADE_PRICE_AKULA",
@@ -1767,7 +1767,7 @@
   {
     "key": "IH_TRADE_PRICE_WEEVIL",
     "type": "vehicle_sales",
-    "display": "WEEVIL"
+    "display": "WEEVIL2"
   },
   {
     "key": "IH_TRADE_PRICE_WINKY",
@@ -1932,12 +1932,12 @@
   {
     "key": "LUXE1_WEBSITE_BUCKINGHAM_LUXOR_DELUXE",
     "type": "vehicle_sales",
-    "display": "LUXOR"
+    "display": "LUXOR2"
   },
   {
     "key": "LUXE1_WEBSITE_BUCKINGHAM_SWIFT_DELUXE",
     "type": "vehicle_sales",
-    "display": "SWIFT"
+    "display": "SWIFT2"
   },
   {
     "key": "LUXE1_WEBSITE_ENUS_WINDSOR",
@@ -1962,7 +1962,7 @@
   {
     "key": "LUXE2_INVETERO_COQUETTE_BLACKFIN",
     "type": "vehicle_sales",
-    "display": "COQUETTE"
+    "display": "COQUETTE3"
   },
   {
     "key": "LUXE2_LAMPADATI_TORO",
@@ -1987,12 +1987,12 @@
   {
     "key": "PS_INVERTO_COQUETTE_CLASSIC",
     "type": "vehicle_sales",
-    "display": "COQUETTE"
+    "display": "COQUETTE2"
   },
   {
     "key": "PS_INVERTO_COQUETTE_CLASSIC_TOPLESS",
     "type": "vehicle_sales",
-    "display": "COQUETTE"
+    "display": "COQUETTE2"
   },
   {
     "key": "PS_SWIFT_LIVERY_1",
@@ -2012,7 +2012,7 @@
   {
     "key": "RETURNING_PRICE_BLISTA",
     "type": "vehicle_sales",
-    "display": "BLISTA"
+    "display": "BLISTA2"
   },
   {
     "key": "RETURNING_PRICE_DODO",
@@ -2127,7 +2127,7 @@
   {
     "key": "SMUG_VEHICLES_CARS_TRADE_PRICE_DEWBAUCHEE_RAPIDGT_CLASSIC",
     "type": "vehicle_sales",
-    "display": "RAPIDGT"
+    "display": "RAPIDGT3"
   },
   {
     "key": "SMUG_VEHICLES_CARS_TRADE_PRICE_GROTTI_VIGILANTE",
@@ -2242,7 +2242,7 @@
   {
     "key": "STUNT_ANNIS_RE7B",
     "type": "vehicle_sales",
-    "display": "STUNT"
+    "display": "LE7B"
   },
   {
     "key": "STUNT_BRAVADO_CONTENDER",
@@ -2252,22 +2252,22 @@
   {
     "key": "STUNT_BRAVADO_REDWOOD_GAUNTLET",
     "type": "vehicle_sales",
-    "display": "GAUNTLET"
+    "display": "GAUNTLET2"
   },
   {
     "key": "STUNT_BRAVADO_SPRUNK_BUFFALO",
     "type": "vehicle_sales",
-    "display": "BUFFALO"
+    "display": "BUFFALO3"
   },
   {
     "key": "STUNT_DECALSSE_DRIFT_TAMPA",
     "type": "vehicle_sales",
-    "display": "TAMPA"
+    "display": "TAMPA2"
   },
   {
     "key": "STUNT_DECLASSE_BURGER_SHOT_STALLION",
     "type": "vehicle_sales",
-    "display": "STUNT"
+    "display": "STALION2"
   },
   {
     "key": "STUNT_EMPEROR_SHEAVA",
@@ -2287,12 +2287,12 @@
   {
     "key": "STUNT_MTL_DUNE_LIVERY_1",
     "type": "vehicle_sales",
-    "display": "DUNE"
+    "display": "RALLYTRUCK"
   },
   {
     "key": "STUNT_MTL_DUNE_LIVERY_2",
     "type": "vehicle_sales",
-    "display": "DUNE"
+    "display": "RALLYTRUCK"
   },
   {
     "key": "STUNT_NAGASAKI_BF400",
@@ -2317,17 +2317,17 @@
   {
     "key": "STUNT_VAPID_DESERT_RAID",
     "type": "vehicle_sales",
-    "display": "STUNT"
+    "display": "TROPHYTRUCK2"
   },
   {
     "key": "STUNT_VAPID_PISSWASSER_DOMINATOR",
     "type": "vehicle_sales",
-    "display": "DOMINATOR"
+    "display": "DOMINATOR2"
   },
   {
     "key": "STUNT_VAPID_TROPHY_TRUCK",
     "type": "vehicle_sales",
-    "display": "STUNT"
+    "display": "TROPHYTRUCK"
   },
   {
     "key": "STUNT_WESTERN_CLIFFHANGER",
@@ -2397,7 +2397,7 @@
   {
     "key": "SU22_BIN_PRICE_TENF",
     "type": "vehicle_sales",
-    "display": "TENF"
+    "display": "TENF2"
   },
   {
     "key": "SU22_BIN_PRICE_TORERO2",
@@ -2457,7 +2457,7 @@
   {
     "key": "SUM_SALE_PRICE_MANANA",
     "type": "vehicle_sales",
-    "display": "MANANA"
+    "display": "MANANA2"
   },
   {
     "key": "SUM_SALE_PRICE_OPENWHEEL1",
@@ -2667,7 +2667,7 @@
   {
     "key": "VALENTINE_MODIFIER_CADDY_SEDAN",
     "type": "vehicle_sales",
-    "display": "CADDY"
+    "display": "BTYPE"
   },
   {
     "key": "VALENTINE_MODIFIER_VEHICLE_RATLOADER",
@@ -2677,7 +2677,7 @@
   {
     "key": "VC_SALE_PRICE_CARACARA_4X4",
     "type": "vehicle_sales",
-    "display": "CARACARA"
+    "display": "CARACARA2"
   },
   {
     "key": "VC_SALE_PRICE_DRAFTER_8F",
@@ -2702,12 +2702,12 @@
   {
     "key": "VC_SALE_PRICE_GAUNTLET",
     "type": "vehicle_sales",
-    "display": "GAUNTLET"
+    "display": "GAUNTLET4"
   },
   {
     "key": "VC_SALE_PRICE_GAUNTLET_CLASSIC",
     "type": "vehicle_sales",
-    "display": "GAUNTLET"
+    "display": "GAUNTLET5"
   },
   {
     "key": "VC_SALE_PRICE_HELLION",
@@ -2767,7 +2767,7 @@
   {
     "key": "VC_SALE_PRICE_ZION_CLASSIC",
     "type": "vehicle_sales",
-    "display": "ZION"
+    "display": "ZION3"
   },
   {
     "key": "VC_SALE_PRICE_ZORRUSSO",
@@ -2787,12 +2787,12 @@
   {
     "key": "VEHICLE_XMAS14_DEWBAUCHEE_MASSACRO_RACECAR",
     "type": "vehicle_sales",
-    "display": "MASSACRO"
+    "display": "MASSACRO2"
   },
   {
     "key": "VEHICLE_XMAS14_DINKA_JESTER_RACECAR",
     "type": "vehicle_sales",
-    "display": "JESTER"
+    "display": "JESTER2"
   },
   {
     "key": "VEHICLE_XMAS14_RAT_TRUCK",
@@ -2807,12 +2807,12 @@
   {
     "key": "VEHICLES_HEIST_BRUTE_BOXVILLE",
     "type": "vehicle_sales",
-    "display": "BOXVILLE"
+    "display": "BOXVILLE4"
   },
   {
     "key": "VEHICLES_HEIST_BRUTE_BOXVILLE_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "BOXVILLE"
+    "display": "BOXVILLE4"
   },
   {
     "key": "VEHICLES_HEIST_BUCKINGHAM_VALKYRIE",
@@ -2827,12 +2827,12 @@
   {
     "key": "VEHICLES_HEIST_DECLASSE_GANG_BURRITO",
     "type": "vehicle_sales",
-    "display": "BURRITO"
+    "display": "GBURRITO2"
   },
   {
     "key": "VEHICLES_HEIST_DECLASSE_GANG_BURRITO_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "BURRITO"
+    "display": "GBURRITO2"
   },
   {
     "key": "VEHICLES_HEIST_DINKA_ENDURO",
@@ -2842,12 +2842,12 @@
   {
     "key": "VEHICLES_HEIST_HVY_INSURGENT",
     "type": "vehicle_sales",
-    "display": "INSURGENT"
+    "display": "INSURGENT2"
   },
   {
     "key": "VEHICLES_HEIST_HVY_INSURGENT_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "INSURGENT"
+    "display": "INSURGENT2"
   },
   {
     "key": "VEHICLES_HEIST_HVY_INSURGENT_PICKUP",
@@ -2867,12 +2867,12 @@
   {
     "key": "VEHICLES_HEIST_KARIN_KURUMA_ARMORED",
     "type": "vehicle_sales",
-    "display": "KURUMA"
+    "display": "KURUMA2"
   },
   {
     "key": "VEHICLES_HEIST_KARIN_KURUMA_ARMORED_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "KURUMA"
+    "display": "KURUMA2"
   },
   {
     "key": "VEHICLES_HEIST_KARIN_KURUMA_BIN_PRICE",
@@ -2902,12 +2902,12 @@
   {
     "key": "VEHICLES_HEIST_MAIBATSU_MULE",
     "type": "vehicle_sales",
-    "display": "MULE"
+    "display": "MULE3"
   },
   {
     "key": "VEHICLES_HEIST_MAIBATSU_MULE_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "MULE"
+    "display": "MULE3"
   },
   {
     "key": "VEHICLES_HEIST_MAMMOTH_HYDRA",
@@ -2922,12 +2922,12 @@
   {
     "key": "VEHICLES_HEIST_NAGASAKI_DINGHY",
     "type": "vehicle_sales",
-    "display": "DINGHY"
+    "display": "DINGHY3"
   },
   {
     "key": "VEHICLES_HEIST_NAGASAKI_DINGHY_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "DINGHY"
+    "display": "DINGHY3"
   },
   {
     "key": "VEHICLES_HEIST_PBUS",
@@ -2967,12 +2967,12 @@
   {
     "key": "VEHICLES_HEIST_VELUM",
     "type": "vehicle_sales",
-    "display": "VELUM"
+    "display": "VELUM2"
   },
   {
     "key": "VEHICLES_HEIST_VELUM_BIN_PRICE",
     "type": "vehicle_sales",
-    "display": "VELUM"
+    "display": "VELUM2"
   },
   {
     "key": "VOLTIC_EXPENDITURE_MODIFIER",
@@ -2987,7 +2987,7 @@
   {
     "key": "WEBSITE_ALBANY_PRIMO",
     "type": "vehicle_sales",
-    "display": "PRIMO"
+    "display": "PRIMO2"
   },
   {
     "key": "WEBSITE_BENNYS_DECLASSE_SABRE_TURBO",
@@ -3002,7 +3002,7 @@
   {
     "key": "WEBSITE_BENNYS_DUNDREARY_VIRGO_CLASSIC",
     "type": "vehicle_sales",
-    "display": "VIRGO"
+    "display": "VIRGO3"
   },
   {
     "key": "WEBSITE_BENNYS_VAPID_MINIVAN",
@@ -3022,17 +3022,17 @@
   {
     "key": "WEBSITE_DECLASSE_TORNADO_RAT_ROD",
     "type": "vehicle_sales",
-    "display": "TORNADO"
+    "display": "TORNADO6"
   },
   {
     "key": "WEBSITE_DECLASSE_VOODOO",
     "type": "vehicle_sales",
-    "display": "VOODOO"
+    "display": "VOODOO2"
   },
   {
     "key": "WEBSITE_PEGASSI_FAGGIO_MOD",
     "type": "vehicle_sales",
-    "display": "FAGGIO"
+    "display": "FAGGIO3"
   },
   {
     "key": "WEBSITE_PEGASSI_FAGGIO_SPORT",
@@ -3052,7 +3052,7 @@
   {
     "key": "WEBSITE_VAPID_YOUGA_CLASSIC",
     "type": "vehicle_sales",
-    "display": "YOUGA"
+    "display": "YOUGA2"
   },
   {
     "key": "WEBSITE_WILLARD_FACTION",
