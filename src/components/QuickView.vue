@@ -609,16 +609,14 @@ const sales = computed(() => getSales());
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`sales_${key}`">
                     <template #title>
-                      <div class="flex justify-between items-center w-full">
-                        <div class="flex gap-2">
-                          <span>{{ getSalesTitle(key) }}</span>
+                      <div class="flex justify-between items-center w-full overflow-hidden">
+                        <div class="flex gap-2 overflow-hidden">
+                          <span class="truncate">{{ getSalesTitle(key) }}</span>
                           <template v-if="key.endsWith('_plus')">
-                            <span class="inline-flex items-center rounded-full bg-yellow-700 px-2.5 py-0.5 text-xs font-medium text-white">
-                              GTA+
-                            </span>
+                            <span class="badge bg-yellow-700 text-white">GTA+</span>
                           </template>
                         </div>
-                        <span class="inline-flex items-center rounded-full bg-sky-700 px-2.5 py-0.5 text-xs font-medium text-white">
+                        <span class="badge bg-sky-700 text-white ml-2">
                           {{ Object.keys(category).length === 1 ? "1 item" : `${Object.keys(category).length} items` }}
                         </span>
                       </div>
