@@ -14,9 +14,12 @@
     "properties": {
       "key": {
         "title": "Key of Tunable",
-        "type": "string",
+        "type": [
+          "integer",
+          "string"
+        ],
         "examples": [
-          "2020894392",
+          2020894392,
           "ADVANCED_RIFLE_MODIFIER",
           "APARTMENT_WEBSITE_BENEFACTOR_SCHAFTER_LWB"
         ]
@@ -26,7 +29,10 @@
         "type": "string",
         "enum": [
           "biker_business_sales",
+          "biker_clubhouse_sales",
           "bunker_sales",
+          "office_sales",
+          "property_sales",
           "vehicle_sales",
           "vehicle_upgrade_sales",
           "weapon_sales"

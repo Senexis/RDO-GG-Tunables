@@ -1,21 +1,21 @@
 [
   {
-    "key": "-1237354304",
+    "key": -1237354304,
     "type": "vehicle_sales",
     "display": "APC"
   },
   {
-    "key": "-841706086",
+    "key": -841706086,
     "type": "vehicle_sales",
     "display": "BAGGER"
   },
   {
-    "key": "1101391290",
+    "key": 1101391290,
     "type": "vehicle_sales",
     "display": "ISSI7"
   },
   {
-    "key": "2020894392",
+    "key": 2020894392,
     "type": "vehicle_sales",
     "display": "BRICKADE2"
   },
@@ -3280,12 +3280,12 @@
     "display": "ELEGY"
   },
   {
-    "key": "424298680",
+    "key": 424298680,
     "type": "vehicle_upgrade_sales",
     "display": "TECHNICAL3"
   },
   {
-    "key": "2123626407",
+    "key": 2123626407,
     "type": "vehicle_upgrade_sales",
     "display": "INSURGENT3"
   },
@@ -3450,7 +3450,7 @@
     "display": "BRICKADE2"
   },
   {
-    "key": "1233397362",
+    "key": 1233397362,
     "type": "weapon_sales",
     "display": "WEAPON_CERAMICPISTOL"
   },
@@ -4033,5 +4033,570 @@
     "key": "GR_BUNKER_PROPERTY_CHUMASH_BUNKER",
     "type": "bunker_sales",
     "display": "MP_BUNKER_12"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_1_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_1"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_2_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_2"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_3_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_3"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_4_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_4"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_5_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_5"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_6_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_6"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_7_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_7"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_1_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_8"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_2_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_9"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_3_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_10"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_4_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_11"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_5_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_12"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_6_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_13"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_7_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_14"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_8_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_15"
+  },
+  {
+    "key": "PROPERTY_MEDIUM_APT_9_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_16"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_1_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_17"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_2_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_18"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_3_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_19"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_4_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_20"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_5_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_21"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_6_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_22"
+  },
+  {
+    "key": "PROPERTY_LOW_APT_7_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_23"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_1_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_24"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_2_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_25"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_3_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_26"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_4_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_27"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_5_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_28"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_6_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_29"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_7_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_30"
+  },
+  {
+    "key": "PROPERTY_GARAGE_EAST_LOS_SANTOS_8_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_31"
+  },
+  {
+    "key": "PROPERTY_GARAGE_SOUTH_LOS_SANTOS_1_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_32"
+  },
+  {
+    "key": "PROPERTY_GARAGE_SOUTH_LOS_SANTOS_2_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_33"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_8_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_34"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_9_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_35"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_10_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_36"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_11_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_37"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_12_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_38"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_13_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_39"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_14_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_40"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_15_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_41"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_16_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_42"
+  },
+  {
+    "key": "PROPERTY_HIGH_APT_17_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_43"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_1_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_44"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_2_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_45"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_3_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_46"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_5_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_48"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_6_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_49"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_7_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_50"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_8_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_51"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_9_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_52"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_14_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_57"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_16_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_59"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_17_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_60"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_18_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_61"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_19_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_62"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_20_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_63"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_21_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_64"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_22_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_65"
+  },
+  {
+    "key": "PROPERTY_GARAGE_NEW_23_EXPENDITURE_MODIFIER",
+    "type": "property_sales",
+    "display": "MP_PROP_66"
+  },
+  {
+    "key": "BUSINESS_PACK_PROPERTIES_0",
+    "type": "property_sales",
+    "display": "MP_PROP_67"
+  },
+  {
+    "key": "BUSINESS_PACK_PROPERTIES_1",
+    "type": "property_sales",
+    "display": "MP_PROP_68"
+  },
+  {
+    "key": "BUSINESS_PACK_PROPERTIES_2",
+    "type": "property_sales",
+    "display": "MP_PROP_69"
+  },
+  {
+    "key": "BUSINESS_PACK_PROPERTIES_3",
+    "type": "property_sales",
+    "display": "MP_PROP_70"
+  },
+  {
+    "key": "BUSINESS_PACK_PROPERTIES_4",
+    "type": "property_sales",
+    "display": "MP_PROP_71"
+  },
+  {
+    "key": "PROPERTY_3_ACE_JONES_DR",
+    "type": "property_sales",
+    "display": "MP_PROP_72"
+  },
+  {
+    "key": "PROPERTY_12_SUSTANCIA_RD",
+    "type": "property_sales",
+    "display": "MP_PROP_73"
+  },
+  {
+    "key": "PROPERTY_4584_PROCOPIO_DR",
+    "type": "property_sales",
+    "display": "MP_PROP_74"
+  },
+  {
+    "key": "PROPERTY_4401_PROCOPIO_DR",
+    "type": "property_sales",
+    "display": "MP_PROP_75"
+  },
+  {
+    "key": "PROPERTY_0232_PALETO_BLVD",
+    "type": "property_sales",
+    "display": "MP_PROP_76"
+  },
+  {
+    "key": "PROPERTY_140_ZANCUDO_AVE",
+    "type": "property_sales",
+    "display": "MP_PROP_77"
+  },
+  {
+    "key": "PROPERTY_1893_GRAPESEED_AVE",
+    "type": "property_sales",
+    "display": "MP_PROP_78"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_3655_WILD_OATS_DRIVE",
+    "type": "property_sales",
+    "display": "MP_PROP_83"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2044_NORTH_CONKER_AVENUE",
+    "type": "property_sales",
+    "display": "MP_PROP_84"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2868_HILLCREST_AVENUE",
+    "type": "property_sales",
+    "display": "MP_PROP_85"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2862_HILLCREST_AVENUE",
+    "type": "property_sales",
+    "display": "MP_PROP_86"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_3677_WHISPYMOUND_DRIVE",
+    "type": "property_sales",
+    "display": "MP_PROP_87"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2117_MILTON_ROAD",
+    "type": "property_sales",
+    "display": "MP_PROP_89"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2866_HILLCREST_AVENUE",
+    "type": "property_sales",
+    "display": "MP_PROP_90"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2874_HILLCREST_AVENUE",
+    "type": "property_sales",
+    "display": "MP_PROP_92"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2113_MAD_WAYNE_THUNDER_DRIVE",
+    "type": "property_sales",
+    "display": "MP_PROP_94"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSSTILT_2045_NORTH_CONKER_AVENUE",
+    "type": "property_sales",
+    "display": "MP_PROP_95"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSECLIPSE_TOWERS_PENTHOUSE_SUITE_1",
+    "type": "property_sales",
+    "display": "MP_PROP_79"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSECLIPSE_TOWERS_PENTHOUSE_SUITE_2",
+    "type": "property_sales",
+    "display": "MP_PROP_80"
+  },
+  {
+    "key": "APARTMENT_CAR_MODSECLIPSE_TOWERS_PENTHOUSE_SUITE_3",
+    "type": "property_sales",
+    "display": "MP_PROP_81"
+  },
+  {
+    "key": "EXEC1_OFFICE1_LOMBANK",
+    "type": "office_sales",
+    "display": "MP_PROP_OFF1"
+  },
+  {
+    "key": "EXEC1_OFFICE2_MAZE1",
+    "type": "office_sales",
+    "display": "MP_PROP_OFF2"
+  },
+  {
+    "key": "EXEC1_OFFICE3_ARCADIUS",
+    "type": "office_sales",
+    "display": "MP_PROP_OFF3"
+  },
+  {
+    "key": "EXEC1_OFFICE4_MAZE2",
+    "type": "office_sales",
+    "display": "MP_PROP_OFF4"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL1",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG1"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL2_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG2"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL3_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG3"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL1",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG1"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL2_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG2"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL3_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG3"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL1",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG1"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL2_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG2"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL3_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG3"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL1",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG1"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL2_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG2"
+  },
+  {
+    "key": "IMPEXP_GARAGE_LEVEL3_COST",
+    "type": "office_sales",
+    "display": "MP_PROP_OFFG3"
+  },
+  {
+    "key": 819519215,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH1"
+  },
+  {
+    "key": 471352940,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH2"
+  },
+  {
+    "key": 2023136086,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH3"
+  },
+  {
+    "key": 217858651,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH4"
+  },
+  {
+    "key": -1058611921,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH5"
+  },
+  {
+    "key": -1767762009,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH6"
+  },
+  {
+    "key": -1390109608,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH7"
+  },
+  {
+    "key": 2033735347,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH8"
+  },
+  {
+    "key": -1219608517,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH9"
+  },
+  {
+    "key": 1669688233,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH10"
+  },
+  {
+    "key": 1241258301,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH11"
+  },
+  {
+    "key": 813618473,
+    "type": "biker_clubhouse_sales",
+    "display": "MP_PROP_CLUBH12"
   }
 ]

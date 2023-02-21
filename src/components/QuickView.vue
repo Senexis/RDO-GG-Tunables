@@ -163,6 +163,9 @@ function getLabel(value) {
  */
 function findTunable(query) {
   try {
+    // TODO @Senexis: Add support for finding unknown tunables.
+    if (typeof query !== "string") return null;
+
     const tunables = props.tunables;
     if (tunables === undefined) return null;
 
@@ -502,8 +505,14 @@ function getSalesTitle(title) {
     switch (title.replace(/_plus$/g, "")) {
       case "biker_business_sales":
         return "Biker Business Sales";
+      case "biker_clubhouse_sales":
+        return "Biker Clubhouse Sales";
       case "bunker_sales":
         return "Bunker Sales";
+      case "office_sales":
+        return "Office Sales";
+      case "property_sales":
+        return "Property Sales";
       case "vehicle_sales":
         return "Vehicle Sales";
       case "vehicle_upgrade_sales":

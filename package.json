@@ -6,7 +6,8 @@
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate": "ajv validate -s schemas/tunable_types.json -d public/data/tunable_types.json"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.10",
