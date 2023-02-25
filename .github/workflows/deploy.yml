@@ -28,8 +28,7 @@ jobs:
       - name: Install packages
         run: npm install
       - name: Validate JSON schema
-        run: |
-          npx ajv validate -s schemas/tunable_types.json -d public/data/tunable_types.json
+        run: npm run validate
   deploy:
     needs: [validate]
     environment:
