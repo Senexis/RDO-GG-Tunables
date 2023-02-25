@@ -394,6 +394,7 @@ const files = computed(() => {
  */
 watch(game, () => {
   try {
+    Sentry.setTag("game", game.value);
     if (platform.value !== "pcros") {
       platform.value = "pcros";
     } else {
@@ -410,6 +411,7 @@ watch(game, () => {
  */
 watch(platform, () => {
   try {
+    Sentry.setTag("platform", platform.value);
     handleGameUpdate();
   } catch (error) {
     Sentry.captureException(error);
