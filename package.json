@@ -12,6 +12,8 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.10",
     "@heroicons/vue": "^2.0.16",
+    "@sentry/tracing": "^7.38.0",
+    "@sentry/vue": "^7.38.0",
     "jsondiffpatch": "^0.4.1",
     "pinia": "^2.0.32",
     "pinia-plugin-persistedstate": "^3.1.0",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
+    "@sentry/vite-plugin": "^0.4.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
     "ajv-cli": "^5.0.0",

@@ -49,6 +49,11 @@ jobs:
       - name: Install packages
         run: npm install
       - name: Build Vue app
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SENTRY_ORGANIZATION: ${{ secrets.SENTRY_ORGANIZATION }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
