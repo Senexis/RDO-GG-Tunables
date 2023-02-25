@@ -833,6 +833,15 @@ function showErrorModal(body) {
         </CardFooter>
       </template>
     </Card>
+
+    <div class="mt-8 border-t border-gray-100/10 py-4 text-xs leading-5 text-gray-500 sm:flex sm:items-center sm:justify-between">
+      <p>&copy; {{ new Date().getFullYear() }} RDO.GG. All rights reserved.</p>
+      <div class="flex space-x-4">
+        <a href="https://rdo.gg/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://rdo.gg/terms/" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+        <a href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">License</a>
+      </div>
+    </div>
   </main>
 
   <Banner id="new-site" :show="activeBanner === 'new-site'">
