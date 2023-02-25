@@ -21,7 +21,10 @@ Sentry.init({
     new BrowserTracing({
       tracePropagationTargets: ["localhost", "tunables.rdo.gg", /^\//],
     }),
+    new Sentry.Replay(),
   ],
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
   tracesSampleRate: 0.3,
 });
 
