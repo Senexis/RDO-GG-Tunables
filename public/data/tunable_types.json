@@ -4598,5 +4598,120 @@
     "key": 813618473,
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH12"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_LA_MESA_WAREHOUSE",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_1"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_MISSION_ROW_BUILDING",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_2"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_STRAWBERRY_WAREHOUSE",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_3"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_WEST_VINEWOOD_BUILDING",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_4"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_CYPRESS_FLATS_WAREHOUSE",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_5"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_LSIA_WAREHOUSE",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_6"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_ELYSIAN_ISLAND_WAREHOUSE",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_7"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_DOWNTOWN_VINEWOOD",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_8"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_DEL_PERRO_BUILDING",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_9"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_VESPUCCI_CANALS_BUILDING",
+    "type": "nightclub_property_sales",
+    "display": "MP_NCLU_10"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_GARAGE_B2",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_GARG_1"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_GARAGE_B3",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_GARG_2"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_GARAGE_B4",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_GARG_3"
+  },
+  {
+    "key": -811916052,
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_SEC_1"
+  },
+  {
+    "key": -1137462330,
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_EQU_1"
+  },
+  {
+    "key": 785197557,
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STA_1"
+  },
+  {
+    "key": -588085068,
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STA_2"
+  },
+  {
+    "key": -723963067,
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STA_3"
+  },
+  {
+    "key": 2018353091,
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STA_4"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_WAREHOUSE_B2",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STOR_1"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_WAREHOUSE_B3",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STOR_2"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_WAREHOUSE_B4",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STOR_3"
+  },
+  {
+    "key": "BB_NIGHTCLUB_PROPERTY_WAREHOUSE_B5",
+    "type": "nightclub_upgrade_sales",
+    "display": "FCCLUB_STOR_4"
   }
 ]

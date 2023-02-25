@@ -509,6 +509,10 @@ function getSalesTitle(title) {
         return "Biker Clubhouse Sales";
       case "bunker_sales":
         return "Bunker Sales";
+      case "nightclub_property_sales":
+        return "Nightclub Property Sales";
+      case "nightclub_upgrade_sales":
+        return "Nightclub Upgrade Sales";
       case "office_sales":
         return "Office Sales";
       case "property_sales":
@@ -580,8 +584,7 @@ function getRdoEvent() {
       features: features.sort(),
     };
   } catch (error) {
-    // TODO Update
-    emit("error", "An unknown error occurred. (D24280B2)", error);
+    emit("error", "An unknown error occurred. (0E8A5C03)", error);
   }
 }
 
