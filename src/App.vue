@@ -245,6 +245,16 @@ const latestDisabled = computed(() => {
 });
 
 /**
+ * The available game badge texts.
+ *
+ * @type {import("vue").ComputedRef<Object>}
+ */
+const gameBadgeTexts = computed(() => ({
+  gta: "GTA",
+  rdo: "RDO",
+}));
+
+/**
  * The available game options.
  *
  * @type {import("vue").ComputedRef<Array>}
@@ -732,7 +742,10 @@ function showErrorModal(body, error = null) {
     <Card>
       <template #header>
         <CardHeader class="flex flex-row items-center justify-between">
-          <h1 class="truncate" v-html="title"></h1>
+          <h1 class="truncate">
+            <span class="badge bg-sky-700 text-white mr-2">{{ gameBadgeTexts[game] ?? game }}</span>
+            <span>{{ title }}</span>
+          </h1>
           <div class="whitespace-nowrap">
             <button
               @click="handlePreviousClick"
