@@ -16,15 +16,15 @@ const openFallback = ref(false);
 const settings = useStore();
 const open = computed(() => {
   if (!props.id) return openFallback.value;
-  return settings.quickViewOpen.includes(props.id);
+  return !settings.accordionsDismissed.includes(props.id);
 });
 
 function toggleOpen() {
   if (!props.id) return (openFallback.value = !openFallback.value);
   if (open.value) {
-    settings.quickViewOpen = settings.quickViewOpen.filter((id) => id !== props.id);
+    settings.accordionsDismissed = [...settings.accordionsDismissed, props.id];
   } else {
-    settings.quickViewOpen = [...settings.quickViewOpen, props.id];
+    settings.accordionsDismissed = settings.accordionsDismissed.filter((id) => id !== props.id);
   }
 }
 </script>

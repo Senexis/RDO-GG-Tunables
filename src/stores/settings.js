@@ -4,29 +4,22 @@ export const useStore = defineStore("settings", {
   persist: true,
   state: () => {
     return {
-      // Panels.
-      quickView: true,
-      quickViewOpen: [
-        "casino",
-        "daily_objectives",
-        "gun_van",
-        "ls_car_meet",
-        "luxury_autos_showroom",
-        "premium_deluxe_motorsport_showroom",
-        "time_trials",
-        "sales",
-      ],
+      // Open/close accordions.
+      accordionsDismissed: [],
 
-      // Banners.
+      // Open/close banners.
       bannersDismissed: [],
 
-      // Types of changes.
+      // Show/hide panels.
+      quickView: true,
+
+      // Show/hide types of changes.
       added: true,
       deleted: true,
       modified: true,
       unchanged: false,
 
-      // Individual keys.
+      // Show/hide individual tunables.
       bonus: false,
       content: true,
       tunables: true,
