@@ -17,14 +17,10 @@ const app = createApp(App);
 Sentry.init({
   app,
   dsn: SENTRY_DSN,
-  integrations: [
-    new BrowserTracing({
-      tracePropagationTargets: ["localhost", "tunables.rdo.gg", /^\//],
-    }),
-    new Sentry.Replay(),
-  ],
-  replaysSessionSampleRate: 0.1,
+  integrations: [new BrowserTracing({ tracePropagationTargets: ["localhost", "tunables.rdo.gg", /^\//] }), new Sentry.Replay()],
+  release: APP_COMMIT_LONG,
   replaysOnErrorSampleRate: 1.0,
+  replaysSessionSampleRate: 0.1,
   tracesSampleRate: 0.3,
 });
 
