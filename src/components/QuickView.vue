@@ -546,6 +546,46 @@ function formatCashSale(discounts) {
   }
 }
 
+/**
+ * Retrieves the active event and its features in RDO.
+ *
+ * @returns {object|null}
+ */
+function getRdoEvent() {
+  try {
+    const event = getTunable("BGS_SpecialEvent");
+    if (!event) return null;
+
+    const name = event === 1788394582 ? "Christmas" : event === -921030142 ? "Halloween" : "Unknown";
+    const features = [];
+
+    const bitset = getTunable("BGS_SpecialEventBitset");
+    if (bitset) {
+      if ((bitset & (1 << 0)) !== 0) features.push("Christmas Decorations");
+      if ((bitset & (1 << 1)) !== 0) features.push("Snow");
+      // Unknown: (1 << 2)
+      if ((bitset & (1 << 3)) !== 0) features.push("Christmas Wraith");
+      // Unknown: (1 << 4)
+      if ((bitset & (1 << 5)) !== 0) features.push("Heavy Snow");
+      if ((bitset & (1 << 6)) !== 0) features.push("Christmas Lights");
+      if ((bitset & (1 << 7)) !== 0) features.push("Seasonal Cripps Greetings");
+      if ((bitset & (1 << 8)) !== 0) features.push("Christmas Music");
+      if ((bitset & (1 << 9)) !== 0) features.push("Seasonal Harriet Greetings");
+      if ((bitset & (1 << 10)) !== 0) features.push("Christmas Present");
+      if ((bitset & (1 << 11)) !== 0) features.push("Seasonal Call to Arms Modes");
+    }
+
+    return {
+      event: name,
+      features: features.sort(),
+    };
+  } catch (error) {
+    // TODO Update
+    emit("error", "An unknown error occurred. (D24280B2)", error);
+  }
+}
+
+// GTA
 const carMeetPrizeObjective = computed(() => getCarMeetPrizeObjective());
 const carMeetPrizeVehicle = computed(() => getVehicleTunable("CAR_MEET_PRIZE_VEHICLE"));
 const promoTestDriveVehicle1 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_1"));
@@ -572,6 +612,9 @@ const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
 const gunVan = computed(() => getGunVan());
 const sales = computed(() => getSales());
+
+// RDO
+const rdoEvent = computed(() => getRdoEvent());
 </script>
 
 <template>
@@ -593,28 +636,29 @@ const sales = computed(() => getSales());
     </template>
     <template #default>
       <template v-if="!loading && !data.loading && tunables">
-        <Accordion id="sales">
-          <template #title>Sales & Bonuses</template>
-          <template #default>
-            <p class="mb-4 text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
-              <ExclamationTriangleIcon class="hidden md:block w-6 h-6 text-yellow-600" />
-              <span>
-                <strong>Note:</strong> This is a <strong>generated, likely incomplete</strong> list based on
-                <a
-                  href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
-                  target="_blank"
-                  rel="noopener noreferrer"
+        <!-- GTA -->
+        <template v-if="sales && Object.keys(sales).length">
+          <Accordion id="sales">
+            <template #title>Sales & Bonuses</template>
+            <template #default>
+              <p class="mb-4 text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
+                <ExclamationTriangleIcon class="hidden md:block w-6 h-6 text-yellow-600" />
+                <span>
+                  <strong>Note:</strong> This is a <strong>generated, likely incomplete</strong> list based on
+                  <a
+                    href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    certain conditions
+                  </a>
+                  and will need updates over time.<br />
+                  For more accurate updates on the latest sales and bonuses as well as items that may be missing from this list, follow
+                  <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.</span
                 >
-                  certain conditions
-                </a>
-                and will need updates over time.<br />
-                For more accurate updates on the latest sales and bonuses as well as items that may be missing from this list, follow
-                <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.</span
-              >
-            </p>
+              </p>
 
-            <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
-              <template v-if="sales && Object.keys(sales).length">
+              <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`sales_${key}`">
                     <template #title>
@@ -639,13 +683,10 @@ const sales = computed(() => getSales());
                     </template>
                   </Accordion>
                 </template>
-              </template>
-              <template v-else>
-                <p class="mb-4">No sales found.</p>
-              </template>
-            </div>
-          </template>
-        </Accordion>
+              </div>
+            </template>
+          </Accordion>
+        </template>
         <template v-if="timeTrial || hswTimeTrial || rcTimeTrial">
           <Accordion id="time_trials">
             <template #title>Time Trials</template>
@@ -853,6 +894,26 @@ const sales = computed(() => getSales());
                 </template>
                 <template v-if="dailyObjectiveSun">
                   <li class="ml-8"><strong>Sunday:</strong> {{ dailyObjectiveSun }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+
+        <!-- RDO -->
+        <template v-if="rdoEvent">
+          <Accordion id="rdo_event">
+            <template #title>Active Event</template>
+            <template #default>
+              <ul class="list-disc">
+                <li class="ml-8"><strong>Event:</strong> {{ rdoEvent.event }}</li>
+                <template v-if="rdoEvent.features">
+                  <li class="ml-8"><strong>Features:</strong></li>
+                  <ul class="list-disc">
+                    <template v-for="feature in rdoEvent.features" :key="feature">
+                      <li class="ml-12">{{ feature }}</li>
+                    </template>
+                  </ul>
                 </template>
               </ul>
             </template>

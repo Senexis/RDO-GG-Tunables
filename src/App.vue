@@ -727,12 +727,7 @@ function showErrorModal(body, error = null) {
   </header>
 
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <QuickView
-      v-if="game === 'gta'"
-      :loading="difference.loading"
-      :tunables="tunables?.latest?.contents?.tunables"
-      @error="showErrorModal"
-    />
+    <QuickView :loading="difference.loading" :tunables="tunables?.latest?.contents?.tunables" @error="showErrorModal" />
 
     <Card>
       <template #header>
@@ -929,12 +924,10 @@ function showErrorModal(body, error = null) {
     <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">Miscellaneous</h3>
 
     <div class="divide-y divide-slate-600 mb-4">
-      <template v-if="game === 'gta'">
-        <SettingsModalToggle v-model="settings.quickView">
-          <template #title>Quick View</template>
-          <template #description> Whether to show the Quick View panel. </template>
-        </SettingsModalToggle>
-      </template>
+      <SettingsModalToggle v-model="settings.quickView">
+        <template #title>Quick View</template>
+        <template #description> Whether to show the Quick View panel. </template>
+      </SettingsModalToggle>
 
       <div class="sm:flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
