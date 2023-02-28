@@ -254,10 +254,31 @@ const latestDisabled = computed(() => {
  *
  * @type {import("vue").ComputedRef<Object>}
  */
-const gameBadgeTexts = computed(() => ({
-  gta: "GTA",
-  rdo: "RDO",
+const gameBadges = computed(() => ({
+  gta: { label: "GTA", background: "gta" },
+  rdo: { label: "RDO", background: "rdo" },
 }));
+
+/**
+ * Gets the badge label for a game.
+ *
+ * @returns {string}
+ */
+function getGameBadgeLabel() {
+  const value = game.value;
+  return gameBadges.value[value]?.label ?? value;
+}
+
+/**
+ * Gets the badge background for a game.
+ *
+ * @returns {string}
+ */
+function getGameBadgeBackground() {
+  const value = game.value;
+  const type = gameBadges.value[value]?.background ?? "primary";
+  return `badge-${type}`;
+}
 
 /**
  * The available game options.
@@ -268,6 +289,40 @@ const gameOptions = computed(() => [
   { value: "gta", label: "GTA Online" },
   { value: "rdo", label: "Red Dead Online" },
 ]);
+
+/**
+ * The available platform badge texts.
+ *
+ * @type {import("vue").ComputedRef<Object>}
+ */
+const platformBadges = computed(() => ({
+  pcros: { label: "PC", background: "pc" },
+  ps4: { label: "PS4", background: "playstation" },
+  ps5: { label: "PS5", background: "playstation" },
+  xboxone: { label: "One", background: "xbox" },
+  xboxsx: { label: "S|X", background: "xbox" },
+}));
+
+/**
+ * Gets the badge label for a platform.
+ *
+ * @returns {string}
+ */
+function getPlatformBadgeLabel() {
+  const value = platform.value;
+  return platformBadges.value[value]?.label ?? value;
+}
+
+/**
+ * Gets the badge background for a platform.
+ *
+ * @returns {string}
+ */
+function getPlatformBadgeBackground() {
+  const value = platform.value;
+  const type = platformBadges.value[value]?.background ?? "primary";
+  return `badge-${type}`;
+}
 
 /**
  * The available platform options.
@@ -759,7 +814,8 @@ function showErrorModal(body) {
       <template #header>
         <CardHeader class="flex flex-row items-center justify-between">
           <h1 class="truncate">
-            <span class="badge bg-sky-700 text-white mr-2">{{ gameBadgeTexts[game] ?? game }}</span>
+            <span :class="getGameBadgeBackground()" class="badge mr-2">{{ getGameBadgeLabel() }}</span>
+            <span :class="getPlatformBadgeBackground()" class="badge mr-2">{{ getPlatformBadgeLabel() }}</span>
             <span>{{ title }}</span>
           </h1>
           <div class="whitespace-nowrap">

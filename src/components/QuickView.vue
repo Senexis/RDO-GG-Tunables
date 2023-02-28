@@ -689,10 +689,10 @@ const rdoEvent = computed(() => getRdoEvent());
                         <div class="flex gap-2 overflow-hidden">
                           <span class="truncate">{{ getSalesTitle(key) }}</span>
                           <template v-if="key.endsWith('_plus')">
-                            <span class="badge bg-yellow-700 text-white">GTA+</span>
+                            <span class="badge badge-plus">GTA+</span>
                           </template>
                         </div>
-                        <span class="badge bg-sky-700 text-white ml-2">
+                        <span class="badge badge-primary text-white ml-2">
                           {{ Object.keys(category).length === 1 ? "1 item" : `${Object.keys(category).length} items` }}
                         </span>
                       </div>

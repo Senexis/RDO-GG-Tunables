@@ -18,6 +18,35 @@ code {
   @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap;
 }
 
+/* Badge colors. */
+.badge-primary {
+  @apply bg-sky-700 text-white;
+}
+
+.badge-plus {
+  @apply bg-yellow-700 text-white;
+}
+
+.badge-gta {
+  @apply bg-sky-700 text-white;
+}
+
+.badge-rdo {
+  @apply bg-[#cc0000] text-white;
+}
+
+.badge-playstation {
+  @apply bg-[#0b377b] text-white;
+}
+
+.badge-xbox {
+  @apply bg-[#92c83e] text-black;
+}
+
+.badge-pc {
+  @apply bg-[#ea991c] text-black;
+}
+
 /* Tweak the scroll bar. */
 @media screen and (min-width: 640px) {
   ::-webkit-scrollbar {
