@@ -15,6 +15,7 @@ import {
 
 import { useStore } from "./stores/settings.js";
 
+import AttributionModal from "./components/Modals/AttributionModal.vue";
 import Banner from "./components/Banner.vue";
 import Card from "./components/Cards/Card.vue";
 import CardFooter from "./components/Cards/CardFooter.vue";
@@ -87,6 +88,15 @@ const tunables = ref({
   all: null,
   latest: null,
   previous: null,
+});
+
+/**
+ * Stores the data needed for displaying attribution modals.
+ *
+ * @type {import("vue").Ref<Object>}
+ */
+const attributionModal = ref({
+  show: false,
 });
 
 /**
@@ -899,6 +909,7 @@ function showErrorModal(body) {
         <a href="https://rdo.gg/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
         <a href="https://rdo.gg/terms/" target="_blank" rel="noopener noreferrer">Terms of Service</a>
         <a href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">License</a>
+        <button @click="attributionModal.show = true" class="text-sky-600 hover:text-sky-400">Attribution</button>
       </div>
     </div>
   </main>
@@ -929,11 +940,12 @@ function showErrorModal(body) {
     This website is now open source! Feel free to browse or contribute to the project on GitHub.
   </Banner>
 
+  <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
+  <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"></DownloadModal>
+
   <ErrorModal :open="errorModal.show" @close="errorModal.show = false" @confirm="errorModal.show = false">
     {{ errorModal.body }}
   </ErrorModal>
-
-  <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"> </DownloadModal>
 
   <SettingsModal
     :open="settingsModal.show"
