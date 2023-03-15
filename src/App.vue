@@ -36,6 +36,9 @@ const appChange = APP_CHANGE;
 // eslint-disable-next-line no-undef
 const appCommitShort = APP_COMMIT_SHORT;
 
+// eslint-disable-next-line no-undef
+const appCommitLong = APP_COMMIT_LONG;
+
 /**
  * Contains the selected game.
  *
@@ -932,7 +935,13 @@ function showErrorModal(body) {
 
   <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"> </DownloadModal>
 
-  <SettingsModal :open="settingsModal.show" @close="settingsModal.show = false" :change="appChange" :version="appCommitShort">
+  <SettingsModal
+    :open="settingsModal.show"
+    @close="settingsModal.show = false"
+    :change="appChange"
+    :commitShort="appCommitShort"
+    :commitLong="appCommitLong"
+  >
     <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">General</h3>
 
     <div class="divide-y divide-slate-600 mb-4">

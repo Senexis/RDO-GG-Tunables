@@ -8,7 +8,11 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
-  version: {
+  commitShort: {
+    type: String,
+    default: "",
+  },
+  commitLong: {
     type: String,
     default: "",
   },
@@ -23,11 +27,16 @@ const props = defineProps({
   <BaseModal :open="props.open" @close="emit('close')">
     <div class="bg-slate-900 text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
-      <template v-if="props.version">
+      <template v-if="props.commitShort">
         <p class="text-xs opacity-60">
           App version:
-          <a :href="`https://github.com/Senexis/RDO-GG-Tunables/commit/${props.version}`" target="_blank" rel="noopener noreferrer">
-            {{ props.version }}
+          <a
+            :href="`https://github.com/Senexis/RDO-GG-Tunables/commit/${props.commitLong}`"
+            target="_blank"
+            rel="noopener noreferrer"
+            :title="props.commitLong"
+          >
+            {{ props.commitShort }}
           </a>
         </p>
         <template v-if="props.change">
