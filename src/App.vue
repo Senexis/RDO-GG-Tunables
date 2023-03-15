@@ -1044,7 +1044,7 @@ function showErrorModal(body) {
         <template #description> Whether to show the Quick View panel. </template>
       </SettingsModalToggle>
 
-      <div class="sm:flex items-center justify-between gap-2 py-2">
+      <div class="flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
           <span class="text-sm font-medium text-slate-50">Reset Settings</span>
           <span class="text-sm text-slate-300">
@@ -1053,7 +1053,7 @@ function showErrorModal(body) {
         </div>
         <button
           @click="handleResetSettingsClick"
-          class="mt-3 inline-flex w-full justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 text-base font-medium text-slate-200 shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
+          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-200 shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
         >
           Reset
         </button>
