@@ -556,7 +556,12 @@ function getSalesTitle(title) {
  */
 function formatCashSale(discounts) {
   try {
-    const fc = Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format;
+    const fc = Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format;
 
     return discounts
       .sort((a, b) => a[0] - b[0])
