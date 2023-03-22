@@ -13,7 +13,7 @@
     "@fingerprintjs/fingerprintjs": "^3.4.0",
     "@headlessui/vue": "^1.7.12",
     "@heroicons/vue": "^2.0.16",
-    "@sentry/tracing": "^7.44.0",
+    "@sentry/tracing": "^7.44.2",
     "@sentry/vue": "^7.44.0",
     "jsondiffpatch": "^0.4.1",
     "pinia": "^2.0.33",
