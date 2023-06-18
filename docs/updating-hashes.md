@@ -14,7 +14,7 @@ Import URL: `https://raw.githubusercontent.com/DurtyFree/gta-v-data-dumps/master
 
 ```js
 function query(data) {
-  data = _.map(data, (item) => [item?.Name?.toUpperCase(), `${item?.ManufacturerDisplayName ?? ""} ${item?.DisplayName ?? ""}`.trim()])
+  data = _.map(data, (item) => [item?.Name?.toUpperCase(), `${item?.ManufacturerDisplayName?.English ?? ""} ${item?.DisplayName?.English ?? ""}`.trim()])
     .filter((i) => i[1] !== "")
     .sort((a, b) => a[0].localeCompare(b[0]));
   return _.chain(data)
