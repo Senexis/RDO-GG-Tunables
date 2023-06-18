@@ -628,6 +628,7 @@ const simeonTestDriveVehicle2 = computed(() => getVehicleTunable("SIMEON_TEST_DR
 const simeonTestDriveVehicle3 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_3"));
 const simeonTestDriveVehicle4 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_4"));
 const simeonTestDriveVehicle5 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_5"));
+const socialClubGaragePrizeVehicle = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE"));
 const socialClubGarageVehicle1 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_1"));
 const socialClubGarageVehicle2 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_2"));
 const socialClubGarageVehicle3 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_3"));
@@ -824,7 +825,7 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #title>LS Car Meet</template>
             <template #default>
               <template v-if="carMeetPrizeObjective || carMeetPrizeVehicle">
-                <h3 class="my-1 font-bold">Price Ride</h3>
+                <h3 class="my-1 font-bold">Prize Ride</h3>
                 <ul class="list-disc">
                   <template v-if="carMeetPrizeVehicle">
                     <li class="ml-8">{{ carMeetPrizeVehicle }}</li>
@@ -906,6 +907,7 @@ const rdoEvent = computed(() => getRdoEvent());
         </template>
         <template
           v-if="
+            socialClubGaragePrizeVehicle ||
             socialClubGarageVehicle1 ||
             socialClubGarageVehicle2 ||
             socialClubGarageVehicle3 ||
@@ -921,6 +923,9 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #title>Vinewood Car Club</template>
             <template #default>
               <ul class="list-disc">
+                <template v-if="socialClubGaragePrizeVehicle">
+                  <li class="ml-8"><strong>Reward Vehicle:</strong> {{ socialClubGaragePrizeVehicle }}</li>
+                </template>
                 <template v-if="socialClubGarageVehicle1">
                   <li class="ml-8">{{ socialClubGarageVehicle1 }}</li>
                 </template>
