@@ -628,6 +628,15 @@ const simeonTestDriveVehicle2 = computed(() => getVehicleTunable("SIMEON_TEST_DR
 const simeonTestDriveVehicle3 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_3"));
 const simeonTestDriveVehicle4 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_4"));
 const simeonTestDriveVehicle5 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_5"));
+const socialClubGarageVehicle1 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_1"));
+const socialClubGarageVehicle2 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_2"));
+const socialClubGarageVehicle3 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_3"));
+const socialClubGarageVehicle4 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_4"));
+const socialClubGarageVehicle5 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_5"));
+const socialClubGarageVehicle6 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_6"));
+const socialClubGarageVehicle7 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_7"));
+const socialClubGarageVehicle8 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_8"));
+const socialClubGarageVehicle9 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_9"));
 const dailyObjectiveMon = computed(() => getDailyObjective("SAT"));
 const dailyObjectiveTue = computed(() => getDailyObjective("SUN"));
 const dailyObjectiveWed = computed(() => getDailyObjective("MON"));
@@ -814,29 +823,37 @@ const rdoEvent = computed(() => getRdoEvent());
           <Accordion id="ls_car_meet">
             <template #title>LS Car Meet</template>
             <template #default>
-              <ul class="list-disc">
-                <template v-if="carMeetPrizeObjective">
-                  <li class="ml-8">
-                    <strong>Prize Ride Objective:</strong>
-                    {{ carMeetPrizeObjective }}
-                  </li>
-                </template>
-                <template v-if="carMeetPrizeVehicle">
-                  <li class="ml-8"><strong>Prize Ride:</strong> {{ carMeetPrizeVehicle }}</li>
-                </template>
-                <template v-if="promoTestDriveVehicle1">
-                  <li class="ml-8"><strong>Test Ride 1:</strong> {{ promoTestDriveVehicle1 }}</li>
-                </template>
-                <template v-if="promoTestDriveVehicle2">
-                  <li class="ml-8"><strong>Test Ride 2:</strong> {{ promoTestDriveVehicle2 }}</li>
-                </template>
-                <template v-if="promoTestDriveVehicle3">
-                  <li class="ml-8"><strong>Test Ride 3:</strong> {{ promoTestDriveVehicle3 }}</li>
-                </template>
-                <template v-if="hswTestRide">
-                  <li class="ml-8"><strong>Premium Test Ride:</strong> {{ hswTestRide }}</li>
-                </template>
-              </ul>
+              <template v-if="carMeetPrizeObjective || carMeetPrizeVehicle">
+                <h3 class="my-1 font-bold">Price Ride</h3>
+                <ul class="list-disc">
+                  <template v-if="carMeetPrizeVehicle">
+                    <li class="ml-8">{{ carMeetPrizeVehicle }}</li>
+                  </template>
+                  <template v-if="carMeetPrizeObjective">
+                    <li class="ml-8">
+                      <strong>Objective:</strong>
+                      {{ carMeetPrizeObjective }}
+                    </li>
+                  </template>
+                </ul>
+              </template>
+              <template v-if="promoTestDriveVehicle1 || promoTestDriveVehicle2 || promoTestDriveVehicle3 || hswTestRide">
+                <h3 class="my-1 font-bold">Test Rides</h3>
+                <ul class="list-disc">
+                  <template v-if="promoTestDriveVehicle1">
+                    <li class="ml-8">{{ promoTestDriveVehicle1 }}</li>
+                  </template>
+                  <template v-if="promoTestDriveVehicle2">
+                    <li class="ml-8">{{ promoTestDriveVehicle2 }}</li>
+                  </template>
+                  <template v-if="promoTestDriveVehicle3">
+                    <li class="ml-8">{{ promoTestDriveVehicle3 }}</li>
+                  </template>
+                  <template v-if="hswTestRide">
+                    <li class="ml-8"><strong>Premium:</strong> {{ hswTestRide }}</li>
+                  </template>
+                </ul>
+              </template>
             </template>
           </Accordion>
         </template>
@@ -846,10 +863,10 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="luxuryShowcaseVehicle1">
-                  <li class="ml-8"><strong>Vehicle 1:</strong> {{ luxuryShowcaseVehicle1 }}</li>
+                  <li class="ml-8">{{ luxuryShowcaseVehicle1 }}</li>
                 </template>
                 <template v-if="luxuryShowcaseVehicle2">
-                  <li class="ml-8"><strong>Vehicle 2:</strong> {{ luxuryShowcaseVehicle2 }}</li>
+                  <li class="ml-8">{{ luxuryShowcaseVehicle2 }}</li>
                 </template>
               </ul>
             </template>
@@ -869,19 +886,67 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="simeonTestDriveVehicle1">
-                  <li class="ml-8"><strong>Vehicle 1:</strong> {{ simeonTestDriveVehicle1 }}</li>
+                  <li class="ml-8">{{ simeonTestDriveVehicle1 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle2">
-                  <li class="ml-8"><strong>Vehicle 2:</strong> {{ simeonTestDriveVehicle2 }}</li>
+                  <li class="ml-8">{{ simeonTestDriveVehicle2 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle3">
-                  <li class="ml-8"><strong>Vehicle 3:</strong> {{ simeonTestDriveVehicle3 }}</li>
+                  <li class="ml-8">{{ simeonTestDriveVehicle3 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle4">
-                  <li class="ml-8"><strong>Vehicle 4:</strong> {{ simeonTestDriveVehicle4 }}</li>
+                  <li class="ml-8">{{ simeonTestDriveVehicle4 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle5">
-                  <li class="ml-8"><strong>Vehicle 5:</strong> {{ simeonTestDriveVehicle5 }}</li>
+                  <li class="ml-8">{{ simeonTestDriveVehicle5 }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template
+          v-if="
+            socialClubGarageVehicle1 ||
+            socialClubGarageVehicle2 ||
+            socialClubGarageVehicle3 ||
+            socialClubGarageVehicle4 ||
+            socialClubGarageVehicle5 ||
+            socialClubGarageVehicle6 ||
+            socialClubGarageVehicle7 ||
+            socialClubGarageVehicle8 ||
+            socialClubGarageVehicle9
+          "
+        >
+          <Accordion id="vinewood_car_club">
+            <template #title>Vinewood Car Club</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="socialClubGarageVehicle1">
+                  <li class="ml-8">{{ socialClubGarageVehicle1 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle2">
+                  <li class="ml-8">{{ socialClubGarageVehicle2 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle3">
+                  <li class="ml-8">{{ socialClubGarageVehicle3 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle4">
+                  <li class="ml-8">{{ socialClubGarageVehicle4 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle5">
+                  <li class="ml-8">{{ socialClubGarageVehicle5 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle6">
+                  <li class="ml-8">{{ socialClubGarageVehicle6 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle7">
+                  <li class="ml-8">{{ socialClubGarageVehicle7 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle8">
+                  <li class="ml-8">{{ socialClubGarageVehicle8 }}</li>
+                </template>
+                <template v-if="socialClubGarageVehicle9">
+                  <li class="ml-8">{{ socialClubGarageVehicle9 }}</li>
                 </template>
               </ul>
             </template>
