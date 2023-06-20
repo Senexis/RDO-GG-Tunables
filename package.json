@@ -14,7 +14,7 @@
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
     "@sentry/tracing": "^7.55.2",
-    "@sentry/vue": "^7.55.2",
+    "@sentry/vue": "^7.56.0",
     "jsondiffpatch": "^0.4.1",
     "pinia": "^2.1.4",
     "pinia-plugin-persistedstate": "^3.1.0",
