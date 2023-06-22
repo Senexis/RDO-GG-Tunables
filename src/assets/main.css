@@ -31,6 +31,14 @@ code {
   @apply bg-sky-700 text-white;
 }
 
+.badge-rp {
+  @apply bg-[#1171df] text-white;
+}
+
+.badge-cash {
+  @apply bg-[#539d55] text-white;
+}
+
 .badge-rdo {
   @apply bg-[#cc0000] text-white;
 }

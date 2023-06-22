@@ -22,6 +22,10 @@ const props = defineProps({
     type: Object,
     default: null,
   },
+  ugc: {
+    type: Object,
+    default: null,
+  },
 });
 
 const settings = useStore();
@@ -192,6 +196,34 @@ function findTunable(query) {
   } catch (error) {
     Sentry.captureException(error);
     emit("error", "An unknown error occurred. (F89A8514)");
+  }
+}
+
+/**
+ * Tries to retrieve all tunables in a context.
+ *
+ * @param {string} query The query to search for.
+ */
+function findContext(query) {
+  try {
+    if (typeof query !== "string") return null;
+
+    const tunables = props.tunables;
+    if (tunables === undefined) return null;
+
+    for (const item in tunables) {
+      if (item.toLowerCase() === query.toLowerCase()) {
+        return {
+          key: item,
+          value: tunables[item],
+        };
+      }
+    }
+
+    return null;
+  } catch (error) {
+    Sentry.captureException(error);
+    emit("error", "An unknown error occurred. (96580B11)");
   }
 }
 
@@ -550,6 +582,90 @@ function getSalesTitle(title) {
 }
 
 /**
+ * Retrieves the UGC bonuses for the current tunables.
+ *
+ * @returns {object}
+ */
+function getUgcBonuses() {
+  try {
+    const ugc = props.ugc;
+    if (ugc === undefined) return null;
+
+    const results = {};
+
+    for (const [contentListKey, contentList] of Object.entries(ugc)) {
+      results[contentListKey] = {
+        ugc: contentList,
+        modifiers: [],
+      };
+
+      const modifiers = findContext(`CONTENT_MODIFIER_${contentListKey}`);
+
+      if (modifiers && modifiers.value) {
+        for (const [modifierKey, modifierValue] of Object.entries(modifiers.value)) {
+          results[contentListKey].modifiers.push({
+            type: modifierKey,
+            value: modifierValue,
+            plus: false,
+          });
+        }
+      }
+
+      const modifiersPlus = findContext(`CONTENT_MODIFIER_MEMBERSHIP_${contentListKey}`);
+
+      if (modifiersPlus && modifiersPlus.value) {
+        for (const [modifierKey, modifierValue] of Object.entries(modifiersPlus.value)) {
+          results[contentListKey].modifiers.push({
+            type: modifierKey,
+            value: modifierValue,
+            plus: true,
+          });
+        }
+      }
+    }
+
+    return orderObject(results, true);
+  } catch (error) {
+    Sentry.captureException(error);
+    console.log(error);
+    emit("error", "An unknown error occurred. (BD154CB6)");
+  }
+}
+
+/**
+ * Retrieves the badge class for a UGC modifier.
+ *
+ * @returns string
+ */
+function getUgcModifierBadge(modifier) {
+  try {
+    if (modifier.type === "CASH_MULTIPLIER") return "badge-cash";
+    if (modifier.type === "XP_MULTIPLIER") return "badge-rp";
+    return "badge-primary";
+  } catch (error) {
+    Sentry.captureException(error);
+    emit("error", "An unknown error occurred. (8B6B6A03)");
+  }
+}
+
+/**
+ * Retrieves the label for a UGC modifier.
+ *
+ * @returns string
+ */
+function getUgcModifierLabel(modifier) {
+  try {
+    const type = getLabel(modifier.type);
+    const suffix = modifier.plus ? "+" : "";
+    const value = modifier.value;
+    return `${type}${suffix}: ${value}`;
+  } catch (error) {
+    Sentry.captureException(error);
+    emit("error", "An unknown error occurred. (B272F048)");
+  }
+}
+
+/**
  * Retrieves the text to display for cash sales.
  *
  * @returns string
@@ -650,6 +766,7 @@ const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
 const gunVan = computed(() => getGunVan());
 const sales = computed(() => getSales());
+const ugcBonuses = computed(() => getUgcBonuses());
 
 // RDO
 const rdoEvent = computed(() => getRdoEvent());
@@ -675,7 +792,7 @@ const rdoEvent = computed(() => getRdoEvent());
     <template #default>
       <template v-if="!loading && !data.loading && tunables">
         <!-- GTA -->
-        <template v-if="sales && Object.keys(sales).length">
+        <template v-if="(sales && Object.keys(sales).length) || (ugcBonuses && Object.keys(ugcBonuses).length)">
           <Accordion id="sales">
             <template #title>Sales & Bonuses</template>
             <template #default>
@@ -707,7 +824,7 @@ const rdoEvent = computed(() => getRdoEvent());
                             <span class="badge badge-plus">GTA+</span>
                           </template>
                         </div>
-                        <span class="badge badge-primary text-white ml-2">
+                        <span class="badge badge-primary ml-2">
                           {{ Object.keys(category).length === 1 ? "1 item" : `${Object.keys(category).length} items` }}
                         </span>
                       </div>
@@ -718,6 +835,57 @@ const rdoEvent = computed(() => getRdoEvent());
                           <li class="ml-8">{{ getLabel(item) }}: {{ formatCashSale(discounts) }}</li>
                         </template>
                       </ul>
+                    </template>
+                  </Accordion>
+                </template>
+                <template v-if="ugcBonuses && Object.keys(ugcBonuses).length">
+                  <Accordion id="ugc_bonuses">
+                    <template #title>
+                      <div class="flex justify-between items-center w-full overflow-hidden">
+                        <div class="flex gap-2 overflow-hidden">
+                          <span class="truncate">Mission Bonuses</span>
+                        </div>
+                        <span class="badge badge-primary ml-2">
+                          {{ Object.keys(ugcBonuses).length === 1 ? "1 list" : `${Object.keys(ugcBonuses).length} lists` }}
+                        </span>
+                      </div></template
+                    >
+                    <template #default>
+                      <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
+                        <template v-for="(list, index) in ugcBonuses" :key="index">
+                          <Accordion :id="`ugc_bonuses_${index}`">
+                            <template #title>
+                              <div class="flex justify-between items-center w-full overflow-hidden">
+                                <div class="flex gap-2 overflow-hidden">
+                                  <span class="truncate">List {{ Number(index) + 1 }}</span>
+                                </div>
+                                <div>
+                                  <span class="badge badge-primary ml-2">
+                                    {{ list.ugc.length === 1 ? "1 mission" : `${list.ugc.length} missions` }}
+                                  </span>
+                                  <span class="badge badge-primary ml-2">
+                                    {{ list.modifiers.length === 1 ? "1 modifier" : `${list.modifiers.length} modifiers` }}
+                                  </span>
+                                </div>
+                              </div>
+                            </template>
+                            <template #default>
+                              <h3 class="my-1 font-bold">Modifiers</h3>
+                              <div class="mb-4">
+                                <template v-for="(modifier, item) in list.modifiers" :key="item">
+                                  <span :class="getUgcModifierBadge(modifier)" class="badge mr-1">{{ getUgcModifierLabel(modifier) }}</span>
+                                </template>
+                              </div>
+                              <h3 class="my-1 font-bold">Missions</h3>
+                              <ul class="list-disc">
+                                <template v-for="(mission, item) in list.ugc" :key="item">
+                                  <li class="ml-8">{{ mission }}</li>
+                                </template>
+                              </ul>
+                            </template>
+                          </Accordion>
+                        </template>
+                      </div>
                     </template>
                   </Accordion>
                 </template>

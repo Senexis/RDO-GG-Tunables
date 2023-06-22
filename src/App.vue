@@ -821,7 +821,12 @@ function showErrorModal(body) {
   </header>
 
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <QuickView :loading="difference.loading" :tunables="tunables?.latest?.contents?.tunables" @error="showErrorModal" />
+    <QuickView
+      :loading="difference.loading"
+      :tunables="tunables?.latest?.contents?.tunables"
+      :ugc="tunables?.latest?.contents?.contentlists"
+      @error="showErrorModal"
+    />
 
     <Card>
       <template #header>
