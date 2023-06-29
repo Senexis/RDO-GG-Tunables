@@ -33,13 +33,13 @@ const settings = useStore();
 const data = ref({
   loading: true,
 
+  tunableDefaults: null,
   dailyObjectives: null,
   rcTimeTrials: null,
   hswTimeTrials: null,
   timeTrials: null,
   vehicles: null,
   weapons: null,
-  tunableDefaults: null,
   tunableTypes: null,
 });
 
@@ -62,22 +62,22 @@ async function handleQuickViewInit() {
   try {
     data.value.loading = true;
 
+    const tunableDefaults = await request("https://api.rdo.gg/tunables/gta/defaults.json");
     const dailyObjectives = await request("/data/daily_objectives.json");
     const hswTimeTrials = await request("/data/hsw_time_trials.json");
     const labels = await request("/data/labels.json");
     const rcTimeTrials = await request("/data/rc_time_trials.json");
     const timeTrials = await request("/data/time_trials.json");
-    const tunableDefaults = await request("/data/tunable_defaults.json");
     const tunableTypes = await request("/data/tunable_types.json");
 
     data.value = {
       loading: false,
+      tunableDefaults,
       dailyObjectives,
       hswTimeTrials,
       labels,
       rcTimeTrials,
       timeTrials,
-      tunableDefaults,
       tunableTypes,
     };
   } catch (error) {
@@ -174,8 +174,13 @@ function getLabel(value) {
  */
 function findTunable(query) {
   try {
-    // TODO @Senexis: Add support for finding unknown tunables.
-    if (typeof query !== "string") return null;
+    if (typeof query === "number") {
+      try {
+        query = "0x" + (query >>> 0).toString(16).toUpperCase().padStart(8, "0");
+      } catch (error) {
+        return null;
+      }
+    }
 
     const tunables = props.tunables;
     if (tunables === undefined) return null;
@@ -848,8 +853,8 @@ const rdoEvent = computed(() => getRdoEvent());
                         <span class="badge badge-primary ml-2">
                           {{ Object.keys(ugcBonuses).length === 1 ? "1 list" : `${Object.keys(ugcBonuses).length} lists` }}
                         </span>
-                      </div></template
-                    >
+                      </div>
+                    </template>
                     <template #default>
                       <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
                         <template v-for="(list, index) in ugcBonuses" :key="index">

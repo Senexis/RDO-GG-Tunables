@@ -1,21 +1,21 @@
 [
   {
-    "key": -1237354304,
+    "key": "0xB63F78C0",
     "type": "vehicle_sales",
     "display": "APC"
   },
   {
-    "key": -841706086,
+    "key": "0xCDD4959A",
     "type": "vehicle_sales",
     "display": "BAGGER"
   },
   {
-    "key": 1101391290,
+    "key": "0x41A5E5BA",
     "type": "vehicle_sales",
     "display": "ISSI7"
   },
   {
-    "key": 2020894392,
+    "key": "0x787466B8",
     "type": "vehicle_sales",
     "display": "BRICKADE2"
   },
@@ -3280,12 +3280,12 @@
     "display": "ELEGY"
   },
   {
-    "key": 424298680,
+    "key": "0x194A48B8",
     "type": "vehicle_upgrade_sales",
     "display": "TECHNICAL3"
   },
   {
-    "key": 2123626407,
+    "key": "0x7E93F7A7",
     "type": "vehicle_upgrade_sales",
     "display": "INSURGENT3"
   },
@@ -3450,7 +3450,7 @@
     "display": "BRICKADE2"
   },
   {
-    "key": 1233397362,
+    "key": "0x49842672",
     "type": "weapon_sales",
     "display": "WEAPON_CERAMICPISTOL"
   },
@@ -4540,62 +4540,62 @@
     "display": "MP_PROP_OFFG3"
   },
   {
-    "key": 819519215,
+    "key": "0x30D8DEEF",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH1"
   },
   {
-    "key": 471352940,
+    "key": "0x1C18466C",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH2"
   },
   {
-    "key": 2023136086,
+    "key": "0x78969B56",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH3"
   },
   {
-    "key": 217858651,
+    "key": "0x0CFC425B",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH4"
   },
   {
-    "key": -1058611921,
+    "key": "0xC0E6DD2F",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH5"
   },
   {
-    "key": -1767762009,
+    "key": "0x96A217A7",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH6"
   },
   {
-    "key": -1390109608,
+    "key": "0xAD249C58",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH7"
   },
   {
-    "key": 2033735347,
+    "key": "0x793856B3",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH8"
   },
   {
-    "key": -1219608517,
+    "key": "0xB74E403B",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH9"
   },
   {
-    "key": 1669688233,
+    "key": "0x63856BA9",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH10"
   },
   {
-    "key": 1241258301,
+    "key": "0x49FC193D",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH11"
   },
   {
-    "key": 813618473,
+    "key": "0x307ED529",
     "type": "biker_clubhouse_sales",
     "display": "MP_PROP_CLUBH12"
   },
@@ -4665,32 +4665,32 @@
     "display": "FCCLUB_GARG_3"
   },
   {
-    "key": -811916052,
+    "key": "0xCF9B24EC",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_SEC_1"
   },
   {
-    "key": -1137462330,
+    "key": "0xBC33B3C6",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_EQU_1"
   },
   {
-    "key": 785197557,
+    "key": "0x2ECD29F5",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_STA_1"
   },
   {
-    "key": -588085068,
+    "key": "0xDCF288B4",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_STA_2"
   },
   {
-    "key": -723963067,
+    "key": "0xD4D93345",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_STA_3"
   },
   {
-    "key": 2018353091,
+    "key": "0x784D9FC3",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_STA_4"
   },

@@ -16,7 +16,6 @@ Please note that each of the files are required to be in their original format, 
 - **labels.json:** Contains an object of item labels in GTA V (only the ones that are used).
 - **rc_time_trials.json:** Contains an ordered array of the names of all RC Bandito Time Trials in GTA V.
 - **time_trials.json:** Contains an ordered array of the names of all Time Trials in GTA V.
-- **tunable_defaults.json:** Contains an object of all tunables defaults in GTA V.
 - **tunable_types.json:** Contains an unordered array of the tunable types used for displaying sales and bonuses in GTA V.
 
 Before touching any of these files, take your time to familiarize yourself with the file itself. Please ensure that the JSON is valid and, again, uses to original format.

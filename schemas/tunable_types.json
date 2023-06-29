@@ -15,11 +15,10 @@
       "key": {
         "title": "Key of Tunable",
         "type": [
-          "integer",
           "string"
         ],
         "examples": [
-          2020894392,
+          "0xB63F78C0",
           "ADVANCED_RIFLE_MODIFIER",
           "APARTMENT_WEBSITE_BENEFACTOR_SCHAFTER_LWB"
         ]
