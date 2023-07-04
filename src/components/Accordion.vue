@@ -31,7 +31,11 @@ function toggleOpen() {
 
 <template>
   <div>
-    <button @click="toggleOpen" type="button" class="flex items-center justify-between text-sm px-3 py-2 w-full select-none hover:bg-slate-600">
+    <button
+      @click="toggleOpen"
+      type="button"
+      class="flex items-center justify-between text-sm px-3 py-2 w-full select-none hover:bg-slate-600"
+    >
       <slot name="title"></slot>
       <div class="px-2" v-tooltip="open ? 'Collapse' : 'Expand'">
         <PlusIcon v-if="!open" class="inline-block w-4 h-4" />

@@ -5,10 +5,10 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import App from "./App.vue";
 import * as Sentry from "@sentry/vue";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
-import FloatingVue from 'floating-vue'
+import FloatingVue from "floating-vue";
 
 FloatingVue.options.distance = 10;
-import 'floating-vue/dist/style.css';
+import "floating-vue/dist/style.css";
 
 import "jsondiffpatch/dist/formatters-styles/html.css";
 import "./assets/main.css";

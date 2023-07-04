@@ -420,7 +420,7 @@ const eventWeeklyChanged = computed(() => {
   try {
     const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
     const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
-    
+
     if (!latest || !previous) {
       return false;
     }
@@ -437,7 +437,7 @@ const eventWeeklyTooltip = computed(() => {
   try {
     const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
     const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
-    
+
     if (!latest || !previous) {
       return "";
     }
