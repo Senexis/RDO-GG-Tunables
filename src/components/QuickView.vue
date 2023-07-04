@@ -594,7 +594,7 @@ function getSalesTitle(title) {
 function getUgcBonuses() {
   try {
     const ugc = props.ugc;
-    if (ugc === undefined) return null;
+    if (!ugc) return null;
 
     const results = {};
 
@@ -632,7 +632,6 @@ function getUgcBonuses() {
     return orderObject(results, true);
   } catch (error) {
     Sentry.captureException(error);
-    console.log(error);
     emit("error", "An unknown error occurred. (BD154CB6)");
   }
 }
@@ -786,6 +785,7 @@ const rdoEvent = computed(() => getRdoEvent());
           <button
             @click="handleHideQuickView"
             type="button"
+            v-tooltip="'Hide Quick View'"
             class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
           >
             <span class="sr-only">Hide Quick View</span>

@@ -31,13 +31,13 @@ function toggleOpen() {
 
 <template>
   <div>
-    <div @click="toggleOpen" class="flex items-center justify-between text-sm px-3 py-2 select-none cursor-pointer hover:bg-slate-600">
+    <button @click="toggleOpen" type="button" class="flex items-center justify-between text-sm px-3 py-2 w-full select-none hover:bg-slate-600">
       <slot name="title"></slot>
-      <div class="px-2">
+      <div class="px-2" v-tooltip="open ? 'Collapse' : 'Expand'">
         <PlusIcon v-if="!open" class="inline-block w-4 h-4" />
         <MinusIcon v-else class="inline-block w-4 h-4" />
       </div>
-    </div>
+    </button>
     <div v-show="open" class="bg-slate-900 px-3 py-4">
       <slot></slot>
     </div>

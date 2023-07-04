@@ -4,8 +4,11 @@ import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import App from "./App.vue";
 import * as Sentry from "@sentry/vue";
-import { BrowserTracing } from "@sentry/tracing";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
+import FloatingVue from 'floating-vue'
+
+FloatingVue.options.distance = 10;
+import 'floating-vue/dist/style.css';
 
 import "jsondiffpatch/dist/formatters-styles/html.css";
 import "./assets/main.css";
@@ -35,7 +38,7 @@ const fpPromise = FingerprintJS.load({ monitoring: false });
   Sentry.init({
     app,
     dsn: SENTRY_DSN,
-    integrations: [new BrowserTracing({ tracePropagationTargets: ["localhost", "tunables.rdo.gg", /^\//] }), new Sentry.Replay()],
+    integrations: [new Sentry.BrowserTracing({ tracePropagationTargets: ["localhost", "tunables.rdo.gg", /^\//] }), new Sentry.Replay()],
     release: APP_COMMIT_LONG,
     replaysOnErrorSampleRate: 1.0,
     replaysSessionSampleRate: 0.1,
@@ -45,5 +48,6 @@ const fpPromise = FingerprintJS.load({ monitoring: false });
   });
 
   app.use(pinia);
+  app.use(FloatingVue);
   app.mount("#app");
 })();

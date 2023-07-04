@@ -41,8 +41,9 @@ const navigation = [
         <div class="-mr-2 sm:mr-0 flex">
           <button
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
             @click="emit('download')"
+            v-tooltip="'Download tunables'"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
           >
             <span class="sr-only">Download tunables</span>
             <ArrowDownTrayIcon class="h-6 w-6" aria-hidden="true" />
@@ -50,8 +51,9 @@ const navigation = [
 
           <button
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
             @click="emit('configure')"
+            v-tooltip="'Open settings'"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
           >
             <span class="sr-only">Open settings</span>
             <Cog6ToothIcon class="h-6 w-6" aria-hidden="true" />
@@ -59,6 +61,7 @@ const navigation = [
 
           <!-- Mobile menu button -->
           <DisclosureButton
+            v-tooltip="'Open main menu'"
             class="inline-flex sm:hidden items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
           >
             <span class="sr-only">Open main menu</span>

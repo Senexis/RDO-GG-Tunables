@@ -416,6 +416,44 @@ const footerUpdated = computed(() => {
   }
 });
 
+const eventWeeklyChanged = computed(() => {
+  try {
+    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+    
+    if (!latest || !previous) {
+      return false;
+    }
+
+    return latest !== previous;
+  } catch (error) {
+    Sentry.captureException(error);
+    showErrorModal("An unknown error occurred. (E115265B)");
+    return false;
+  }
+});
+
+const eventWeeklyTooltip = computed(() => {
+  try {
+    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+    
+    if (!latest || !previous) {
+      return "";
+    }
+
+    if (latest === previous) {
+      return "";
+    }
+
+    return `The weekly event has changed from "${previous}" to "${latest}".`;
+  } catch (error) {
+    Sentry.captureException(error);
+    showErrorModal("An unknown error occurred. (527C8608)");
+    return "";
+  }
+});
+
 /**
  * The page title.
  *
@@ -832,6 +870,12 @@ function showErrorModal(body) {
       <template #header>
         <CardHeader class="flex flex-row items-center justify-between">
           <h1 class="truncate">
+            <template v-if="eventWeeklyChanged">
+              <span v-tooltip="eventWeeklyTooltip" class="badge-outline badge mr-2">
+                NEW
+                <span class="sr-only">{{ eventWeeklyTooltip }}</span>
+              </span>
+            </template>
             <span :class="getGameBadgeBackground()" class="badge mr-2">{{ getGameBadgeLabel() }}</span>
             <span :class="getPlatformBadgeBackground()" class="badge mr-2">{{ getPlatformBadgeLabel() }}</span>
             <span>{{ title }}</span>
@@ -841,6 +885,7 @@ function showErrorModal(body) {
               @click="handlePreviousClick"
               :disabled="previousDisabled"
               type="button"
+              v-tooltip="'Previous tunables'"
               class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
             >
               <span class="sr-only">Previous tunables</span>
@@ -850,6 +895,7 @@ function showErrorModal(body) {
               @click="handleNextClick"
               :disabled="nextDisabled"
               type="button"
+              v-tooltip="'Next tunables'"
               class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
             >
               <span class="sr-only">Next tunables</span>
@@ -859,6 +905,7 @@ function showErrorModal(body) {
               @click="handleLatestClick"
               :disabled="latestDisabled"
               type="button"
+              v-tooltip="'Latest tunables'"
               class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
             >
               <span class="sr-only">Latest tunables</span>

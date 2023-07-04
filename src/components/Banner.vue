@@ -61,6 +61,7 @@ function dismiss() {
             <button
               type="button"
               class="-mr-1 flex rounded-md p-2 hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-white"
+              v-tooltip="'Dismiss'"
               @click="dismiss"
             >
               <span class="sr-only">Dismiss</span>
