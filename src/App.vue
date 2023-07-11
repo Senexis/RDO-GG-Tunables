@@ -844,11 +844,14 @@ function formatJson(json, parentKey = null) {
   try {
     for (const key in json) {
       if (parentKey === 'tunables' && typeof json[key] !== 'object') {
-        if (!json[0]) {
-          json[0] = {};
+        const unknownKey = '(UNKNOWN)';
+        if (!json[unknownKey]) {
+          json[unknownKey] = {};
         }
 
-        json[0][key] = json[key];
+        const formattedKey = `0x${key.padStart(8, '0')}`;
+        json[unknownKey][formattedKey] = json[key];
+
         delete json[key];
       }
 
