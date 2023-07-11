@@ -1014,10 +1014,10 @@ function showErrorModal(body) {
   </Banner>
 
   <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
-    Newly added: the Quick View panel! See some popular items at a glance. Feel free to hide it using the
+    Newly added: the Quick View panel! See some popular items at a glance. Feel free to collapse it using the
     <EyeSlashIcon class="inline w-5 h-5" /> button.<br />
     <span class="text-sm text-slate-300">
-      Tip: Change your mind? You can always re-enable the Quick View panel in the settings menu (<Cog6ToothIcon class="inline w-5 h-5" />).
+      Tip: Change your mind? You can always expand the Quick View panel by clicking the button again.
     </span>
   </Banner>
 
