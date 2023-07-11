@@ -1,7 +1,7 @@
 <script setup>
-import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from "@headlessui/vue";
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 
 const props = defineProps({
   open: {

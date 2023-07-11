@@ -1,7 +1,7 @@
 <script setup>
-import BaseModal from "./BaseModal.vue";
+import BaseModal from './BaseModal.vue';
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 
 const props = defineProps({
   open: {

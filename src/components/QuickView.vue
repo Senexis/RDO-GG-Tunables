@@ -1,17 +1,17 @@
 <script setup>
-import * as Sentry from "@sentry/vue";
-import { ArrowPathIcon, EyeSlashIcon, ExclamationTriangleIcon } from "@heroicons/vue/24/outline";
+import * as Sentry from '@sentry/vue';
+import { ArrowPathIcon, EyeIcon, EyeSlashIcon, ExclamationTriangleIcon } from '@heroicons/vue/24/outline';
 
-import Accordion from "./Accordion.vue";
-import Card from "./Cards/Card.vue";
-import CardHeader from "./Cards/CardHeader.vue";
-import CardFooter from "./Cards/CardFooter.vue";
+import Accordion from './Accordion.vue';
+import Card from './Cards/Card.vue';
+import CardHeader from './Cards/CardHeader.vue';
+import CardFooter from './Cards/CardFooter.vue';
 
-import { useStore } from "../stores/settings.js";
-import { computed, onMounted, ref } from "vue";
-import { orderObject } from "../utilities/general";
+import { useStore } from '../stores/settings.js';
+import { computed, onMounted, ref } from 'vue';
+import { orderObject } from '../utilities/general';
 
-const emit = defineEmits(["error"]);
+const emit = defineEmits(['error']);
 
 const props = defineProps({
   loading: {
@@ -51,7 +51,7 @@ onMounted(() => {
     handleQuickViewInit();
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (6D1FCF8B)");
+    emit('error', 'An unknown error occurred. (6D1FCF8B)');
   }
 });
 
@@ -62,13 +62,13 @@ async function handleQuickViewInit() {
   try {
     data.value.loading = true;
 
-    const tunableDefaults = await request("https://api.rdo.gg/tunables/gta/defaults.json");
-    const dailyObjectives = await request("/data/daily_objectives.json");
-    const hswTimeTrials = await request("/data/hsw_time_trials.json");
-    const labels = await request("/data/labels.json");
-    const rcTimeTrials = await request("/data/rc_time_trials.json");
-    const timeTrials = await request("/data/time_trials.json");
-    const tunableTypes = await request("/data/tunable_types.json");
+    const tunableDefaults = await request('https://api.rdo.gg/tunables/gta/defaults.json');
+    const dailyObjectives = await request('/data/daily_objectives.json');
+    const hswTimeTrials = await request('/data/hsw_time_trials.json');
+    const labels = await request('/data/labels.json');
+    const rcTimeTrials = await request('/data/rc_time_trials.json');
+    const timeTrials = await request('/data/time_trials.json');
+    const tunableTypes = await request('/data/tunable_types.json');
 
     data.value = {
       loading: false,
@@ -82,7 +82,7 @@ async function handleQuickViewInit() {
     };
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (9A5D1051)");
+    emit('error', 'An unknown error occurred. (9A5D1051)');
   }
 }
 
@@ -98,21 +98,21 @@ async function request(url) {
     return await response.json();
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (1B69EB10)");
+    emit('error', 'An unknown error occurred. (1B69EB10)');
   }
 }
 
 /**
- * Handles the hide quick view event.
+ * Handles the toggle quick view event.
  *
  * @returns {void}
  */
-function handleHideQuickView() {
+function handleToggleQuickView() {
   try {
-    settings.quickView = false;
+    settings.quickView = !settings.quickView;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (892CDFE2)");
+    emit('error', 'An unknown error occurred. (03BF280C)');
   }
 }
 
@@ -147,7 +147,7 @@ function getTunable(key, context = null) {
     }
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (8A01F8A0)");
+    emit('error', 'An unknown error occurred. (8A01F8A0)');
   }
 }
 
@@ -163,7 +163,7 @@ function getLabel(value) {
     return data.value.labels[value] ?? value;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (BD8056FF)");
+    emit('error', 'An unknown error occurred. (BD8056FF)');
   }
 }
 
@@ -174,9 +174,9 @@ function getLabel(value) {
  */
 function findTunable(query) {
   try {
-    if (typeof query === "number") {
+    if (typeof query === 'number') {
       try {
-        query = "0x" + (query >>> 0).toString(16).toUpperCase().padStart(8, "0");
+        query = '0x' + (query >>> 0).toString(16).toUpperCase().padStart(8, '0');
       } catch (error) {
         return null;
       }
@@ -200,7 +200,7 @@ function findTunable(query) {
     return null;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (F89A8514)");
+    emit('error', 'An unknown error occurred. (F89A8514)');
   }
 }
 
@@ -211,7 +211,7 @@ function findTunable(query) {
  */
 function findContext(query) {
   try {
-    if (typeof query !== "string") return null;
+    if (typeof query !== 'string') return null;
 
     const tunables = props.tunables;
     if (tunables === undefined) return null;
@@ -228,7 +228,7 @@ function findContext(query) {
     return null;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (96580B11)");
+    emit('error', 'An unknown error occurred. (96580B11)');
   }
 }
 
@@ -244,7 +244,7 @@ function getTunableDefault(key) {
     return data.value.tunableDefaults[key] ?? null;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (8A01F8A0)");
+    emit('error', 'An unknown error occurred. (8A01F8A0)');
   }
 }
 
@@ -262,7 +262,7 @@ function getVehicleTunable(tunable) {
     return data.value.labels[value] ?? value;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (D24280B2)");
+    emit('error', 'An unknown error occurred. (D24280B2)');
   }
 }
 
@@ -280,7 +280,7 @@ function getDailyObjective(day) {
     return data.value.dailyObjectives[value] ?? value;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (144BBEE1)");
+    emit('error', 'An unknown error occurred. (144BBEE1)');
   }
 }
 
@@ -292,13 +292,13 @@ function getDailyObjective(day) {
  */
 function getRcTimeTrial() {
   try {
-    const value = getTunable("RCTIMETRIALVARIATION");
+    const value = getTunable('RCTIMETRIALVARIATION');
     if (value === null || value === -1) return null;
     if (!data.value.rcTimeTrials) return value;
     return data.value.rcTimeTrials[value] ?? value;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (1013FD58)");
+    emit('error', 'An unknown error occurred. (1013FD58)');
   }
 }
 
@@ -310,13 +310,13 @@ function getRcTimeTrial() {
  */
 function getHswTimeTrial() {
   try {
-    const value = getTunable("HSW_TIME_TRIAL_SUBVARIATION");
+    const value = getTunable('HSW_TIME_TRIAL_SUBVARIATION');
     if (value === null || value === -1) return null;
     if (!data.value.hswTimeTrials) return value;
     return data.value.hswTimeTrials[value] ?? value;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (9BE71C1E)");
+    emit('error', 'An unknown error occurred. (9BE71C1E)');
   }
 }
 
@@ -328,13 +328,13 @@ function getHswTimeTrial() {
  */
 function getTimeTrial() {
   try {
-    const value = getTunable("TIMETRIALVARIATION");
+    const value = getTunable('TIMETRIALVARIATION');
     if (value === null || value === -1) return null;
     if (!data.value.timeTrials) return value;
     return data.value.timeTrials[value] ?? value;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (BF45361D)");
+    emit('error', 'An unknown error occurred. (BF45361D)');
   }
 }
 
@@ -345,9 +345,9 @@ function getTimeTrial() {
  */
 function getCarMeetPrizeObjective() {
   try {
-    const id = getTunable("CAR_MEET_PRIZE_VEHICLE_CHALLENGE_ID");
-    const paramOne = getTunable("CAR_MEET_PRIZE_VEHICLE_CHALLENGE_PARAM_ONE");
-    const paramTwo = getTunable("CAR_MEET_PRIZE_VEHICLE_CHALLENGE_PARAM_TWO");
+    const id = getTunable('CAR_MEET_PRIZE_VEHICLE_CHALLENGE_ID');
+    const paramOne = getTunable('CAR_MEET_PRIZE_VEHICLE_CHALLENGE_PARAM_ONE');
+    const paramTwo = getTunable('CAR_MEET_PRIZE_VEHICLE_CHALLENGE_PARAM_TWO');
 
     if (id === null || paramOne === null || paramTwo === null) {
       return null;
@@ -411,7 +411,7 @@ function getCarMeetPrizeObjective() {
     }
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (E9F80C5D)");
+    emit('error', 'An unknown error occurred. (E9F80C5D)');
   }
 }
 
@@ -424,95 +424,95 @@ function getGunVan() {
   try {
     const result = {
       weapons: [
-        { item: "WEAPON_BAT", discount: null, discount_plus: null },
-        { item: "WEAPON_KNIFE", discount: null, discount_plus: null },
-        { item: "WEAPON_RAILGUNXM3", discount: null, discount_plus: null },
-        { item: "WEAPON_MICROSMG", discount: null, discount_plus: null },
-        { item: "WEAPON_PUMPSHOTGUN", discount: null, discount_plus: null },
+        { item: 'WEAPON_BAT', discount: null, discount_plus: null },
+        { item: 'WEAPON_KNIFE', discount: null, discount_plus: null },
+        { item: 'WEAPON_RAILGUNXM3', discount: null, discount_plus: null },
+        { item: 'WEAPON_MICROSMG', discount: null, discount_plus: null },
+        { item: 'WEAPON_PUMPSHOTGUN', discount: null, discount_plus: null },
       ],
-      throwables: [{ item: "WEAPON_STICKYBOMB", discount: null, discount_plus: null }],
+      throwables: [{ item: 'WEAPON_STICKYBOMB', discount: null, discount_plus: null }],
       body_armor: [
-        { item: "WT_BA_0", discount: null, discount_plus: null },
-        { item: "WT_BA_1", discount: null, discount_plus: null },
-        { item: "WT_BA_2", discount: null, discount_plus: null },
-        { item: "WT_BA_3", discount: null, discount_plus: null },
-        { item: "WT_BA_4", discount: null, discount_plus: null },
+        { item: 'WT_BA_0', discount: null, discount_plus: null },
+        { item: 'WT_BA_1', discount: null, discount_plus: null },
+        { item: 'WT_BA_2', discount: null, discount_plus: null },
+        { item: 'WT_BA_3', discount: null, discount_plus: null },
+        { item: 'WT_BA_4', discount: null, discount_plus: null },
       ],
     };
 
     for (let i = 0; i < 10; i++) {
       const item = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_TYPE_${i}`);
       if (item) {
-        result["weapons"][i] = {
+        result['weapons'][i] = {
           item: item,
           discount: null,
           discount_plus: null,
         };
       }
 
-      if (!result["weapons"][i]) continue;
+      if (!result['weapons'][i]) continue;
 
-      const discount = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_DISCOUNT_${i}`, "BASE_GLOBALS");
+      const discount = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_DISCOUNT_${i}`, 'BASE_GLOBALS');
       if (discount) {
-        result["weapons"][i].discount = discount;
+        result['weapons'][i].discount = discount;
       }
 
-      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_DISCOUNT_${i}`, "MP_FM_MEMBERSHIP");
+      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_WEAPON_DISCOUNT_${i}`, 'MP_FM_MEMBERSHIP');
       if (discount_plus) {
-        result["weapons"][i].discount_plus = discount_plus;
+        result['weapons'][i].discount_plus = discount_plus;
       }
     }
 
     for (let i = 0; i < 3; i++) {
       const item = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_TYPE_${i}`);
       if (item) {
-        result["throwables"][i] = {
+        result['throwables'][i] = {
           item: item,
           discount: null,
           discount_plus: null,
         };
       }
 
-      if (!result["throwables"][i]) continue;
+      if (!result['throwables'][i]) continue;
 
-      const discount = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_DISCOUNT_${i}`, "BASE_GLOBALS");
+      const discount = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_DISCOUNT_${i}`, 'BASE_GLOBALS');
       if (discount) {
-        result["throwables"][i].discount = discount;
+        result['throwables'][i].discount = discount;
       }
 
-      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_DISCOUNT_${i}`, "MP_FM_MEMBERSHIP");
+      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_THROWABLE_DISCOUNT_${i}`, 'MP_FM_MEMBERSHIP');
       if (discount_plus) {
-        result["throwables"][i].discount_plus = discount_plus;
+        result['throwables'][i].discount_plus = discount_plus;
       }
     }
 
     for (let i = 0; i < 5; i++) {
       const item = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_TYPE_${i}`);
       if (item) {
-        result["body_armor"][i] = {
+        result['body_armor'][i] = {
           item: item,
           discount: null,
           discount_plus: null,
         };
       }
 
-      if (!result["body_armor"][i]) continue;
+      if (!result['body_armor'][i]) continue;
 
-      const discount = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_${i}`, "BASE_GLOBALS");
+      const discount = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_${i}`, 'BASE_GLOBALS');
       if (discount) {
-        result["body_armor"][i].discount = discount;
+        result['body_armor'][i].discount = discount;
       }
 
-      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_${i}`, "MP_FM_MEMBERSHIP");
+      const discount_plus = getTunable(`XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_${i}`, 'MP_FM_MEMBERSHIP');
       if (discount_plus) {
-        result["body_armor"][i].discount_plus = discount_plus;
+        result['body_armor'][i].discount_plus = discount_plus;
       }
     }
 
     return result;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (C0350559)");
+    emit('error', 'An unknown error occurred. (C0350559)');
   }
 }
 
@@ -528,7 +528,7 @@ function getSales() {
       const tunable = findTunable(tunableType.key);
       if (!tunable) continue;
 
-      const salesTitle = tunable.context === "MP_FM_MEMBERSHIP" ? `${tunableType.type}_plus` : tunableType.type;
+      const salesTitle = tunable.context === 'MP_FM_MEMBERSHIP' ? `${tunableType.type}_plus` : tunableType.type;
       const baseValue = getTunableDefault(tunableType.key);
 
       results[salesTitle] = results[salesTitle] || {};
@@ -545,7 +545,7 @@ function getSales() {
     return orderObject(results, true);
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (31D92717)");
+    emit('error', 'An unknown error occurred. (31D92717)');
   }
 }
 
@@ -556,33 +556,33 @@ function getSales() {
  */
 function getSalesTitle(title) {
   try {
-    switch (title.replace(/_plus$/g, "")) {
-      case "biker_business_sales":
-        return "Biker Business Sales";
-      case "biker_clubhouse_sales":
-        return "Biker Clubhouse Sales";
-      case "bunker_sales":
-        return "Bunker Sales";
-      case "nightclub_property_sales":
-        return "Nightclub Property Sales";
-      case "nightclub_upgrade_sales":
-        return "Nightclub Upgrade Sales";
-      case "office_sales":
-        return "Office Sales";
-      case "property_sales":
-        return "Property Sales";
-      case "vehicle_sales":
-        return "Vehicle Sales";
-      case "vehicle_upgrade_sales":
-        return "Vehicle Upgrade Sales";
-      case "weapon_sales":
-        return "Weapon Sales";
+    switch (title.replace(/_plus$/g, '')) {
+      case 'biker_business_sales':
+        return 'Biker Business Sales';
+      case 'biker_clubhouse_sales':
+        return 'Biker Clubhouse Sales';
+      case 'bunker_sales':
+        return 'Bunker Sales';
+      case 'nightclub_property_sales':
+        return 'Nightclub Property Sales';
+      case 'nightclub_upgrade_sales':
+        return 'Nightclub Upgrade Sales';
+      case 'office_sales':
+        return 'Office Sales';
+      case 'property_sales':
+        return 'Property Sales';
+      case 'vehicle_sales':
+        return 'Vehicle Sales';
+      case 'vehicle_upgrade_sales':
+        return 'Vehicle Upgrade Sales';
+      case 'weapon_sales':
+        return 'Weapon Sales';
       default:
-        return "Miscellaneous";
+        return 'Miscellaneous';
     }
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (04CAE23B)");
+    emit('error', 'An unknown error occurred. (04CAE23B)');
   }
 }
 
@@ -632,7 +632,7 @@ function getUgcBonuses() {
     return orderObject(results, true);
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (BD154CB6)");
+    emit('error', 'An unknown error occurred. (BD154CB6)');
   }
 }
 
@@ -643,12 +643,12 @@ function getUgcBonuses() {
  */
 function getUgcModifierBadge(modifier) {
   try {
-    if (modifier.type === "CASH_MULTIPLIER") return "badge-cash";
-    if (modifier.type === "XP_MULTIPLIER") return "badge-rp";
-    return "badge-primary";
+    if (modifier.type === 'CASH_MULTIPLIER') return 'badge-cash';
+    if (modifier.type === 'XP_MULTIPLIER') return 'badge-rp';
+    return 'badge-primary';
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (8B6B6A03)");
+    emit('error', 'An unknown error occurred. (8B6B6A03)');
   }
 }
 
@@ -660,12 +660,12 @@ function getUgcModifierBadge(modifier) {
 function getUgcModifierLabel(modifier) {
   try {
     const type = getLabel(modifier.type);
-    const suffix = modifier.plus ? "+" : "";
+    const suffix = modifier.plus ? '+' : '';
     const value = modifier.value;
     return `${type}${suffix}: ${value}`;
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (B272F048)");
+    emit('error', 'An unknown error occurred. (B272F048)');
   }
 }
 
@@ -676,9 +676,9 @@ function getUgcModifierLabel(modifier) {
  */
 function formatCashSale(discounts) {
   try {
-    const fc = Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    const fc = Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format;
@@ -686,11 +686,11 @@ function formatCashSale(discounts) {
     return discounts
       .sort((a, b) => a[0] - b[0])
       .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
-      .map((i) => `${fc(i[0])} ${i[1] ? `(${i[1]}%)` : ""}`.trim())
-      .join(" - ");
+      .map((i) => `${fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim())
+      .join(' - ');
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (C37D9727)");
+    emit('error', 'An unknown error occurred. (C37D9727)');
   }
 }
 
@@ -701,26 +701,26 @@ function formatCashSale(discounts) {
  */
 function getRdoEvent() {
   try {
-    const event = getTunable("BGS_SpecialEvent");
+    const event = getTunable('BGS_SpecialEvent');
     if (!event) return null;
 
-    const name = event === 1788394582 ? "Christmas" : event === -921030142 ? "Halloween" : "Unknown";
+    const name = event === 1788394582 ? 'Christmas' : event === -921030142 ? 'Halloween' : 'Unknown';
     const features = [];
 
-    const bitset = getTunable("BGS_SpecialEventBitset");
+    const bitset = getTunable('BGS_SpecialEventBitset');
     if (bitset) {
-      if ((bitset & (1 << 0)) !== 0) features.push("Christmas Decorations");
-      if ((bitset & (1 << 1)) !== 0) features.push("Snow");
+      if ((bitset & (1 << 0)) !== 0) features.push('Christmas Decorations');
+      if ((bitset & (1 << 1)) !== 0) features.push('Snow');
       // Unknown: (1 << 2)
-      if ((bitset & (1 << 3)) !== 0) features.push("Christmas Wraith");
+      if ((bitset & (1 << 3)) !== 0) features.push('Christmas Wraith');
       // Unknown: (1 << 4)
-      if ((bitset & (1 << 5)) !== 0) features.push("Heavy Snow");
-      if ((bitset & (1 << 6)) !== 0) features.push("Christmas Lights");
-      if ((bitset & (1 << 7)) !== 0) features.push("Seasonal Cripps Greetings");
-      if ((bitset & (1 << 8)) !== 0) features.push("Christmas Music");
-      if ((bitset & (1 << 9)) !== 0) features.push("Seasonal Harriet Greetings");
-      if ((bitset & (1 << 10)) !== 0) features.push("Christmas Present");
-      if ((bitset & (1 << 11)) !== 0) features.push("Seasonal Call to Arms Modes");
+      if ((bitset & (1 << 5)) !== 0) features.push('Heavy Snow');
+      if ((bitset & (1 << 6)) !== 0) features.push('Christmas Lights');
+      if ((bitset & (1 << 7)) !== 0) features.push('Seasonal Cripps Greetings');
+      if ((bitset & (1 << 8)) !== 0) features.push('Christmas Music');
+      if ((bitset & (1 << 9)) !== 0) features.push('Seasonal Harriet Greetings');
+      if ((bitset & (1 << 10)) !== 0) features.push('Christmas Present');
+      if ((bitset & (1 << 11)) !== 0) features.push('Seasonal Call to Arms Modes');
     }
 
     return {
@@ -729,42 +729,42 @@ function getRdoEvent() {
     };
   } catch (error) {
     Sentry.captureException(error);
-    emit("error", "An unknown error occurred. (0E8A5C03)");
+    emit('error', 'An unknown error occurred. (0E8A5C03)');
   }
 }
 
 // GTA
 const carMeetPrizeObjective = computed(() => getCarMeetPrizeObjective());
-const carMeetPrizeVehicle = computed(() => getVehicleTunable("CAR_MEET_PRIZE_VEHICLE"));
-const promoTestDriveVehicle1 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_1"));
-const promoTestDriveVehicle2 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_2"));
-const promoTestDriveVehicle3 = computed(() => getVehicleTunable("PROMO_TEST_DRIVE_VEHICLE_3"));
-const hswTestRide = computed(() => getVehicleTunable("HSW_TEST_RIDE"));
-const casinoPrizeVehicle = computed(() => getVehicleTunable("CASINO_PRIZE_VEHICLE"));
-const luxuryShowcaseVehicle1 = computed(() => getVehicleTunable("LUXURY_SHOWCASE_VEHICLE_1"));
-const luxuryShowcaseVehicle2 = computed(() => getVehicleTunable("LUXURY_SHOWCASE_VEHICLE_2"));
-const simeonTestDriveVehicle1 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_1"));
-const simeonTestDriveVehicle2 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_2"));
-const simeonTestDriveVehicle3 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_3"));
-const simeonTestDriveVehicle4 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_4"));
-const simeonTestDriveVehicle5 = computed(() => getVehicleTunable("SIMEON_TEST_DRIVE_VEHICLE_5"));
-const socialClubGaragePrizeVehicle = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE"));
-const socialClubGarageVehicle1 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_1"));
-const socialClubGarageVehicle2 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_2"));
-const socialClubGarageVehicle3 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_3"));
-const socialClubGarageVehicle4 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_4"));
-const socialClubGarageVehicle5 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_5"));
-const socialClubGarageVehicle6 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_6"));
-const socialClubGarageVehicle7 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_7"));
-const socialClubGarageVehicle8 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_8"));
-const socialClubGarageVehicle9 = computed(() => getVehicleTunable("SOCIAL_CLUB_GARAGE_VEHICLE_9"));
-const dailyObjectiveMon = computed(() => getDailyObjective("SAT"));
-const dailyObjectiveTue = computed(() => getDailyObjective("SUN"));
-const dailyObjectiveWed = computed(() => getDailyObjective("MON"));
-const dailyObjectiveThu = computed(() => getDailyObjective("TUE"));
-const dailyObjectiveFri = computed(() => getDailyObjective("WED"));
-const dailyObjectiveSat = computed(() => getDailyObjective("THU"));
-const dailyObjectiveSun = computed(() => getDailyObjective("FRI"));
+const carMeetPrizeVehicle = computed(() => getVehicleTunable('CAR_MEET_PRIZE_VEHICLE'));
+const promoTestDriveVehicle1 = computed(() => getVehicleTunable('PROMO_TEST_DRIVE_VEHICLE_1'));
+const promoTestDriveVehicle2 = computed(() => getVehicleTunable('PROMO_TEST_DRIVE_VEHICLE_2'));
+const promoTestDriveVehicle3 = computed(() => getVehicleTunable('PROMO_TEST_DRIVE_VEHICLE_3'));
+const hswTestRide = computed(() => getVehicleTunable('HSW_TEST_RIDE'));
+const casinoPrizeVehicle = computed(() => getVehicleTunable('CASINO_PRIZE_VEHICLE'));
+const luxuryShowcaseVehicle1 = computed(() => getVehicleTunable('LUXURY_SHOWCASE_VEHICLE_1'));
+const luxuryShowcaseVehicle2 = computed(() => getVehicleTunable('LUXURY_SHOWCASE_VEHICLE_2'));
+const simeonTestDriveVehicle1 = computed(() => getVehicleTunable('SIMEON_TEST_DRIVE_VEHICLE_1'));
+const simeonTestDriveVehicle2 = computed(() => getVehicleTunable('SIMEON_TEST_DRIVE_VEHICLE_2'));
+const simeonTestDriveVehicle3 = computed(() => getVehicleTunable('SIMEON_TEST_DRIVE_VEHICLE_3'));
+const simeonTestDriveVehicle4 = computed(() => getVehicleTunable('SIMEON_TEST_DRIVE_VEHICLE_4'));
+const simeonTestDriveVehicle5 = computed(() => getVehicleTunable('SIMEON_TEST_DRIVE_VEHICLE_5'));
+const socialClubGaragePrizeVehicle = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE'));
+const socialClubGarageVehicle1 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_1'));
+const socialClubGarageVehicle2 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_2'));
+const socialClubGarageVehicle3 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_3'));
+const socialClubGarageVehicle4 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_4'));
+const socialClubGarageVehicle5 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_5'));
+const socialClubGarageVehicle6 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_6'));
+const socialClubGarageVehicle7 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_7'));
+const socialClubGarageVehicle8 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_8'));
+const socialClubGarageVehicle9 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_9'));
+const dailyObjectiveMon = computed(() => getDailyObjective('SAT'));
+const dailyObjectiveTue = computed(() => getDailyObjective('SUN'));
+const dailyObjectiveWed = computed(() => getDailyObjective('MON'));
+const dailyObjectiveThu = computed(() => getDailyObjective('TUE'));
+const dailyObjectiveFri = computed(() => getDailyObjective('WED'));
+const dailyObjectiveSat = computed(() => getDailyObjective('THU'));
+const dailyObjectiveSun = computed(() => getDailyObjective('FRI'));
 const timeTrial = computed(() => getTimeTrial());
 const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
@@ -777,24 +777,30 @@ const rdoEvent = computed(() => getRdoEvent());
 </script>
 
 <template>
-  <Card v-if="settings.quickView">
+  <Card>
     <template #header>
       <CardHeader class="flex flex-row items-center justify-between">
         <h1 class="truncate">Quick View</h1>
         <div class="whitespace-nowrap">
           <button
-            @click="handleHideQuickView"
+            @click="handleToggleQuickView"
             type="button"
-            v-tooltip="'Hide Quick View'"
+            v-tooltip="settings.quickView ? 'Collapse Quick View' : 'Expand Quick View'"
             class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
           >
-            <span class="sr-only">Hide Quick View</span>
-            <EyeSlashIcon class="h-4 w-4" aria-hidden="true" />
+            <template v-if="settings.quickView">
+              <span class="sr-only">Collapse Quick View</span>
+              <EyeSlashIcon class="h-4 w-4" aria-hidden="true" />
+            </template>
+            <template v-else>
+              <span class="sr-only">Expand Quick View</span>
+              <EyeIcon class="h-4 w-4" aria-hidden="true" />
+            </template>
           </button>
         </div>
       </CardHeader>
     </template>
-    <template #default>
+    <template #default v-if="settings.quickView">
       <template v-if="!loading && !data.loading && tunables">
         <!-- GTA -->
         <template v-if="(sales && Object.keys(sales).length) || (ugcBonuses && Object.keys(ugcBonuses).length)">
@@ -830,7 +836,7 @@ const rdoEvent = computed(() => getRdoEvent());
                           </template>
                         </div>
                         <span class="badge badge-primary ml-2">
-                          {{ Object.keys(category).length === 1 ? "1 item" : `${Object.keys(category).length} items` }}
+                          {{ Object.keys(category).length === 1 ? '1 item' : `${Object.keys(category).length} items` }}
                         </span>
                       </div>
                     </template>
@@ -851,7 +857,7 @@ const rdoEvent = computed(() => getRdoEvent());
                           <span class="truncate">Mission Bonuses</span>
                         </div>
                         <span class="badge badge-primary ml-2">
-                          {{ Object.keys(ugcBonuses).length === 1 ? "1 list" : `${Object.keys(ugcBonuses).length} lists` }}
+                          {{ Object.keys(ugcBonuses).length === 1 ? '1 list' : `${Object.keys(ugcBonuses).length} lists` }}
                         </span>
                       </div>
                     </template>
@@ -866,10 +872,10 @@ const rdoEvent = computed(() => getRdoEvent());
                                 </div>
                                 <div>
                                   <span class="badge badge-primary ml-2">
-                                    {{ list.ugc.length === 1 ? "1 mission" : `${list.ugc.length} missions` }}
+                                    {{ list.ugc.length === 1 ? '1 mission' : `${list.ugc.length} missions` }}
                                   </span>
                                   <span class="badge badge-primary ml-2">
-                                    {{ list.modifiers.length === 1 ? "1 modifier" : `${list.modifiers.length} modifiers` }}
+                                    {{ list.modifiers.length === 1 ? '1 modifier' : `${list.modifiers.length} modifiers` }}
                                   </span>
                                 </div>
                               </div>
@@ -1198,9 +1204,13 @@ const rdoEvent = computed(() => getRdoEvent());
         </div>
       </template>
     </template>
-    <template #footer>
+    <template #footer v-if="settings.quickView">
       <CardFooter>
-        <div class="truncate text-sm leading-tight">Let us know on Twitter if there's something you want added!</div>
+        <div class="truncate text-sm leading-tight">
+          Contact us on <a href="https://twitter.com/Tunables" target="_blank" rel="noopener noreferrer">Twitter</a> or
+          <a href="https://www.threads.net/@rockstar_tunables" target="_blank" rel="noopener noreferrer">Threads</a> if you have suggestions
+          for the Quick View!
+        </div>
       </CardFooter>
     </template>
   </Card>

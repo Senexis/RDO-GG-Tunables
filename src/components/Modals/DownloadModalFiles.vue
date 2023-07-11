@@ -1,6 +1,6 @@
 <script setup>
-import { DocumentTextIcon, DocumentMagnifyingGlassIcon } from "@heroicons/vue/24/outline";
-import { computed, ref } from "vue";
+import { DocumentTextIcon, DocumentMagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
   files: {

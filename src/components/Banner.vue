@@ -1,8 +1,8 @@
 <script setup>
-import { MegaphoneIcon, XMarkIcon } from "@heroicons/vue/24/outline";
-import { useStore } from "../stores/settings.js";
+import { MegaphoneIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { useStore } from '../stores/settings.js';
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 
 const props = defineProps({
   id: {
@@ -15,7 +15,7 @@ const props = defineProps({
   },
   buttonText: {
     type: String,
-    default: "Learn more",
+    default: 'Learn more',
   },
   buttonLink: String,
   buttonExternal: {
@@ -28,7 +28,7 @@ const settings = useStore();
 
 function dismiss() {
   settings.bannersDismissed = [...settings.bannersDismissed, props.id];
-  emit("close");
+  emit('close');
 }
 </script>
 

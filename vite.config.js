@@ -5,9 +5,16 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 
-const commitShort = execSync("git rev-parse --short HEAD").toString().trim();
-const commitLong = execSync("git rev-parse HEAD").toString().trim();
-const change = execSync("git log -1 --pretty=%B").toString().trim();
+const production = process.env.NODE_ENV === "production";
+
+const commitShort = production ? execSync("git rev-parse --short HEAD").toString().trim() : "dev";
+const commitLong = production ? execSync("git rev-parse HEAD").toString().trim() : "dev";
+const change = production ? execSync("git log -1 --pretty=%B").toString().trim() : "dev";
+
+const sentryOrganization = production ? process.env.SENTRY_ORGANIZATION : null;
+const sentryProject = production ? process.env.SENTRY_PROJECT : null;
+const sentryAuthToken = production ? process.env.SENTRY_AUTH_TOKEN : null;
+const sentryDsn = production ? process.env.SENTRY_DSN : null;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,11 +23,11 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    sentryVitePlugin({
-      org: process.env.SENTRY_ORGANIZATION,
-      project: process.env.SENTRY_PROJECT,
+    production && sentryVitePlugin({
+      org: sentryOrganization,
+      project: sentryProject,
       include: "./dist",
-      authToken: process.env.SENTRY_AUTH_TOKEN,
+      authToken: sentryAuthToken,
       release: commitLong,
     }),
   ],
@@ -28,7 +35,9 @@ export default defineConfig({
     APP_CHANGE: JSON.stringify(change),
     APP_COMMIT_LONG: JSON.stringify(commitLong),
     APP_COMMIT_SHORT: JSON.stringify(commitShort),
-    SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
+    APP_COPYRIGHT_YEAR: JSON.stringify(new Date().getFullYear()),
+    APP_UPDATED: JSON.stringify(new Date().toLocaleString('en-US')),
+    SENTRY_DSN: JSON.stringify(sentryDsn),
   },
   resolve: {
     alias: {

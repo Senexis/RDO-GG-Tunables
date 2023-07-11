@@ -1,7 +1,7 @@
 <script setup>
-import BaseModal from "./BaseModal.vue";
+import BaseModal from './BaseModal.vue';
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 
 const props = defineProps({
   open: {
@@ -10,15 +10,19 @@ const props = defineProps({
   },
   commitShort: {
     type: String,
-    default: "",
+    default: '',
   },
   commitLong: {
     type: String,
-    default: "",
+    default: '',
   },
   change: {
     type: String,
-    default: "",
+    default: '',
+  },
+  updated: {
+    type: String,
+    default: '',
   },
 });
 </script>
@@ -28,24 +32,25 @@ const props = defineProps({
     <div class="bg-slate-900 text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
       <div class="text-xs text-slate-50/60 bg-slate-800 px-4 py-3 rounded-lg shadow-sm">
-        <template v-if="props.commitShort">
-          <p>
-            <strong>App version: </strong>
+        <p class="break-words">
+          <template v-if="props.commitLong && props.commitShort">
             <a
               :href="`https://github.com/Senexis/RDO-GG-Tunables/commit/${props.commitLong}`"
               target="_blank"
               rel="noopener noreferrer"
-              :title="props.commitLong"
-              >{{ props.commitShort }}</a
+              v-tooltip="props.commitLong"
             >
-          </p>
-        </template>
-        <template v-if="props.change">
-          <p><strong>Latest change:</strong> {{ props.change }}</p>
-        </template>
+              [{{ props.commitShort }}]
+            </a>
+          </template>
+          <template v-if="props.change">
+            {{ props.change }}
+          </template>
+          <template v-if="props.updated"> ({{ props.updated }}) </template>
+        </p>
         <p class="mt-2">
-          <a href="https://github.com/Senexis/RDO-GG-Tunables/commits/main" target="_blank" rel="noopener noreferrer">Click here</a> for the
-          full version history.
+          <a href="https://github.com/Senexis/RDO-GG-Tunables/commits/main" target="_blank" rel="noopener noreferrer">Click here</a>
+          for the full version history.
         </p>
       </div>
     </div>

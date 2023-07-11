@@ -1,7 +1,7 @@
 <script setup>
-import * as Sentry from "@sentry/vue";
-import { create, formatters } from "jsondiffpatch/dist/jsondiffpatch.umd.slim.js";
-import { computed, onMounted, ref, watch } from "vue";
+import * as Sentry from '@sentry/vue';
+import { create, formatters } from 'jsondiffpatch/dist/jsondiffpatch.umd.slim.js';
+import { computed, onMounted, ref, watch } from 'vue';
 
 import {
   ArrowPathIcon,
@@ -11,22 +11,23 @@ import {
   Cog6ToothIcon,
   EyeSlashIcon,
   NoSymbolIcon,
-} from "@heroicons/vue/24/outline";
+} from '@heroicons/vue/24/outline';
+import { HeartIcon } from '@heroicons/vue/24/solid';
 
-import { useStore } from "./stores/settings.js";
+import { useStore } from './stores/settings.js';
 
-import AttributionModal from "./components/Modals/AttributionModal.vue";
-import Banner from "./components/Banner.vue";
-import Card from "./components/Cards/Card.vue";
-import CardFooter from "./components/Cards/CardFooter.vue";
-import CardHeader from "./components/Cards/CardHeader.vue";
-import DownloadModal from "./components/Modals/DownloadModal.vue";
-import ErrorModal from "./components/Modals/ErrorModal.vue";
-import NavBar from "./components/NavBar.vue";
-import QuickView from "./components/QuickView.vue";
-import SettingsModal from "./components/Modals/SettingsModal.vue";
-import SettingsModalSelect from "./components/Modals/SettingsModalSelect.vue";
-import SettingsModalToggle from "./components/Modals/SettingsModalToggle.vue";
+import AttributionModal from './components/Modals/AttributionModal.vue';
+import Banner from './components/Banner.vue';
+import Card from './components/Cards/Card.vue';
+import CardFooter from './components/Cards/CardFooter.vue';
+import CardHeader from './components/Cards/CardHeader.vue';
+import DownloadModal from './components/Modals/DownloadModal.vue';
+import ErrorModal from './components/Modals/ErrorModal.vue';
+import NavBar from './components/NavBar.vue';
+import QuickView from './components/QuickView.vue';
+import SettingsModal from './components/Modals/SettingsModal.vue';
+import SettingsModalSelect from './components/Modals/SettingsModalSelect.vue';
+import SettingsModalToggle from './components/Modals/SettingsModalToggle.vue';
 
 const settings = useStore();
 const url = new URL(window.location);
@@ -40,33 +41,39 @@ const appCommitShort = APP_COMMIT_SHORT;
 // eslint-disable-next-line no-undef
 const appCommitLong = APP_COMMIT_LONG;
 
+// eslint-disable-next-line no-undef
+const appCopyrightYear = APP_COPYRIGHT_YEAR;
+
+// eslint-disable-next-line no-undef
+const appUpdated = APP_UPDATED;
+
 /**
  * Contains the selected game.
  *
  * @type {import("vue").Ref<"gta" | "rdo">}
  */
-const game = ref(url.searchParams.get("game") || "gta");
+const game = ref(url.searchParams.get('game') || 'gta');
 
 /**
  * Contains the selected platform.
  *
  * @type {import("vue").Ref<"pcros" | "ps4" | "ps5" | "xboxone" | "xboxsx">}
  */
-const platform = ref(url.searchParams.get("platform") || "pcros");
+const platform = ref(url.searchParams.get('platform') || 'pcros');
 
 /**
  * Contains the selected previous tunables hash.
  *
  * @type {import("vue").Ref<string | null>}
  */
-const previous = ref(url.searchParams.get("previous") || null);
+const previous = ref(url.searchParams.get('previous') || null);
 
 /**
  * Contains the selected latest tunables hash.
  *
  * @type {import("vue").Ref<string | null>}
  */
-const latest = ref(url.searchParams.get("latest") || null);
+const latest = ref(url.searchParams.get('latest') || null);
 
 /**
  * Contains the difference between the previous and latest tunables in HTML.
@@ -173,7 +180,7 @@ const latestUrl = computed(
  * @type {import("vue").ComputedRef<string | null>}
  */
 const activeBanner = computed(() => {
-  const banners = ["new-site", "new-quick-view", "open-source"];
+  const banners = ['new-site', 'new-quick-view', 'open-source'];
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
   return activeBanners.length > 0 ? activeBanners[0] : null;
 });
@@ -194,7 +201,7 @@ const latestIndex = computed(() => {
     return latestIndex;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (C6CFD988)");
+    showErrorModal('An unknown error occurred. (C6CFD988)');
     return null;
   }
 });
@@ -215,7 +222,7 @@ const previousDisabled = computed(() => {
     return previousIndex + 1 >= all.length;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (AB5076EA)");
+    showErrorModal('An unknown error occurred. (AB5076EA)');
     return null;
   }
 });
@@ -236,7 +243,7 @@ const nextDisabled = computed(() => {
     return previousIndex.value - 1 < 0;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (063AE30A)");
+    showErrorModal('An unknown error occurred. (063AE30A)');
     return null;
   }
 });
@@ -257,7 +264,7 @@ const latestDisabled = computed(() => {
     return previousIndex.value - 1 < 0;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (38FD1D5D)");
+    showErrorModal('An unknown error occurred. (38FD1D5D)');
     return null;
   }
 });
@@ -268,8 +275,8 @@ const latestDisabled = computed(() => {
  * @type {import("vue").ComputedRef<Object>}
  */
 const gameBadges = computed(() => ({
-  gta: { label: "GTA", background: "gta" },
-  rdo: { label: "RDO", background: "rdo" },
+  gta: { label: 'GTA', background: 'gta', tooltip: 'GTA Online' },
+  rdo: { label: 'RDO', background: 'rdo', tooltip: 'Red Dead Online' },
 }));
 
 /**
@@ -289,8 +296,18 @@ function getGameBadgeLabel() {
  */
 function getGameBadgeBackground() {
   const value = game.value;
-  const type = gameBadges.value[value]?.background ?? "primary";
+  const type = gameBadges.value[value]?.background ?? 'primary';
   return `badge-${type}`;
+}
+
+/**
+ * Gets the badge tooltip for a game.
+ *
+ * @returns {string}
+ */
+function getGameBadgeTooltip() {
+  const value = game.value;
+  return gameBadges.value[value]?.tooltip ?? value;
 }
 
 /**
@@ -299,8 +316,8 @@ function getGameBadgeBackground() {
  * @type {import("vue").ComputedRef<Array>}
  */
 const gameOptions = computed(() => [
-  { value: "gta", label: "GTA Online" },
-  { value: "rdo", label: "Red Dead Online" },
+  { value: 'gta', label: 'GTA Online' },
+  { value: 'rdo', label: 'Red Dead Online' },
 ]);
 
 /**
@@ -309,11 +326,11 @@ const gameOptions = computed(() => [
  * @type {import("vue").ComputedRef<Object>}
  */
 const platformBadges = computed(() => ({
-  pcros: { label: "PC", background: "pc" },
-  ps4: { label: "PS4", background: "playstation" },
-  ps5: { label: "PS5", background: "playstation" },
-  xboxone: { label: "One", background: "xbox" },
-  xboxsx: { label: "S|X", background: "xbox" },
+  pcros: { label: 'PC', background: 'pc', tooltip: 'PC' },
+  ps4: { label: 'PS4', background: 'playstation', tooltip: 'PlayStation 4' },
+  ps5: { label: 'PS5', background: 'playstation', tooltip: 'PlayStation 5' },
+  xboxone: { label: 'One', background: 'xbox', tooltip: 'Xbox One' },
+  xboxsx: { label: 'S|X', background: 'xbox', tooltip: 'Xbox Series S|X' },
 }));
 
 /**
@@ -333,8 +350,18 @@ function getPlatformBadgeLabel() {
  */
 function getPlatformBadgeBackground() {
   const value = platform.value;
-  const type = platformBadges.value[value]?.background ?? "primary";
+  const type = platformBadges.value[value]?.background ?? 'primary';
   return `badge-${type}`;
+}
+
+/**
+ * Gets the badge tooltip for a platform.
+ *
+ * @returns {string}
+ */
+function getPlatformBadgeTooltip() {
+  const value = platform.value;
+  return platformBadges.value[value]?.tooltip ?? value;
 }
 
 /**
@@ -344,29 +371,29 @@ function getPlatformBadgeBackground() {
  */
 const platformOptions = computed(() => [
   {
-    value: "pcros",
-    label: "PC",
+    value: 'pcros',
+    label: 'PC',
     hidden: false,
   },
   {
-    value: "ps4",
-    label: "PlayStation 4",
-    hidden: game.value !== "gta",
+    value: 'ps4',
+    label: 'PlayStation 4',
+    hidden: game.value !== 'gta',
   },
   {
-    value: "ps5",
-    label: "PlayStation 5",
-    hidden: game.value !== "gta",
+    value: 'ps5',
+    label: 'PlayStation 5',
+    hidden: game.value !== 'gta',
   },
   {
-    value: "xboxone",
-    label: "Xbox One",
-    hidden: game.value !== "gta",
+    value: 'xboxone',
+    label: 'Xbox One',
+    hidden: game.value !== 'gta',
   },
   {
-    value: "xboxsx",
-    label: "Xbox Series S|X",
-    hidden: game.value !== "gta",
+    value: 'xboxsx',
+    label: 'Xbox Series S|X',
+    hidden: game.value !== 'gta',
   },
 ]);
 
@@ -378,16 +405,16 @@ const platformOptions = computed(() => [
 const footerProvider = computed(() => {
   try {
     if (!tunables.value.latest) {
-      return "";
+      return '';
     }
 
     const provider = tunables.value.latest.meta.provider;
-    const thanks = tunables.value.latest.meta.special_thanks.join(", ");
+    const thanks = tunables.value.latest.meta.special_thanks.join(', ');
 
     return `Provider: ${provider}. Special thanks: ${thanks}.`;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (D0DDD7CA)");
+    showErrorModal('An unknown error occurred. (D0DDD7CA)');
     return null;
   }
 });
@@ -400,18 +427,18 @@ const footerProvider = computed(() => {
 const footerUpdated = computed(() => {
   try {
     if (!tunables.value.all) {
-      return "";
+      return '';
     }
 
-    const date = new Date(tunables.value.all.updated * 1000).toLocaleString("en-US", {
-      dateStyle: "short",
-      timeStyle: "short",
+    const date = new Date(tunables.value.all.updated * 1000).toLocaleString('en-US', {
+      dateStyle: 'short',
+      timeStyle: 'short',
     });
 
     return `Updated: ${date}`;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (2DE28AB1)");
+    showErrorModal('An unknown error occurred. (2DE28AB1)');
     return null;
   }
 });
@@ -428,7 +455,7 @@ const eventWeeklyChanged = computed(() => {
     return latest !== previous;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (E115265B)");
+    showErrorModal('An unknown error occurred. (E115265B)');
     return false;
   }
 });
@@ -439,18 +466,18 @@ const eventWeeklyTooltip = computed(() => {
     const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
 
     if (!latest || !previous) {
-      return "";
+      return '';
     }
 
     if (latest === previous) {
-      return "";
+      return '';
     }
 
     return `The weekly event has changed from "${previous}" to "${latest}".`;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (527C8608)");
-    return "";
+    showErrorModal('An unknown error occurred. (527C8608)');
+    return '';
   }
 });
 
@@ -466,7 +493,7 @@ const title = computed(() => {
     }
 
     if (!tunables.value.latest || !tunables.value.previous) {
-      return "Loading...";
+      return 'Loading...';
     }
 
     const previousDate = tunables.value.previous.date;
@@ -475,7 +502,7 @@ const title = computed(() => {
     return `Tunables changes between ${previousDate} and ${latestDate}`;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (72AAD81D)");
+    showErrorModal('An unknown error occurred. (72AAD81D)');
     return null;
   }
 });
@@ -489,7 +516,7 @@ const files = computed(() => {
     return tunables.value.all?.all;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (FAD94F03)");
+    showErrorModal('An unknown error occurred. (FAD94F03)');
     return null;
   }
 });
@@ -500,15 +527,15 @@ const files = computed(() => {
  */
 watch(game, () => {
   try {
-    Sentry.setTag("game", game.value);
-    if (platform.value !== "pcros") {
-      platform.value = "pcros";
+    Sentry.setTag('game', game.value);
+    if (platform.value !== 'pcros') {
+      platform.value = 'pcros';
     } else {
       handleGameUpdate();
     }
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (3F39BDB8)");
+    showErrorModal('An unknown error occurred. (3F39BDB8)');
   }
 });
 
@@ -517,11 +544,11 @@ watch(game, () => {
  */
 watch(platform, () => {
   try {
-    Sentry.setTag("platform", platform.value);
+    Sentry.setTag('platform', platform.value);
     handleGameUpdate();
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (F37CAEAF)");
+    showErrorModal('An unknown error occurred. (F37CAEAF)');
   }
 });
 
@@ -533,7 +560,7 @@ watch(title, (state) => {
     document.title = state;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (8C4AE3EA)");
+    showErrorModal('An unknown error occurred. (8C4AE3EA)');
   }
 });
 
@@ -552,7 +579,7 @@ watch(
       }, 500);
     } catch (error) {
       Sentry.captureException(error);
-      showErrorModal("An unknown error occurred. (E6B7C58D)");
+      showErrorModal('An unknown error occurred. (E6B7C58D)');
     }
   },
   { deep: true }
@@ -566,7 +593,7 @@ onMounted(() => {
     handleGameUpdate(true);
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (6D1FCF8B)");
+    showErrorModal('An unknown error occurred. (6D1FCF8B)');
   }
 });
 
@@ -587,7 +614,7 @@ async function handleGameUpdate(init = false) {
       tunables.value.all = await cachedRequest(`${game.value}-${platform.value}`, allUrl.value);
     } catch (error) {
       Sentry.captureException(error);
-      showErrorModal("We were unable to retrieve some required data needed to display the tunables. Please try again later.");
+      showErrorModal('We were unable to retrieve some required data needed to display the tunables. Please try again later.');
       return;
     }
 
@@ -609,7 +636,7 @@ async function handleGameUpdate(init = false) {
     } catch (error) {
       Sentry.captureException(error);
       showErrorModal(
-        "We were unable to retrieve the previous tunables. If the tunables were recently updated, please try again in a few minutes."
+        'We were unable to retrieve the previous tunables. If the tunables were recently updated, please try again in a few minutes.'
       );
       return;
     }
@@ -620,7 +647,7 @@ async function handleGameUpdate(init = false) {
     } catch (error) {
       Sentry.captureException(error);
       showErrorModal(
-        "We were unable to retrieve the latest tunables. If the tunables were recently updated, please try again in a few minutes."
+        'We were unable to retrieve the latest tunables. If the tunables were recently updated, please try again in a few minutes.'
       );
       return;
     }
@@ -629,7 +656,7 @@ async function handleGameUpdate(init = false) {
     updateDifference();
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (E36D0DE5)");
+    showErrorModal('An unknown error occurred. (E36D0DE5)');
   }
 }
 
@@ -660,7 +687,7 @@ function updateDifference() {
     difference.value.loading = false;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (6FB55B6B)");
+    showErrorModal('An unknown error occurred. (6FB55B6B)');
   }
 }
 
@@ -673,25 +700,25 @@ function updateQuery() {
   try {
     const url = new URL(window.location);
 
-    url.searchParams.set("game", game.value);
-    url.searchParams.set("platform", platform.value);
+    url.searchParams.set('game', game.value);
+    url.searchParams.set('platform', platform.value);
 
     if (previous.value) {
-      url.searchParams.set("previous", previous.value);
+      url.searchParams.set('previous', previous.value);
     } else {
-      url.searchParams.delete("previous");
+      url.searchParams.delete('previous');
     }
 
     if (latest.value) {
-      url.searchParams.set("latest", latest.value);
+      url.searchParams.set('latest', latest.value);
     } else {
-      url.searchParams.delete("latest");
+      url.searchParams.delete('latest');
     }
 
-    window.history.pushState({}, "", url);
+    window.history.pushState({}, '', url);
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (9C38DA33)");
+    showErrorModal('An unknown error occurred. (9C38DA33)');
   }
 }
 
@@ -718,7 +745,7 @@ function handlePreviousClick() {
     handleGameUpdate(true);
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (484502F6)");
+    showErrorModal('An unknown error occurred. (484502F6)');
   }
 }
 
@@ -745,7 +772,7 @@ function handleNextClick() {
     handleGameUpdate(true);
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (1B375526)");
+    showErrorModal('An unknown error occurred. (1B375526)');
   }
 }
 
@@ -766,7 +793,7 @@ function handleLatestClick() {
     handleGameUpdate(true);
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (F44CB414)");
+    showErrorModal('An unknown error occurred. (F44CB414)');
   }
 }
 
@@ -781,7 +808,7 @@ function handleResetSettingsClick() {
     settingsModal.value.show = false;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (64594DC6)");
+    showErrorModal('An unknown error occurred. (64594DC6)');
   }
 }
 
@@ -816,7 +843,7 @@ async function cachedRequest(key, url) {
 function formatJson(json, parentKey = null) {
   try {
     for (const key in json) {
-      if (parentKey === "tunables" && typeof json[key] !== "object") {
+      if (parentKey === 'tunables' && typeof json[key] !== 'object') {
         if (!json[0]) {
           json[0] = {};
         }
@@ -825,7 +852,7 @@ function formatJson(json, parentKey = null) {
         delete json[key];
       }
 
-      if (typeof json[key] === "object") {
+      if (typeof json[key] === 'object') {
         json[key] = formatJson(json[key], key);
       }
     }
@@ -833,7 +860,7 @@ function formatJson(json, parentKey = null) {
     return json;
   } catch (error) {
     Sentry.captureException(error);
-    showErrorModal("An unknown error occurred. (896DFD93)");
+    showErrorModal('An unknown error occurred. (896DFD93)');
   }
 }
 
@@ -876,8 +903,14 @@ function showErrorModal(body) {
                 <span class="sr-only">{{ eventWeeklyTooltip }}</span>
               </span>
             </template>
-            <span :class="getGameBadgeBackground()" class="badge mr-2">{{ getGameBadgeLabel() }}</span>
-            <span :class="getPlatformBadgeBackground()" class="badge mr-2">{{ getPlatformBadgeLabel() }}</span>
+            <span v-tooltip="getGameBadgeTooltip()" :class="getGameBadgeBackground()" class="badge mr-2">
+              {{ getGameBadgeLabel() }}
+              <span class="sr-only">{{ getGameBadgeTooltip() }}</span>
+            </span>
+            <span v-tooltip="getPlatformBadgeTooltip()" :class="getPlatformBadgeBackground()" class="badge mr-2">
+              {{ getPlatformBadgeLabel() }}
+              <span class="sr-only">{{ getPlatformBadgeTooltip() }}</span>
+            </span>
             <span>{{ title }}</span>
           </h1>
           <div class="whitespace-nowrap">
@@ -956,7 +989,10 @@ function showErrorModal(body) {
     </Card>
 
     <div class="mt-8 border-t border-slate-100/10 py-4 text-xs leading-5 text-slate-500 sm:flex sm:items-center sm:justify-between">
-      <p>&copy; {{ new Date().getFullYear() }} RDO.GG. All rights reserved.</p>
+      <div class="flex space-x-4">
+        <span>&copy; {{ appCopyrightYear }} RDO.GG</span>
+        <span><HeartIcon class="inline w-4 h-4 text-red-500 hover:animate-pulse" /> from Senexis</span>
+      </div>
       <div class="flex space-x-4">
         <a href="https://rdo.gg/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
         <a href="https://rdo.gg/terms/" target="_blank" rel="noopener noreferrer">Terms of Service</a>
@@ -1005,6 +1041,7 @@ function showErrorModal(body) {
     :change="appChange"
     :commitShort="appCommitShort"
     :commitLong="appCommitLong"
+    :updated="appUpdated"
   >
     <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">General</h3>
 
@@ -1088,14 +1125,18 @@ function showErrorModal(body) {
       </SettingsModalToggle>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">Miscellaneous</h3>
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">
+      <a
+        href="https://www.youtube.com/watch?v=yK0P1Bk8Cx4"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-inherit hover:text-inherit"
+      >
+        Danger Zone
+      </a>
+    </h3>
 
     <div class="divide-y divide-slate-600 mb-4">
-      <SettingsModalToggle v-model="settings.quickView">
-        <template #title>Quick View</template>
-        <template #description> Whether to show the Quick View panel. </template>
-      </SettingsModalToggle>
-
       <div class="flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
           <span class="text-sm font-medium text-slate-50">Reset Settings</span>

@@ -1,8 +1,8 @@
 <script setup>
-import { PlusIcon, MinusIcon } from "@heroicons/vue/24/outline";
+import { PlusIcon, MinusIcon } from '@heroicons/vue/24/outline';
 
-import { computed, ref } from "vue";
-import { useStore } from "../stores/settings.js";
+import { computed, ref } from 'vue';
+import { useStore } from '../stores/settings.js';
 
 const props = defineProps({
   id: {

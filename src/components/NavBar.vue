@@ -1,14 +1,15 @@
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { ArrowDownTrayIcon, Bars3Icon, Cog6ToothIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { ArrowDownTrayIcon, Bars3Icon, Cog6ToothIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
-const emit = defineEmits(["configure", "download"]);
+const emit = defineEmits(['configure', 'download']);
 
 const navigation = [
-  { name: "RDO.GG", href: "https://rdo.gg/", external: true },
-  { name: "API", href: "https://rdo.gg/api/#tag/tunables", external: true },
-  { name: "Twitter", href: "https://twitter.com/Tunables", external: true },
-  { name: "GitHub", href: "https://github.com/Senexis/RDO-GG-Tunables", external: true },
+  { name: 'RDO.GG', href: 'https://rdo.gg/', external: true },
+  { name: 'API', href: 'https://rdo.gg/api/#tag/tunables', external: true },
+  { name: 'Twitter', href: 'https://twitter.com/Tunables', external: true },
+  { name: 'Threads', href: 'https://www.threads.net/@rockstar_tunables', external: true },
+  { name: 'GitHub', href: 'https://github.com/Senexis/RDO-GG-Tunables', external: true },
 ];
 </script>
 
@@ -18,7 +19,9 @@ const navigation = [
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="flex flex-shrink-0 items-center mr-4">
-            <img class="h-8 w-auto" src="https://rdo.gg/img/menu.png" alt="Tunables" />
+            <a href="https://tunables.rdo.gg/">
+              <img class="h-8 w-auto" src="https://rdo.gg/img/menu.png" alt="Tunables" />
+            </a>
           </div>
           <div class="hidden sm:block">
             <div class="flex space-x-2">

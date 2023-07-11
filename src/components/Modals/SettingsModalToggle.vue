@@ -1,6 +1,6 @@
 <script setup>
-import { ref, watch } from "vue";
-import { Switch, SwitchDescription, SwitchGroup, SwitchLabel } from "@headlessui/vue";
+import { ref, watch } from 'vue';
+import { Switch, SwitchDescription, SwitchGroup, SwitchLabel } from '@headlessui/vue';
 
 const props = defineProps({
   modelValue: Boolean,
@@ -8,10 +8,10 @@ const props = defineProps({
 
 const enabled = ref(props.modelValue);
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 
 watch(enabled, (value) => {
-  emit("update:modelValue", value);
+  emit('update:modelValue', value);
 });
 </script>
 

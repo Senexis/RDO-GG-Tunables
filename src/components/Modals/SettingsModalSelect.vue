@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from "vue";
-import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from "@headlessui/vue";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
+import { computed } from 'vue';
+import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue';
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid';
 
 const props = defineProps({
   modelValue: String,
@@ -11,14 +11,14 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 
 const selected = computed({
   get() {
     return props.options.find((option) => option.value === props.modelValue);
   },
   set(value) {
-    emit("update:modelValue", value.value);
+    emit('update:modelValue', value.value);
   },
 });
 </script>

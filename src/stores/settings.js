@@ -1,6 +1,6 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-export const useStore = defineStore("settings", {
+export const useStore = defineStore('settings', {
   persist: true,
   state: () => {
     return {

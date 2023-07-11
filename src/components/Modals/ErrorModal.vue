@@ -1,12 +1,12 @@
 <script setup>
-import { ExclamationCircleIcon } from "@heroicons/vue/24/outline";
-import BaseModal from "./BaseModal.vue";
+import { ExclamationCircleIcon } from '@heroicons/vue/24/outline';
+import BaseModal from './BaseModal.vue';
 
 const url = new URL(window.location);
-url.searchParams.delete("previous");
-url.searchParams.delete("latest");
+url.searchParams.delete('previous');
+url.searchParams.delete('latest');
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 
 const props = defineProps({
   open: {
