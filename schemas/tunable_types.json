@@ -1,5 +1,5 @@
 {
-  "$id": "https://tunables.rdo.gg/data/tunable_types.json",
+  "$id": "tunable_types",
   "title": "Tunable Types",
   "type": "array",
   "default": [],
@@ -13,18 +13,23 @@
     ],
     "properties": {
       "key": {
-        "title": "Key of Tunable",
-        "type": [
-          "string"
+        "title": "Tunable Hash",
+        "type": "string",
+        "oneOf": [
+          {
+            "pattern": "^0x[A-F0-9]{8}$"
+          },
+          {
+            "pattern": "^[A-Z0-9_]+$"
+          }
         ],
         "examples": [
-          "0xB63F78C0",
-          "ADVANCED_RIFLE_MODIFIER",
-          "APARTMENT_WEBSITE_BENEFACTOR_SCHAFTER_LWB"
+          "0xDD8B0260",
+          "XM22_BIN_PRICE_BRICKADE2"
         ]
       },
       "type": {
-        "title": "Type of Tunable",
+        "title": "Tunable Type",
         "type": "string",
         "enum": [
           "biker_business_sales",
@@ -40,11 +45,19 @@
         ]
       },
       "display": {
-        "title": "Hash to Display",
+        "title": "Display Hash",
         "type": "string",
+        "oneOf": [
+          {
+            "pattern": "^0x[A-F0-9]{8}$"
+          },
+          {
+            "pattern": "^[A-Z0-9_]+$"
+          }
+        ],
         "examples": [
-          "BRICKADE2",
-          "WEAPON_CERAMICPISTOL"
+          "0xAFB83BD5",
+          "BRICKADE2"
         ]
       }
     }

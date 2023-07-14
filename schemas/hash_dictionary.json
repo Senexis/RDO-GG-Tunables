@@ -1,0 +1,15 @@
+{
+  "$id": "hash_dictionary",
+  "title": "Hash Dictionary",
+  "type": "object",
+  "default": [],
+  "patternProperties": {
+    "^0x[A-F0-9]{8}$": {
+      "type": "string"
+    },
+    "^[A-Z0-9_]+$": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

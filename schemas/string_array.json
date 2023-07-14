@@ -1,0 +1,9 @@
+{
+  "$id": "string_array",
+  "title": "String Array",
+  "type": "array",
+  "default": [],
+  "items": {
+    "type": "string"
+  }
+}
