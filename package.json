@@ -11,8 +11,8 @@
     "@fingerprintjs/fingerprintjs": "^3.4.2",
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
-    "@sentry/tracing": "^7.57.0",
-    "@sentry/vue": "^7.57.0",
+    "@sentry/tracing": "^7.58.1",
+    "@sentry/vue": "^7.58.1",
     "floating-vue": "^2.0.0-beta.24",
     "jsondiffpatch": "^0.4.1",
     "pinia": "^2.1.4",
@@ -26,11 +26,11 @@
     "@vue/eslint-config-prettier": "^7.1.0",
     "ajv-cli": "^5.0.0",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
     "eslint-plugin-vue": "^9.15.1",
-    "postcss": "^8.4.25",
+    "postcss": "^8.4.26",
     "prettier": "^2.8.8",
-    "tailwindcss": "^3.3.2",
-    "vite": "^4.4.3"
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.4"
   }
 }
