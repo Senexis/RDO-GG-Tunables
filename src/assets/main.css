@@ -87,13 +87,37 @@ code {
   @apply hidden;
 }
 
-/* Hide individual keys. */
+/* Hide individual sections. */
 .hide-bonus [data-key="bonus"],
 .hide-content [data-key="contentlists"],
-.hide-tunables [data-key="tunables"],
-.hide-verbose [data-key="0x8B7D3320"],
+.hide-tunables [data-key="tunables"] {
+  @apply hidden;
+}
+
+/* Hide individual keys. */
+.hide-quick-view [data-key*="CAR_MEET_PRIZE_VEHICLE"],
+.hide-quick-view [data-key*="CASINO_PRIZE_VEHICLE"],
+.hide-quick-view [data-key*="DAILY_OBJECTIVE"],
+.hide-quick-view [data-key*="FIXER_STUDIO_APPEARANCE"],
+.hide-quick-view [data-key*="HSW_TEST_RIDE"],
+.hide-quick-view [data-key*="HSW_TIME_TRIAL_SUBVARIATION"],
+.hide-quick-view [data-key*="LUXURY_SHOWCASE_VEHICLE"],
+.hide-quick-view [data-key*="PROMO_TEST_DRIVE_VEHICLE"],
+.hide-quick-view [data-key*="SIMEON_TEST_DRIVE_VEHICLE"],
+.hide-quick-view [data-key*="SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE"],
+.hide-quick-view [data-key*="SOCIAL_CLUB_GARAGE_VEHICLE"],
+.hide-quick-view [data-key*="TIMETRIALVARIATION"],
+.hide-quick-view [data-key*="XM22_GUN_VAN_SLOT"],
+.hide-quick-view [data-key*="XM22_GUN_VAN_STOCK_ID"],
+.hide-verbose [data-key*="0x8B7D3320"],
+.hide-verbose [data-key*="BOOT_BUTTON_QUICK_MATCH_TYPE"],
+.hide-verbose [data-key*="CURRENTVEHICLESALESSEASON"],
+.hide-verbose [data-key*="CURRENTVEHICLESALESTUSEASON"],
+.hide-verbose [data-key*="ELO_SEASON"],
+.hide-verbose [data-key*="FMCORONA"],
 .hide-verbose [data-key*="FM_CORONA"],
 .hide-verbose [data-key*="NPCFLOWINVITE"],
+.hide-verbose [data-key*="PROFESIONALCORONA"],
 .hide-verbose [data-key*="SALE_HASH_LABELS"] {
   @apply hidden;
 }

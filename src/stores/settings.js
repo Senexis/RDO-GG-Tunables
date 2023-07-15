@@ -22,6 +22,7 @@ export const useStore = defineStore('settings', {
       // Show/hide individual tunables.
       bonus: false,
       content: true,
+      quickViewItems: false,
       tunables: true,
       verbose: false,
     };

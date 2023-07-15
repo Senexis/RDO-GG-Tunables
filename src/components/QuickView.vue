@@ -287,7 +287,6 @@ function getDailyObjective(day) {
 /**
  * Retrieves the RC time trial for a tunable.
  *
- * @param {string} tunable The tunable to retrieve the RC time trial for.
  * @returns {string|null}
  */
 function getRcTimeTrial() {
@@ -305,7 +304,6 @@ function getRcTimeTrial() {
 /**
  * Retrieves the HSW time trial for a tunable.
  *
- * @param {string} tunable The tunable to retrieve the HSW time trial for.
  * @returns {string|null}
  */
 function getHswTimeTrial() {
@@ -323,7 +321,6 @@ function getHswTimeTrial() {
 /**
  * Retrieves the time trial for a tunable.
  *
- * @param {string} tunable The tunable to retrieve the time trial for.
  * @returns {string|null}
  */
 function getTimeTrial() {
@@ -517,6 +514,24 @@ function getGunVan() {
 }
 
 /**
+ * Retrieves whether studio appearance is enabled for a day.
+ *
+ * @param {string} day The day to retrieve the studio appearance for.
+ * @returns {bool|null}
+ */
+function getStudioAppearanceEnabled(day) {
+  try {
+    const value = getTunable(`FIXER_STUDIO_APPEARANCE_DISABLE_${day.toUpperCase()}`);
+    if (value === null) return null;
+    console.log(value);
+    return value === false;
+  } catch (error) {
+    Sentry.captureException(error);
+    emit('error', 'An unknown error occurred. (FFC688AE)');
+  }
+}
+
+/**
  * Retrieves the sales for the current tunables.
  *
  * @returns {object}
@@ -611,10 +626,13 @@ function getUgcBonuses() {
 
       if (modifiers && modifiers.value) {
         for (const [modifierKey, modifierValue] of Object.entries(modifiers.value)) {
-          if (modifierKey.includes('RP_CAP')) continue;
-          if (isNaN(modifierValue)) continue;
-          let formattedValue = Number(modifierValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
-          if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
+          if (!settings.verbose && modifierKey.includes('RP_CAP')) continue;
+          let formattedValue = modifierValue;
+          if (!settings.verbose && isNaN(modifierValue)) continue;
+          if (!isNaN(modifierValue)) {
+            formattedValue = Number(formattedValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
+            if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
+          }
           results[contentListKey].modifiers.push({
             type: modifierKey,
             value: formattedValue,
@@ -787,6 +805,13 @@ const timeTrial = computed(() => getTimeTrial());
 const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
 const gunVan = computed(() => getGunVan());
+const studioAppearanceEnabledMon = computed(() => getStudioAppearanceEnabled('MON'));
+const studioAppearanceEnabledTue = computed(() => getStudioAppearanceEnabled('TUE'));
+const studioAppearanceEnabledWed = computed(() => getStudioAppearanceEnabled('WED'));
+const studioAppearanceEnabledThu = computed(() => getStudioAppearanceEnabled('THU'));
+const studioAppearanceEnabledFri = computed(() => getStudioAppearanceEnabled('FRI'));
+const studioAppearanceEnabledSat = computed(() => getStudioAppearanceEnabled('SAT'));
+const studioAppearanceEnabledSun = computed(() => getStudioAppearanceEnabled('SUN'));
 const sales = computed(() => getSales());
 const ugcBonuses = computed(() => getUgcBonuses());
 
@@ -1153,6 +1178,33 @@ const rdoEvent = computed(() => getRdoEvent());
                 <template v-if="socialClubGarageVehicle9">
                   <li class="ml-8">{{ socialClubGarageVehicle9 }}</li>
                 </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template
+          v-if="
+            studioAppearanceEnabledMon ||
+            studioAppearanceEnabledTue ||
+            studioAppearanceEnabledWed ||
+            studioAppearanceEnabledThu ||
+            studioAppearanceEnabledFri ||
+            studioAppearanceEnabledSat ||
+            studioAppearanceEnabledSun
+          "
+        >
+          <Accordion id="record_a_studios">
+            <template #title>Record A Studios</template>
+            <template #default>
+              <h3 class="my-1 font-bold">Dr. Dre Studio Appearances:</h3>
+              <ul class="list-disc">
+                <li class="ml-8">Monday: {{ studioAppearanceEnabledMon ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-8">Tuesday: {{ studioAppearanceEnabledTue ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-8">Wednesday: {{ studioAppearanceEnabledWed ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-8">Thursday: {{ studioAppearanceEnabledThu ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-8">Friday: {{ studioAppearanceEnabledFri ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-8">Saturday: {{ studioAppearanceEnabledSat ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-8">Sunday: {{ studioAppearanceEnabledSun ? 'Enabled' : 'Disabled' }}</li>
               </ul>
             </template>
           </Accordion>

@@ -121,6 +121,7 @@ const downloadModal = ref({
  * @type {import("vue").Ref<Object>}
  */
 const settingsModal = ref({
+  quickViewItemsDetail: false,
   show: false,
   verboseDetail: false,
 });
@@ -180,7 +181,7 @@ const latestUrl = computed(
  * @type {import("vue").ComputedRef<string | null>}
  */
 const activeBanner = computed(() => {
-  const banners = ['new-site', 'new-quick-view', 'open-source'];
+  const banners = ['new-site', 'new-quick-view', 'open-source', 'hide-quick-view-items'];
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
   return activeBanners.length > 0 ? activeBanners[0] : null;
 });
@@ -962,6 +963,7 @@ function showErrorModal(body) {
                   settings.unchanged ? '' : 'hide-unchanged',
                   settings.bonus ? '' : 'hide-bonus',
                   settings.content ? '' : 'hide-content',
+                  settings.quickViewItems ? '' : 'hide-quick-view',
                   settings.tunables ? '' : 'hide-tunables',
                   settings.verbose ? '' : 'hide-verbose',
                 ]"
@@ -1006,29 +1008,27 @@ function showErrorModal(body) {
   </main>
 
   <Banner id="new-site" :show="activeBanner === 'new-site'">
-    Welcome to the new website! Check out all the settings using the
-    <Cog6ToothIcon class="inline w-5 h-5" /> button.<br />
+    Welcome to the new website! Check out all the settings using the <Cog6ToothIcon class="inline w-5 h-5" /> button.
+    <br />
     <span class="text-sm text-slate-300">
-      Tip: Looking for items like <code class="text-inherit">8B7D3320</code>? Toggle the "Verbose Items" setting.
+      Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the "Verbose Items" setting.
     </span>
   </Banner>
 
   <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
-    Newly added: the Quick View panel! See some popular items at a glance. Feel free to collapse it using the
-    <EyeSlashIcon class="inline w-5 h-5" /> button.<br />
-    <span class="text-sm text-slate-300">
-      Tip: Change your mind? You can always expand the Quick View panel by clicking the button again.
-    </span>
+    Newly added: the Quick View panel! See some popular items at a glance. Feel free to collapse it using the <EyeSlashIcon class="inline w-5 h-5" /> button.
+    <br />
+    <span class="text-sm text-slate-300">Tip: Change your mind? You can always expand the Quick View panel by clicking the button again.</span>
   </Banner>
 
-  <Banner
-    id="open-source"
-    :show="activeBanner === 'open-source'"
-    button-text="Visit GitHub"
-    button-link="https://github.com/Senexis/RDO-GG-Tunables"
-    :button-external="true"
-  >
+  <Banner id="open-source" :show="activeBanner === 'open-source'" button-text="Visit GitHub" button-link="https://github.com/Senexis/RDO-GG-Tunables" :button-external="true">
     This website is now open source! Feel free to browse or contribute to the project on GitHub.
+  </Banner>
+
+  <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
+    Tunables available in the Quick View panel are now hidden by default to reduce clutter.
+    <br />
+    <span class="text-sm text-slate-300">You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling <strong>Quick View Items</strong>.</span>
   </Banner>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
@@ -1084,6 +1084,22 @@ function showErrorModal(body) {
 
     <div class="divide-y divide-slate-600 mb-4">
       <template v-if="game === 'gta'">
+        <SettingsModalToggle v-model="settings.quickViewItems">
+          <template #title>Quick View Items</template>
+          <template #description>
+            Whether to show <button @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail" class="text-sky-600 hover:text-sky-400">items available in the Quick View</button>.
+          </template>
+        </SettingsModalToggle>
+        <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-300 py-2">
+          <p class="mb-1">
+            Tunables containing the following text in their key are hidden by toggling the "Quick View Items" setting:
+          </p>
+          <ul class="pl-5 list-disc grid sm:grid-cols-2 mb-2">
+            <li v-for="item in ['CAR_MEET_PRIZE_VEHICLE', 'CASINO_PRIZE_VEHICLE', 'DAILY_OBJECTIVE', 'FIXER_STUDIO_APPEARANCE', 'HSW_TEST_RIDE', 'HSW_TIME_TRIAL_SUBVARIATION', 'LUXURY_SHOWCASE_VEHICLE', 'PROMO_TEST_DRIVE_VEHICLE', 'SIMEON_TEST_DRIVE_VEHICLE', 'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE', 'SOCIAL_CLUB_GARAGE_VEHICLE', 'TIMETRIALVARIATION', 'XM22_GUN_VAN_SLOT', 'XM22_GUN_VAN_STOCK_ID']" :key="item">
+              <code>{{ item }}</code>
+            </li>
+          </ul>
+        </div>
         <SettingsModalToggle v-model="settings.verbose">
           <template #title>Verbose Items</template>
           <template #description>
@@ -1093,14 +1109,20 @@ function showErrorModal(body) {
             >.
           </template>
         </SettingsModalToggle>
-        <div v-if="settingsModal.verboseDetail" class="py-2">
-          <p class="text-sm text-slate-300 mb-1">
-            Items containing the following text in their key are hidden by toggling the "Verbose Items" setting:
+        <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-300 py-2">
+          <p class="mb-1">
+            Tunables containing the following text in their key are hidden by toggling the "Verbose Items" setting:
           </p>
-          <ul class="pl-5 list-disc grid sm:grid-cols-2">
-            <li v-for="item in ['8B7D3320', 'FM_CORONA', 'NPCFLOWINVITE', 'SALE_HASH_LABELS']" :key="item">
+          <ul class="pl-5 list-disc grid sm:grid-cols-2 mb-2">
+            <li v-for="item in ['0x8B7D3320', 'BOOT_BUTTON_QUICK_MATCH_TYPE', 'CURRENTVEHICLESALESSEASON', 'CURRENTVEHICLESALESTUSEASON', 'ELO_SEASON', 'FMCORONA', 'FM_CORONA', 'NPCFLOWINVITE', 'PROFESIONALCORONA', 'SALE_HASH_LABELS']" :key="item">
               <code>{{ item }}</code>
             </li>
+          </ul>
+          <p class="mb-1">
+            The following miscellaneous items are hidden by toggling the "Verbose Items" setting:
+          </p>
+          <ul class="pl-5 list-disc mb-2">
+            <li><strong>Mission Bonuses:</strong> Non-numeric and the RP Cap modifiers.</li>
           </ul>
         </div>
         <SettingsModalToggle v-model="settings.bonus">
