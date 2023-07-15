@@ -4713,5 +4713,120 @@
     "key": "BB_NIGHTCLUB_PROPERTY_WAREHOUSE_B5",
     "type": "nightclub_upgrade_sales",
     "display": "FCCLUB_STOR_4"
+  },
+  {
+    "key": "SU23_BIN_PRICE_L35",
+    "type": "vehicle_sales",
+    "display": "L35"
+  },
+  {
+    "key": "SU23_BIN_PRICE_RATEL",
+    "type": "vehicle_sales",
+    "display": "RATEL"
+  },
+  {
+    "key": "SU23_BIN_PRICE_MONSTROCITI",
+    "type": "vehicle_sales",
+    "display": "MONSTROCITI"
+  },
+  {
+    "key": "SU23_BIN_PRICE_BRIGHAM",
+    "type": "vehicle_sales",
+    "display": "BRIGHAM"
+  },
+  {
+    "key": "SU23_BIN_PRICE_CLIQUE2",
+    "type": "vehicle_sales",
+    "display": "CLIQUE2"
+  },
+  {
+    "key": "SU23_BIN_PRICE_INDUCTOR",
+    "type": "vehicle_sales",
+    "display": "INDUCTOR"
+  },
+  {
+    "key": "SU23_BIN_PRICE_INDUCTOR2",
+    "type": "vehicle_sales",
+    "display": "INDUCTOR2"
+  },
+  {
+    "key": "SU23_BIN_PRICE_STREAMER216",
+    "type": "vehicle_sales",
+    "display": "STREAMER216"
+  },
+  {
+    "key": "SU23_BIN_PRICE_CONADA2",
+    "type": "vehicle_sales",
+    "display": "CONADA2"
+  },
+  {
+    "key": "SU23_BIN_PRICE_RAIJU",
+    "type": "vehicle_sales",
+    "display": "RAIJU"
+  },
+  {
+    "key": "SU23_TRADE_PRICE_RAIJU",
+    "type": "vehicle_sales",
+    "display": "RAIJU"
+  },
+  {
+    "key": "SU23_BIN_PRICE_STINGERTT",
+    "type": "vehicle_sales",
+    "display": "STINGERTT"
+  },
+  {
+    "key": "SU23_BIN_PRICE_BUFFALO5",
+    "type": "vehicle_sales",
+    "display": "BUFFALO5"
+  },
+  {
+    "key": "SU23_BIN_PRICE_COUREUR",
+    "type": "vehicle_sales",
+    "display": "COUREUR"
+  },
+  {
+    "key": "SU23_BIN_PRICE_GAUNTLET6",
+    "type": "vehicle_sales",
+    "display": "GAUNTLET6"
+  },
+  {
+    "key": "SU23_TRADE_PRICE_MANCHEZ2",
+    "type": "vehicle_sales",
+    "display": "MANCHEZ2"
+  },
+  {
+    "key": "SU23_TRADE_PRICE_SQUADDIE",
+    "type": "vehicle_sales",
+    "display": "SQUADDIE"
+  },
+  {
+    "key": "0x1EF86EDD",
+    "type": "avenger_upgrade_sales",
+    "display": "AVENG3_MGUN"
+  },
+  {
+    "key": "0xB7B1B1C4",
+    "type": "avenger_upgrade_sales",
+    "display": "AVENG3_LAUNCHER"
+  },
+  {
+    "key": "0x8BB6907B",
+    "type": "avenger_upgrade_sales",
+    "display": "CMM_MOD_AVR_TRM"
+  },
+  {
+    "key": "0xFA11D33A",
+    "type": "avenger_upgrade_sales",
+    "display": "CMM_MOD_AVR_TRS"
+  },
+  {
+    "key": "0x47B5A0CE",
+    "type": "avenger_upgrade_sales",
+    "display": "STEALTH_MOD"
+  },
+  {
+    "key": "0x4FCB7F1A",
+    "type": "avenger_upgrade_sales",
+    "display": "MLJ_UNIT"
   }
 ]

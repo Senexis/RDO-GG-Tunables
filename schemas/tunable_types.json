@@ -32,6 +32,7 @@
         "title": "Tunable Type",
         "type": "string",
         "enum": [
+          "avenger_upgrade_sales",
           "biker_business_sales",
           "biker_clubhouse_sales",
           "bunker_sales",

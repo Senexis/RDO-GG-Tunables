@@ -1115,5 +1115,11 @@
   "ZR380": "Annis Apocalypse ZR380",
   "ZR3802": "Annis Future Shock ZR380",
   "ZR3803": "Annis Nightmare ZR380",
-  "ZTYPE": "Truffade Z-Type"
+  "ZTYPE": "Truffade Z-Type",
+  "AVENG3_MGUN": "Machine Guns",
+  "AVENG3_LAUNCHER": "Missile Launchers",
+  "CMM_MOD_AVR_TRM": "Operations Terminal",
+  "CMM_MOD_AVR_TRS": "Mammoth Avenger Thruster",
+  "STEALTH_MOD": "Stealth Module",
+  "MLJ_UNIT": "Missile Lock-on Jammer"
 }

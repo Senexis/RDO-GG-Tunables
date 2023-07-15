@@ -557,6 +557,8 @@ function getSales() {
 function getSalesTitle(title) {
   try {
     switch (title.replace(/_plus$/g, '')) {
+      case 'avenger_upgrade_sales':
+        return 'Avenger Upgrade Sales';
       case 'biker_business_sales':
         return 'Biker Business Sales';
       case 'biker_clubhouse_sales':
@@ -602,15 +604,20 @@ function getUgcBonuses() {
       results[contentListKey] = {
         ugc: contentList,
         modifiers: [],
+        plus_only: false,
       };
 
       const modifiers = findContext(`CONTENT_MODIFIER_${contentListKey}`);
 
       if (modifiers && modifiers.value) {
         for (const [modifierKey, modifierValue] of Object.entries(modifiers.value)) {
+          if (modifierKey.includes('RP_CAP')) continue;
+          if (isNaN(modifierValue)) continue;
+          let formattedValue = Number(modifierValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
+          if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
           results[contentListKey].modifiers.push({
             type: modifierKey,
-            value: modifierValue,
+            value: formattedValue,
             plus: false,
           });
         }
@@ -620,12 +627,23 @@ function getUgcBonuses() {
 
       if (modifiersPlus && modifiersPlus.value) {
         for (const [modifierKey, modifierValue] of Object.entries(modifiersPlus.value)) {
+          if (modifierKey.includes('RP_CAP')) continue;
+          if (isNaN(modifierValue)) continue;
+          let formattedValue = Number(modifierValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
+          if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
           results[contentListKey].modifiers.push({
             type: modifierKey,
-            value: modifierValue,
+            value: formattedValue,
             plus: true,
           });
         }
+      }
+
+      const nonPlusCount = results[contentListKey].modifiers.filter((i) => !i.plus).length;
+      const plusCount = results[contentListKey].modifiers.filter((i) => i.plus).length;
+
+      if (nonPlusCount === 0 && plusCount > 0) {
+        results[contentListKey].plus_only = true;
       }
     }
 
@@ -869,6 +887,9 @@ const rdoEvent = computed(() => getRdoEvent());
                               <div class="flex justify-between items-center w-full overflow-hidden">
                                 <div class="flex gap-2 overflow-hidden">
                                   <span class="truncate">List {{ Number(index) + 1 }}</span>
+                                  <template v-if="list.plus_only">
+                                    <span class="badge badge-plus">GTA+</span>
+                                  </template>
                                 </div>
                                 <div>
                                   <span class="badge badge-primary ml-2">
