@@ -26,7 +26,7 @@ const props = defineProps({
       <div class="flex gap-3">
         <button
           type="button"
-          class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-base font-medium text-slate-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
+          class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-base font-medium text-slate-200 shadow-sm hover:bg-slate-700 hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
           @click="emit('close')"
         >
           Close

@@ -33,14 +33,14 @@ const selected = computed({
         <slot name="description"></slot>
       </span>
     </div>
-    <Listbox as="div" class="w-full sm:w-48 flex-shrink-0" v-model="selected">
+    <Listbox as="div" class="w-full sm:w-40 flex-shrink-0" v-model="selected">
       <ListboxLabel class="block text-sm font-medium">
         <slot></slot>
       </ListboxLabel>
       <div class="relative mt-1">
         <ListboxButton
           ref="listbox"
-          class="relative w-full cursor-default rounded-md border border-slate-700 bg-transparent py-2 pl-3 pr-10 text-left text-slate-100 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+          class="relative w-full cursor-default rounded-md border border-slate-700 bg-transparent py-2 pl-3 pr-8 text-left text-slate-100 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
         >
           <span class="block truncate">{{ selected.label }}</span>
           <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

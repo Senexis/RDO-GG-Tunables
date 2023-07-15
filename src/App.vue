@@ -814,6 +814,29 @@ function handleResetSettingsClick() {
 }
 
 /**
+ * Resets the settings to their default values.
+ *
+ * @returns {void}
+ */
+function handleEmergencyResetClick() {
+  try {
+    settings.$reset();
+  } catch (error) {
+    // Ignore
+  }
+
+  try {
+    const url = new URL(window.location);
+    url.searchParams.delete('previous');
+    url.searchParams.delete('latest');
+
+    window.location.href = url;
+  } catch (error) {
+    window.location.reload();
+  }
+}
+
+/**
  * Retrieves a cached request or retrieves the request if it is not cached.
  *
  * @param {string} key The key to use for caching.
@@ -1011,30 +1034,42 @@ function showErrorModal(body) {
     Welcome to the new website! Check out all the settings using the <Cog6ToothIcon class="inline w-5 h-5" /> button.
     <br />
     <span class="text-sm text-slate-300">
-      Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the "Verbose Items" setting.
+      Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong> tunables setting.
     </span>
   </Banner>
 
   <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
-    Newly added: the Quick View panel! See some popular items at a glance. Feel free to collapse it using the <EyeSlashIcon class="inline w-5 h-5" /> button.
+    Newly added: the Quick View panel! See some popular items at a glance. Feel free to collapse it using the
+    <EyeSlashIcon class="inline w-5 h-5" /> button.
     <br />
-    <span class="text-sm text-slate-300">Tip: Change your mind? You can always expand the Quick View panel by clicking the button again.</span>
+    <span class="text-sm text-slate-300"
+      >Tip: Change your mind? You can always expand the Quick View panel by clicking the button again.</span
+    >
   </Banner>
 
-  <Banner id="open-source" :show="activeBanner === 'open-source'" button-text="Visit GitHub" button-link="https://github.com/Senexis/RDO-GG-Tunables" :button-external="true">
+  <Banner
+    id="open-source"
+    :show="activeBanner === 'open-source'"
+    button-text="Visit GitHub"
+    button-link="https://github.com/Senexis/RDO-GG-Tunables"
+    :button-external="true"
+  >
     This website is now open source! Feel free to browse or contribute to the project on GitHub.
   </Banner>
 
   <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
-    Tunables available in the Quick View panel are now hidden by default to reduce clutter.
+    Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
     <br />
-    <span class="text-sm text-slate-300">You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling <strong>Quick View Items</strong>.</span>
+    <span class="text-sm text-slate-300"
+      >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
+      <strong>Quick View</strong> tunables setting.</span
+    >
   </Banner>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
   <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"></DownloadModal>
 
-  <ErrorModal :open="errorModal.show" @close="errorModal.show = false" @confirm="errorModal.show = false">
+  <ErrorModal :open="errorModal.show" @reset="handleEmergencyResetClick">
     {{ errorModal.body }}
   </ErrorModal>
 
@@ -1064,89 +1099,116 @@ function showErrorModal(body) {
     <div class="divide-y divide-slate-600 mb-4">
       <SettingsModalToggle v-model="settings.added">
         <template #title>Added</template>
-        <template #description> Whether to show items that have been added. </template>
+        <template #description>Whether to show tunables that have been added.</template>
       </SettingsModalToggle>
       <SettingsModalToggle v-model="settings.deleted">
         <template #title>Deleted</template>
-        <template #description> Whether to show items that have been deleted. </template>
+        <template #description>Whether to show tunables that have been deleted.</template>
       </SettingsModalToggle>
       <SettingsModalToggle v-model="settings.modified">
         <template #title>Modified</template>
-        <template #description> Whether to show items that have been modified. </template>
+        <template #description>Whether to show tunables that have been modified.</template>
       </SettingsModalToggle>
       <SettingsModalToggle v-model="settings.unchanged">
         <template #title>Unchanged</template>
-        <template #description> Whether to show items that have not been modified. </template>
+        <template #description>Whether to show tunables that have not been modified.</template>
       </SettingsModalToggle>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">Keys</h3>
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">Tunables</h3>
 
     <div class="divide-y divide-slate-600 mb-4">
       <template v-if="game === 'gta'">
         <SettingsModalToggle v-model="settings.quickViewItems">
-          <template #title>Quick View Items</template>
+          <template #title>Quick View</template>
           <template #description>
-            Whether to show <button @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail" class="text-sky-600 hover:text-sky-400">items available in the Quick View</button>.
+            Whether to show tunables that are
+            <button
+              @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail"
+              class="text-sky-600 hover:text-sky-400"
+            >
+              available in the Quick View</button
+            >.
           </template>
         </SettingsModalToggle>
-        <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-300 py-2">
+        <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-300 py-2 overflow-hidden">
           <p class="mb-1">
-            Tunables containing the following text in their key are hidden by toggling the "Quick View Items" setting:
+            Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong> setting:
           </p>
-          <ul class="pl-5 list-disc grid sm:grid-cols-2 mb-2">
-            <li v-for="item in ['CAR_MEET_PRIZE_VEHICLE', 'CASINO_PRIZE_VEHICLE', 'DAILY_OBJECTIVE', 'FIXER_STUDIO_APPEARANCE', 'HSW_TEST_RIDE', 'HSW_TIME_TRIAL_SUBVARIATION', 'LUXURY_SHOWCASE_VEHICLE', 'PROMO_TEST_DRIVE_VEHICLE', 'SIMEON_TEST_DRIVE_VEHICLE', 'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE', 'SOCIAL_CLUB_GARAGE_VEHICLE', 'TIMETRIALVARIATION', 'XM22_GUN_VAN_SLOT', 'XM22_GUN_VAN_STOCK_ID']" :key="item">
+          <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
+            <li
+              v-for="item in [
+                'CAR_MEET_PRIZE_VEHICLE',
+                'CASINO_PRIZE_VEHICLE',
+                'DAILY_OBJECTIVE',
+                'FIXER_STUDIO_APPEARANCE',
+                'HSW_TEST_RIDE',
+                'HSW_TIME_TRIAL_SUBVARIATION',
+                'LUXURY_SHOWCASE_VEHICLE',
+                'PROMO_TEST_DRIVE_VEHICLE',
+                'SIMEON_TEST_DRIVE_VEHICLE',
+                'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
+                'SOCIAL_CLUB_GARAGE_VEHICLE',
+                'TIMETRIALVARIATION',
+                'XM22_GUN_VAN_SLOT',
+                'XM22_GUN_VAN_STOCK_ID',
+              ]"
+              :key="item"
+            >
               <code>{{ item }}</code>
             </li>
           </ul>
         </div>
         <SettingsModalToggle v-model="settings.verbose">
-          <template #title>Verbose Items</template>
+          <template #title>Verbose</template>
           <template #description>
-            Whether to show
+            Whether to show tunables that are
             <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail" class="text-sky-600 hover:text-sky-400">
-              certain verbose items</button
+              verbose</button
             >.
           </template>
         </SettingsModalToggle>
-        <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-300 py-2">
+        <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-300 py-2 overflow-hidden">
           <p class="mb-1">
-            Tunables containing the following text in their key are hidden by toggling the "Verbose Items" setting:
+            Tunables containing the following text in their key are hidden by toggling the <strong>Verbose</strong> setting:
           </p>
-          <ul class="pl-5 list-disc grid sm:grid-cols-2 mb-2">
-            <li v-for="item in ['0x8B7D3320', 'BOOT_BUTTON_QUICK_MATCH_TYPE', 'CURRENTVEHICLESALESSEASON', 'CURRENTVEHICLESALESTUSEASON', 'ELO_SEASON', 'FMCORONA', 'FM_CORONA', 'NPCFLOWINVITE', 'PROFESIONALCORONA', 'SALE_HASH_LABELS']" :key="item">
+          <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
+            <li
+              v-for="item in [
+                '0x8B7D3320',
+                'BOOT_BUTTON_QUICK_MATCH_TYPE',
+                'CURRENTVEHICLESALESSEASON',
+                'CURRENTVEHICLESALESTUSEASON',
+                'ELO_SEASON',
+                'FMCORONA',
+                'FM_CORONA',
+                'NPCFLOWINVITE',
+                'PROFESIONALCORONA',
+                'SALE_HASH_LABELS',
+              ]"
+              :key="item"
+            >
               <code>{{ item }}</code>
             </li>
           </ul>
-          <p class="mb-1">
-            The following miscellaneous items are hidden by toggling the "Verbose Items" setting:
-          </p>
+          <p class="mb-1">The following miscellaneous features are hidden by toggling the <strong>Verbose</strong> setting:</p>
           <ul class="pl-5 list-disc mb-2">
             <li><strong>Mission Bonuses:</strong> Non-numeric and the RP Cap modifiers.</li>
           </ul>
         </div>
         <SettingsModalToggle v-model="settings.bonus">
           <template #title>Bonus</template>
-          <template #description>
-            Whether to show items that are in the
-            <code>bonus</code> key.
-          </template>
+          <template #description> Whether to show tunables that are in the <code>bonus</code> section. </template>
         </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.content">
           <template #title>Content Lists</template>
-          <template #description>
-            Whether to show items that are in the
-            <code>contentlists</code> key.
-          </template>
+          <template #description> Whether to show tunables that are in the <code>contentlists</code> section. </template>
         </SettingsModalToggle>
       </template>
 
       <SettingsModalToggle v-model="settings.tunables">
         <template #title>Tunables</template>
-        <template #description>
-          Whether to show items that are in the
-          <code>tunables</code> key.
-        </template>
+        <template #description> Whether to show tunables that are in the <code>tunables</code> section. </template>
       </SettingsModalToggle>
     </div>
 
@@ -1165,13 +1227,14 @@ function showErrorModal(body) {
       <div class="flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
           <span class="text-sm font-medium text-slate-50">Reset Settings</span>
-          <span class="text-sm text-slate-300">
-            Resets <strong>ALL</strong> settings to their default values. You can always tweak them to your liking again later.
-          </span>
+          <span class="text-sm text-slate-300"
+            >Reset all settings to their defaults, expand all collapsed content, and show all dismissed banners.</span
+          >
+          <span class="text-xs text-slate-500">Use this if you're experiencing issues or want to start fresh.</span>
         </div>
         <button
           @click="handleResetSettingsClick"
-          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-200 shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
+          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-200 shadow-sm hover:bg-red-700 hover:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
         >
           Reset
         </button>
