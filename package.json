@@ -11,7 +11,7 @@
     "@fingerprintjs/fingerprintjs": "^3.4.2",
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
-    "@sentry/tracing": "^7.58.1",
+    "@sentry/tracing": "^7.59.2",
     "@sentry/vue": "^7.58.1",
     "floating-vue": "^2.0.0-beta.24",
     "jsondiffpatch": "^0.4.1",
