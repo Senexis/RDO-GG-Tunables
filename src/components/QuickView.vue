@@ -151,6 +151,23 @@ function handleCollapseAllQuickView() {
 }
 
 /**
+ * Handles the Collapse All except Sales Quick View items event.
+ *
+ * @returns {void}
+ */
+function handleCollapseAllExceptSalesQuickView() {
+  try {
+    settings.accordionsDismissed = [
+      ...Object.values(Accordions).filter((key) => key !== Accordions.Sales),
+      ...Object.keys(ugcBonuses.value ?? []).map((key) => `${Accordions.UgcBonuses}_${key}`),
+    ];
+  } catch (error) {
+    Sentry.captureException(error);
+    emit('error', 'An unknown error occurred. (285A4F4D)');
+  }
+}
+
+/**
  * Handles the Expand All Quick View items event.
  *
  * @returns {void}
@@ -911,6 +928,15 @@ const rdoEvent = computed(() => getRdoEvent());
                     class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     Collapse all sections
+                  </button>
+                </MenuItem>
+                <MenuItem>
+                  <button
+                    @click="handleCollapseAllExceptSalesQuickView"
+                    type="button"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                  >
+                    Collapse all except Sales
                   </button>
                 </MenuItem>
                 <MenuItem>
