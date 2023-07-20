@@ -1,6 +1,7 @@
 <script setup>
 import * as Sentry from '@sentry/vue';
-import { ArrowPathIcon, EyeIcon, EyeSlashIcon, ExclamationTriangleIcon } from '@heroicons/vue/24/outline';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+import { ArrowPathIcon, ExclamationTriangleIcon, EllipsisVerticalIcon } from '@heroicons/vue/24/outline';
 
 import Accordion from './Accordion.vue';
 import Card from './Cards/Card.vue';
@@ -41,6 +42,21 @@ const data = ref({
   vehicles: null,
   weapons: null,
   tunableTypes: null,
+});
+
+const Accordions = Object.freeze({
+  Sales: 'sales',
+  UgcBonuses: 'ugc_bonuses',
+  TimeTrials: 'time_trials',
+  GunVan: 'gun_van',
+  Casino: 'casino',
+  LsCarMeet: 'ls_car_meet',
+  LuxuryAutosShowroom: 'luxury_autos_showroom',
+  PremiumDeluxeMotorsportShowroom: 'premium_deluxe_motorsport_showroom',
+  VinewoodCarClub: 'vinewood_car_club',
+  RecordAStudios: 'record_a_studios',
+  DailyObjectives: 'daily_objectives',
+  RdoEvent: 'rdo_event',
 });
 
 /**
@@ -113,6 +129,38 @@ function handleToggleQuickView() {
   } catch (error) {
     Sentry.captureException(error);
     emit('error', 'An unknown error occurred. (03BF280C)');
+  }
+}
+
+/**
+ * Handles the Collapse All Quick View items event.
+ *
+ * @returns {void}
+ */
+function handleCollapseAllQuickView() {
+  try {
+    settings.accordionsDismissed = [
+      ...Object.values(Accordions),
+      ...Object.keys(sales.value ?? []).map((key) => `${Accordions.Sales}_${key}`),
+      ...Object.keys(ugcBonuses.value ?? []).map((key) => `${Accordions.UgcBonuses}_${key}`),
+    ];
+  } catch (error) {
+    Sentry.captureException(error);
+    emit('error', 'An unknown error occurred. (C406DD4B)');
+  }
+}
+
+/**
+ * Handles the Expand All Quick View items event.
+ *
+ * @returns {void}
+ */
+function handleExpandAllQuickView() {
+  try {
+    settings.accordionsDismissed = [];
+  } catch (error) {
+    Sentry.captureException(error);
+    emit('error', 'An unknown error occurred. (604E0EC6)');
   }
 }
 
@@ -523,7 +571,6 @@ function getStudioAppearanceEnabled(day) {
   try {
     const value = getTunable(`FIXER_STUDIO_APPEARANCE_DISABLE_${day.toUpperCase()}`);
     if (value === null) return null;
-    console.log(value);
     return value === false;
   } catch (error) {
     Sentry.captureException(error);
@@ -825,21 +872,59 @@ const rdoEvent = computed(() => getRdoEvent());
       <CardHeader class="flex flex-row items-center justify-between">
         <h1 class="truncate">Quick View</h1>
         <div class="whitespace-nowrap">
-          <button
-            @click="handleToggleQuickView"
-            type="button"
-            v-tooltip="settings.quickView ? 'Collapse Quick View' : 'Expand Quick View'"
-            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
-          >
-            <template v-if="settings.quickView">
-              <span class="sr-only">Collapse Quick View</span>
-              <EyeSlashIcon class="h-4 w-4" aria-hidden="true" />
-            </template>
-            <template v-else>
-              <span class="sr-only">Expand Quick View</span>
-              <EyeIcon class="h-4 w-4" aria-hidden="true" />
-            </template>
-          </button>
+          <Menu as="div" class="relative ml-3">
+            <div>
+              <MenuButton
+                v-tooltip="'Quick View options'"
+                class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+              >
+                <span class="sr-only">Quick View options</span>
+                <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
+              </MenuButton>
+            </div>
+            <transition
+              enter-active-class="transition ease-out duration-100"
+              enter-from-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-75"
+              leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95"
+            >
+              <MenuItems
+                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              >
+                <MenuItem>
+                  <button
+                    @click="handleToggleQuickView"
+                    type="button"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    v-text="settings.quickView ? 'Collapse Quick View' : 'Expand Quick View'"
+                  ></button>
+                </MenuItem>
+                <MenuItem>
+                  <hr class="my-1 border-slate-600" />
+                </MenuItem>
+                <MenuItem>
+                  <button
+                    @click="handleCollapseAllQuickView"
+                    type="button"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                  >
+                    Collapse all sections
+                  </button>
+                </MenuItem>
+                <MenuItem>
+                  <button
+                    @click="handleExpandAllQuickView"
+                    type="button"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                  >
+                    Expand all sections
+                  </button>
+                </MenuItem>
+              </MenuItems>
+            </transition>
+          </Menu>
         </div>
       </CardHeader>
     </template>
@@ -847,7 +932,7 @@ const rdoEvent = computed(() => getRdoEvent());
       <template v-if="!loading && !data.loading && tunables">
         <!-- GTA -->
         <template v-if="(sales && Object.keys(sales).length) || (ugcBonuses && Object.keys(ugcBonuses).length)">
-          <Accordion id="sales">
+          <Accordion :id="Accordions.Sales">
             <template #title>Sales & Bonuses</template>
             <template #default>
               <p class="mb-4 text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
@@ -869,7 +954,7 @@ const rdoEvent = computed(() => getRdoEvent());
 
               <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
                 <template v-for="(category, key) in sales" :key="key">
-                  <Accordion :id="`sales_${key}`">
+                  <Accordion :id="`${Accordions.Sales}_${key}`">
                     <template #title>
                       <div class="flex justify-between items-center w-full overflow-hidden">
                         <div class="flex gap-2 overflow-hidden">
@@ -893,7 +978,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   </Accordion>
                 </template>
                 <template v-if="ugcBonuses && Object.keys(ugcBonuses).length">
-                  <Accordion id="ugc_bonuses">
+                  <Accordion :id="Accordions.UgcBonuses">
                     <template #title>
                       <div class="flex justify-between items-center w-full overflow-hidden">
                         <div class="flex gap-2 overflow-hidden">
@@ -907,7 +992,7 @@ const rdoEvent = computed(() => getRdoEvent());
                     <template #default>
                       <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
                         <template v-for="(list, index) in ugcBonuses" :key="index">
-                          <Accordion :id="`ugc_bonuses_${index}`">
+                          <Accordion :id="`${Accordions.UgcBonuses}_${index}`">
                             <template #title>
                               <div class="flex justify-between items-center w-full overflow-hidden">
                                 <div class="flex gap-2 overflow-hidden">
@@ -951,7 +1036,7 @@ const rdoEvent = computed(() => getRdoEvent());
           </Accordion>
         </template>
         <template v-if="timeTrial || hswTimeTrial || rcTimeTrial">
-          <Accordion id="time_trials">
+          <Accordion :id="Accordions.TimeTrials">
             <template #title>Time Trials</template>
             <template #default>
               <ul class="list-disc">
@@ -972,7 +1057,7 @@ const rdoEvent = computed(() => getRdoEvent());
           </Accordion>
         </template>
         <template v-if="gunVan && getTunable('XM22_GUN_VAN_STOCK_ID')">
-          <Accordion id="gun_van">
+          <Accordion :id="Accordions.GunVan">
             <template #title>Gun Van</template>
             <template #default>
               <h3 class="my-1 font-bold">Weapons</h3>
@@ -1025,7 +1110,7 @@ const rdoEvent = computed(() => getRdoEvent());
           </Accordion>
         </template>
         <template v-if="casinoPrizeVehicle">
-          <Accordion id="casino">
+          <Accordion :id="Accordions.Casino">
             <template #title>Casino</template>
             <template #default>
               <ul class="list-disc">
@@ -1046,7 +1131,7 @@ const rdoEvent = computed(() => getRdoEvent());
             hswTestRide
           "
         >
-          <Accordion id="ls_car_meet">
+          <Accordion :id="Accordions.LsCarMeet">
             <template #title>LS Car Meet</template>
             <template #default>
               <template v-if="carMeetPrizeObjective || carMeetPrizeVehicle">
@@ -1084,7 +1169,7 @@ const rdoEvent = computed(() => getRdoEvent());
           </Accordion>
         </template>
         <template v-if="luxuryShowcaseVehicle1 || luxuryShowcaseVehicle2">
-          <Accordion id="luxury_autos_showroom">
+          <Accordion :id="Accordions.LuxuryAutosShowroom">
             <template #title>Luxury Autos Showroom</template>
             <template #default>
               <ul class="list-disc">
@@ -1107,7 +1192,7 @@ const rdoEvent = computed(() => getRdoEvent());
             simeonTestDriveVehicle5
           "
         >
-          <Accordion id="premium_deluxe_motorsport_showroom">
+          <Accordion :id="Accordions.LuxuryAutosShowroom">
             <template #title>Premium Deluxe Motorsport Showroom</template>
             <template #default>
               <ul class="list-disc">
@@ -1144,7 +1229,7 @@ const rdoEvent = computed(() => getRdoEvent());
             socialClubGarageVehicle9
           "
         >
-          <Accordion id="vinewood_car_club">
+          <Accordion :id="Accordions.VinewoodCarClub">
             <template #title>Vinewood Car Club</template>
             <template #default>
               <ul class="list-disc">
@@ -1193,7 +1278,7 @@ const rdoEvent = computed(() => getRdoEvent());
             studioAppearanceEnabledSun
           "
         >
-          <Accordion id="record_a_studios">
+          <Accordion :id="Accordions.RecordAStudios">
             <template #title>Record A Studios</template>
             <template #default>
               <h3 class="my-1 font-bold">Dr. Dre Studio Appearances:</h3>
@@ -1220,7 +1305,7 @@ const rdoEvent = computed(() => getRdoEvent());
             dailyObjectiveSun
           "
         >
-          <Accordion id="daily_objectives">
+          <Accordion :id="Accordions.DailyObjectives">
             <template #title>Daily Objectives</template>
             <template #default>
               <ul class="list-disc">
@@ -1252,7 +1337,7 @@ const rdoEvent = computed(() => getRdoEvent());
 
         <!-- RDO -->
         <template v-if="rdoEvent">
-          <Accordion id="rdo_event">
+          <Accordion :id="Accordions.RdoEvent">
             <template #title>Active Event</template>
             <template #default>
               <ul class="list-disc">

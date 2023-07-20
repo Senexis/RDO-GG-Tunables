@@ -9,7 +9,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   Cog6ToothIcon,
-  EyeSlashIcon,
+  EllipsisVerticalIcon,
   NoSymbolIcon,
 } from '@heroicons/vue/24/outline';
 import { HeartIcon } from '@heroicons/vue/24/solid';
@@ -1039,12 +1039,13 @@ function showErrorModal(body) {
   </Banner>
 
   <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
-    Newly added: the Quick View panel! See some popular items at a glance. Feel free to collapse it using the
-    <EyeSlashIcon class="inline w-5 h-5" /> button.
+    Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it using the
+    <EllipsisVerticalIcon class="inline w-5 h-5" /> button.
     <br />
-    <span class="text-sm text-slate-300"
-      >Tip: Change your mind? You can always expand the Quick View panel by clicking the button again.</span
-    >
+    <span class="text-sm text-slate-300">
+      Tip: Change your mind? You can always <strong>Expand</strong> the Quick View panel by clicking the
+      <EllipsisVerticalIcon class="inline w-5 h-5" /> button again.
+    </span>
   </Banner>
 
   <Banner

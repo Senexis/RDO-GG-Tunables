@@ -11,9 +11,9 @@ const props = defineProps({
   },
 });
 
+const settings = useStore();
 const openFallback = ref(false);
 
-const settings = useStore();
 const open = computed(() => {
   if (!props.id) return openFallback.value;
   return !settings.accordionsDismissed.includes(props.id);
