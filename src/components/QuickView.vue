@@ -1243,7 +1243,7 @@ const rdoEvent = computed(() => getRdoEvent());
             simeonTestDriveVehicle5
           "
         >
-          <Accordion :id="Accordions.LuxuryAutosShowroom">
+          <Accordion :id="Accordions.PremiumDeluxeMotorsportShowroom">
             <template #title>Premium Deluxe Motorsport Showroom</template>
             <template #default>
               <ul class="list-disc">
