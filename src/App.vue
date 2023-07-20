@@ -913,12 +913,14 @@ function showErrorModal(body) {
   </header>
 
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <QuickView
-      :loading="difference.loading"
-      :tunables="tunables?.latest?.contents?.tunables"
-      :ugc="tunables?.latest?.contents?.contentlists"
-      @error="showErrorModal"
-    />
+    <template v-if="!settings.quickViewBelowTunables">
+      <QuickView
+        :loading="difference.loading"
+        :tunables="tunables?.latest?.contents?.tunables"
+        :ugc="tunables?.latest?.contents?.contentlists"
+        @error="showErrorModal"
+      />
+    </template>
 
     <Card>
       <template #header>
@@ -1015,6 +1017,15 @@ function showErrorModal(body) {
         </CardFooter>
       </template>
     </Card>
+
+    <template v-if="settings.quickViewBelowTunables">
+      <QuickView
+        :loading="difference.loading"
+        :tunables="tunables?.latest?.contents?.tunables"
+        :ugc="tunables?.latest?.contents?.contentlists"
+        @error="showErrorModal"
+      />
+    </template>
 
     <div class="mt-8 border-t border-slate-100/10 py-4 text-xs leading-5 text-slate-500 sm:flex sm:items-center sm:justify-between">
       <div class="flex space-x-4">

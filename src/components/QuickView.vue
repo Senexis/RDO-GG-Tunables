@@ -114,7 +114,7 @@ async function request(url) {
     return await response.json();
   } catch (error) {
     Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (1B69EB10)');
+    emit('error', 'We were unable to retrieve some required data needed to display the tunables. Please try again later.');
   }
 }
 
@@ -129,6 +129,20 @@ function handleToggleQuickView() {
   } catch (error) {
     Sentry.captureException(error);
     emit('error', 'An unknown error occurred. (03BF280C)');
+  }
+}
+
+/**
+ * Handles the move quick view event.
+ *
+ * @returns {void}
+ */
+function handleMoveQuickView() {
+  try {
+    settings.quickViewBelowTunables = !settings.quickViewBelowTunables;
+  } catch (error) {
+    Sentry.captureException(error);
+    emit('error', 'An unknown error occurred. (533ABEA1)');
   }
 }
 
@@ -908,7 +922,10 @@ const rdoEvent = computed(() => getRdoEvent());
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                :class="[
+                  settings.quickViewBelowTunables ? 'bottom-full origin-bottom-right mb-2' : 'origin-top-right mt-2',
+                  'absolute right-0 z-10 w-48 rounded-md bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
+                ]"
               >
                 <MenuItem>
                   <button
@@ -916,6 +933,14 @@ const rdoEvent = computed(() => getRdoEvent());
                     type="button"
                     class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                     v-text="settings.quickView ? 'Collapse Quick View' : 'Expand Quick View'"
+                  ></button>
+                </MenuItem>
+                <MenuItem>
+                  <button
+                    @click="handleMoveQuickView"
+                    type="button"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    v-text="settings.quickViewBelowTunables ? 'Move above Tunables' : 'Move below Tunables'"
                   ></button>
                 </MenuItem>
                 <MenuItem>
