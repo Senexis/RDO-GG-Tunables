@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
-import { execSync } from "node:child_process";
-import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import { sentryVitePlugin } from "@sentry/vite-plugin";
+import { execSync } from 'node:child_process';
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 
-const production = process.env.NODE_ENV === "production";
+const production = process.env.NODE_ENV === 'production';
 
-const commitShort = production ? execSync("git rev-parse --short HEAD").toString().trim() : "dev";
-const commitLong = production ? execSync("git rev-parse HEAD").toString().trim() : "dev";
-const change = production ? execSync("git log -1 --pretty=%B").toString().trim() : "dev";
+const commitShort = production ? execSync('git rev-parse --short HEAD').toString().trim() : 'dev';
+const commitLong = production ? execSync('git rev-parse HEAD').toString().trim() : 'dev';
+const change = production ? execSync('git log -1 --pretty=%B').toString().trim() : 'dev';
 
 const sentryOrganization = production ? process.env.SENTRY_ORGANIZATION : null;
 const sentryProject = production ? process.env.SENTRY_PROJECT : null;
@@ -23,13 +23,14 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    production && sentryVitePlugin({
-      org: sentryOrganization,
-      project: sentryProject,
-      include: "./dist",
-      authToken: sentryAuthToken,
-      release: commitLong,
-    }),
+    production &&
+      sentryVitePlugin({
+        org: sentryOrganization,
+        project: sentryProject,
+        include: './dist',
+        authToken: sentryAuthToken,
+        release: commitLong,
+      }),
   ],
   define: {
     APP_CHANGE: JSON.stringify(change),
@@ -41,7 +42,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 });

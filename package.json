@@ -3,7 +3,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "lint": "eslint . --fix --ignore-path .gitignore",
     "preview": "vite preview",
     "validate": "ajv validate -s schemas/tunable_types.json -d public/data/tunable_types.json && ajv validate -s schemas/hash_dictionary.json -d public/data/labels.json && ajv validate -s schemas/string_array.json -d public/data/time_trials.json -d public/data/rc_time_trials.json -d public/data/hsw_time_trials.json -d public/data/daily_objectives.json"
   },
