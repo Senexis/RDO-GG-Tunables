@@ -4,6 +4,9 @@ export const useStore = defineStore('settings', {
   persist: true,
   state: () => {
     return {
+      // TODO: 😎
+      // dark: true,
+
       // Open/close accordions.
       accordionsDismissed: [],
 

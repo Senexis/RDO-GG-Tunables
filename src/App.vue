@@ -948,7 +948,7 @@ function showErrorModal(body) {
               :disabled="previousDisabled"
               type="button"
               v-tooltip="'Previous tunables'"
-              class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+              class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
             >
               <span class="sr-only">Previous tunables</span>
               <ChevronLeftIcon class="h-4 w-4" aria-hidden="true" />
@@ -958,7 +958,7 @@ function showErrorModal(body) {
               :disabled="nextDisabled"
               type="button"
               v-tooltip="'Next tunables'"
-              class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+              class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
             >
               <span class="sr-only">Next tunables</span>
               <ChevronRightIcon class="h-4 w-4" aria-hidden="true" />
@@ -968,7 +968,7 @@ function showErrorModal(body) {
               :disabled="latestDisabled"
               type="button"
               v-tooltip="'Latest tunables'"
-              class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+              class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
             >
               <span class="sr-only">Latest tunables</span>
               <ChevronDoubleRightIcon class="h-4 w-4" aria-hidden="true" />
@@ -977,7 +977,9 @@ function showErrorModal(body) {
         </CardHeader>
       </template>
       <template #default>
-        <div class="bg-slate-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]">
+        <div
+          class="bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]"
+        >
           <template v-if="!difference.loading">
             <template v-if="difference.html">
               <div
@@ -1027,7 +1029,9 @@ function showErrorModal(body) {
       />
     </template>
 
-    <div class="mt-8 border-t border-slate-100/10 py-4 text-xs leading-5 text-slate-500 sm:flex sm:items-center sm:justify-between">
+    <div
+      class="mt-8 border-t border-slate-800/10 dark:border-slate-200/10 py-4 text-xs leading-5 text-slate-500 dark:text-slate-500 sm:flex sm:items-center sm:justify-between"
+    >
       <div class="flex space-x-4">
         <span>&copy; {{ appCopyrightYear }} RDO.GG</span>
         <span><HeartIcon class="inline w-4 h-4 text-red-500 hover:animate-pulse" /> from Senexis</span>
@@ -1044,7 +1048,7 @@ function showErrorModal(body) {
   <Banner id="new-site" :show="activeBanner === 'new-site'">
     Welcome to the new website! Check out all the settings using the <Cog6ToothIcon class="inline w-5 h-5" /> button.
     <br />
-    <span class="text-sm text-slate-300">
+    <span class="text-sm text-slate-700 dark:text-slate-300">
       Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong> tunables setting.
     </span>
   </Banner>
@@ -1053,7 +1057,7 @@ function showErrorModal(body) {
     Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it using the
     <EllipsisVerticalIcon class="inline w-5 h-5" /> button.
     <br />
-    <span class="text-sm text-slate-300">
+    <span class="text-sm text-slate-700 dark:text-slate-300">
       Tip: Change your mind? You can always <strong>Expand</strong> the Quick View panel by clicking the
       <EllipsisVerticalIcon class="inline w-5 h-5" /> button again.
     </span>
@@ -1072,7 +1076,7 @@ function showErrorModal(body) {
   <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
     Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
     <br />
-    <span class="text-sm text-slate-300"
+    <span class="text-sm text-slate-700 dark:text-slate-300"
       >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
       <strong>Quick View</strong> tunables setting.</span
     >
@@ -1093,9 +1097,14 @@ function showErrorModal(body) {
     :commitLong="appCommitLong"
     :updated="appUpdated"
   >
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">General</h3>
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">General</h3>
 
-    <div class="divide-y divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
+      <!-- TODO: 😎 -->
+      <!-- <SettingsModalToggle v-model="settings.dark">
+        <template #title>Dark mode</template>
+        <template #description>Whether you want to use dark mode.</template>
+      </SettingsModalToggle> -->
       <SettingsModalSelect v-model="game" :options="gameOptions">
         <template #title>Game</template>
         <template #description> Select the game to compare tunables for. </template>
@@ -1106,9 +1115,9 @@ function showErrorModal(body) {
       </SettingsModalSelect>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">Activity</h3>
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Activity</h3>
 
-    <div class="divide-y divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
       <SettingsModalToggle v-model="settings.added">
         <template #title>Added</template>
         <template #description>Whether to show tunables that have been added.</template>
@@ -1127,9 +1136,9 @@ function showErrorModal(body) {
       </SettingsModalToggle>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">Tunables</h3>
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Tunables</h3>
 
-    <div class="divide-y divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
       <template v-if="game === 'gta'">
         <SettingsModalToggle v-model="settings.quickViewItems">
           <template #title>Quick View</template>
@@ -1143,7 +1152,7 @@ function showErrorModal(body) {
             >.
           </template>
         </SettingsModalToggle>
-        <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-300 py-2 overflow-hidden">
+        <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
           <p class="mb-1">
             Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong> setting:
           </p>
@@ -1180,7 +1189,7 @@ function showErrorModal(body) {
             >.
           </template>
         </SettingsModalToggle>
-        <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-300 py-2 overflow-hidden">
+        <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
           <p class="mb-1">
             Tunables containing the following text in their key are hidden by toggling the <strong>Verbose</strong> setting:
           </p>
@@ -1224,7 +1233,7 @@ function showErrorModal(body) {
       </SettingsModalToggle>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-600">
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">
       <a
         href="https://www.youtube.com/watch?v=yK0P1Bk8Cx4"
         target="_blank"
@@ -1235,18 +1244,18 @@ function showErrorModal(body) {
       </a>
     </h3>
 
-    <div class="divide-y divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
       <div class="flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
-          <span class="text-sm font-medium text-slate-50">Reset Settings</span>
-          <span class="text-sm text-slate-300"
+          <span class="text-sm font-medium text-slate-900 dark:text-slate-50">Reset Settings</span>
+          <span class="text-sm text-slate-700 dark:text-slate-300"
             >Reset all settings to their defaults, expand all collapsed content, and show all dismissed banners.</span
           >
-          <span class="text-xs text-slate-500">Use this if you're experiencing issues or want to start fresh.</span>
+          <span class="text-xs text-slate-500 dark:text-slate-500">Use this if you're experiencing issues or want to start fresh.</span>
         </div>
         <button
           @click="handleResetSettingsClick"
-          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-200 shadow-sm hover:bg-red-700 hover:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
+          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-red-700 hover:text-slate-900 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
         >
           Reset
         </button>

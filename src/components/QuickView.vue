@@ -907,7 +907,7 @@ const rdoEvent = computed(() => getRdoEvent());
             <div>
               <MenuButton
                 v-tooltip="'Quick View options'"
-                class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+                class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
               >
                 <span class="sr-only">Quick View options</span>
                 <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
@@ -924,14 +924,14 @@ const rdoEvent = computed(() => getRdoEvent());
               <MenuItems
                 :class="[
                   settings.quickViewBelowTunables ? 'bottom-full origin-bottom-right mb-2' : 'origin-top-right mt-2',
-                  'absolute right-0 z-10 w-48 rounded-md bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
+                  'absolute right-0 z-10 w-48 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
                 ]"
               >
                 <MenuItem>
                   <button
                     @click="handleToggleQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                     v-text="settings.quickView ? 'Collapse Quick View' : 'Expand Quick View'"
                   ></button>
                 </MenuItem>
@@ -939,18 +939,18 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleMoveQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                     v-text="settings.quickViewBelowTunables ? 'Move above Tunables' : 'Move below Tunables'"
                   ></button>
                 </MenuItem>
                 <MenuItem>
-                  <hr class="my-1 border-slate-600" />
+                  <hr class="my-1 border-slate-400 dark:border-slate-600" />
                 </MenuItem>
                 <MenuItem>
                   <button
                     @click="handleCollapseAllQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     Collapse all sections
                   </button>
@@ -959,7 +959,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleCollapseAllExceptSalesQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     Collapse all except Sales
                   </button>
@@ -968,7 +968,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleExpandAllQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     Expand all sections
                   </button>
@@ -986,7 +986,9 @@ const rdoEvent = computed(() => getRdoEvent());
           <Accordion :id="Accordions.Sales">
             <template #title>Sales & Bonuses</template>
             <template #default>
-              <p class="mb-4 text-sm text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2">
+              <p
+                class="mb-4 text-sm text-slate-600 dark:text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2"
+              >
                 <ExclamationTriangleIcon class="hidden md:block w-6 h-6 text-yellow-600" />
                 <span>
                   <strong>Note:</strong> This is a <strong>generated, likely incomplete</strong> list based on
@@ -1003,7 +1005,9 @@ const rdoEvent = computed(() => getRdoEvent());
                 >
               </p>
 
-              <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
+              <div
+                class="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
+              >
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`${Accordions.Sales}_${key}`">
                     <template #title>
@@ -1041,7 +1045,9 @@ const rdoEvent = computed(() => getRdoEvent());
                       </div>
                     </template>
                     <template #default>
-                      <div class="rounded-lg overflow-hidden bg-slate-800 divide-y divide-slate-700 border border-slate-700">
+                      <div
+                        class="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
+                      >
                         <template v-for="(list, index) in ugcBonuses" :key="index">
                           <Accordion :id="`${Accordions.UgcBonuses}_${index}`">
                             <template #title>
@@ -1407,7 +1413,7 @@ const rdoEvent = computed(() => getRdoEvent());
         </template>
       </template>
       <template v-else>
-        <div class="bg-slate-900 px-2 py-2 sm:p-4 flex flex-col items-center justify-center gap-2">
+        <div class="bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 flex flex-col items-center justify-center gap-2">
           <ArrowPathIcon class="block animate-spin h-12 w-12" aria-hidden="true" />
           <p class="text-lg font-medium">Loading...</p>
         </div>

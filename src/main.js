@@ -6,6 +6,8 @@ import App from './App.vue';
 import * as Sentry from '@sentry/vue';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import FloatingVue from 'floating-vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 FloatingVue.options.distance = 10;
 import 'floating-vue/dist/style.css';
@@ -17,6 +19,15 @@ const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 
 const app = createApp(App);
+
+// Import specific icons from Font Awesome 6.
+import { faAt } from '@fortawesome/free-solid-svg-icons';
+library.add(faAt);
+
+import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+library.add(faTwitter, faDiscord, faGithub);
+
+app.component('font-awesome-icon', FontAwesomeIcon);
 
 // Concerned about your privacy? See https://rdo.gg/privacy/.
 // We use this to link Sentry issue data to a consistent user.

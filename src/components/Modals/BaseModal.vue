@@ -23,7 +23,7 @@ const props = defineProps({
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-slate-800 bg-opacity-90 transition-opacity" />
+        <div class="fixed inset-0 bg-slate-200/75 dark:bg-slate-800/75 transition-opacity" />
       </TransitionChild>
 
       <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -38,7 +38,7 @@ const props = defineProps({
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg bg-slate-900 text-slate-50 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+              class="relative transform overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
             >
               <slot></slot>
             </DialogPanel>

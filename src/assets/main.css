@@ -20,7 +20,11 @@ code {
 
 /* Badge colors. */
 .badge-outline {
-  @apply bg-transparent text-slate-400 border border-slate-400;
+  @apply bg-transparent text-slate-600 border border-slate-600;
+}
+
+.dark .badge-outline {
+  @apply text-slate-400 border-slate-400;
 }
 
 .badge-primary {
@@ -64,19 +68,32 @@ code {
   ::-webkit-scrollbar {
     @apply w-4 h-4;
   }
-  
+
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-corner {
+    @apply bg-slate-200;
+  }
+
+  .dark ::-webkit-scrollbar-track,
+  .dark ::-webkit-scrollbar-corner {
     @apply bg-slate-800;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700 bg-clip-content border-4 border-solid border-transparent rounded-full;
+    @apply bg-slate-300 bg-clip-content border-4 border-solid border-transparent rounded-full;
   }
-  
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700;
+  }
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-slate-500;
-  }  
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+  }
 }
 
 /* Hide individual types of changes. */
@@ -124,11 +141,19 @@ code {
 
 /* Custom Float Vue tweaks. */
 .v-popper--theme-tooltip .v-popper__inner {
-  @apply py-1.5 px-3 bg-slate-900 text-slate-300 text-sm rounded-md leading-none shadow-md;
+  @apply py-1.5 px-3 bg-slate-100 text-slate-700 text-sm rounded-md leading-none shadow-md;
+}
+
+.dark .v-popper--theme-tooltip .v-popper__inner {
+  @apply bg-slate-900 text-slate-300;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  @apply border-slate-900 shadow-md;
+  @apply border-slate-100 shadow-md;
+}
+
+.dark .v-popper--theme-tooltip .v-popper__arrow-outer {
+  @apply border-slate-900;
 }
 
 /* Custom JSON diff patch tweaks. */
@@ -171,12 +196,22 @@ code {
 .jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after,
 .jsondiffpatch-property-name:after,
 .jsondiffpatch-value pre:after {
-  @apply text-white;
+  @apply text-slate-900;
+}
+
+.dark .jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after,
+.dark .jsondiffpatch-property-name:after,
+.dark .jsondiffpatch-value pre:after {
+  @apply text-slate-50;
 }
 
 .jsondiffpatch-property-name:before {
   content: '"';
-  @apply text-white;
+  @apply text-slate-900;
+}
+
+.dark .jsondiffpatch-property-name:before {
+  @apply text-slate-50;
 }
 
 .jsondiffpatch-property-name:after {
