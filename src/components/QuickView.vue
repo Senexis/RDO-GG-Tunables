@@ -650,6 +650,8 @@ function getSales() {
 function getSalesTitle(title) {
   try {
     switch (title.replace(/_plus$/g, '')) {
+      case 'auto_shop_sales':
+        return 'Auto Shop Sales';
       case 'avenger_upgrade_sales':
         return 'Avenger Upgrade Sales';
       case 'biker_business_sales':
@@ -658,6 +660,12 @@ function getSalesTitle(title) {
         return 'Biker Clubhouse Sales';
       case 'bunker_sales':
         return 'Bunker Sales';
+      case 'hsw_mod_price_sales':
+        return 'HSW Mod Priced';
+      case 'hsw_upgrade_sales':
+        return 'HSW Upgrades';
+      case 'hsw_vehicle_price_sales':
+        return 'HSW Vehicle Prices';
       case 'nightclub_property_sales':
         return 'Nightclub Property Sales';
       case 'nightclub_upgrade_sales':
@@ -666,6 +674,8 @@ function getSalesTitle(title) {
         return 'Office Sales';
       case 'property_sales':
         return 'Property Sales';
+      case 'vehicle_livery_sales':
+        return 'Vehicle Livery Sales';
       case 'vehicle_sales':
         return 'Vehicle Sales';
       case 'vehicle_upgrade_sales':

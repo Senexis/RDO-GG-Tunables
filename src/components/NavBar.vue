@@ -40,13 +40,13 @@ const navigation = [
                 :aria-current="item.current ? 'page' : undefined"
                 v-tooltip="item.icon ? item.name : undefined"
               >
-              <template v-if="item.icon">
-                <span class="sr-only">{{ item.name }}</span>
-                <font-awesome-icon :icon="item.icon" />
-              </template>
-              <template v-else>
-                {{ item.name }}
-              </template>
+                <template v-if="item.icon">
+                  <span class="sr-only">{{ item.name }}</span>
+                  <font-awesome-icon :icon="item.icon" />
+                </template>
+                <template v-else>
+                  {{ item.name }}
+                </template>
               </a>
             </div>
           </div>

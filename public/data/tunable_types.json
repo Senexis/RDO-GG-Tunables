@@ -4828,5 +4828,600 @@
     "key": "0x4FCB7F1A",
     "type": "avenger_upgrade_sales",
     "display": "MLJ_UNIT"
+  },
+  {
+    "key": "SU23_HSW_UPGRADE_BUFFALO5",
+    "type": "hsw_upgrade_sales",
+    "display": "BUFFALO5"
+  },
+  {
+    "key": "SU23_HSW_UPGRADE_COUREUR",
+    "type": "hsw_upgrade_sales",
+    "display": "COUREUR"
+  },
+  {
+    "key": "SU23_HSW_UPGRADE_MONSTROCITI",
+    "type": "hsw_upgrade_sales",
+    "display": "MONSTROCITI"
+  },
+  {
+    "key": "SU23_HSW_UPGRADE_STINGERTT",
+    "type": "hsw_upgrade_sales",
+    "display": "STINGERTT"
+  },
+  {
+    "key": "XM22_HSW_UPGRADE_ENTITY3",
+    "type": "hsw_upgrade_sales",
+    "display": "ENTITY3"
+  },
+  {
+    "key": "XM22_HSW_UPGRADE_ISSI8",
+    "type": "hsw_upgrade_sales",
+    "display": "ISSI8"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_ARBITERGT",
+    "type": "hsw_vehicle_price_sales",
+    "display": "ARBITERGT"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_ASTRON2",
+    "type": "hsw_vehicle_price_sales",
+    "display": "ASTRON2"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_BANSHEE",
+    "type": "hsw_vehicle_price_sales",
+    "display": "BANSHEE"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_BRIOSO",
+    "type": "hsw_vehicle_price_sales",
+    "display": "BRIOSO"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_CYCLONE2",
+    "type": "hsw_vehicle_price_sales",
+    "display": "CYCLONE2"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_DEVESTE",
+    "type": "hsw_vehicle_price_sales",
+    "display": "DEVESTE"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_FELTZER3",
+    "type": "hsw_vehicle_price_sales",
+    "display": "FELTZER3"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_IGNUS2",
+    "type": "hsw_vehicle_price_sales",
+    "display": "IGNUS2"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_S95",
+    "type": "hsw_vehicle_price_sales",
+    "display": "S95"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_SENTINEL",
+    "type": "hsw_vehicle_price_sales",
+    "display": "SENTINEL"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_TURISMO2",
+    "type": "hsw_vehicle_price_sales",
+    "display": "TURISMO2"
+  },
+  {
+    "key": "GEN9_HSW_PRICE_VIGERO2",
+    "type": "hsw_vehicle_price_sales",
+    "display": "VIGERO2"
+  },
+  {
+    "key": "GEN9_MODS_HSW_BRAKES",
+    "type": "hsw_mod_price_sales",
+    "display": "BRAKES"
+  },
+  {
+    "key": "GEN9_MODS_HSW_BRAKES2",
+    "type": "hsw_mod_price_sales",
+    "display": "BRAKES2"
+  },
+  {
+    "key": "GEN9_MODS_HSW_ELITE_LIVERY",
+    "type": "hsw_mod_price_sales",
+    "display": "ELITE_LIVERY"
+  },
+  {
+    "key": "GEN9_MODS_HSW_ENGINE",
+    "type": "hsw_mod_price_sales",
+    "display": "ENGINE"
+  },
+  {
+    "key": "GEN9_MODS_HSW_ENGINE2",
+    "type": "hsw_mod_price_sales",
+    "display": "ENGINE2"
+  },
+  {
+    "key": "GEN9_MODS_HSW_RACING_LIVERY",
+    "type": "hsw_mod_price_sales",
+    "display": "RACING_LIVERY"
+  },
+  {
+    "key": "GEN9_MODS_HSW_SPOILER",
+    "type": "hsw_mod_price_sales",
+    "display": "SPOILER"
+  },
+  {
+    "key": "GEN9_MODS_HSW_SPOILER2",
+    "type": "hsw_mod_price_sales",
+    "display": "SPOILER2"
+  },
+  {
+    "key": "GEN9_MODS_HSW_SUSPENSION",
+    "type": "hsw_mod_price_sales",
+    "display": "SUSPENSION"
+  },
+  {
+    "key": "GEN9_MODS_HSW_TRANSMISSION",
+    "type": "hsw_mod_price_sales",
+    "display": "TRANSMISSION"
+  },
+  {
+    "key": "GEN9_MODS_HSW_TURBO_QUAD",
+    "type": "hsw_mod_price_sales",
+    "display": "TURBO_QUAD"
+  },
+  {
+    "key": "GEN9_MODS_HSW_TURBO_SINGLE",
+    "type": "hsw_mod_price_sales",
+    "display": "TURBO_SINGLE"
+  },
+  {
+    "key": "GEN9_MODS_HSW_TURBO_TWIN",
+    "type": "hsw_mod_price_sales",
+    "display": "TURBO_TWIN"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_1",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_1"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_2",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_2"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_3",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_3"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_4",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_4"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_5",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_5"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_6",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_6"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_7",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_7"
+  },
+  {
+    "key": "BB_BUY_IT_NOW_PRICE_MISC_VEHICLES_BLIMP_LIVERY_8_NIGHTCLUB",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_8"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_1",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_1"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_2",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_2"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_3",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_3"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_4",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_4"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_5",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_5"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_6",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_6"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_7",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_7"
+  },
+  {
+    "key": "BB_TRADE_PRICE_MISC_VEHICLES_BLIMP_LIVERY_8_NIGHTCLUB",
+    "type": "vehicle_livery_sales",
+    "display": "BLIMP3_ELT_8"
+  },
+  {
+    "key": "CAR_MODS_HALLOWEEN_2015_FRANKEN_STANGE_LIVERY_BLAZING_DEATH",
+    "type": "vehicle_livery_sales",
+    "display": "BTY2_LIV4"
+  },
+  {
+    "key": "CAR_MODS_HALLOWEEN_2015_FRANKEN_STANGE_LIVERY_HELLS_FURNACE",
+    "type": "vehicle_livery_sales",
+    "display": "BTY2_LIV3"
+  },
+  {
+    "key": "CAR_MODS_HALLOWEEN_2015_FRANKEN_STANGE_LIVERY_MIDNIGHT_POTION",
+    "type": "vehicle_livery_sales",
+    "display": "BTY2_LIV2"
+  },
+  {
+    "key": "CAR_MODS_HALLOWEEN_2015_FRANKEN_STANGE_LIVERY_SPIDER_TRAP",
+    "type": "vehicle_livery_sales",
+    "display": "BTY2_LIV1"
+  },
+  {
+    "key": "CAR_MODS_HALLOWEEN_2015_LURCHER_LIVERY_HANGMANS_GRAVE",
+    "type": "vehicle_livery_sales",
+    "display": "LUR_LIV1"
+  },
+  {
+    "key": "CAR_MODS_HALLOWEEN_2015_LURCHER_LIVERY_THE_RIPPER",
+    "type": "vehicle_livery_sales",
+    "display": "LUR_LIV2"
+  },
+  {
+    "key": "GR_MOC_LIVERIES_EAGLE_CLAW_FLAG_PRICE",
+    "type": "vehicle_livery_sales",
+    "display": "TL_LIV3"
+  },
+  {
+    "key": "GR_MOC_LIVERIES_EAGLE_CLAW_PRICE",
+    "type": "vehicle_livery_sales",
+    "display": "TL_LIV2"
+  },
+  {
+    "key": "GR_MOC_LIVERIES_FIGHTING_FREEDOM_PRICE",
+    "type": "vehicle_livery_sales",
+    "display": "TL_LIV4"
+  },
+  {
+    "key": "GR_MOC_LIVERIES_STARS_AND_STRIPES_PRICE",
+    "type": "vehicle_livery_sales",
+    "display": "TL_LIV1"
+  },
+  {
+    "key": "LOWRIDER_FACTION2_LIVERY_SPECIAL10",
+    "type": "vehicle_livery_sales",
+    "display": "LOWRIDER_FACTION2_LIVERY_SPECIAL10"
+  },
+  {
+    "key": "PS_SWIFT_LIVERY_1",
+    "type": "vehicle_livery_sales",
+    "display": "SWIFT_LV1"
+  },
+  {
+    "key": "PS_SWIFT_LIVERY_2",
+    "type": "vehicle_livery_sales",
+    "display": "SWIFT_LV2"
+  },
+  {
+    "key": "STUNT_LIVERY_1_ANNIS_RE7B",
+    "type": "vehicle_livery_sales",
+    "display": "LE7B_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_1_DECALSSE_DRIFT_TAMPA",
+    "type": "vehicle_livery_sales",
+    "display": "TAMPA2_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_EMPEROR_SHEAVA",
+    "type": "vehicle_livery_sales",
+    "display": "SHEA_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_GROTTI_BRIOSO_RA",
+    "type": "vehicle_livery_sales",
+    "display": "BRIO_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_LAMPADATI_TROPOS_RALLYE",
+    "type": "vehicle_livery_sales",
+    "display": "TROPOS_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_NAGASAKI_BF400",
+    "type": "vehicle_livery_sales",
+    "display": "BF_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_OBEY_OMNIS",
+    "type": "vehicle_livery_sales",
+    "display": "OMNIS_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_OCELOT_LYNX",
+    "type": "vehicle_livery_sales",
+    "display": "LYNX_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_PROGEN_TYRUS",
+    "type": "vehicle_livery_sales",
+    "display": "TYRUS_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_VAPID_DESERT_RAID",
+    "type": "vehicle_livery_sales",
+    "display": "TTRUCK_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_VAPID_TROPHY_TRUCK",
+    "type": "vehicle_livery_sales",
+    "display": "TROPHY2_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_WESTERN_CLIFFHANGER",
+    "type": "vehicle_livery_sales",
+    "display": "CLIFF_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_1_WESTERN_GARGOYLE",
+    "type": "vehicle_livery_sales",
+    "display": "GARG_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_2_ANNIS_RE7B",
+    "type": "vehicle_livery_sales",
+    "display": "LE7B_LIV_1"
+  },
+  {
+    "key": "STUNT_LIVERY_2_DECALSSE_DRIFT_TAMPA",
+    "type": "vehicle_livery_sales",
+    "display": "TAMPA2_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_EMPEROR_SHEAVA",
+    "type": "vehicle_livery_sales",
+    "display": "SHEA_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_GROTTI_BRIOSO_RA",
+    "type": "vehicle_livery_sales",
+    "display": "BRIO_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_LAMPADATI_TROPOS_RALLYE",
+    "type": "vehicle_livery_sales",
+    "display": "TROPOS_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_NAGASAKI_BF400",
+    "type": "vehicle_livery_sales",
+    "display": "BF_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_OBEY_OMNIS",
+    "type": "vehicle_livery_sales",
+    "display": "OMNIS_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_OCELOT_LYNX",
+    "type": "vehicle_livery_sales",
+    "display": "LYNX_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_PROGEN_TYRUS",
+    "type": "vehicle_livery_sales",
+    "display": "TYRUS_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_VAPID_DESERT_RAID",
+    "type": "vehicle_livery_sales",
+    "display": "TTRUCK_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_VAPID_TROPHY_TRUCK",
+    "type": "vehicle_livery_sales",
+    "display": "TROPHY2_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_WESTERN_CLIFFHANGER",
+    "type": "vehicle_livery_sales",
+    "display": "CLIFF_LIV_2"
+  },
+  {
+    "key": "STUNT_LIVERY_2_WESTERN_GARGOYLE",
+    "type": "vehicle_livery_sales",
+    "display": "GARG_LIV_2"
+  },
+  {
+    "key": "STUNT_MTL_DUNE_LIVERY_1",
+    "type": "vehicle_livery_sales",
+    "display": "RALTRUCK_LIV_1"
+  },
+  {
+    "key": "STUNT_MTL_DUNE_LIVERY_2",
+    "type": "vehicle_livery_sales",
+    "display": "RALTRUCK_LIV_2"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_NAKED",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_1"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_CLEAN_LIGHT",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_2"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_CLEAN_DARK",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_3"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_CLEAN_MID",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_4"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_NOSTALGIA",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_5"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_AMERICANA",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_6"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_SUPER_CARS",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_7"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_WILDSTYLE",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_8"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STYLE_GAMING",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STYLE_9"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_1",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_1"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_2",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_2"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_3",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_3"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_4",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_4"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_5",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_5"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_6",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_6"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_7",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_7"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_8",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_8"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_TINT_9",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_TINT_9"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_CREW",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_1"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_HOT_ROD",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_2"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_AMERICANA",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_3"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_EURO",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_4"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_MODERN",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_5"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_JPN",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_6"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_WILDSTYLE",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_7"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_EMBLEM_JOYSTICK",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_EMBLEM_8"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_CREW_NAME",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_NAME"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STAFF_MEMBER1",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STAFF1"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STAFF_MEMBER2",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_STAFF2"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_ADDON_CARLIFT",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_CARLIFT"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_ADDON_QUARTERS",
+    "type": "auto_shop_sales",
+    "display": "FCAUTOSHOP_QRT"
   }
 ]
