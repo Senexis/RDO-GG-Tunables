@@ -5271,157 +5271,637 @@
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_NAKED",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_1"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_CLEAN_LIGHT",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_2"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_CLEAN_DARK",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_3"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_CLEAN_MID",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_4"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_NOSTALGIA",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_5"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_AMERICANA",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_6"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_SUPER_CARS",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_7"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_WILDSTYLE",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_8"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STYLE_GAMING",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STYLE_9"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_1",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_1"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_2",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_2"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_3",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_3"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_4",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_4"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_5",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_5"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_6",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_6"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_7",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_7"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_8",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_8"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_TINT_9",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_TINT_9"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_CREW",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_1"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_HOT_ROD",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_2"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_AMERICANA",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_3"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_EURO",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_4"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_MODERN",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_5"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_JPN",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_6"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_WILDSTYLE",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_7"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_EMBLEM_JOYSTICK",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_EMBLEM_8"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_CREW_NAME",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_NAME"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STAFF_MEMBER1",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STAFF1"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_STAFF_MEMBER2",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_STAFF2"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_ADDON_CARLIFT",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_CARLIFT"
   },
   {
     "key": "TUNER_AUTOSHOP_SALE_ADDON_QUARTERS",
-    "type": "auto_shop_sales",
+    "type": "auto_shop_upgrade_sales",
     "display": "FCAUTOSHOP_QRT"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_LA_MESA",
+    "type": "auto_shop_property_sales",
+    "display": "AUT_SHP_NME_1"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_STRAWBERRY",
+    "type": "auto_shop_property_sales",
+    "display": "AUT_SHP_NME_2"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_BURTON",
+    "type": "auto_shop_property_sales",
+    "display": "AUT_SHP_NME_3"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_RANCHO",
+    "type": "auto_shop_property_sales",
+    "display": "AUT_SHP_NME_4"
+  },
+  {
+    "key": "TUNER_AUTOSHOP_SALE_MISSION_ROW",
+    "type": "auto_shop_property_sales",
+    "display": "AUT_SHP_NME_5"
+  },
+  {
+    "key": "ADDER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ADDER"
+  },
+  {
+    "key": "AIRBUS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "AIRBUS"
+  },
+  {
+    "key": "AKUMA_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "AKUMA"
+  },
+  {
+    "key": "ANNIHILATOR_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ANNIHILATOR"
+  },
+  {
+    "key": "ASEA_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ASEA"
+  },
+  {
+    "key": "BALLER2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BALLER2"
+  },
+  {
+    "key": "BANSHEE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BANSHEE"
+  },
+  {
+    "key": "BARRACKS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BARRACKS"
+  },
+  {
+    "key": "BATI2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BATI2"
+  },
+  {
+    "key": "BATI_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BATI"
+  },
+  {
+    "key": "BFINJECTION_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BFINJECTION"
+  },
+  {
+    "key": "BISON_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BISON"
+  },
+  {
+    "key": "BLAZER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BLAZER"
+  },
+  {
+    "key": "BMX_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BMX"
+  },
+  {
+    "key": "BULLET_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BULLET"
+  },
+  {
+    "key": "BUS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BUS"
+  },
+  {
+    "key": "BUZZARD_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "BUZZARD"
+  },
+  {
+    "key": "CARBONIZZARE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "CARBONIZZARE"
+  },
+  {
+    "key": "CHEETAH_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "CHEETAH"
+  },
+  {
+    "key": "CINEMA_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "CINEMA"
+  },
+  {
+    "key": "COACH_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "COACH"
+  },
+  {
+    "key": "COGCABRIO_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "COGCABRIO"
+  },
+  {
+    "key": "COMET2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "COMET2"
+  },
+  {
+    "key": "COQUETTE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "COQUETTE"
+  },
+  {
+    "key": "CRUISER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "CRUISER"
+  },
+  {
+    "key": "CRUSADER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "CRUSADER"
+  },
+  {
+    "key": "CUBAN800_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "CUBAN800"
+  },
+  {
+    "key": "DILETTANTE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "DILETTANTE"
+  },
+  {
+    "key": "DOUBLE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "DOUBLE"
+  },
+  {
+    "key": "DUMP_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "DUMP"
+  },
+  {
+    "key": "DUSTER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "DUSTER"
+  },
+  {
+    "key": "ENTITYXF_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ENTITYXF"
+  },
+  {
+    "key": "EXEMPLAR_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "EXEMPLAR"
+  },
+  {
+    "key": "FAGGIO2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "FAGGIO2"
+  },
+  {
+    "key": "FELON2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "FELON2"
+  },
+  {
+    "key": "FELON_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "FELON"
+  },
+  {
+    "key": "FELTZER2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "FELTZER2"
+  },
+  {
+    "key": "FROGGER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "FROGGER"
+  },
+  {
+    "key": "FUGITIVE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "FUGITIVE"
+  },
+  {
+    "key": "GAUNTLET_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "GAUNTLET"
+  },
+  {
+    "key": "HEXER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "HEXER"
+  },
+  {
+    "key": "INFERNUS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "INFERNUS"
+  },
+  {
+    "key": "ISSI2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ISSI2"
+  },
+  {
+    "key": "JB700_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "JB700"
+  },
+  {
+    "key": "JETMAX_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "JETMAX"
+  },
+  {
+    "key": "JOURNEY_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "JOURNEY"
+  },
+  {
+    "key": "LUXOR_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "LUXOR"
+  },
+  {
+    "key": "MAMMATUS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "MAMMATUS"
+  },
+  {
+    "key": "MARQUIS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "MARQUIS"
+  },
+  {
+    "key": "MAVERICK_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "MAVERICK"
+  },
+  {
+    "key": "MONROE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "MONROE"
+  },
+  {
+    "key": "MULE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "MULE"
+  },
+  {
+    "key": "NINEF2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "NINEF2"
+  },
+  {
+    "key": "NINEF_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "NINEF"
+  },
+  {
+    "key": "ORACLE2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ORACLE2"
+  },
+  {
+    "key": "PCJ_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "PCJ"
+  },
+  {
+    "key": "RAPIDGT2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "RAPIDGT2"
+  },
+  {
+    "key": "RAPIDGT_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "RAPIDGT"
+  },
+  {
+    "key": "REBEL_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "REBEL"
+  },
+  {
+    "key": "RENTALBUS_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "RENTALBUS"
+  },
+  {
+    "key": "ROCOTO_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ROCOTO"
+  },
+  {
+    "key": "RUFFIAN_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "RUFFIAN"
+  },
+  {
+    "key": "SADLER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SADLER"
+  },
+  {
+    "key": "SANCHEZ2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SANCHEZ2"
+  },
+  {
+    "key": "SANCHEZ_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SANCHEZ"
+  },
+  {
+    "key": "SANDKING2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SANDKING2"
+  },
+  {
+    "key": "SANDKING_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SANDKING"
+  },
+  {
+    "key": "SCHWARZER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SCHWARZER"
+  },
+  {
+    "key": "SCORCHER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SCORCHER"
+  },
+  {
+    "key": "SEASHARK_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SEASHARK"
+  },
+  {
+    "key": "SHAMAL_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SHAMAL"
+  },
+  {
+    "key": "SQUALO_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SQUALO"
+  },
+  {
+    "key": "STINGERGT_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "STINGERGT"
+  },
+  {
+    "key": "STINGER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "STINGER"
+  },
+  {
+    "key": "STRETCH_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "STRETCH"
+  },
+  {
+    "key": "STUNT_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "STUNT"
+  },
+  {
+    "key": "SUNTRAP_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SUNTRAP"
+  },
+  {
+    "key": "SUPERD_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SUPERD"
+  },
+  {
+    "key": "SURANO_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "SURANO"
+  },
+  {
+    "key": "TITAN_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "TITAN"
+  },
+  {
+    "key": "TRIBIKE2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "TRIBIKE2"
+  },
+  {
+    "key": "TRIBIKE3_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "TRIBIKE3"
+  },
+  {
+    "key": "TRIBIKE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "TRIBIKE"
+  },
+  {
+    "key": "TROPIC_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "TROPIC"
+  },
+  {
+    "key": "VACCA_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "VACCA"
+  },
+  {
+    "key": "VADER_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "VADER"
+  },
+  {
+    "key": "VELUM_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "VELUM"
+  },
+  {
+    "key": "VIGERO_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "VIGERO"
+  },
+  {
+    "key": "ZION2_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ZION2"
+  },
+  {
+    "key": "ZION_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ZION"
+  },
+  {
+    "key": "ZTYPE_EXPENDITURE_MODIFIER",
+    "type": "vehicle_sales",
+    "display": "ZTYPE"
   }
 ]

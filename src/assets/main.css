@@ -105,7 +105,6 @@ code {
 }
 
 /* Hide individual sections. */
-.hide-bonus [data-key="bonus"],
 .hide-content [data-key="contentlists"],
 .hide-tunables [data-key="tunables"] {
   @apply hidden;
@@ -126,6 +125,7 @@ code {
 .hide-quick-view [data-key*="TIMETRIALVARIATION"],
 .hide-quick-view [data-key*="XM22_GUN_VAN_SLOT"],
 .hide-quick-view [data-key*="XM22_GUN_VAN_STOCK_ID"],
+.hide-verbose [data-key="bonus"],
 .hide-verbose [data-key*="0x8B7D3320"],
 .hide-verbose [data-key*="BOOT_BUTTON_QUICK_MATCH_TYPE"],
 .hide-verbose [data-key*="CURRENTVEHICLESALESSEASON"],

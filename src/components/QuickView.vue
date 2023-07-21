@@ -650,8 +650,10 @@ function getSales() {
 function getSalesTitle(title) {
   try {
     switch (title.replace(/_plus$/g, '')) {
-      case 'auto_shop_sales':
-        return 'Auto Shop Sales';
+      case 'auto_shop_property_sales':
+        return 'Auto Shop Property Sales';
+      case 'auto_shop_upgrade_sales':
+        return 'Auto Shop Upgrade Sales';
       case 'avenger_upgrade_sales':
         return 'Avenger Upgrade Sales';
       case 'biker_business_sales':

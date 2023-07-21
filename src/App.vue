@@ -95,6 +95,7 @@ const tunables = ref({
   all: null,
   latest: null,
   previous: null,
+  types: null,
 });
 
 /**
@@ -174,6 +175,13 @@ const previousUrl = computed(
 const latestUrl = computed(
   () => `https://api.rdo.gg/tunables/${game.value}/${platform.value}/${latest.value}.json?${tunableUrlCacheKey.value}`
 );
+
+/**
+ * The URL to retrieve the tunable types.
+ *
+ * @type {import("vue").ComputedRef<string>}
+ */
+const typesUrl = computed(() => `https://tunables.rdo.gg/data/tunable_types.json?${allUrlCacheKey.value}`);
 
 /**
  * The currently active (shown) banner.
@@ -279,6 +287,14 @@ const gameBadges = computed(() => ({
   gta: { label: 'GTA', background: 'gta', tooltip: 'GTA Online' },
   rdo: { label: 'RDO', background: 'rdo', tooltip: 'Red Dead Online' },
 }));
+
+const saleStyles = computed(() => {
+  const classes = tunables.value.types?.map((type) => {
+    return `.hide-sales [data-key="${type}"]`;
+  }).join(", ");
+
+  return `${classes} { display: none !important; }`;
+});
 
 /**
  * Gets the badge label for a game.
@@ -592,6 +608,7 @@ watch(
 onMounted(() => {
   try {
     handleGameUpdate(true);
+    handleGetTunableTypes();
   } catch (error) {
     Sentry.captureException(error);
     showErrorModal('An unknown error occurred. (6D1FCF8B)');
@@ -658,6 +675,18 @@ async function handleGameUpdate(init = false) {
   } catch (error) {
     Sentry.captureException(error);
     showErrorModal('An unknown error occurred. (E36D0DE5)');
+  }
+}
+
+async function handleGetTunableTypes()
+{
+  try {
+    const response = await cachedRequest('tunable-types', typesUrl.value);
+    const tunableTypes = response.map((item) => item.key);
+    tunables.value.types = [...new Set(tunableTypes)];
+  } catch (error) {
+    Sentry.captureException(error);
+    showErrorModal('An unknown error occurred. (A71F58E8)');
   }
 }
 
@@ -982,15 +1011,16 @@ function showErrorModal(body) {
         >
           <template v-if="!difference.loading">
             <template v-if="difference.html">
+              <component :is="'style'" v-html="saleStyles"></component>
               <div
                 :class="[
                   settings.added ? '' : 'hide-added',
                   settings.deleted ? '' : 'hide-deleted',
                   settings.modified ? '' : 'hide-modified',
                   settings.unchanged ? '' : 'hide-unchanged',
-                  settings.bonus ? '' : 'hide-bonus',
                   settings.content ? '' : 'hide-content',
                   settings.quickViewItems ? '' : 'hide-quick-view',
+                  settings.sales ? '' : 'hide-sales',
                   settings.tunables ? '' : 'hide-tunables',
                   settings.verbose ? '' : 'hide-verbose',
                 ]"
@@ -1180,13 +1210,21 @@ function showErrorModal(body) {
             </li>
           </ul>
         </div>
+        <SettingsModalToggle v-model="settings.sales">
+          <template #title>Sales & Bonuses</template>
+          <template #description>
+            Whether to show tunables that are
+            <a href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-400">
+              available in Sales & Bonuses</a>.
+          </template>
+        </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.verbose">
           <template #title>Verbose</template>
           <template #description>
             Whether to show tunables that are
             <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail" class="text-sky-600 hover:text-sky-400">
-              verbose</button
-            >.
+              verbose
+            </button>.
           </template>
         </SettingsModalToggle>
         <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
@@ -1194,6 +1232,7 @@ function showErrorModal(body) {
             Tunables containing the following text in their key are hidden by toggling the <strong>Verbose</strong> setting:
           </p>
           <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
+            <li><code>bonus</code> section</li>
             <li
               v-for="item in [
                 '0x8B7D3320',
@@ -1217,10 +1256,6 @@ function showErrorModal(body) {
             <li><strong>Mission Bonuses:</strong> Non-numeric and the RP Cap modifiers.</li>
           </ul>
         </div>
-        <SettingsModalToggle v-model="settings.bonus">
-          <template #title>Bonus</template>
-          <template #description> Whether to show tunables that are in the <code>bonus</code> section. </template>
-        </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.content">
           <template #title>Content Lists</template>
           <template #description> Whether to show tunables that are in the <code>contentlists</code> section. </template>
