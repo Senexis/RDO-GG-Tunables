@@ -1078,13 +1078,13 @@ const rdoEvent = computed(() => getRdoEvent());
                 <InformationCircleIcon class="hidden md:block w-6 h-6 text-sky-600" />
                 <div>
                   <p>
-                    This is an automatically generated list of sales and bonuses based on a manual list. Some items may be missing,
-                    especially right after the game is updated.<br />
+                    This is an automatically generated list of sales and bonuses. Some items may be missing, especially right after the game
+                    is updated.<br />
                     Follow <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter for the
                     latest, more accurate, manually written sales and bonuses.
                   </p>
                   <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-500">
-                    Amount of currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
+                    Currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
                     <a
                       href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
                       target="_blank"

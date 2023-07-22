@@ -33,14 +33,34 @@ const props = defineProps({
         </ul>
         <h4 class="text-md font-bold pb-2 my-4 border-b border-slate-400 dark:border-slate-600">Services</h4>
         <ul class="list-disc ml-6">
-          <li><strong>Cloudflare:</strong> Thanks for optimizing and protecting the app from bad actors.</li>
-          <li><strong>GitHub:</strong> Thanks for providing the app with hosting, source control, and more.</li>
-          <li><strong>GTALens:</strong> Thanks for providing the app with various job IDs for display in the tunable files for GTA V.</li>
-          <li><strong>Sentry:</strong> Thanks for allowing the app to detect errors in order to improve it.</li>
+          <li>
+            <strong><a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>:</strong> Thanks for
+            optimizing and protecting the app from bad actors.
+          </li>
+          <li>
+            <strong><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>:</strong> Thanks for providing the
+            app with hosting, source control, and more.
+          </li>
+          <li>
+            <strong><a href="https://sentry.io/" target="_blank" rel="noopener noreferrer">Sentry</a>:</strong> Thanks for allowing the app
+            to detect errors in order to improve it.
+          </li>
+          <li>
+            <strong><a href="https://gtalens.com/" target="_blank" rel="noopener noreferrer">GTALens</a>:</strong> Thanks for providing the
+            app with various job IDs for display in the tunable files for GTA V.
+          </li>
         </ul>
         <h4 class="text-md font-bold pb-2 my-4 border-b border-slate-400 dark:border-slate-600">Other</h4>
         <ul class="list-disc ml-6">
           <li><strong>Rockstar Games:</strong> Thanks for making the games this app is for.</li>
+          <li>
+            <strong
+              ><a href="https://github.com/Senexis/RDO-GG-Tunables/graphs/contributors" target="_blank" rel="noopener noreferrer"
+                >Contributors</a
+              >:</strong
+            >
+            Thanks for improving the app!
+          </li>
           <li><strong>You:</strong> Yes, you. Thanks for using the app!</li>
         </ul>
       </div>

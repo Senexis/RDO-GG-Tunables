@@ -23,6 +23,7 @@ import CardFooter from './components/Cards/CardFooter.vue';
 import CardHeader from './components/Cards/CardHeader.vue';
 import DownloadModal from './components/Modals/DownloadModal.vue';
 import ErrorModal from './components/Modals/ErrorModal.vue';
+import LicenseModal from './components/Modals/LicenseModal.vue';
 import NavBar from './components/NavBar.vue';
 import QuickView from './components/QuickView.vue';
 import SettingsModal from './components/Modals/SettingsModal.vue';
@@ -104,6 +105,15 @@ const tunables = ref({
  * @type {import("vue").Ref<Object>}
  */
 const attributionModal = ref({
+  show: false,
+});
+
+/**
+ * Stores the data needed for displaying license modals.
+ *
+ * @type {import("vue").Ref<Object>}
+ */
+const licenseModal = ref({
   show: false,
 });
 
@@ -1065,12 +1075,18 @@ function showErrorModal(body) {
     >
       <div class="flex space-x-4">
         <span>&copy; {{ appCopyrightYear }} RDO.GG</span>
-        <span><HeartIcon class="inline w-4 h-4 text-red-500 hover:animate-pulse" /> from Senexis</span>
+        <span
+          ><HeartIcon class="inline w-4 h-4 text-red-500 animate-pulse" /> from
+          <a href="https://github.com/Senexis" target="_blank" rel="noopener noreferrer">Senexis</a> and
+          <a href="https://github.com/Senexis/RDO-GG-Tunables/graphs/contributors" target="_blank" rel="noopener noreferrer"
+            >contributors</a
+          ></span
+        >
       </div>
       <div class="flex space-x-4">
         <a href="https://rdo.gg/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
         <a href="https://rdo.gg/terms/" target="_blank" rel="noopener noreferrer">Terms of Service</a>
-        <a href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">License</a>
+        <button @click="licenseModal.show = true" class="text-sky-600 hover:text-sky-400">License</button>
         <button @click="attributionModal.show = true" class="text-sky-600 hover:text-sky-400">Attribution</button>
       </div>
     </div>
@@ -1114,6 +1130,7 @@ function showErrorModal(body) {
   </Banner>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
+  <LicenseModal :open="licenseModal.show" @close="licenseModal.show = false"></LicenseModal>
   <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"></DownloadModal>
 
   <ErrorModal :open="errorModal.show" @reset="handleEmergencyResetClick">
