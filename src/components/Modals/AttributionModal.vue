@@ -55,15 +55,19 @@ const props = defineProps({
           <li><strong>Rockstar Games:</strong> Thanks for making the games this app is for.</li>
           <li>
             <strong
+              ><a href="https://github.com/Senexis/RDO-GG-Tunables/network/dependencies" target="_blank" rel="noopener noreferrer"
+                >Open Source packages</a
+              >:</strong
+            >
+            Thanks for laying the groundwork for the app's functionality.
+          </li>
+          <li>
+            <strong
               ><a href="https://github.com/Senexis/RDO-GG-Tunables/graphs/contributors" target="_blank" rel="noopener noreferrer"
                 >Contributors</a
               >:</strong
             >
             Thanks for improving the app!
-          </li>
-          <li>
-            <strong><a href="https://github.com/Senexis/RDO-GG-Tunables/network/dependencies">Open Source packages</a>:</strong> Thanks for
-            helping make the app possible.
           </li>
           <li><strong>You:</strong> Yes, you. Thanks for using the app!</li>
         </ul>
