@@ -52,7 +52,10 @@ const props = defineProps({
         </ul>
         <h4 class="text-md font-bold pb-2 my-4 border-b border-slate-400 dark:border-slate-600">Other</h4>
         <ul class="list-disc ml-6">
-          <li><strong>Rockstar Games:</strong> Thanks for making the games this app is for.</li>
+          <li>
+            <strong><a href="https://www.rockstargames.com/" target="_blank" rel="noopener noreferrer">Rockstar Games</a>:</strong> Thanks
+            for making the games this app is for.
+          </li>
           <li>
             <strong
               ><a href="https://github.com/Senexis/RDO-GG-Tunables/network/dependencies" target="_blank" rel="noopener noreferrer"
