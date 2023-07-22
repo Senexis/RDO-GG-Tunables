@@ -181,7 +181,7 @@ const latestUrl = computed(
  *
  * @type {import("vue").ComputedRef<string>}
  */
-const typesUrl = computed(() => `https://tunables.rdo.gg/data/tunable_types.json?${allUrlCacheKey.value}`);
+const typesUrl = computed(() => `/data/tunable_types.json?${allUrlCacheKey.value}`);
 
 /**
  * The currently active (shown) banner.
@@ -289,9 +289,11 @@ const gameBadges = computed(() => ({
 }));
 
 const saleStyles = computed(() => {
-  const classes = tunables.value.types?.map((type) => {
-    return `.hide-sales [data-key="${type}"]`;
-  }).join(", ");
+  const classes = tunables.value.types
+    ?.map((type) => {
+      return `.hide-sales [data-key="${type}"]`;
+    })
+    .join(', ');
 
   return `${classes} { display: none !important; }`;
 });
@@ -678,8 +680,7 @@ async function handleGameUpdate(init = false) {
   }
 }
 
-async function handleGetTunableTypes()
-{
+async function handleGetTunableTypes() {
   try {
     const response = await cachedRequest('tunable-types', typesUrl.value);
     const tunableTypes = response.map((item) => item.key);
@@ -1196,6 +1197,7 @@ function showErrorModal(body) {
                 'HSW_TEST_RIDE',
                 'HSW_TIME_TRIAL_SUBVARIATION',
                 'LUXURY_SHOWCASE_VEHICLE',
+                'PRIZE_VEHICLE_Z_OFFSET',
                 'PROMO_TEST_DRIVE_VEHICLE',
                 'SIMEON_TEST_DRIVE_VEHICLE',
                 'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
@@ -1214,8 +1216,14 @@ function showErrorModal(body) {
           <template #title>Sales & Bonuses</template>
           <template #description>
             Whether to show tunables that are
-            <a href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-400">
-              available in Sales & Bonuses</a>.
+            <a
+              href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sky-600 hover:text-sky-400"
+            >
+              available in Sales & Bonuses</a
+            >.
           </template>
         </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.verbose">
@@ -1223,8 +1231,8 @@ function showErrorModal(body) {
           <template #description>
             Whether to show tunables that are
             <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail" class="text-sky-600 hover:text-sky-400">
-              verbose
-            </button>.
+              verbose</button
+            >.
           </template>
         </SettingsModalToggle>
         <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">

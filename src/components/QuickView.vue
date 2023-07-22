@@ -1,7 +1,7 @@
 <script setup>
 import * as Sentry from '@sentry/vue';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
-import { ArrowPathIcon, ExclamationTriangleIcon, EllipsisVerticalIcon } from '@heroicons/vue/24/outline';
+import { ArrowPathIcon, InformationCircleIcon, EllipsisVerticalIcon } from '@heroicons/vue/24/outline';
 
 import Accordion from './Accordion.vue';
 import Card from './Cards/Card.vue';
@@ -629,7 +629,11 @@ function getSales() {
 
       if (baseValue) {
         const percentage = 100 - Math.round((tunable.value / baseValue) * 100);
-        results[salesTitle][tunableType.display].push([tunable.value, percentage]);
+        if (percentage <= 100) {
+          results[salesTitle][tunableType.display].push([tunable.value, percentage]);
+        } else {
+          results[salesTitle][tunableType.display].push([tunable.value, null]);
+        }
       } else {
         results[salesTitle][tunableType.display].push([tunable.value, null]);
       }
@@ -650,6 +654,18 @@ function getSales() {
 function getSalesTitle(title) {
   try {
     switch (title.replace(/_plus$/g, '')) {
+      case 'agency_property_sales':
+        return 'Agency Property Sales';
+      case 'agency_upgrade_sales':
+        return 'Agency Upgrade Sales';
+      case 'arcade_cabinet_sales':
+        return 'Arcade Cabinet Sales';
+      case 'arcade_property_sales':
+        return 'Arcade Property Sales';
+      case 'arcade_upgrade_sales':
+        return 'Arcade Upgrade Sales';
+      case 'arena_workshop_sales':
+        return 'Arena Workshop Sales';
       case 'auto_shop_property_sales':
         return 'Auto Shop Property Sales';
       case 'auto_shop_upgrade_sales':
@@ -658,32 +674,74 @@ function getSalesTitle(title) {
         return 'Avenger Upgrade Sales';
       case 'biker_business_sales':
         return 'Biker Business Sales';
+      case 'biker_business_upgrade_sales':
+        return 'Biker Business Upgrade Sales';
       case 'biker_clubhouse_sales':
         return 'Biker Clubhouse Sales';
+      case 'biker_clubhouse_upgrade_sales':
+        return 'Biker Clubhouse Upgrade Sales';
       case 'bunker_sales':
         return 'Bunker Sales';
+      case 'bunker_upgrade_sales':
+        return 'Bunker Upgrade Sales';
+      case 'casino_bar_sales':
+        return 'Casino Bar Sales';
+      case 'casino_penthouse_decoration_sales':
+        return 'Casino Penthouse Decoration Sales';
+      case 'eclipse_garage_sales':
+        return 'Eclipse Garage Sales';
+      case 'eclipse_garage_upgrade_sales':
+        return 'Eclipse Garage Upgrade Sales';
+      case 'facility_property_sales':
+        return 'Facility Property Sales';
+      case 'facility_upgrade_sales':
+        return 'Facility Upgrade Sales';
+      case 'hangar_property_sales':
+        return 'Hangar Property Sales';
+      case 'hangar_upgrade_sales':
+        return 'Hangar Upgrade Sales';
       case 'hsw_mod_price_sales':
-        return 'HSW Mod Priced';
+        return 'HSW Mod Price Sales';
       case 'hsw_upgrade_sales':
-        return 'HSW Upgrades';
+        return 'HSW Upgrade Sales';
       case 'hsw_vehicle_price_sales':
-        return 'HSW Vehicle Prices';
+        return 'HSW Vehicle Price Sales';
+      case 'kraken_upgrade_sales':
+        return 'Kraken Upgrade Sales';
+      case 'moc_upgrade_sales':
+        return 'MOC Upgrade Sales';
       case 'nightclub_property_sales':
         return 'Nightclub Property Sales';
       case 'nightclub_upgrade_sales':
         return 'Nightclub Upgrade Sales';
       case 'office_sales':
         return 'Office Sales';
+      case 'office_upgrade_sales':
+        return 'Office Upgrade Sales';
       case 'property_sales':
         return 'Property Sales';
+      case 'property_upgrade_sales':
+        return 'Property Upgrade Sales';
+      case 'tattoo_sales':
+        return 'Tattoo Sales';
+      case 'terrorbyte_upgrade_sales':
+        return 'Terrorbyte Upgrade Sales';
       case 'vehicle_livery_sales':
         return 'Vehicle Livery Sales';
       case 'vehicle_sales':
         return 'Vehicle Sales';
       case 'vehicle_upgrade_sales':
         return 'Vehicle Upgrade Sales';
+      case 'vehicle_warehouse_sales':
+        return 'Vehicle Warehouse Sales';
+      case 'warehouse_sales':
+        return 'Warehouse Sales';
       case 'weapon_sales':
         return 'Weapon Sales';
+      case 'yacht_property_sales':
+        return 'Yacht Property Sales';
+      case 'yacht_upgrade_sales':
+        return 'Yacht Upgrade Sales';
       default:
         return 'Miscellaneous';
     }
@@ -796,11 +854,11 @@ function getUgcModifierLabel(modifier) {
 }
 
 /**
- * Retrieves the text to display for cash sales.
+ * Retrieves the text to display for currency.
  *
  * @returns string
  */
-function formatCashSale(discounts) {
+function formatCurrency(discounts) {
   try {
     const fc = Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -817,6 +875,22 @@ function formatCashSale(discounts) {
   } catch (error) {
     Sentry.captureException(error);
     emit('error', 'An unknown error occurred. (C37D9727)');
+  }
+}
+/**
+ * Retrieves the text to display for numbers.
+ *
+ * @returns string
+ */
+function formatNumber(value) {
+  try {
+    return Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(value);
+  } catch (error) {
+    Sentry.captureException(error);
+    emit('error', 'An unknown error occurred. (279332AF)');
   }
 }
 
@@ -998,24 +1072,28 @@ const rdoEvent = computed(() => getRdoEvent());
           <Accordion :id="Accordions.Sales">
             <template #title>Sales & Bonuses</template>
             <template #default>
-              <p
-                class="mb-4 text-sm text-slate-600 dark:text-slate-400 border border-yellow-600 rounded-lg bg-yellow-500/5 p-2 flex items-center gap-2"
+              <div
+                class="mb-4 text-sm text-slate-600 dark:text-slate-400 border border-sky-600 rounded-lg bg-sky-500/5 p-2 flex items-center gap-2"
               >
-                <ExclamationTriangleIcon class="hidden md:block w-6 h-6 text-yellow-600" />
-                <span>
-                  <strong>Note:</strong> This is a <strong>generated, likely incomplete</strong> list based on
-                  <a
-                    href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    certain conditions
-                  </a>
-                  and will need updates over time.<br />
-                  For more accurate updates on the latest sales and bonuses as well as items that may be missing from this list, follow
-                  <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter.</span
-                >
-              </p>
+                <InformationCircleIcon class="hidden md:block w-6 h-6 text-sky-600" />
+                <div>
+                  <p>
+                    This is an automatically generated list of sales and bonuses based on a manual list. Some items may be missing,
+                    especially right after the game is updated.<br />
+                    Follow <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter for the
+                    latest, more accurate, manually written sales and bonuses.
+                  </p>
+                  <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-500">
+                    Amount of currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
+                    <a
+                      href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Help increase this number by contributing here!</a
+                    >
+                  </p>
+                </div>
+              </div>
 
               <div
                 class="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
@@ -1038,7 +1116,7 @@ const rdoEvent = computed(() => getRdoEvent());
                     <template #default>
                       <ul class="list-disc">
                         <template v-for="(discounts, item) in category" :key="item">
-                          <li class="ml-8">{{ getLabel(item) }}: {{ formatCashSale(discounts) }}</li>
+                          <li class="ml-8">{{ getLabel(item) }}: {{ formatCurrency(discounts) }}</li>
                         </template>
                       </ul>
                     </template>

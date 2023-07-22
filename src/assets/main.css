@@ -118,6 +118,7 @@ code {
 .hide-quick-view [data-key*="HSW_TEST_RIDE"],
 .hide-quick-view [data-key*="HSW_TIME_TRIAL_SUBVARIATION"],
 .hide-quick-view [data-key*="LUXURY_SHOWCASE_VEHICLE"],
+.hide-quick-view [data-key*="PRIZE_VEHICLE_Z_OFFSET"],
 .hide-quick-view [data-key*="PROMO_TEST_DRIVE_VEHICLE"],
 .hide-quick-view [data-key*="SIMEON_TEST_DRIVE_VEHICLE"],
 .hide-quick-view [data-key*="SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE"],
