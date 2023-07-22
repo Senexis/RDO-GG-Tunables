@@ -69,6 +69,12 @@ function run() {
 
     if (Object.keys(inputLabelsUsed).length > 0) {
         const outputLabels = orderObject({ ...inputLabelsUsed, ...publicLabels });
+
+        if (Object.values(outputLabels).some(x => x === String(x).toUpperCase())) {
+            console.warn(`Some labels are uppercase.`);
+            console.log(Object.values(outputLabels).filter(x => x === String(x).toUpperCase()));
+        }
+
         fs.writeFileSync(publicLabelsPath, JSON.stringify(outputLabels, null, 2));
     }
 }

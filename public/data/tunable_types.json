@@ -2592,7 +2592,7 @@
   {
     "key": "CINEMA_EXPENDITURE_MODIFIER",
     "type": "vehicle_sales",
-    "display": "CINEMA"
+    "display": "CNMA"
   },
   {
     "key": "COACH_EXPENDITURE_MODIFIER",
@@ -5837,142 +5837,142 @@
   {
     "key": "FIXER_AGENCY_SALE_ART_POWER_MONEY",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_ART_POWER_MONEY"
+    "display": "DYN8_EXEC_AG_ART_0"
   },
   {
     "key": "FIXER_AGENCY_SALE_ART_POP_HYPE",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_ART_POP_HYPE"
+    "display": "DYN8_EXEC_AG_ART_1"
   },
   {
     "key": "FIXER_AGENCY_SALE_ART_LOYALTY_RESPECT",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_ART_LOYALTY_RESPECT"
+    "display": "DYN8_EXEC_AG_ART_2"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_1",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_1"
+    "display": "DYN8_EXEC_AG_WP_0"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_2",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_2"
+    "display": "DYN8_EXEC_AG_WP_1"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_3",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_3"
+    "display": "DYN8_EXEC_AG_WP_2"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_4",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_4"
+    "display": "DYN8_EXEC_AG_WP_3"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_5",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_5"
+    "display": "DYN8_EXEC_AG_WP_4"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_6",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_6"
+    "display": "DYN8_EXEC_AG_WP_5"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_7",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_7"
+    "display": "DYN8_EXEC_AG_WP_6"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_8",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_8"
+    "display": "DYN8_EXEC_AG_WP_7"
   },
   {
     "key": "FIXER_AGENCY_SALE_WALLPAPER_9",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_WALLPAPER_9"
+    "display": "DYN8_EXEC_AG_WP_8"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_1",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_1"
+    "display": "DYN8_EXEC_AG_HI_0"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_2",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_2"
+    "display": "DYN8_EXEC_AG_HI_1"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_3",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_3"
+    "display": "DYN8_EXEC_AG_HI_2"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_4",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_4"
+    "display": "DYN8_EXEC_AG_HI_3"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_5",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_5"
+    "display": "DYN8_EXEC_AG_HI_4"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_6",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_6"
+    "display": "DYN8_EXEC_AG_HI_5"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_7",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_7"
+    "display": "DYN8_EXEC_AG_HI_6"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_8",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_8"
+    "display": "DYN8_EXEC_AG_HI_7"
   },
   {
     "key": "FIXER_AGENCY_SALE_TINT_9",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_TINT_9"
+    "display": "DYN8_EXEC_AG_HI_8"
   },
   {
     "key": "FIXER_AGENCY_SALE_VEHICLE_WORKSHOP",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_VEHICLE_WORKSHOP"
+    "display": "DYN8_EXEC_AG_WORKSHOP"
   },
   {
     "key": "FIXER_AGENCY_SALE_ARMORY",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_ARMORY"
+    "display": "DYN8_EXEC_AG_ARMORY"
   },
   {
     "key": "FIXER_AGENCY_SALE_ACCOMMODATION",
     "type": "agency_upgrade_sales",
-    "display": "FIXER_AGENCY_SALE_ACCOMMODATION"
+    "display": "DYN8_EXEC_AG_QUARTERS"
   },
   {
     "key": "FIXER_AGENCY_SALE_HAWICK",
     "type": "agency_property_sales",
-    "display": "FIXER_AGENCY_SALE_HAWICK"
+    "display": "FIX_HQ_NME_1"
   },
   {
     "key": "FIXER_AGENCY_SALE_ROCKFORD_HILLS",
     "type": "agency_property_sales",
-    "display": "FIXER_AGENCY_SALE_ROCKFORD_HILLS"
+    "display": "FIX_HQ_NME_2"
   },
   {
     "key": "FIXER_AGENCY_SALE_LITTLE_SEOUL",
     "type": "agency_property_sales",
-    "display": "FIXER_AGENCY_SALE_LITTLE_SEOUL"
+    "display": "FIX_HQ_NME_3"
   },
   {
     "key": "FIXER_AGENCY_SALE_VESPUCCI_CANALS",
     "type": "agency_property_sales",
-    "display": "FIXER_AGENCY_SALE_VESPUCCI_CANALS"
+    "display": "FIX_HQ_NME_4"
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_GREEN",
@@ -6022,312 +6022,312 @@
   {
     "key": "H2_AVENGER_PRICE_ADD_ONS_GUN_TURRET",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_ADD_ONS_GUN_TURRET"
+    "display": "CANDC_CHOPPER_TRT"
   },
   {
     "key": "H2_AVENGER_PRICE_ADD_ONS_WEAPON_WORKSHOP",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_ADD_ONS_WEAPON_WORKSHOP"
+    "display": "CANDC_CHOPPER_W_MOD"
   },
   {
     "key": "H2_AVENGER_PRICE_ADD_ONS_VEHICLE_WORKSHOP",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_ADD_ONS_VEHICLE_WORKSHOP"
+    "display": "CANDC_CHOPPER_V_MOD"
   },
   {
     "key": "GR_TRUCK_MODULES_COMMAND_CENTER",
     "type": "moc_upgrade_sales",
-    "display": "GR_TRUCK_MODULES_COMMAND_CENTER"
+    "display": "CANDC_CMD_CENTRE"
   },
   {
     "key": "GR_TRUCK_MODULES_ARMORY",
     "type": "moc_upgrade_sales",
-    "display": "GR_TRUCK_MODULES_ARMORY"
+    "display": "CANDC_ARMORY"
   },
   {
     "key": "GR_TRUCK_MODULES_VEHICLE_MOD_AND_ARMORY",
     "type": "moc_upgrade_sales",
-    "display": "GR_TRUCK_MODULES_VEHICLE_MOD_AND_ARMORY"
+    "display": "CANDC_VMOD_ARMORY"
   },
   {
     "key": "GR_TRUCK_MODULES_LIVING_QUARTERS",
     "type": "moc_upgrade_sales",
-    "display": "GR_TRUCK_MODULES_LIVING_QUARTERS"
+    "display": "CANDC_LIVING_QTRS"
   },
   {
     "key": "GR_TRUCK_MODULES_VEHICLE_STORAGE",
     "type": "moc_upgrade_sales",
-    "display": "GR_TRUCK_MODULES_VEHICLE_STORAGE"
+    "display": "CANDC_VSTORAGE"
   },
   {
     "key": "SMUG_HANGAR_STYLE_1_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_1_RENOVATION_PRICE"
+    "display": "FCHNGR_STY_1"
   },
   {
     "key": "SMUG_HANGAR_STYLE_2",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_2"
+    "display": "FCHNGR_STY_2"
   },
   {
     "key": "SMUG_HANGAR_STYLE_3",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_3"
+    "display": "FCHNGR_STY_3"
   },
   {
     "key": "SMUG_HANGAR_STYLE_4",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_4"
+    "display": "FCHNGR_STY_4"
   },
   {
     "key": "SMUG_HANGAR_STYLE_5",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_5"
+    "display": "FCHNGR_STY_5"
   },
   {
     "key": "SMUG_HANGAR_STYLE_6",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_6"
+    "display": "FCHNGR_STY_6"
   },
   {
     "key": "SMUG_HANGAR_STYLE_7",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_7"
+    "display": "FCHNGR_STY_7"
   },
   {
     "key": "SMUG_HANGAR_STYLE_8",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_8"
+    "display": "FCHNGR_STY_8"
   },
   {
     "key": "SMUG_HANGAR_STYLE_9",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_STYLE_9"
+    "display": "FCHNGR_STY_9"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_1_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_1_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_1_VIBRANT_LIGHTING",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_1_VIBRANT_LIGHTING"
+    "display": "FCHNGR_LGT_2"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_2_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_2_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_2_VIBRANT_LIGHTING",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_2_VIBRANT_LIGHTING"
+    "display": "FCHNGR_LGT_2"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_3_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_3_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_3_VIBRANT_LIGHTING",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_3_VIBRANT_LIGHTING"
+    "display": "FCHNGR_LGT_2"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_4_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_4_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_4_VIBRANT_LIGHTING",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_4_VIBRANT_LIGHTING"
+    "display": "FCHNGR_LGT_2"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_5_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_5_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_5_VIBRANT_LIGHTING",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_5_VIBRANT_LIGHTING"
+    "display": "FCHNGR_LGT_2"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_6_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_6_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_6_VIBRANT_LIGHTING",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_6_VIBRANT_LIGHTING"
+    "display": "FCHNGR_LGT_2"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_7_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_7_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_7_VIBRANT_LIGHTING_1",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_7_VIBRANT_LIGHTING_1"
+    "display": "FCHNGR_LGT_3"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_7_VIBRANT_LIGHTING_2",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_7_VIBRANT_LIGHTING_2"
+    "display": "FCHNGR_LGT_4"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_7_VIBRANT_LIGHTING_3",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_7_VIBRANT_LIGHTING_3"
+    "display": "FCHNGR_LGT_5"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_8_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_8_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_8_VIBRANT_LIGHTING_1",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_8_VIBRANT_LIGHTING_1"
+    "display": "FCHNGR_LGT_3"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_8_VIBRANT_LIGHTING_2",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_8_VIBRANT_LIGHTING_2"
+    "display": "FCHNGR_LGT_4"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_8_VIBRANT_LIGHTING_3",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_8_VIBRANT_LIGHTING_3"
+    "display": "FCHNGR_LGT_5"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_9_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_9_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_LGT_1"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_9_VIBRANT_LIGHTING_1",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_9_VIBRANT_LIGHTING_1"
+    "display": "FCHNGR_LGT_3"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_9_VIBRANT_LIGHTING_2",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_9_VIBRANT_LIGHTING_2"
+    "display": "FCHNGR_LGT_4"
   },
   {
     "key": "SMUG_HANGAR_LIGHTING_STYLE_9_VIBRANT_LIGHTING_3",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIGHTING_STYLE_9_VIBRANT_LIGHTING_3"
+    "display": "FCHNGR_LGT_5"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_7",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_7"
+    "display": "FCHNGR_FLR_1"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_2",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_2"
+    "display": "FCHNGR_FLR_2"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_8",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_8"
+    "display": "FCHNGR_FLR_3"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_9",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_9"
+    "display": "FCHNGR_FLR_4"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_1_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_1_RENOVATION_PRICE"
+    "display": "FCHNGR_FLR_5"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_6",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_6"
+    "display": "FCHNGR_FLR_6"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_4",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_4"
+    "display": "FCHNGR_FLR_7"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_3",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_3"
+    "display": "FCHNGR_FLR_8"
   },
   {
     "key": "SMUG_HANGAR_FLOOR_GRAPHICS_5",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_FLOOR_GRAPHICS_5"
+    "display": "FCHNGR_FLR_9"
   },
   {
     "key": "SMUG_HANGAR_OFFICE_STANDARD_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_OFFICE_STANDARD_RENOVATION_PRICE"
+    "display": "FCHNGR_FRN_1"
   },
   {
     "key": "SMUG_HANGAR_OFFICE_TRADITIONAL",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_OFFICE_TRADITIONAL"
+    "display": "FCHNGR_FRN_2"
   },
   {
     "key": "SMUG_HANGAR_OFFICE_MODERN",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_OFFICE_MODERN"
+    "display": "FCHNGR_FRN_3"
   },
   {
     "key": "SMUG_HANGAR_LIVING_QUARTERS",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIVING_QUARTERS"
+    "display": "FCHNGR_FRN_1"
   },
   {
     "key": "SMUG_HANGAR_LIVING_QUARTERS_TRADITIONAL_INTERIOR_RENOVATION_PRICE",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIVING_QUARTERS_TRADITIONAL_INTERIOR_RENOVATION_PRICE"
+    "display": "FCHNGR_FRN_2"
   },
   {
     "key": "SMUG_HANGAR_LIVING_QUARTERS_MODERN_INTERIOR",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_LIVING_QUARTERS_MODERN_INTERIOR"
+    "display": "FCHNGR_FRN_3"
   },
   {
     "key": "SMUG_HANGAR_AIRCRAFT_WORKSHOP",
     "type": "hangar_upgrade_sales",
-    "display": "SMUG_HANGAR_AIRCRAFT_WORKSHOP"
+    "display": "FCHNGR_WKS"
   },
   {
     "key": "SMUG_HANGAR_LSIA_HANGAR_1",
     "type": "hangar_property_sales",
-    "display": "SMUG_HANGAR_LSIA_HANGAR_1"
+    "display": "MP_HANGAR_1"
   },
   {
     "key": "SMUG_HANGAR_LSIA_HANGAR_A17",
     "type": "hangar_property_sales",
-    "display": "SMUG_HANGAR_LSIA_HANGAR_A17"
+    "display": "MP_HANGAR_2"
   },
   {
     "key": "SMUG_HANGAR_FORT_ZANCUDO_HANGAR_A2",
     "type": "hangar_property_sales",
-    "display": "SMUG_HANGAR_FORT_ZANCUDO_HANGAR_A2"
+    "display": "MP_HANGAR_3"
   },
   {
     "key": "SMUG_HANGAR_FORT_ZANCUDO_HANGAR_3497",
     "type": "hangar_property_sales",
-    "display": "SMUG_HANGAR_FORT_ZANCUDO_HANGAR_3497"
+    "display": "MP_HANGAR_4"
   },
   {
     "key": "SMUG_HANGAR_FORT_ZANCUDO_HANGAR_3499",
     "type": "hangar_property_sales",
-    "display": "SMUG_HANGAR_FORT_ZANCUDO_HANGAR_3499"
+    "display": "MP_HANGAR_5"
   },
   {
     "key": "CH_ARCADE_FLOOR_NONE_RENOVATION_SALE_PRICE",
@@ -7817,357 +7817,357 @@
   {
     "key": "TATTOO_MP_FM_HEAD_BANGER_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HEAD_BANGER_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_008"
   },
   {
     "key": "TATTOO_MP_FM_SLAYER_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_SLAYER_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_009"
   },
   {
     "key": "TATTOO_MP_FM_GANGHIDEOUT_CLEAR_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_GANGHIDEOUT_CLEAR_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_010"
   },
   {
     "key": "TATTOO_MP_FM_ARMOURED_VAN_TAKEDOWN_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_ARMOURED_VAN_TAKEDOWN_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_011"
   },
   {
     "key": "TATTOO_MP_FM_HUSTLER_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HUSTLER_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_012"
   },
   {
     "key": "TATTOO_MP_FM_WIN_EVER_MODE_ONCE_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_WIN_EVER_MODE_ONCE_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_013"
   },
   {
     "key": "TATTOO_MP_FM_BOUNTY_KILLER_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_BOUNTY_KILLER_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_014"
   },
   {
     "key": "TATTOO_MP_FM_HOLD_WORLD_RECORD_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HOLD_WORLD_RECORD_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_015"
   },
   {
     "key": "TATTOO_MP_FM_FULL_MODDED_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_FULL_MODDED_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_016"
   },
   {
     "key": "TATTOO_MP_FM_REVENGE_KILL_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_REVENGE_KILL_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_017"
   },
   {
     "key": "TATTOO_MP_FM_KILL_3_RACERS_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_KILL_3_RACERS_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_018"
   },
   {
     "key": "TATTOO_MP_FM_REACH_RANK_1_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_REACH_RANK_1_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_019"
   },
   {
     "key": "TATTOO_MP_FM_REACH_RANK_2_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_REACH_RANK_2_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_020"
   },
   {
     "key": "TATTOO_MP_FM_REACH_RANK_3_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_REACH_RANK_3_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_021"
   },
   {
     "key": "TATTOO_MP_FM_FMKILLCHEATER_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_FMKILLCHEATER_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_022"
   },
   {
     "key": "TATTOO_MP_FM_RACES_WON_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_RACES_WON_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_023"
   },
   {
     "key": "TATTOO_MP_FM_HOLD_UP_SHOPS_1_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HOLD_UP_SHOPS_1_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_024"
   },
   {
     "key": "TATTOO_MP_FM_HOLD_UP_SHOPS_2_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HOLD_UP_SHOPS_2_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_025"
   },
   {
     "key": "TATTOO_MP_FM_HOLD_UP_SHOPS_3_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HOLD_UP_SHOPS_3_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_026"
   },
   {
     "key": "TATTOO_MP_FM_HOLD_UP_SHOPS_4_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_HOLD_UP_SHOPS_4_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_027"
   },
   {
     "key": "TATTOO_MP_FM_01_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_01_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_201"
   },
   {
     "key": "TATTOO_MP_FM_02_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_02_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_202"
   },
   {
     "key": "TATTOO_MP_FM_03_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_03_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_203"
   },
   {
     "key": "TATTOO_MP_FM_04_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_04_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_204"
   },
   {
     "key": "TATTOO_MP_FM_05_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_05_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_205"
   },
   {
     "key": "TATTOO_MP_FM_06_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_06_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_206"
   },
   {
     "key": "TATTOO_MP_FM_07_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_07_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_207"
   },
   {
     "key": "TATTOO_MP_FM_08_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_08_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_208"
   },
   {
     "key": "TATTOO_MP_FM_09_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_09_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_209"
   },
   {
     "key": "TATTOO_MP_FM_10_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_10_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_210"
   },
   {
     "key": "TATTOO_MP_FM_11_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_11_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_211"
   },
   {
     "key": "TATTOO_MP_FM_12_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_12_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_212"
   },
   {
     "key": "TATTOO_MP_FM_13_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_13_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_213"
   },
   {
     "key": "TATTOO_MP_FM_14_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_14_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_214"
   },
   {
     "key": "TATTOO_MP_FM_15_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_15_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_215"
   },
   {
     "key": "TATTOO_MP_FM_16_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_16_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_216"
   },
   {
     "key": "TATTOO_MP_FM_17_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_17_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_217"
   },
   {
     "key": "TATTOO_MP_FM_18_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_18_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_218"
   },
   {
     "key": "TATTOO_MP_FM_19_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_19_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_219"
   },
   {
     "key": "TATTOO_MP_FM_20_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_20_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_220"
   },
   {
     "key": "TATTOO_MP_FM_21_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_21_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_221"
   },
   {
     "key": "TATTOO_MP_FM_22_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_22_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_222"
   },
   {
     "key": "TATTOO_MP_FM_23_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_23_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_223"
   },
   {
     "key": "TATTOO_MP_FM_24_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_24_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_224"
   },
   {
     "key": "TATTOO_MP_FM_25_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_25_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_225"
   },
   {
     "key": "TATTOO_MP_FM_26_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_26_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_226"
   },
   {
     "key": "TATTOO_MP_FM_27_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_27_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_227"
   },
   {
     "key": "TATTOO_MP_FM_28_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_28_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_228"
   },
   {
     "key": "TATTOO_MP_FM_29_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_29_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_229"
   },
   {
     "key": "TATTOO_MP_FM_30_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_30_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_230"
   },
   {
     "key": "TATTOO_MP_FM_31_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_31_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_231"
   },
   {
     "key": "TATTOO_MP_FM_32_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_32_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_232"
   },
   {
     "key": "TATTOO_MP_FM_33_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_33_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_233"
   },
   {
     "key": "TATTOO_MP_FM_34_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_34_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_234"
   },
   {
     "key": "TATTOO_MP_FM_35_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_35_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_235"
   },
   {
     "key": "TATTOO_MP_FM_36_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_36_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_236"
   },
   {
     "key": "TATTOO_MP_FM_37_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_37_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_237"
   },
   {
     "key": "TATTOO_MP_FM_38_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_38_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_238"
   },
   {
     "key": "TATTOO_MP_FM_39_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_39_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_239"
   },
   {
     "key": "TATTOO_MP_FM_40_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_40_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_240"
   },
   {
     "key": "TATTOO_MP_FM_41_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_41_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_241"
   },
   {
     "key": "TATTOO_MP_FM_42_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_42_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_242"
   },
   {
     "key": "TATTOO_MP_FM_43_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_43_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_243"
   },
   {
     "key": "TATTOO_MP_FM_44_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_44_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_244"
   },
   {
     "key": "TATTOO_MP_FM_45_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_45_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_245"
   },
   {
     "key": "TATTOO_MP_FM_46_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_46_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_246"
   },
   {
     "key": "TATTOO_MP_FM_47_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_47_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_247"
   },
   {
     "key": "TATTOO_MP_FM_CREW_A_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_CREW_A_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_100"
   },
   {
     "key": "TATTOO_MP_FM_CREW_B_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_CREW_B_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_101"
   },
   {
     "key": "TATTOO_MP_FM_CREW_C_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_CREW_C_EXPENDITURE_TUNABLE"
+    "display": "TAT_FMM_CLB"
   },
   {
     "key": "TATTOO_MP_FM_CREW_D_EXPENDITURE_TUNABLE",
     "type": "tattoo_sales",
-    "display": "TATTOO_MP_FM_CREW_D_EXPENDITURE_TUNABLE"
+    "display": "TAT_FM_100"
   },
   {
     "key": "CH_CABINET_SPACEMONKEY_SALE_PRICE",
