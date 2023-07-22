@@ -61,6 +61,10 @@ const props = defineProps({
             >
             Thanks for improving the app!
           </li>
+          <li>
+            <strong><a href="https://github.com/Senexis/RDO-GG-Tunables/network/dependencies">Open Source packages</a>:</strong> Thanks for
+            helping make the app possible.
+          </li>
           <li><strong>You:</strong> Yes, you. Thanks for using the app!</li>
         </ul>
       </div>
