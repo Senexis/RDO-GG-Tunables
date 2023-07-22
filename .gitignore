@@ -29,3 +29,6 @@ coverage
 
 # Build results
 [Bb]uild/
+
+# Dynamically retrieved files
+.github/scripts/labels.json
