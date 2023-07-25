@@ -1512,8 +1512,7 @@ const rdoEvent = computed(() => getRdoEvent());
     <template #footer v-if="settings.quickView">
       <CardFooter>
         <div class="truncate text-sm leading-tight">
-          Contact us on <a href="https://twitter.com/Tunables" target="_blank" rel="noopener noreferrer">Twitter</a> or
-          <a href="https://www.threads.net/@rockstar_tunables" target="_blank" rel="noopener noreferrer">Threads</a> if you have suggestions
+          Contact us on <a href="https://twitter.com/Tunables" target="_blank" rel="noopener noreferrer">Twitter</a> if you have suggestions
           for the Quick View!
         </div>
       </CardFooter>

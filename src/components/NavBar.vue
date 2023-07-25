@@ -8,7 +8,6 @@ const navigation = [
   { name: 'API', href: 'https://rdo.gg/api/#tag/tunables', external: true },
   { name: 'Twitter', href: 'https://twitter.com/Tunables', icon: 'fa-brands fa-twitter', external: true },
   { name: 'Discord', href: 'https://rdo.gg/discord/', icon: 'fa-brands fa-discord', external: true },
-  { name: 'Threads', href: 'https://www.threads.net/@rockstar_tunables', icon: 'fa-solid fa-at', external: true },
   { name: 'GitHub', href: 'https://github.com/Senexis/RDO-GG-Tunables', icon: 'fa-brands fa-github', external: true },
 ];
 </script>
