@@ -27,6 +27,14 @@ code {
   @apply text-slate-400 border-slate-400;
 }
 
+.badge-outline-plus {
+  @apply bg-transparent text-yellow-600 border border-yellow-600;
+}
+
+.dark .badge-outline-plus {
+  @apply text-yellow-400 border-yellow-400;
+}
+
 .badge-primary {
   @apply bg-sky-700 text-white;
 }

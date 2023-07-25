@@ -48,6 +48,11 @@ function getUrl(url) {
           <a :href="getUrl(file.url)" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
             <p class="text-sm font-medium text-slate-700 dark:text-slate-300">{{ file.date }}</p>
+            <p class="truncate text-xs font-medium my-1 text-slate-700 dark:text-slate-300">
+              Weekly ID: {{ file.weekly_event_id ?? 'N/A' }}
+              <br />
+              GTA+ ID: {{ file.membership_event_id ?? 'N/A' }}
+            </p>
             <p class="truncate text-xs font-mono text-slate-500 dark:text-slate-500">
               {{ file.hash }}
             </p>

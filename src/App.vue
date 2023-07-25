@@ -474,8 +474,8 @@ const footerUpdated = computed(() => {
 
 const eventWeeklyChanged = computed(() => {
   try {
-    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
-    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY ?? 'N/A';
+    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY ?? 'N/A';
 
     if (!latest || !previous) {
       return false;
@@ -491,8 +491,8 @@ const eventWeeklyChanged = computed(() => {
 
 const eventWeeklyTooltip = computed(() => {
   try {
-    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
-    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY ?? 'N/A';
+    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY ?? 'N/A';
 
     if (!latest || !previous) {
       return '';
@@ -502,10 +502,48 @@ const eventWeeklyTooltip = computed(() => {
       return '';
     }
 
-    return `The weekly event has changed from "${previous}" to "${latest}".`;
+    return `The weekly event ID has changed from "${previous}" to "${latest}".`;
   } catch (error) {
     Sentry.captureException(error);
     showErrorModal('An unknown error occurred. (527C8608)');
+    return '';
+  }
+});
+
+const eventGtaPlusChanged = computed(() => {
+  try {
+    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.latest?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
+    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.previous?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
+
+    if (!latest || !previous) {
+      return false;
+    }
+
+    return latest !== previous;
+  } catch (error) {
+    Sentry.captureException(error);
+    showErrorModal('An unknown error occurred. (E353A81D)');
+    return false;
+  }
+});
+
+const eventGtaPlusTooltip = computed(() => {
+  try {
+    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.latest?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
+    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.previous?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
+
+    if (!latest || !previous) {
+      return '';
+    }
+
+    if (latest === previous) {
+      return '';
+    }
+
+    return `The GTA+ event ID has changed from "${previous}" to "${latest}".`;
+  } catch (error) {
+    Sentry.captureException(error);
+    showErrorModal('An unknown error occurred. (89E7EB38)');
     return '';
   }
 });
@@ -968,8 +1006,18 @@ function showErrorModal(body) {
           <h1 class="truncate">
             <template v-if="eventWeeklyChanged">
               <span v-tooltip="eventWeeklyTooltip" class="badge-outline badge mr-2">
-                NEW
+                <span>
+                  <font-awesome-icon icon="fa-solid fa-asterisk" />
+                </span>
                 <span class="sr-only">{{ eventWeeklyTooltip }}</span>
+              </span>
+            </template>
+            <template v-if="eventGtaPlusChanged">
+              <span v-tooltip="eventGtaPlusTooltip" class="badge-outline-plus badge mr-2">
+                <span>
+                  <font-awesome-icon icon="fa-solid fa-asterisk" />
+                </span>
+                <span class="sr-only">{{ eventGtaPlusTooltip }}</span>
               </span>
             </template>
             <span v-tooltip="getGameBadgeTooltip()" :class="getGameBadgeBackground()" class="badge mr-2">
