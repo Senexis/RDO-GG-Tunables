@@ -870,7 +870,7 @@ function formatCurrency(discounts) {
     return discounts
       .sort((a, b) => a[0] - b[0])
       .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
-      .map((i) => `${fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim())
+      .map((i) => `${i[0] === 0 ? 'FREE' : fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim())
       .join(' - ');
   } catch (error) {
     Sentry.captureException(error);
