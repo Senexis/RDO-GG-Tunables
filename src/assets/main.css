@@ -114,6 +114,7 @@ code {
 
 /* Hide individual sections. */
 .hide-content [data-key="contentlists"],
+.hide-content [data-key*="CONTENT_MODIFIER"],
 .hide-tunables [data-key="tunables"] {
   @apply hidden;
 }

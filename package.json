@@ -6,7 +6,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "preview": "vite preview",
     "validate": "node .github/scripts/validate_json.js",
-    "types": "node .github/scripts/tunable_types.js"
+    "types": "node .github/scripts/tunables_types.js"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^3.4.2",
@@ -15,14 +15,14 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "@headlessui/vue": "^1.7.14",
+    "@headlessui/vue": "^1.7.15",
     "@heroicons/vue": "^2.0.18",
-    "@sentry/tracing": "^7.60.0",
-    "@sentry/vue": "^7.60.0",
+    "@sentry/tracing": "^7.60.1",
+    "@sentry/vue": "^7.60.1",
     "ajv": "^8.12.0",
     "floating-vue": "^2.0.0-beta.24",
     "jsondiffpatch": "^0.4.1",
-    "pinia": "^2.1.4",
+    "pinia": "^2.1.6",
     "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.3.4"
   },

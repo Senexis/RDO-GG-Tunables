@@ -33,6 +33,7 @@ function orderObject(unordered) {
         numeric: true,
         sensitivity: 'base',
     });
+
     return Object.keys(unordered)
         .sort((a, b) => collator.compare(a, b))
         .reduce((obj, key) => {
@@ -40,6 +41,21 @@ function orderObject(unordered) {
             return obj;
         }, {});
 };
+
+function sortTypes(unordered) {
+    const collator = new Intl.Collator('en', {
+        numeric: true,
+        sensitivity: 'base',
+    });
+
+    return unordered.sort((a, b) => {
+        if (a.type === b.type) {
+            return collator.compare(a.key, b.key);
+        }
+
+        return collator.compare(a.type, b.type);
+    });
+}
 
 function run() {
     const inputLabelsFlat = flattenObject(labels);
@@ -65,7 +81,7 @@ function run() {
         }
     }
 
-    fs.writeFileSync(publicTunableTypesPath, JSON.stringify(publicTunableTypes, null, 2));
+    fs.writeFileSync(publicTunableTypesPath, JSON.stringify(sortTypes(publicTunableTypes), null, 2));
 
     if (Object.keys(inputLabelsUsed).length > 0) {
         const outputLabels = orderObject({ ...inputLabelsUsed, ...publicLabels });
