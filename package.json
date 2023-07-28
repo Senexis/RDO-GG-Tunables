@@ -9,7 +9,7 @@
     "types": "node .github/scripts/tunables_types.js"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs": "^3.4.2",
+    "@fingerprintjs/fingerprintjs": "^4.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
