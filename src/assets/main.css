@@ -15,7 +15,7 @@ code {
 }
 
 .badge {
-  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap select-none;
+  @apply inline-flex items-center gap-x-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap select-none;
 }
 
 /* Badge colors. */
@@ -28,11 +28,7 @@ code {
 }
 
 .badge-outline-plus {
-  @apply bg-transparent text-yellow-600 border border-yellow-600;
-}
-
-.dark .badge-outline-plus {
-  @apply text-yellow-400 border-yellow-400;
+  @apply bg-transparent text-[#fcaf17] border border-[#fcaf17];
 }
 
 .badge-primary {
@@ -40,7 +36,7 @@ code {
 }
 
 .badge-plus {
-  @apply bg-yellow-700 text-white;
+  @apply bg-[#fcaf17] text-black;
 }
 
 .badge-gta {
@@ -178,6 +174,11 @@ code {
 
 .jsondiffpatch-movedestination,
 .jsondiffpatch-unchanged {
+  @apply opacity-60;
+}
+
+.dark .jsondiffpatch-movedestination,
+.dark .jsondiffpatch-unchanged {
   @apply opacity-80;
 }
 
@@ -185,6 +186,13 @@ code {
 .jsondiffpatch-deleted pre,
 .jsondiffpatch-modified .jsondiffpatch-left-value pre,
 .jsondiffpatch-textdiff-deleted {
+  @apply bg-[#FF818266] text-[#1F2328] rounded-sm;
+}
+
+.dark .jsondiffpatch-deleted .jsondiffpatch-property-name,
+.dark .jsondiffpatch-deleted pre,
+.dark .jsondiffpatch-modified .jsondiffpatch-left-value pre,
+.dark .jsondiffpatch-textdiff-deleted {
   @apply bg-[#803030] text-[#c9d1d9] rounded-sm;
 }
 
@@ -192,14 +200,30 @@ code {
 .jsondiffpatch-added .jsondiffpatch-value pre,
 .jsondiffpatch-modified .jsondiffpatch-right-value pre,
 .jsondiffpatch-textdiff-added {
+  @apply bg-[#abf2bc] text-[#1F2328] rounded-sm;
+}
+
+
+.dark .jsondiffpatch-added .jsondiffpatch-property-name,
+.dark .jsondiffpatch-added .jsondiffpatch-value pre,
+.dark .jsondiffpatch-modified .jsondiffpatch-right-value pre,
+.dark .jsondiffpatch-textdiff-added {
   @apply bg-[#1d572d] text-[#c9d1d9] rounded-sm;
 }
 
 .jsondiffpatch-property-name {
+  @apply text-[#116329]
+}
+
+.dark .jsondiffpatch-property-name {
   @apply text-[#7ee787]
 }
 
 .jsondiffpatch-value {
+  @apply text-[#0a3069];
+}
+
+.dark .jsondiffpatch-value {
   @apply text-[#a5d6ff];
 }
 

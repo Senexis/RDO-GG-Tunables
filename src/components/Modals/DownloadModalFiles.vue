@@ -48,12 +48,14 @@ function getUrl(url) {
           <a :href="getUrl(file.url)" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
             <p class="text-sm font-medium text-slate-700 dark:text-slate-300">{{ file.date }}</p>
-            <p class="truncate text-xs font-medium my-1 text-slate-700 dark:text-slate-300">
-              Weekly ID: {{ file.weekly_event_id ?? 'N/A' }}
-              <br />
-              GTA+ ID: {{ file.membership_event_id ?? 'N/A' }}
-            </p>
-            <p class="truncate text-xs font-mono text-slate-500 dark:text-slate-500">
+            <template v-if="file.weekly_event_id || file.membership_event_id">
+              <p class="truncate text-xs font-medium my-1 text-slate-700 dark:text-slate-300">
+                Weekly ID: {{ file.weekly_event_id ?? 'N/A' }}
+                <br />
+                GTA+ ID: {{ file.membership_event_id ?? 'N/A' }}
+              </p>
+            </template>
+            <p class="truncate text-xs font-mono text-slate-500">
               {{ file.hash }}
             </p>
           </a>
@@ -81,8 +83,8 @@ function getUrl(url) {
   </template>
   <template v-else>
     <div class="relative block w-full rounded-lg border-2 border-dashed border-slate-500 dark:border-slate-500 p-12 text-center">
-      <DocumentMagnifyingGlassIcon class="mx-auto h-12 w-12 text-slate-500 dark:text-slate-500" />
-      <span class="mt-2 block text-sm font-medium text-slate-500 dark:text-slate-500"> No files available to download. </span>
+      <DocumentMagnifyingGlassIcon class="mx-auto h-12 w-12 text-slate-500" />
+      <span class="mt-2 block text-sm font-medium text-slate-500"> No files available to download. </span>
     </div>
   </template>
 </template>

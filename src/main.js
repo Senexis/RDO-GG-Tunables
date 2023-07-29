@@ -21,8 +21,8 @@ pinia.use(piniaPluginPersistedstate);
 const app = createApp(App);
 
 // Import specific icons from Font Awesome 6.
-import { faAsterisk } from '@fortawesome/free-solid-svg-icons';
-library.add(faAsterisk);
+import { faAsterisk, faPlus } from '@fortawesome/free-solid-svg-icons';
+library.add(faAsterisk, faPlus);
 
 import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 library.add(faTwitter, faDiscord, faGithub);

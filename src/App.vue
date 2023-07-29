@@ -48,6 +48,25 @@ const appCopyrightYear = APP_COPYRIGHT_YEAR;
 // eslint-disable-next-line no-undef
 const appUpdated = APP_UPDATED;
 
+// Update the theme.
+if (settings.dark) {
+  document.documentElement.classList.add('dark');
+} else {
+  document.documentElement.classList.remove('dark');
+}
+
+// Watch the theme toggle.
+settings.$subscribe(
+  (_mutation, state) => {
+    if (state.dark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  },
+  { detached: true }
+);
+
 /**
  * Contains the selected game.
  *
@@ -512,8 +531,14 @@ const eventWeeklyTooltip = computed(() => {
 
 const eventGtaPlusChanged = computed(() => {
   try {
-    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.latest?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
-    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.previous?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
+    const latest =
+      tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ??
+      tunables?.value?.latest?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ??
+      'N/A';
+    const previous =
+      tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ??
+      tunables?.value?.previous?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ??
+      'N/A';
 
     if (!latest || !previous) {
       return false;
@@ -529,8 +554,14 @@ const eventGtaPlusChanged = computed(() => {
 
 const eventGtaPlusTooltip = computed(() => {
   try {
-    const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.latest?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
-    const previous = tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ?? tunables?.value?.previous?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ?? 'N/A';
+    const latest =
+      tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ??
+      tunables?.value?.latest?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ??
+      'N/A';
+    const previous =
+      tunables?.value?.previous?.contents?.tunables?.CD_GLOBAL?.EVENT_MBSP ??
+      tunables?.value?.previous?.contents?.tunables?.BASE_GLOBALS?.GTAO_MEMBERSHIP_EVENT_ID ??
+      'N/A';
 
     if (!latest || !previous) {
       return '';
@@ -1066,7 +1097,7 @@ function showErrorModal(body) {
       </template>
       <template #default>
         <div
-          class="bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]"
+          class="relative bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]"
         >
           <template v-if="!difference.loading">
             <template v-if="difference.html">
@@ -1119,7 +1150,7 @@ function showErrorModal(body) {
     </template>
 
     <div
-      class="mt-8 border-t border-slate-800/10 dark:border-slate-200/10 py-4 text-xs leading-5 text-slate-500 dark:text-slate-500 sm:flex sm:items-center sm:justify-between"
+      class="mt-8 border-t border-slate-800/10 dark:border-slate-200/10 py-4 text-xs leading-5 text-slate-500 sm:flex sm:items-center sm:justify-between"
     >
       <div class="flex space-x-4">
         <span>&copy; {{ appCopyrightYear }} RDO.GG</span>
@@ -1140,42 +1171,44 @@ function showErrorModal(body) {
     </div>
   </main>
 
-  <Banner id="new-site" :show="activeBanner === 'new-site'">
-    Welcome to the new website! Check out all the settings using the <Cog6ToothIcon class="inline w-5 h-5" /> button.
-    <br />
-    <span class="text-sm text-slate-700 dark:text-slate-300">
-      Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong> tunables setting.
-    </span>
-  </Banner>
+  <template v-if="!settings.bannersBlocked">
+    <Banner id="new-site" :show="activeBanner === 'new-site'">
+      Welcome to the new website! Check out all the settings using the <Cog6ToothIcon class="inline w-5 h-5" /> button.
+      <br />
+      <span class="text-sm text-slate-300">
+        Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong> tunables setting.
+      </span>
+    </Banner>
 
-  <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
-    Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it using the
-    <EllipsisVerticalIcon class="inline w-5 h-5" /> button.
-    <br />
-    <span class="text-sm text-slate-700 dark:text-slate-300">
-      Tip: Change your mind? You can always <strong>Expand</strong> the Quick View panel by clicking the
-      <EllipsisVerticalIcon class="inline w-5 h-5" /> button again.
-    </span>
-  </Banner>
+    <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
+      Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it using the
+      <EllipsisVerticalIcon class="inline w-5 h-5" /> button.
+      <br />
+      <span class="text-sm text-slate-300">
+        Tip: Change your mind? You can always <strong>Expand</strong> the Quick View panel by clicking the
+        <EllipsisVerticalIcon class="inline w-5 h-5" /> button again.
+      </span>
+    </Banner>
 
-  <Banner
-    id="open-source"
-    :show="activeBanner === 'open-source'"
-    button-text="Visit GitHub"
-    button-link="https://github.com/Senexis/RDO-GG-Tunables"
-    :button-external="true"
-  >
-    This website is now open source! Feel free to browse or contribute to the project on GitHub.
-  </Banner>
-
-  <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
-    Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
-    <br />
-    <span class="text-sm text-slate-700 dark:text-slate-300"
-      >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
-      <strong>Quick View</strong> tunables setting.</span
+    <Banner
+      id="open-source"
+      :show="activeBanner === 'open-source'"
+      button-text="Visit GitHub"
+      button-link="https://github.com/Senexis/RDO-GG-Tunables"
+      :button-external="true"
     >
-  </Banner>
+      This website is now open source! Feel free to browse or contribute to the project on GitHub.
+    </Banner>
+
+    <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
+      Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
+      <br />
+      <span class="text-sm text-slate-300"
+        >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
+        <strong>Quick View</strong> tunables setting.</span
+      >
+    </Banner>
+  </template>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
   <LicenseModal :open="licenseModal.show" @close="licenseModal.show = false"></LicenseModal>
@@ -1196,11 +1229,6 @@ function showErrorModal(body) {
     <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">General</h3>
 
     <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
-      <!-- TODO: 😎 -->
-      <!-- <SettingsModalToggle v-model="settings.dark">
-        <template #title>Dark mode</template>
-        <template #description>Whether you want to use dark mode.</template>
-      </SettingsModalToggle> -->
       <SettingsModalSelect v-model="game" :options="gameOptions">
         <template #title>Game</template>
         <template #description> Select the game to compare tunables for. </template>
@@ -1209,34 +1237,53 @@ function showErrorModal(body) {
         <template #title>Platform</template>
         <template #description> Select the platform to compare tunables for. </template>
       </SettingsModalSelect>
+      <SettingsModalToggle v-model="settings.bannersBlocked">
+        <template #title>Block banners</template>
+        <template #description>Whether to block all banners for website updates.</template>
+      </SettingsModalToggle>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Activity</h3>
+    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Personalization</h3>
 
     <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
-      <SettingsModalToggle v-model="settings.added">
-        <template #title>Added</template>
-        <template #description>Whether to show tunables that have been added.</template>
+      <SettingsModalToggle v-model="settings.dark" :isDarkModeToggle="true">
+        <template #title>Dark mode</template>
+        <template #description>Whether to use dark mode for the website.</template>
       </SettingsModalToggle>
-      <SettingsModalToggle v-model="settings.deleted">
-        <template #title>Deleted</template>
-        <template #description>Whether to show tunables that have been deleted.</template>
+      <SettingsModalToggle v-model="settings.quickViewBelowTunables">
+        <template #title>Quick View below tunables</template>
+        <template #description>Whether to move the Quick View below tunables.</template>
       </SettingsModalToggle>
-      <SettingsModalToggle v-model="settings.modified">
-        <template #title>Modified</template>
-        <template #description>Whether to show tunables that have been modified.</template>
-      </SettingsModalToggle>
-      <SettingsModalToggle v-model="settings.unchanged">
-        <template #title>Unchanged</template>
-        <template #description>Whether to show tunables that have not been modified.</template>
-      </SettingsModalToggle>
+      <div class="flex items-center justify-between gap-2 py-2">
+        <p class="text-xs text-slate-500 leading-none">
+          More options for Quick View are available by clicking the <EllipsisVerticalIcon class="inline w-5 h-5" /> button on the Quick View
+          panel.
+        </p>
+      </div>
     </div>
 
     <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Tunables</h3>
 
     <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
+      <SettingsModalToggle v-model="settings.added" :isVisibilityToggle="true">
+        <template #title>Added</template>
+        <template #description>Whether to show tunables that have been added.</template>
+      </SettingsModalToggle>
+      <SettingsModalToggle v-model="settings.deleted" :isVisibilityToggle="true">
+        <template #title>Deleted</template>
+        <template #description>Whether to show tunables that have been deleted.</template>
+      </SettingsModalToggle>
+      <SettingsModalToggle v-model="settings.modified" :isVisibilityToggle="true">
+        <template #title>Modified</template>
+        <template #description>Whether to show tunables that have been modified.</template>
+      </SettingsModalToggle>
+      <SettingsModalToggle v-model="settings.unchanged" :isVisibilityToggle="true">
+        <template #title>Unchanged</template>
+        <template #description>Whether to show tunables that have not changed.</template>
+      </SettingsModalToggle>
+
       <template v-if="game === 'gta'">
-        <SettingsModalToggle v-model="settings.quickViewItems">
+        <SettingsModalToggle v-model="settings.quickViewItems" :isVisibilityToggle="true">
           <template #title>Quick View</template>
           <template #description>
             Whether to show tunables that are
@@ -1244,7 +1291,7 @@ function showErrorModal(body) {
               @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail"
               class="text-sky-600 hover:text-sky-400"
             >
-              available in the Quick View</button
+              available in Quick View</button
             >.
           </template>
         </SettingsModalToggle>
@@ -1277,7 +1324,7 @@ function showErrorModal(body) {
             </li>
           </ul>
         </div>
-        <SettingsModalToggle v-model="settings.sales">
+        <SettingsModalToggle v-model="settings.sales" :isVisibilityToggle="true">
           <template #title>Sales & Bonuses</template>
           <template #description>
             Whether to show tunables that are
@@ -1291,7 +1338,7 @@ function showErrorModal(body) {
             >.
           </template>
         </SettingsModalToggle>
-        <SettingsModalToggle v-model="settings.verbose">
+        <SettingsModalToggle v-model="settings.verbose" :isVisibilityToggle="true">
           <template #title>Verbose</template>
           <template #description>
             Whether to show tunables that are
@@ -1329,13 +1376,13 @@ function showErrorModal(body) {
             <li><strong>Mission Bonuses:</strong> Non-numeric and the RP Cap modifiers.</li>
           </ul>
         </div>
-        <SettingsModalToggle v-model="settings.content">
+        <SettingsModalToggle v-model="settings.content" :isVisibilityToggle="true">
           <template #title>Content Lists</template>
           <template #description> Whether to show tunables that are in the <code>contentlists</code> section. </template>
         </SettingsModalToggle>
       </template>
 
-      <SettingsModalToggle v-model="settings.tunables">
+      <SettingsModalToggle v-model="settings.tunables" :isVisibilityToggle="true">
         <template #title>Tunables</template>
         <template #description> Whether to show tunables that are in the <code>tunables</code> section. </template>
       </SettingsModalToggle>
@@ -1359,14 +1406,19 @@ function showErrorModal(body) {
           <span class="text-sm text-slate-700 dark:text-slate-300"
             >Reset all settings to their defaults, expand all collapsed content, and show all dismissed banners.</span
           >
-          <span class="text-xs text-slate-500 dark:text-slate-500">Use this if you're experiencing issues or want to start fresh.</span>
         </div>
         <button
           @click="handleResetSettingsClick"
-          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-red-700 hover:text-slate-900 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
+          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-200 shadow-sm hover:bg-red-700 hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
         >
           Reset
         </button>
+      </div>
+      <div class="flex items-center justify-between gap-2 py-2">
+        <p class="text-xs text-slate-500">
+          Try the option above if you are experiencing issues while using the website. You can also use it to start fresh. While this cannot
+          be undone, you can always tweak the settings to your liking again.
+        </p>
       </div>
     </div>
   </SettingsModal>

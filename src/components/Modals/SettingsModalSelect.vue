@@ -50,7 +50,7 @@ const selected = computed({
 
         <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
           <ListboxOptions
-            class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-slate-400 dark:bg-slate-600 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-slate-200 dark:bg-slate-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
           >
             <template v-for="option in props.options">
               <ListboxOption
@@ -64,7 +64,7 @@ const selected = computed({
               >
                 <li
                   :class="[
-                    active ? 'text-slate-900 dark:text-slate-200 bg-sky-600' : 'text-slate-900 dark:text-slate-200',
+                    active ? 'text-slate-700 dark:text-slate-300 bg-slate-300 dark:bg-slate-700' : 'text-slate-900 dark:text-slate-200',
                     option.disabled ? 'opacity-50' : '',
                     'relative cursor-default select-none py-2 pl-3 pr-9',
                   ]"

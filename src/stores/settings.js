@@ -4,13 +4,13 @@ export const useStore = defineStore('settings', {
   persist: true,
   state: () => {
     return {
-      // TODO: 😎
-      // dark: true,
+      dark: true,
 
       // Open/close accordions.
       accordionsDismissed: [],
 
       // Open/close banners.
+      bannersBlocked: false,
       bannersDismissed: [],
 
       // Show/hide panels.

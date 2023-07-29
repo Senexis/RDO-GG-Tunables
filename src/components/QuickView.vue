@@ -797,6 +797,7 @@ function getUgcBonuses() {
           if (isNaN(modifierValue)) continue;
           let formattedValue = Number(modifierValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
           if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
+          if (results[contentListKey].modifiers.some((i) => i.type === modifierKey && i.value === formattedValue)) continue;
           results[contentListKey].modifiers.push({
             type: modifierKey,
             value: formattedValue,
@@ -844,9 +845,8 @@ function getUgcModifierBadge(modifier) {
 function getUgcModifierLabel(modifier) {
   try {
     const type = getLabel(modifier.type);
-    const suffix = modifier.plus ? '+' : '';
     const value = modifier.value;
-    return `${type}${suffix}: ${value}`;
+    return `${type}: ${value}`;
   } catch (error) {
     Sentry.captureException(error);
     emit('error', 'An unknown error occurred. (B272F048)');
@@ -1083,7 +1083,7 @@ const rdoEvent = computed(() => getRdoEvent());
                     Follow <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter for the
                     latest, more accurate, manually written sales and bonuses.
                   </p>
-                  <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-500">
+                  <p class="mt-0.5 text-xs text-slate-500">
                     Currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
                     <a
                       href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
@@ -1105,7 +1105,9 @@ const rdoEvent = computed(() => getRdoEvent());
                         <div class="flex gap-2 overflow-hidden">
                           <span class="truncate">{{ getSalesTitle(key) }}</span>
                           <template v-if="key.endsWith('_plus')">
-                            <span class="badge badge-plus">GTA+</span>
+                            <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ members'">
+                              <font-awesome-icon icon="fa-solid fa-plus" />
+                            </span>
                           </template>
                         </div>
                         <span class="badge badge-primary ml-2">
@@ -1116,7 +1118,7 @@ const rdoEvent = computed(() => getRdoEvent());
                     <template #default>
                       <ul class="list-disc">
                         <template v-for="(discounts, item) in category" :key="item">
-                          <li class="ml-8">{{ getLabel(item) }}: {{ formatCurrency(discounts) }}</li>
+                          <li class="ml-5">{{ getLabel(item) }}: {{ formatCurrency(discounts) }}</li>
                         </template>
                       </ul>
                     </template>
@@ -1145,7 +1147,9 @@ const rdoEvent = computed(() => getRdoEvent());
                                 <div class="flex gap-2 overflow-hidden">
                                   <span class="truncate">List {{ Number(index) + 1 }}</span>
                                   <template v-if="list.plus_only">
-                                    <span class="badge badge-plus">GTA+</span>
+                                    <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ members'">
+                                      <font-awesome-icon icon="fa-solid fa-plus" />
+                                    </span>
                                   </template>
                                 </div>
                                 <div>
@@ -1162,13 +1166,27 @@ const rdoEvent = computed(() => getRdoEvent());
                               <h3 class="my-1 font-bold">Modifiers</h3>
                               <div class="mb-4">
                                 <template v-for="(modifier, item) in list.modifiers" :key="item">
-                                  <span :class="getUgcModifierBadge(modifier)" class="badge mr-1">{{ getUgcModifierLabel(modifier) }}</span>
+                                  <template v-if="modifier.plus">
+                                    <span
+                                      :class="getUgcModifierBadge(modifier)"
+                                      class="badge mr-1"
+                                      v-tooltip="'Only applies to GTA+ members'"
+                                    >
+                                      <font-awesome-icon icon="fa-solid fa-plus" />
+                                      {{ getUgcModifierLabel(modifier) }}
+                                    </span>
+                                  </template>
+                                  <template v-else>
+                                    <span :class="getUgcModifierBadge(modifier)" class="badge mr-1">{{
+                                      getUgcModifierLabel(modifier)
+                                    }}</span>
+                                  </template>
                                 </template>
                               </div>
                               <h3 class="my-1 font-bold">Missions</h3>
-                              <ul class="list-disc">
+                              <ul class="list-disc grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 mb-2">
                                 <template v-for="(mission, item) in list.ugc" :key="item">
-                                  <li class="ml-8">{{ mission }}</li>
+                                  <li class="ml-5">{{ mission }}</li>
                                 </template>
                               </ul>
                             </template>
@@ -1188,13 +1206,13 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="timeTrial">
-                  <li class="ml-8"><strong>Time Trial:</strong> {{ timeTrial }}</li>
+                  <li class="ml-5"><strong>Time Trial:</strong> {{ timeTrial }}</li>
                 </template>
                 <template v-if="hswTimeTrial">
-                  <li class="ml-8"><strong>HSW Time Trial:</strong> {{ hswTimeTrial }}</li>
+                  <li class="ml-5"><strong>HSW Time Trial:</strong> {{ hswTimeTrial }}</li>
                 </template>
                 <template v-if="rcTimeTrial">
-                  <li class="ml-8"><strong>RC Bandito Time Trial:</strong> {{ rcTimeTrial }}</li>
+                  <li class="ml-5"><strong>RC Bandito Time Trial:</strong> {{ rcTimeTrial }}</li>
                 </template>
               </ul>
               <a href="https://gtaweb.eu/gtao-map/ls/6x5kxtvuwilukg" target="_blank" rel="noopener noreferrer">
@@ -1210,7 +1228,7 @@ const rdoEvent = computed(() => getRdoEvent());
               <h3 class="my-1 font-bold">Weapons</h3>
               <ul class="list-disc">
                 <template v-for="item in gunVan.weapons" :key="item">
-                  <li class="ml-8">
+                  <li class="ml-5">
                     {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
@@ -1225,7 +1243,7 @@ const rdoEvent = computed(() => getRdoEvent());
               <h3 class="my-1 font-bold">Throwables</h3>
               <ul class="list-disc">
                 <template v-for="item in gunVan.throwables" :key="item">
-                  <li class="ml-8">
+                  <li class="ml-5">
                     {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
@@ -1240,7 +1258,7 @@ const rdoEvent = computed(() => getRdoEvent());
               <h3 class="my-1 font-bold">Body Armor</h3>
               <ul class="list-disc">
                 <template v-for="item in gunVan.body_armor" :key="item">
-                  <li class="ml-8">
+                  <li class="ml-5">
                     {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
@@ -1262,7 +1280,7 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="casinoPrizeVehicle">
-                  <li class="ml-8"><strong>Podium Vehicle:</strong> {{ casinoPrizeVehicle }}</li>
+                  <li class="ml-5"><strong>Podium Vehicle:</strong> {{ casinoPrizeVehicle }}</li>
                 </template>
               </ul>
             </template>
@@ -1285,10 +1303,10 @@ const rdoEvent = computed(() => getRdoEvent());
                 <h3 class="my-1 font-bold">Prize Ride</h3>
                 <ul class="list-disc">
                   <template v-if="carMeetPrizeVehicle">
-                    <li class="ml-8">{{ carMeetPrizeVehicle }}</li>
+                    <li class="ml-5">{{ carMeetPrizeVehicle }}</li>
                   </template>
                   <template v-if="carMeetPrizeObjective">
-                    <li class="ml-8">
+                    <li class="ml-5">
                       <strong>Objective:</strong>
                       {{ carMeetPrizeObjective }}
                     </li>
@@ -1299,16 +1317,16 @@ const rdoEvent = computed(() => getRdoEvent());
                 <h3 class="my-1 font-bold">Test Rides</h3>
                 <ul class="list-disc">
                   <template v-if="promoTestDriveVehicle1">
-                    <li class="ml-8">{{ promoTestDriveVehicle1 }}</li>
+                    <li class="ml-5">{{ promoTestDriveVehicle1 }}</li>
                   </template>
                   <template v-if="promoTestDriveVehicle2">
-                    <li class="ml-8">{{ promoTestDriveVehicle2 }}</li>
+                    <li class="ml-5">{{ promoTestDriveVehicle2 }}</li>
                   </template>
                   <template v-if="promoTestDriveVehicle3">
-                    <li class="ml-8">{{ promoTestDriveVehicle3 }}</li>
+                    <li class="ml-5">{{ promoTestDriveVehicle3 }}</li>
                   </template>
                   <template v-if="hswTestRide">
-                    <li class="ml-8"><strong>Premium:</strong> {{ hswTestRide }}</li>
+                    <li class="ml-5"><strong>Premium:</strong> {{ hswTestRide }}</li>
                   </template>
                 </ul>
               </template>
@@ -1321,10 +1339,10 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="luxuryShowcaseVehicle1">
-                  <li class="ml-8">{{ luxuryShowcaseVehicle1 }}</li>
+                  <li class="ml-5">{{ luxuryShowcaseVehicle1 }}</li>
                 </template>
                 <template v-if="luxuryShowcaseVehicle2">
-                  <li class="ml-8">{{ luxuryShowcaseVehicle2 }}</li>
+                  <li class="ml-5">{{ luxuryShowcaseVehicle2 }}</li>
                 </template>
               </ul>
             </template>
@@ -1344,19 +1362,19 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="simeonTestDriveVehicle1">
-                  <li class="ml-8">{{ simeonTestDriveVehicle1 }}</li>
+                  <li class="ml-5">{{ simeonTestDriveVehicle1 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle2">
-                  <li class="ml-8">{{ simeonTestDriveVehicle2 }}</li>
+                  <li class="ml-5">{{ simeonTestDriveVehicle2 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle3">
-                  <li class="ml-8">{{ simeonTestDriveVehicle3 }}</li>
+                  <li class="ml-5">{{ simeonTestDriveVehicle3 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle4">
-                  <li class="ml-8">{{ simeonTestDriveVehicle4 }}</li>
+                  <li class="ml-5">{{ simeonTestDriveVehicle4 }}</li>
                 </template>
                 <template v-if="simeonTestDriveVehicle5">
-                  <li class="ml-8">{{ simeonTestDriveVehicle5 }}</li>
+                  <li class="ml-5">{{ simeonTestDriveVehicle5 }}</li>
                 </template>
               </ul>
             </template>
@@ -1381,34 +1399,34 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="socialClubGaragePrizeVehicle">
-                  <li class="ml-8"><strong>Reward Vehicle:</strong> {{ socialClubGaragePrizeVehicle }}</li>
+                  <li class="ml-5"><strong>Reward Vehicle:</strong> {{ socialClubGaragePrizeVehicle }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle1">
-                  <li class="ml-8">{{ socialClubGarageVehicle1 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle1 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle2">
-                  <li class="ml-8">{{ socialClubGarageVehicle2 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle2 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle3">
-                  <li class="ml-8">{{ socialClubGarageVehicle3 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle3 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle4">
-                  <li class="ml-8">{{ socialClubGarageVehicle4 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle4 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle5">
-                  <li class="ml-8">{{ socialClubGarageVehicle5 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle5 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle6">
-                  <li class="ml-8">{{ socialClubGarageVehicle6 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle6 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle7">
-                  <li class="ml-8">{{ socialClubGarageVehicle7 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle7 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle8">
-                  <li class="ml-8">{{ socialClubGarageVehicle8 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle8 }}</li>
                 </template>
                 <template v-if="socialClubGarageVehicle9">
-                  <li class="ml-8">{{ socialClubGarageVehicle9 }}</li>
+                  <li class="ml-5">{{ socialClubGarageVehicle9 }}</li>
                 </template>
               </ul>
             </template>
@@ -1430,13 +1448,13 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <h3 class="my-1 font-bold">Dr. Dre Studio Appearances:</h3>
               <ul class="list-disc">
-                <li class="ml-8">Monday: {{ studioAppearanceEnabledMon ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-8">Tuesday: {{ studioAppearanceEnabledTue ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-8">Wednesday: {{ studioAppearanceEnabledWed ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-8">Thursday: {{ studioAppearanceEnabledThu ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-8">Friday: {{ studioAppearanceEnabledFri ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-8">Saturday: {{ studioAppearanceEnabledSat ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-8">Sunday: {{ studioAppearanceEnabledSun ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Monday: {{ studioAppearanceEnabledMon ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Tuesday: {{ studioAppearanceEnabledTue ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Wednesday: {{ studioAppearanceEnabledWed ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Thursday: {{ studioAppearanceEnabledThu ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Friday: {{ studioAppearanceEnabledFri ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Saturday: {{ studioAppearanceEnabledSat ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5">Sunday: {{ studioAppearanceEnabledSun ? 'Enabled' : 'Disabled' }}</li>
               </ul>
             </template>
           </Accordion>
@@ -1457,25 +1475,25 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #default>
               <ul class="list-disc">
                 <template v-if="dailyObjectiveMon">
-                  <li class="ml-8"><strong>Monday:</strong> {{ dailyObjectiveMon }}</li>
+                  <li class="ml-5"><strong>Monday:</strong> {{ dailyObjectiveMon }}</li>
                 </template>
                 <template v-if="dailyObjectiveTue">
-                  <li class="ml-8"><strong>Tuesday:</strong> {{ dailyObjectiveTue }}</li>
+                  <li class="ml-5"><strong>Tuesday:</strong> {{ dailyObjectiveTue }}</li>
                 </template>
                 <template v-if="dailyObjectiveWed">
-                  <li class="ml-8"><strong>Wednesday:</strong> {{ dailyObjectiveWed }}</li>
+                  <li class="ml-5"><strong>Wednesday:</strong> {{ dailyObjectiveWed }}</li>
                 </template>
                 <template v-if="dailyObjectiveThu">
-                  <li class="ml-8"><strong>Thursday:</strong> {{ dailyObjectiveThu }}</li>
+                  <li class="ml-5"><strong>Thursday:</strong> {{ dailyObjectiveThu }}</li>
                 </template>
                 <template v-if="dailyObjectiveFri">
-                  <li class="ml-8"><strong>Friday:</strong> {{ dailyObjectiveFri }}</li>
+                  <li class="ml-5"><strong>Friday:</strong> {{ dailyObjectiveFri }}</li>
                 </template>
                 <template v-if="dailyObjectiveSat">
-                  <li class="ml-8"><strong>Saturday:</strong> {{ dailyObjectiveSat }}</li>
+                  <li class="ml-5"><strong>Saturday:</strong> {{ dailyObjectiveSat }}</li>
                 </template>
                 <template v-if="dailyObjectiveSun">
-                  <li class="ml-8"><strong>Sunday:</strong> {{ dailyObjectiveSun }}</li>
+                  <li class="ml-5"><strong>Sunday:</strong> {{ dailyObjectiveSun }}</li>
                 </template>
               </ul>
             </template>
@@ -1488,9 +1506,9 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #title>Active Event</template>
             <template #default>
               <ul class="list-disc">
-                <li class="ml-8"><strong>Event:</strong> {{ rdoEvent.event }}</li>
+                <li class="ml-5"><strong>Event:</strong> {{ rdoEvent.event }}</li>
                 <template v-if="rdoEvent.features">
-                  <li class="ml-8"><strong>Features:</strong></li>
+                  <li class="ml-5"><strong>Features:</strong></li>
                   <ul class="list-disc">
                     <template v-for="feature in rdoEvent.features" :key="feature">
                       <li class="ml-12">{{ feature }}</li>
