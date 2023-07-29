@@ -1,7 +1,16 @@
 <script setup>
 import * as Sentry from '@sentry/vue';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
-import { ArrowPathIcon, InformationCircleIcon, EllipsisVerticalIcon } from '@heroicons/vue/24/outline';
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ArrowsPointingInIcon,
+  ArrowsPointingOutIcon,
+  ArrowPathIcon,
+  CurrencyDollarIcon,
+  InformationCircleIcon,
+  EllipsisVerticalIcon,
+} from '@heroicons/vue/24/outline';
 
 import Accordion from './Accordion.vue';
 import Card from './Cards/Card.vue';
@@ -1008,26 +1017,39 @@ const rdoEvent = computed(() => getRdoEvent());
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                :class="[
-                  settings.quickViewBelowTunables ? 'bottom-full origin-bottom-right mb-2' : 'origin-top-right mt-2',
-                  'absolute right-0 z-10 w-48 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
-                ]"
+                class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
                 <MenuItem>
                   <button
                     @click="handleToggleQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    v-text="settings.quickView ? 'Collapse Quick View' : 'Expand Quick View'"
-                  ></button>
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                  >
+                    <template v-if="settings.quickView">
+                      <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
+                      Collapse Quick View
+                    </template>
+                    <template v-else>
+                      <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
+                      Expand Quick View
+                    </template>
+                  </button>
                 </MenuItem>
                 <MenuItem>
                   <button
                     @click="handleMoveQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    v-text="settings.quickViewBelowTunables ? 'Move above Tunables' : 'Move below Tunables'"
-                  ></button>
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                  >
+                    <template v-if="settings.quickViewBelowTunables">
+                      <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
+                      Move above Tunables
+                    </template>
+                    <template v-else>
+                      <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
+                      Move below Tunables
+                    </template>
+                  </button>
                 </MenuItem>
                 <MenuItem>
                   <hr class="my-1 border-slate-400 dark:border-slate-600" />
@@ -1036,8 +1058,9 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleCollapseAllQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
+                    <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
                     Collapse all sections
                   </button>
                 </MenuItem>
@@ -1045,8 +1068,9 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleCollapseAllExceptSalesQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
+                    <CurrencyDollarIcon class="h-4 w-4" aria-hidden="true" />
                     Collapse all except Sales
                   </button>
                 </MenuItem>
@@ -1054,8 +1078,9 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleExpandAllQuickView"
                     type="button"
-                    class="block w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
+                    <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
                     Expand all sections
                   </button>
                 </MenuItem>

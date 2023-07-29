@@ -16,6 +16,7 @@ export const useStore = defineStore('settings', {
       // Show/hide panels.
       quickView: true,
       quickViewBelowTunables: false,
+      tunablesPanel: true,
 
       // Show/hide types of changes.
       added: true,
