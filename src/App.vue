@@ -211,6 +211,13 @@ const latestUrl = computed(
 );
 
 /**
+ * The URL to retrieve the tunable defaults.
+ *
+ * @type {import("vue").ComputedRef<string>}
+ */
+const defaultsUrl = computed(() => `https://api.rdo.gg/tunables/gta/defaults.json?${allUrlCacheKey.value}`);
+
+/**
  * The URL to retrieve the tunable types.
  *
  * @type {import("vue").ComputedRef<string>}
@@ -780,13 +787,14 @@ async function handleGetTunableTypes() {
  *
  * @returns {void}
  */
-function updateDifference() {
+async function updateDifference() {
   try {
     difference.value.loading = true;
     difference.value.html = null;
 
     const previousJson = tunables.value.previous?.contents;
     const latestJson = tunables.value.latest?.contents;
+    const defaults = await cachedRequest('tunable-defaults', defaultsUrl.value);
 
     const previousFormatted = formatJson(previousJson);
     const latestFormatted = formatJson(latestJson);
@@ -797,10 +805,46 @@ function updateDifference() {
     });
 
     const delta = diffPatcher.diff(previousFormatted, latestFormatted);
+    const format = formatters.html.format(delta, previousFormatted);
 
-    difference.value.html = formatters.html.format(delta, previousFormatted);
+    // Make it easier to work with the result.
+    const html = document.createElement('div');
+    html.innerHTML = format;
+
+    // Add tunable metadata to each line in the tunables section.
+    html.querySelectorAll('[data-key="tunables"] li[data-key]').forEach((item) => {
+      // Try to get the tunable's key.
+      const tunableKey = item.getAttribute('data-key');
+      if (!tunableKey) return;
+
+      // Try to find the tunable's default value.
+      let defaultValue = defaults[tunableKey];
+      if (!defaultValue) return;
+
+      // Format timestamps into readable dates.
+      if (tunableKey.includes('POSIX') || tunableKey.includes('TIMESTAMP')) {
+        defaultValue = new Date(defaultValue * 1000).toISOString();
+      }
+
+      // Format string values to include quotes.
+      if (typeof defaultValue === 'string') {
+        defaultValue = `"${defaultValue}"`.toUpperCase();
+      }
+
+      // Create the meta element.
+      const metaElement = document.createElement('div');
+      metaElement.classList.add('jsondiffpatch-tunable-meta');
+      metaElement.append(`Default: ${defaultValue}`);
+
+      // Add it to the current tunable.
+      item.append(metaElement);
+    });
+
+    // Set the difference value to the edited HTML.
+    difference.value.html = html.innerHTML;
     difference.value.loading = false;
   } catch (error) {
+    console.log(error);
     Sentry.captureException(error);
     showErrorModal('An unknown error occurred. (6FB55B6B)');
   }
@@ -1200,6 +1244,7 @@ function showErrorModal(body) {
                   settings.deleted ? '' : 'hide-deleted',
                   settings.modified ? '' : 'hide-modified',
                   settings.unchanged ? '' : 'hide-unchanged',
+                  settings.meta ? '' : 'hide-meta',
                   settings.content ? '' : 'hide-content',
                   settings.quickViewItems ? '' : 'hide-quick-view',
                   settings.sales ? '' : 'hide-sales',
@@ -1395,6 +1440,10 @@ function showErrorModal(body) {
       <SettingsModalToggle v-model="settings.unchanged" :isVisibilityToggle="true">
         <template #title>Unchanged</template>
         <template #description>Whether to show tunables that have not changed.</template>
+      </SettingsModalToggle>
+      <SettingsModalToggle v-model="settings.meta" :isVisibilityToggle="true">
+        <template #title>Metadata</template>
+        <template #description>Whether to show tunable metadata such as the default value.</template>
       </SettingsModalToggle>
 
       <div class="flex items-center justify-between gap-2 py-2">

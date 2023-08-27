@@ -23,6 +23,7 @@ export const useStore = defineStore('settings', {
       deleted: true,
       modified: true,
       unchanged: false,
+      meta: true,
 
       // Show/hide individual tunables.
       content: true,

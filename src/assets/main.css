@@ -104,15 +104,16 @@ code {
 .hide-added .jsondiffpatch-added,
 .hide-deleted .jsondiffpatch-deleted,
 .hide-modified .jsondiffpatch-modified,
-.hide-unchanged .jsondiffpatch-unchanged {
-  @apply hidden;
+.hide-unchanged .jsondiffpatch-unchanged,
+.hide-meta .jsondiffpatch-tunable-meta {
+  @apply !hidden;
 }
 
 /* Hide individual sections. */
 .hide-content [data-key="contentlists"],
 .hide-content [data-key*="CONTENT_MODIFIER"],
 .hide-tunables [data-key="tunables"] {
-  @apply hidden;
+  @apply !hidden;
 }
 
 /* Hide individual keys. */
@@ -142,7 +143,7 @@ code {
 .hide-verbose [data-key*="NPCFLOWINVITE"],
 .hide-verbose [data-key*="PROFESIONALCORONA"],
 .hide-verbose [data-key*="SALE_HASH_LABELS"] {
-  @apply hidden;
+  @apply !hidden;
 }
 
 /* Custom Float Vue tweaks. */
@@ -163,6 +164,18 @@ code {
 }
 
 /* Custom JSON diff patch tweaks. */
+.jsondiffpatch-tunable-meta {
+  @apply !ml-2 inline-block text-slate-600;
+}
+
+.dark .jsondiffpatch-tunable-meta {
+  @apply !ml-2 inline-block text-slate-400;
+}
+
+.jsondiffpatch-tunable-meta:before {
+  content: '// ';
+}
+
 .jsondiffpatch-delta {
   @apply p-0;
 }
