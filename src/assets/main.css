@@ -165,11 +165,11 @@ code {
 
 /* Custom JSON diff patch tweaks. */
 .jsondiffpatch-tunable-meta {
-  @apply !ml-2 inline-block text-slate-600;
+  @apply !ml-2 inline-block text-[#6e7781];
 }
 
 .dark .jsondiffpatch-tunable-meta {
-  @apply !ml-2 inline-block text-slate-400;
+  @apply !ml-2 inline-block text-[#8b949e];
 }
 
 .jsondiffpatch-tunable-meta:before {
