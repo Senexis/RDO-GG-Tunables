@@ -1105,8 +1105,9 @@ const rdoEvent = computed(() => getRdoEvent());
                   <p>
                     This is an automatically generated list of sales and bonuses. Some items may be missing, especially right after the game
                     is updated.<br />
-                    Follow <a href="https://twitter.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on Twitter for the
-                    latest, more accurate, manually written sales and bonuses.
+                    Follow <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer">@TezFunz2</a> on
+                    <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" /> for the latest, more accurate, manually written sales
+                    and bonuses.
                   </p>
                   <p class="mt-0.5 text-xs text-slate-500">
                     Currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
@@ -1555,8 +1556,11 @@ const rdoEvent = computed(() => getRdoEvent());
     <template #footer v-if="settings.quickView">
       <CardFooter>
         <div class="truncate text-sm leading-tight">
-          Contact us on <a href="https://twitter.com/Tunables" target="_blank" rel="noopener noreferrer">Twitter</a> if you have suggestions
-          for the Quick View!
+          Contact us on
+          <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer"
+            ><font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
+          /></a>
+          if you have suggestions for the Quick View!
         </div>
       </CardFooter>
     </template>

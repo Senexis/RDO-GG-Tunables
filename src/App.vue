@@ -847,7 +847,7 @@ function handleToggleTunables() {
     settings.tunablesPanel = !settings.tunablesPanel;
   } catch (error) {
     Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (0D12A77A)');
+    showErrorModal('An unknown error occurred. (0D12A77A)');
   }
 }
 
@@ -861,7 +861,7 @@ function handleMoveTunables() {
     settings.quickViewBelowTunables = !settings.quickViewBelowTunables;
   } catch (error) {
     Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (D3957015)');
+    showErrorModal('An unknown error occurred. (D3957015)');
   }
 }
 
@@ -1193,7 +1193,7 @@ function showErrorModal(body) {
         >
           <template v-if="!difference.loading">
             <template v-if="difference.html">
-              <component :is="'style'" v-html="saleStyles"></component>
+              <component is="style" v-html="saleStyles"></component>
               <div
                 :class="[
                   settings.added ? '' : 'hide-added',
@@ -1368,8 +1368,11 @@ function showErrorModal(body) {
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-slate-500">
           More options for Quick View are available by clicking the <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View
-          panel. Contact us on <a href="https://twitter.com/Tunables" target="_blank" rel="noopener noreferrer">Twitter</a> if you have
-          suggestions for more personalization options!
+          panel. Contact us on
+          <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />
+          </a>
+          if you have suggestions for more personalization options!
         </p>
       </div>
     </div>
