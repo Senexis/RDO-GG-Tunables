@@ -819,7 +819,7 @@ async function updateDifference() {
 
       // Try to find the tunable's default value.
       let defaultValue = defaults[tunableKey];
-      if (!defaultValue) return;
+      if (defaultValue === undefined) return;
 
       // Format timestamps into readable dates.
       if (tunableKey.includes('POSIX') || tunableKey.includes('TIMESTAMP')) {
