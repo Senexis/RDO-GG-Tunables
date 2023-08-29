@@ -17,7 +17,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
-    "@sentry/tracing": "^7.64.0",
+    "@sentry/tracing": "^7.65.0",
     "@sentry/vue": "^7.64.0",
     "ajv": "^8.12.0",
     "floating-vue": "^2.0.0-beta.24",
