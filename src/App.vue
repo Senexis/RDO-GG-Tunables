@@ -1,6 +1,7 @@
 <script setup>
 import * as Sentry from '@sentry/vue';
-import { create, formatters } from 'jsondiffpatch/dist/jsondiffpatch.umd.slim.js';
+import { create } from 'jsondiffpatch/dist/jsondiffpatch.umd.slim.js';
+import * as htmlExtended from './utilities/html-formatter';
 import { computed, onMounted, ref, watch } from 'vue';
 
 import {
@@ -805,7 +806,7 @@ async function updateDifference() {
     });
 
     const delta = diffPatcher.diff(previousFormatted, latestFormatted);
-    const format = formatters.html.format(delta, previousFormatted);
+    const format = htmlExtended.format(delta, previousFormatted);
 
     // Make it easier to work with the result.
     const html = document.createElement('div');
