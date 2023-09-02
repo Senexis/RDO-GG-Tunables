@@ -5,11 +5,37 @@ import { formatters } from 'jsondiffpatch/dist/jsondiffpatch.umd.slim.js';
 // other node. This allows users to browser the diff in a more consistent way.
 class ExtendedHtmlFormatter extends formatters.html.default {
   format_unchanged(context, delta, left) {
-    // If the node is not an array or object, then use the default formatter.
     if (typeof left !== 'object') {
       return super.format_unchanged(context, delta, left);
     }
 
+    const recurseFn = this.format_unchanged.bind(this);
+    return this.formatValueRecurse(context, delta, left, 'unchanged', recurseFn);
+  }
+
+  format_added(context, delta) {
+    const left = delta[0];
+
+    if (typeof left !== 'object') {
+      return super.format_added(context, delta);
+    }
+
+    const recurseFn = this.format_added.bind(this);
+    return this.formatValueRecurse(context, delta, left, 'added', recurseFn);
+  }
+
+  format_deleted(context, delta) {
+    const left = delta[0];
+
+    if (typeof left !== 'object') {
+      return super.format_deleted(context, delta);
+    }
+
+    const recurseFn = this.format_deleted.bind(this);
+    return this.formatValueRecurse(context, delta, left, 'deleted', recurseFn);
+  }
+
+  formatValueRecurse(context, delta, left, changeType, recurseFn) {
     // Get the type of the node.
     const type = Array.isArray(left) ? 'array' : 'object';
 
@@ -19,8 +45,8 @@ class ExtendedHtmlFormatter extends formatters.html.default {
     // Set the nearest node to be a typed parent node.
     const nodeIndex = context.buffer.length - 2;
     context.buffer[nodeIndex] = context.buffer[nodeIndex].replace(
-      'jsondiffpatch-unchanged',
-      `jsondiffpatch-node jsondiffpatch-child-node-type-${type}`
+      `jsondiffpatch-${changeType}`,
+      `jsondiffpatch-${changeType} jsondiffpatch-node jsondiffpatch-child-node-type-${type}`
     );
 
     // Set the nearest value to be a typed node.
@@ -41,10 +67,10 @@ class ExtendedHtmlFormatter extends formatters.html.default {
         const lineType = Array.isArray(line) ? 'array' : 'object';
 
         // Since we are recursing, we need to add a new node.
-        this.nodeBegin(context, null, index, 'unchanged', typeof lineType);
+        this.nodeBegin(context, null, index, changeType, typeof lineType);
 
-        // Run this code again.
-        this.format_unchanged(context, delta, line);
+        // Recurse using the provided super function.
+        recurseFn(context, delta, line);
 
         // Close the newly added node.
         this.nodeEnd(context);
@@ -54,7 +80,7 @@ class ExtendedHtmlFormatter extends formatters.html.default {
       }
 
       // Add the node with the change type.
-      this.nodeBegin(context, null, index, 'unchanged', typeof line);
+      this.nodeBegin(context, null, index, changeType, typeof line);
 
       // Add the value.
       context.out('<div class="jsondiffpatch-value">');

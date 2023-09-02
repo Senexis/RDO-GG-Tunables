@@ -196,20 +196,23 @@ code {
 }
 
 .jsondiffpatch-deleted .jsondiffpatch-property-name,
+.jsondiffpatch-deleted::after,
 .jsondiffpatch-deleted pre,
 .jsondiffpatch-modified .jsondiffpatch-left-value pre,
 .jsondiffpatch-textdiff-deleted {
-  @apply bg-[#FF818266] text-[#1F2328] rounded-sm;
+  @apply bg-[#FF818266] text-[#1F2328] rounded-sm line-through;
 }
 
 .dark .jsondiffpatch-deleted .jsondiffpatch-property-name,
+.dark .jsondiffpatch-deleted::after,
 .dark .jsondiffpatch-deleted pre,
 .dark .jsondiffpatch-modified .jsondiffpatch-left-value pre,
 .dark .jsondiffpatch-textdiff-deleted {
-  @apply bg-[#803030] text-[#c9d1d9] rounded-sm;
+  @apply bg-[#803030] text-[#c9d1d9] rounded-sm line-through;
 }
 
 .jsondiffpatch-added .jsondiffpatch-property-name,
+.jsondiffpatch-added::after,
 .jsondiffpatch-added .jsondiffpatch-value pre,
 .jsondiffpatch-modified .jsondiffpatch-right-value pre,
 .jsondiffpatch-textdiff-added {
@@ -218,6 +221,7 @@ code {
 
 
 .dark .jsondiffpatch-added .jsondiffpatch-property-name,
+.dark .jsondiffpatch-added::after,
 .dark .jsondiffpatch-added .jsondiffpatch-value pre,
 .dark .jsondiffpatch-modified .jsondiffpatch-right-value pre,
 .dark .jsondiffpatch-textdiff-added {
