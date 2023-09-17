@@ -22,6 +22,7 @@ import { HeartIcon } from '@heroicons/vue/24/solid';
 import { useStore } from './stores/settings.js';
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+import AlertWithLink from './components/Alerts/WithLink.vue';
 import AttributionModal from './components/Modals/AttributionModal.vue';
 import Banner from './components/Banner.vue';
 import Card from './components/Cards/Card.vue';
@@ -521,6 +522,37 @@ const eventWeeklyChanged = computed(() => {
   }
 });
 
+const showGoToEventWeeklyChange = computed(() => {
+  const all = tunables?.value?.all?.all;
+  const current = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY;
+
+  if (!all || !current) {
+    return false;
+  }
+
+  const tunablesWithCurrentVersion = [...all].reverse().filter((item) => item.weekly_event_id === current);
+
+  if (!tunablesWithCurrentVersion || tunablesWithCurrentVersion.length <= 1) {
+    return false;
+  }
+
+  const currentTunablePosition = tunablesWithCurrentVersion.findIndex((item) => item.hash === latest.value);
+
+  if (currentTunablePosition === 0) {
+    return false;
+  }
+
+  const tunablesWithChanges = tunablesWithCurrentVersion[0];
+  const tunablesWithChangesIndex = all.findIndex((item) => item.hash === tunablesWithChanges.hash);
+  const tunablesWithChangesPrevious = all[tunablesWithChangesIndex + 1];
+
+  return {
+    weekly_id: current,
+    previous: tunablesWithChangesPrevious,
+    latest: tunablesWithChanges,
+  };
+});
+
 const eventWeeklyTooltip = computed(() => {
   try {
     const latest = tunables?.value?.latest?.contents?.tunables?.CD_GLOBAL?.EVENT_WKLY ?? 'N/A';
@@ -845,7 +877,6 @@ async function updateDifference() {
     difference.value.html = html.innerHTML;
     difference.value.loading = false;
   } catch (error) {
-    console.log(error);
     Sentry.captureException(error);
     showErrorModal('An unknown error occurred. (6FB55B6B)');
   }
@@ -985,6 +1016,24 @@ function handleCompareLatest() {
   }
 }
 
+function handleCompareWeeklyChange() {
+  try {
+    if (!showGoToEventWeeklyChange.value) return;
+
+    const previousTarget = showGoToEventWeeklyChange.value.previous;
+    const latestTarget = showGoToEventWeeklyChange.value.latest;
+
+    if (!previousTarget || !latestTarget) return;
+
+    previous.value = previousTarget.hash;
+    latest.value = latestTarget.hash;
+    handleGameUpdate(true);
+  } catch (error) {
+    Sentry.captureException(error);
+    showErrorModal('An unknown error occurred. (F44CB414)');
+  }
+}
+
 /**
  * Resets the settings to their default values.
  *
@@ -1109,174 +1158,186 @@ function showErrorModal(body) {
       />
     </template>
 
-    <Card>
-      <template #header>
-        <CardHeader class="flex flex-row items-center justify-between">
-          <h1 class="truncate">
-            <template v-if="eventWeeklyChanged">
-              <span v-tooltip="eventWeeklyTooltip" class="badge-outline badge mr-2">
-                <span>
-                  <font-awesome-icon icon="fa-solid fa-asterisk" />
-                </span>
-                <span class="sr-only">{{ eventWeeklyTooltip }}</span>
-              </span>
-            </template>
-            <template v-if="eventGtaPlusChanged">
-              <span v-tooltip="eventGtaPlusTooltip" class="badge-outline-plus badge mr-2">
-                <span>
-                  <font-awesome-icon icon="fa-solid fa-asterisk" />
-                </span>
-                <span class="sr-only">{{ eventGtaPlusTooltip }}</span>
-              </span>
-            </template>
-            <span v-tooltip="getGameBadgeTooltip()" :class="getGameBadgeBackground()" class="badge mr-2">
-              {{ getGameBadgeLabel() }}
-              <span class="sr-only">{{ getGameBadgeTooltip() }}</span>
-            </span>
-            <span v-tooltip="getPlatformBadgeTooltip()" :class="getPlatformBadgeBackground()" class="badge mr-2">
-              {{ getPlatformBadgeLabel() }}
-              <span class="sr-only">{{ getPlatformBadgeTooltip() }}</span>
-            </span>
-            <span>{{ title }}</span>
-          </h1>
-          <div class="whitespace-nowrap">
-            <Menu as="div" class="relative ml-3">
-              <div>
-                <MenuButton
-                  v-tooltip="'Tunables options'"
-                  class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
-                >
-                  <span class="sr-only">Tunables options</span>
-                  <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
-                </MenuButton>
-              </div>
-              <transition
-                enter-active-class="transition ease-out duration-100"
-                enter-from-class="transform opacity-0 scale-95"
-                enter-to-class="transform opacity-100 scale-100"
-                leave-active-class="transition ease-in duration-75"
-                leave-from-class="transform opacity-100 scale-100"
-                leave-to-class="transform opacity-0 scale-95"
-              >
-                <MenuItems
-                  class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                >
-                  <MenuItem>
-                    <button
-                      @click="handleToggleTunables"
-                      type="button"
-                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    >
-                      <template v-if="settings.tunablesPanel">
-                        <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
-                        Collapse Tunables
-                      </template>
-                      <template v-else>
-                        <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
-                        Expand Tunables
-                      </template>
-                    </button>
-                  </MenuItem>
-                  <MenuItem>
-                    <button
-                      @click="handleMoveTunables"
-                      type="button"
-                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    >
-                      <template v-if="settings.quickViewBelowTunables">
-                        <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
-                        Move below Quick View
-                      </template>
-                      <template v-else>
-                        <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
-                        Move above Quick View
-                      </template>
-                    </button>
-                  </MenuItem>
-                  <MenuItem>
-                    <hr class="my-1 border-slate-400 dark:border-slate-600" />
-                  </MenuItem>
-                  <MenuItem v-if="!previousDisabled">
-                    <button
-                      @click="handleComparePrevious"
-                      type="button"
-                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    >
-                      <ChevronLeftIcon class="h-4 w-4" aria-hidden="true" />
-                      Compare previous
-                    </button>
-                  </MenuItem>
-                  <MenuItem v-if="!nextDisabled">
-                    <button
-                      @click="handleCompareNext"
-                      type="button"
-                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    >
-                      <ChevronRightIcon class="h-4 w-4" aria-hidden="true" />
-                      Compare next
-                    </button>
-                  </MenuItem>
-                  <MenuItem v-if="!latestDisabled">
-                    <button
-                      @click="handleCompareLatest"
-                      type="button"
-                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                    >
-                      <ChevronDoubleRightIcon class="h-4 w-4" aria-hidden="true" />
-                      Compare latest
-                    </button>
-                  </MenuItem>
-                </MenuItems>
-              </transition>
-            </Menu>
-          </div>
-        </CardHeader>
-      </template>
-      <template #default v-if="settings.tunablesPanel">
-        <div
-          class="relative bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]"
+    <div>
+      <template v-if="settings.goToWeek && !difference.loading && showGoToEventWeeklyChange">
+        <AlertWithLink
+          :buttonText="`Show changes for week ${showGoToEventWeeklyChange.weekly_id}`"
+          :buttonHandler="handleCompareWeeklyChange"
         >
-          <template v-if="!difference.loading">
-            <template v-if="difference.html">
-              <component is="style" v-html="saleStyles"></component>
-              <div
-                :class="[
-                  settings.added ? '' : 'hide-added',
-                  settings.deleted ? '' : 'hide-deleted',
-                  settings.modified ? '' : 'hide-modified',
-                  settings.unchanged ? '' : 'hide-unchanged',
-                  settings.meta ? '' : 'hide-meta',
-                  settings.content ? '' : 'hide-content',
-                  settings.quickViewItems ? '' : 'hide-quick-view',
-                  settings.sales ? '' : 'hide-sales',
-                  settings.tunables ? '' : 'hide-tunables',
-                  settings.verbose ? '' : 'hide-verbose',
-                ]"
-                v-html="difference.html"
-              ></div>
+          These tunables changes are minor updates to week <strong>{{ showGoToEventWeeklyChange.weekly_id }}</strong
+          >. You can browse the weekly changes themselves by clicking the button.
+        </AlertWithLink>
+      </template>
+      <Card>
+        <template #header>
+          <CardHeader class="flex flex-row items-center justify-between">
+            <h1 class="truncate">
+              <template v-if="eventWeeklyChanged">
+                <span v-tooltip="eventWeeklyTooltip" class="badge-outline badge mr-2">
+                  <span>
+                    <font-awesome-icon icon="fa-solid fa-asterisk" />
+                  </span>
+                  <span class="sr-only">{{ eventWeeklyTooltip }}</span>
+                </span>
+              </template>
+              <template v-if="eventGtaPlusChanged">
+                <span v-tooltip="eventGtaPlusTooltip" class="badge-outline-plus badge mr-2">
+                  <span>
+                    <font-awesome-icon icon="fa-solid fa-asterisk" />
+                  </span>
+                  <span class="sr-only">{{ eventGtaPlusTooltip }}</span>
+                </span>
+              </template>
+              <span v-tooltip="getGameBadgeTooltip()" :class="getGameBadgeBackground()" class="badge mr-2">
+                {{ getGameBadgeLabel() }}
+                <span class="sr-only">{{ getGameBadgeTooltip() }}</span>
+              </span>
+              <span v-tooltip="getPlatformBadgeTooltip()" :class="getPlatformBadgeBackground()" class="badge mr-2">
+                {{ getPlatformBadgeLabel() }}
+                <span class="sr-only">{{ getPlatformBadgeTooltip() }}</span>
+              </span>
+              <span>{{ title }}</span>
+            </h1>
+            <div class="whitespace-nowrap">
+              <Menu as="div" class="relative ml-3">
+                <div>
+                  <MenuButton
+                    v-tooltip="'Tunables options'"
+                    class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+                  >
+                    <span class="sr-only">Tunables options</span>
+                    <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
+                  </MenuButton>
+                </div>
+                <transition
+                  enter-active-class="transition ease-out duration-100"
+                  enter-from-class="transform opacity-0 scale-95"
+                  enter-to-class="transform opacity-100 scale-100"
+                  leave-active-class="transition ease-in duration-75"
+                  leave-from-class="transform opacity-100 scale-100"
+                  leave-to-class="transform opacity-0 scale-95"
+                >
+                  <MenuItems
+                    class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  >
+                    <MenuItem>
+                      <button
+                        @click="handleToggleTunables"
+                        type="button"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                      >
+                        <template v-if="settings.tunablesPanel">
+                          <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
+                          Collapse Tunables
+                        </template>
+                        <template v-else>
+                          <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
+                          Expand Tunables
+                        </template>
+                      </button>
+                    </MenuItem>
+                    <MenuItem>
+                      <button
+                        @click="handleMoveTunables"
+                        type="button"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                      >
+                        <template v-if="settings.quickViewBelowTunables">
+                          <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
+                          Move below Quick View
+                        </template>
+                        <template v-else>
+                          <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
+                          Move above Quick View
+                        </template>
+                      </button>
+                    </MenuItem>
+                    <MenuItem>
+                      <hr class="my-1 border-slate-400 dark:border-slate-600" />
+                    </MenuItem>
+                    <MenuItem v-if="!previousDisabled">
+                      <button
+                        @click="handleComparePrevious"
+                        type="button"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                      >
+                        <ChevronLeftIcon class="h-4 w-4" aria-hidden="true" />
+                        Compare previous
+                      </button>
+                    </MenuItem>
+                    <MenuItem v-if="!nextDisabled">
+                      <button
+                        @click="handleCompareNext"
+                        type="button"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                      >
+                        <ChevronRightIcon class="h-4 w-4" aria-hidden="true" />
+                        Compare next
+                      </button>
+                    </MenuItem>
+                    <MenuItem v-if="!latestDisabled">
+                      <button
+                        @click="handleCompareLatest"
+                        type="button"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                      >
+                        <ChevronDoubleRightIcon class="h-4 w-4" aria-hidden="true" />
+                        Compare latest
+                      </button>
+                    </MenuItem>
+                  </MenuItems>
+                </transition>
+              </Menu>
+            </div>
+          </CardHeader>
+        </template>
+        <template #default v-if="settings.tunablesPanel">
+          <div
+            class="relative bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]"
+          >
+            <template v-if="!difference.loading">
+              <template v-if="difference.html">
+                <!-- eslint-disable vue/no-v-text-v-html-on-component -->
+                <component :is="`style`" v-html="saleStyles"></component>
+                <div
+                  :class="[
+                    settings.added ? '' : 'hide-added',
+                    settings.deleted ? '' : 'hide-deleted',
+                    settings.modified ? '' : 'hide-modified',
+                    settings.unchanged ? '' : 'hide-unchanged',
+                    settings.meta ? '' : 'hide-meta',
+                    settings.content ? '' : 'hide-content',
+                    settings.quickViewItems ? '' : 'hide-quick-view',
+                    settings.sales ? '' : 'hide-sales',
+                    settings.tunables ? '' : 'hide-tunables',
+                    settings.verbose ? '' : 'hide-verbose',
+                  ]"
+                  v-html="difference.html"
+                ></div>
+              </template>
+              <template v-else>
+                <div class="flex flex-col items-center justify-center gap-2 p-4">
+                  <NoSymbolIcon class="block h-12 w-12" aria-hidden="true" />
+                  <p class="text-lg font-medium">No differences detected</p>
+                </div>
+              </template>
             </template>
             <template v-else>
               <div class="flex flex-col items-center justify-center gap-2 p-4">
-                <NoSymbolIcon class="block h-12 w-12" aria-hidden="true" />
-                <p class="text-lg font-medium">No differences detected</p>
+                <ArrowPathIcon class="block animate-spin h-12 w-12" aria-hidden="true" />
+                <p class="text-lg font-medium">Loading...</p>
               </div>
             </template>
-          </template>
-          <template v-else>
-            <div class="flex flex-col items-center justify-center gap-2 p-4">
-              <ArrowPathIcon class="block animate-spin h-12 w-12" aria-hidden="true" />
-              <p class="text-lg font-medium">Loading...</p>
-            </div>
-          </template>
-        </div>
-      </template>
-      <template #footer v-if="settings.tunablesPanel">
-        <CardFooter class="sm:flex items-center justify-between text-sm leading-tight gap-2">
-          <div class="truncate">{{ footerProvider }}</div>
-          <div class="truncate sm:flex-shrink-0">{{ footerUpdated }}</div>
-        </CardFooter>
-      </template>
-    </Card>
+          </div>
+        </template>
+        <template #footer v-if="settings.tunablesPanel">
+          <CardFooter class="sm:flex items-center justify-between text-sm leading-tight gap-2">
+            <div class="truncate">{{ footerProvider }}</div>
+            <div class="truncate sm:flex-shrink-0">{{ footerUpdated }}</div>
+          </CardFooter>
+        </template>
+      </Card>
+    </div>
 
     <template v-if="settings.quickViewBelowTunables">
       <QuickView
@@ -1292,13 +1353,13 @@ function showErrorModal(body) {
     >
       <div class="flex space-x-4">
         <span>&copy; {{ appCopyrightYear }} RDO.GG</span>
-        <span
-          ><HeartIcon class="inline w-4 h-4 text-red-500 animate-pulse" /> from
+        <span>
+          <HeartIcon class="inline w-4 h-4 text-red-500 animate-pulse" /> from
           <a href="https://github.com/Senexis" target="_blank" rel="noopener noreferrer">Senexis</a> and
           <a href="https://github.com/Senexis/RDO-GG-Tunables/graphs/contributors" target="_blank" rel="noopener noreferrer"
             >contributors</a
-          ></span
-        >
+          >
+        </span>
       </div>
       <div class="flex space-x-4">
         <a href="https://rdo.gg/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
@@ -1311,10 +1372,12 @@ function showErrorModal(body) {
 
   <template v-if="!settings.bannersBlocked">
     <Banner id="new-site" :show="activeBanner === 'new-site'">
-      Welcome to the new website! Check out all the settings using the <Cog6ToothIcon class="inline w-5 h-5" /> button.
+      Welcome to the new website! Check out all the settings using the
+      <Cog6ToothIcon class="inline w-5 h-5" /> button.
       <br />
       <span class="text-sm text-slate-300">
-        Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong> tunables setting.
+        Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong>
+        tunables setting.
       </span>
     </Banner>
 
@@ -1343,8 +1406,8 @@ function showErrorModal(body) {
       <br />
       <span class="text-sm text-slate-300"
         >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
-        <strong>Quick View</strong> tunables setting.</span
-      >
+        <strong>Quick View</strong> tunables setting.
+      </span>
     </Banner>
 
     <Banner id="more-personalization" :show="activeBanner === 'more-personalization'">
@@ -1413,8 +1476,8 @@ function showErrorModal(body) {
       </SettingsModalToggle>
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-slate-500">
-          More options for Quick View are available by clicking the <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View
-          panel. Contact us on
+          More options for Quick View are available by clicking the
+          <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View panel. Contact us on
           <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer">
             <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />
           </a>
@@ -1442,10 +1505,6 @@ function showErrorModal(body) {
         <template #title>Unchanged</template>
         <template #description>Whether to show tunables that have not changed.</template>
       </SettingsModalToggle>
-      <SettingsModalToggle v-model="settings.meta" :isVisibilityToggle="true">
-        <template #title>Metadata</template>
-        <template #description>Whether to show tunable metadata such as the default value.</template>
-      </SettingsModalToggle>
 
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-slate-500">
@@ -1469,7 +1528,8 @@ function showErrorModal(body) {
         </SettingsModalToggle>
         <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
           <p class="mb-1">
-            Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong> setting:
+            Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong>
+            setting:
           </p>
           <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
             <li
@@ -1521,7 +1581,8 @@ function showErrorModal(body) {
         </SettingsModalToggle>
         <div v-if="settingsModal.verboseDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
           <p class="mb-1">
-            Tunables containing the following text in their key are hidden by toggling the <strong>Verbose</strong> setting:
+            Tunables containing the following text in their key are hidden by toggling the <strong>Verbose</strong>
+            setting:
           </p>
           <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
             <li><code>bonus</code> section</li>
@@ -1557,6 +1618,22 @@ function showErrorModal(body) {
       <SettingsModalToggle v-model="settings.tunables" :isVisibilityToggle="true">
         <template #title>Tunables</template>
         <template #description> Whether to show tunables that are in the <code>tunables</code> section. </template>
+      </SettingsModalToggle>
+
+      <div class="flex items-center justify-between gap-2 py-2">
+        <p class="text-xs text-slate-500">
+          The following options allow you to configure various miscellaneous features of the tunables panel.
+        </p>
+      </div>
+
+      <SettingsModalToggle v-model="settings.goToWeek" :isVisibilityToggle="true">
+        <template #title>"Go to week" banner</template>
+        <template #description>Whether to show the banner that allows you to quickly jump to the weekly changes.</template>
+      </SettingsModalToggle>
+
+      <SettingsModalToggle v-model="settings.meta" :isVisibilityToggle="true">
+        <template #title>Metadata</template>
+        <template #description>Whether to show tunable metadata such as the default value.</template>
       </SettingsModalToggle>
     </div>
 

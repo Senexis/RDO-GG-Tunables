@@ -7,6 +7,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  ignorePatterns: ['*.config*'],
   rules: {
     'vue/multi-word-component-names': 'off',
     'prettier/prettier': [
