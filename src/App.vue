@@ -1476,11 +1476,11 @@ function showErrorModal(body) {
       </SettingsModalToggle>
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-slate-500">
-          More options for Quick View are available by clicking the
-          <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View panel. Contact us on
-          <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer">
-            <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />
-          </a>
+          More options for Quick View are available by clicking the <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View
+          panel.
+          <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer"
+            >Contact us on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
+          /></a>
           if you have suggestions for more personalization options!
         </p>
       </div>

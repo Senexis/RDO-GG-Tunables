@@ -1556,9 +1556,8 @@ const rdoEvent = computed(() => getRdoEvent());
     <template #footer v-if="settings.quickView">
       <CardFooter>
         <div class="truncate text-sm leading-tight">
-          Contact us on
           <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer"
-            ><font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
+            >Contact us on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
           /></a>
           if you have suggestions for the Quick View!
         </div>
