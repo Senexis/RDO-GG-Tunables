@@ -494,7 +494,7 @@ const footerUpdated = computed(() => {
 
     const date = new Date(tunables.value.all.updated * 1000).toLocaleString('en-US', {
       dateStyle: 'short',
-      timeStyle: 'long',
+      timeStyle: 'medium',
     });
 
     return `Updated: ${date}`;
