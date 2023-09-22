@@ -3,6 +3,8 @@ import { ExclamationCircleIcon } from '@heroicons/vue/24/outline';
 import BaseModal from './BaseModal.vue';
 
 const url = new URL(window.location);
+url.searchParams.delete('game');
+url.searchParams.delete('platform');
 url.searchParams.delete('previous');
 url.searchParams.delete('latest');
 
@@ -42,7 +44,7 @@ const props = defineProps({
     <div
       class="bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6"
     >
-      <div class="flex gap-3">
+      <div class="flex flex-row-reverse gap-3">
         <a
           :href="url"
           class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 dark:border-slate-700 bg-slate-200 dark:bg-slate-800 px-4 py-2 text-base font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"

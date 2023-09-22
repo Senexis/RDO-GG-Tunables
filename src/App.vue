@@ -1331,7 +1331,7 @@ function showErrorModal(body) {
           </div>
         </template>
         <template #footer v-if="settings.tunablesPanel">
-          <CardFooter class="sm:flex items-center justify-between text-sm leading-tight gap-2">
+          <CardFooter>
             <div class="truncate">{{ footerProvider }}</div>
             <div class="truncate sm:flex-shrink-0">{{ footerUpdated }}</div>
           </CardFooter>
