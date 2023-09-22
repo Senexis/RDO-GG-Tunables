@@ -31,7 +31,9 @@ const props = defineProps({
   <BaseModal :open="props.open" @close="emit('close')">
     <div class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
-      <div class="text-xs text-slate-900/60 dark:text-slate-50/60 bg-slate-200 dark:bg-slate-800 px-4 py-3 rounded-lg shadow-sm transition-opacity opacity-50 hover:opacity-100">
+      <div
+        class="text-xs text-slate-900/60 dark:text-slate-50/60 bg-slate-200 dark:bg-slate-800 px-4 py-3 rounded-lg shadow-sm transition-opacity opacity-50 hover:opacity-100"
+      >
         <p class="break-words">
           <template v-if="props.commitLong && props.commitShort">
             <a

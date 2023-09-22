@@ -75,8 +75,8 @@ onMounted(() => {
   try {
     handleQuickViewInit();
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (6D1FCF8B)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 });
 
@@ -106,8 +106,8 @@ async function handleQuickViewInit() {
       tunableTypes,
     };
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (9A5D1051)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -122,8 +122,8 @@ async function request(url) {
     const response = await fetch(`${url}?${Math.floor(Date.now() / 1000)}`);
     return await response.json();
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'We were unable to retrieve some required data needed to display the tunables. Please try again later.');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'We were unable to retrieve some required data needed to display the tunables. Please try again later.', eventId);
   }
 }
 
@@ -136,8 +136,8 @@ function handleToggleQuickView() {
   try {
     settings.quickView = !settings.quickView;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (03BF280C)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -150,8 +150,8 @@ function handleMoveQuickView() {
   try {
     settings.quickViewBelowTunables = !settings.quickViewBelowTunables;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (533ABEA1)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -168,8 +168,8 @@ function handleCollapseAllQuickView() {
       ...Object.keys(ugcBonuses.value ?? []).map((key) => `${Accordions.UgcBonuses}_${key}`),
     ];
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (C406DD4B)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -185,8 +185,8 @@ function handleCollapseAllExceptSalesQuickView() {
       ...Object.keys(ugcBonuses.value ?? []).map((key) => `${Accordions.UgcBonuses}_${key}`),
     ];
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (285A4F4D)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -199,8 +199,8 @@ function handleExpandAllQuickView() {
   try {
     settings.accordionsDismissed = [];
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (604E0EC6)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -234,8 +234,8 @@ function getTunable(key, context = null) {
       return tunables[context][key];
     }
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (8A01F8A0)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -250,8 +250,8 @@ function getLabel(value) {
     if (!data.value.labels) return value;
     return data.value.labels[value] ?? value;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (BD8056FF)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -287,8 +287,8 @@ function findTunable(query) {
 
     return null;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (F89A8514)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -315,8 +315,8 @@ function findContext(query) {
 
     return null;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (96580B11)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -331,8 +331,8 @@ function getTunableDefault(key) {
     if (!data.value.tunableDefaults) return null;
     return data.value.tunableDefaults[key] ?? null;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (8A01F8A0)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -349,8 +349,8 @@ function getVehicleTunable(tunable) {
     if (!data.value.labels) return value;
     return data.value.labels[value] ?? value;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (D24280B2)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -367,8 +367,8 @@ function getDailyObjective(day) {
     if (!data.value.dailyObjectives) return value;
     return data.value.dailyObjectives[value] ?? value;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (144BBEE1)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -384,8 +384,8 @@ function getRcTimeTrial() {
     if (!data.value.rcTimeTrials) return value;
     return data.value.rcTimeTrials[value] ?? value;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (1013FD58)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -401,8 +401,8 @@ function getHswTimeTrial() {
     if (!data.value.hswTimeTrials) return value;
     return data.value.hswTimeTrials[value] ?? value;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (9BE71C1E)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -418,8 +418,8 @@ function getTimeTrial() {
     if (!data.value.timeTrials) return value;
     return data.value.timeTrials[value] ?? value;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (BF45361D)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -495,8 +495,8 @@ function getCarMeetPrizeObjective() {
         return null;
     }
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (E9F80C5D)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -596,8 +596,8 @@ function getGunVan() {
 
     return result;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (C0350559)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -613,8 +613,8 @@ function getStudioAppearanceEnabled(day) {
     if (value === null) return null;
     return value === false;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (FFC688AE)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -650,8 +650,8 @@ function getSales() {
 
     return orderObject(results, true);
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (31D92717)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -755,8 +755,8 @@ function getSalesTitle(title) {
         return 'Miscellaneous';
     }
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (04CAE23B)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -825,8 +825,8 @@ function getUgcBonuses() {
 
     return orderObject(results, true);
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (BD154CB6)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -841,8 +841,8 @@ function getUgcModifierBadge(modifier) {
     if (modifier.type === 'XP_MULTIPLIER') return 'badge-rp';
     return 'badge-primary';
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (8B6B6A03)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -857,8 +857,8 @@ function getUgcModifierLabel(modifier) {
     const value = modifier.value;
     return `${type}: ${value}`;
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (B272F048)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -882,8 +882,8 @@ function formatCurrency(discounts) {
       .map((i) => `${i[0] === 0 ? 'FREE' : fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim())
       .join(' - ');
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (C37D9727)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 /**
@@ -898,8 +898,8 @@ function formatNumber(value) {
       maximumFractionDigits: 2,
     }).format(value);
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (279332AF)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 
@@ -937,8 +937,8 @@ function getRdoEvent() {
       features: features.sort(),
     };
   } catch (error) {
-    Sentry.captureException(error);
-    emit('error', 'An unknown error occurred. (0E8A5C03)');
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
   }
 }
 

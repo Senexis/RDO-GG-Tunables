@@ -1,5 +1,4 @@
 <script setup>
-import { ExclamationCircleIcon } from '@heroicons/vue/24/outline';
 import BaseModal from './BaseModal.vue';
 
 const url = new URL(window.location);
@@ -15,6 +14,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  eventId: {
+    type: String,
+    default: '',
+  },
 });
 </script>
 
@@ -23,19 +26,29 @@ const props = defineProps({
     <div class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <div class="sm:flex sm:items-start">
         <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-900 sm:mx-0 sm:h-10 sm:w-10">
-          <ExclamationCircleIcon class="h-6 w-6 text-red-100" aria-hidden="true" />
+          <font-awesome-icon icon="fa-solid fa-bug h-6 w-6 text-red-100" aria-hidden="true" />
         </div>
         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-          <h3 class="text-lg font-medium leading-6 text-slate-800 dark:text-slate-200">An error occurred</h3>
+          <h3 class="text-lg font-medium leading-6 text-slate-800 dark:text-slate-200">A wild bug appeared!</h3>
           <div class="mt-2">
             <p class="text-sm">
               <slot></slot>
             </p>
           </div>
           <div class="mt-2">
-            <p class="text-sm">
-              If this issue persists, try reloading the page without options. If that doesn't solve the issue, please report this issue on
-              GitHub.
+            <p class="text-xs text-slate-700 dark:text-slate-300">
+              If this issue persists, try reloading the page using the <strong>Reload</strong> button first to remove your game and platform
+              preferences. If that doesn't work, you can try to reset all settings using the <strong>Reset</strong> button.
+            </p>
+          </div>
+          <div class="mt-2">
+            <p class="text-xs text-slate-700 dark:text-slate-300">
+              If that still doesn't resolve the issue, please report this issue to us using the
+              <strong><font-awesome-icon icon="fa-brands fa-github" aria-label="GitHub" /></strong> or
+              <strong><font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" /></strong> button.
+              <template v-if="eventId"
+                >Please include the following information when reporting the issue: <code class="text-xs" v-text="eventId"></code
+              ></template>
             </p>
           </div>
         </div>
@@ -64,9 +77,17 @@ const props = defineProps({
           href="https://github.com/Senexis/RDO-GG-Tunables/issues/new/choose"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 dark:border-slate-700 bg-slate-200 dark:bg-slate-800 px-4 py-2 text-base font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
+          class="mt-3 inline-flex w-full justify-center items-center rounded-md border border-slate-300 dark:border-slate-700 bg-slate-200 dark:bg-slate-800 px-4 py-2 text-base font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
         >
-          GitHub
+          <font-awesome-icon icon="fa-brands fa-github" aria-label="GitHub" />
+        </a>
+        <a
+          href="https://x.com/Tunables"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 inline-flex w-full justify-center items-center rounded-md border border-slate-300 dark:border-slate-700 bg-slate-200 dark:bg-slate-800 px-4 py-2 text-base font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
+        >
+          <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />
         </a>
       </div>
     </div>

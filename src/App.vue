@@ -171,6 +171,7 @@ const settingsModal = ref({
 const errorModal = ref({
   show: false,
   body: null,
+  eventId: null,
 });
 
 /**
@@ -252,8 +253,8 @@ const latestIndex = computed(() => {
 
     return latestIndex;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (C6CFD988)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -273,8 +274,8 @@ const previousDisabled = computed(() => {
     const previousIndex = latestIndex.value + 1;
     return previousIndex + 1 >= all.length;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (AB5076EA)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -294,8 +295,8 @@ const nextDisabled = computed(() => {
     const previousIndex = latestIndex;
     return previousIndex.value - 1 < 0;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (063AE30A)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -315,8 +316,8 @@ const latestDisabled = computed(() => {
     const previousIndex = latestIndex;
     return previousIndex.value - 1 < 0;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (38FD1D5D)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -475,8 +476,8 @@ const footerProvider = computed(() => {
 
     return `Provider: ${provider}. Special thanks: ${thanks}.`;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (D0DDD7CA)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -499,8 +500,8 @@ const footerUpdated = computed(() => {
 
     return `Updated: ${date}`;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (2DE28AB1)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -516,8 +517,8 @@ const eventWeeklyChanged = computed(() => {
 
     return latest !== previous;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (E115265B)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return false;
   }
 });
@@ -568,8 +569,8 @@ const eventWeeklyTooltip = computed(() => {
 
     return `The weekly event ID has changed from "${previous}" to "${latest}".`;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (527C8608)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return '';
   }
 });
@@ -591,8 +592,8 @@ const eventGtaPlusChanged = computed(() => {
 
     return latest !== previous;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (E353A81D)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return false;
   }
 });
@@ -618,8 +619,8 @@ const eventGtaPlusTooltip = computed(() => {
 
     return `The GTA+ event ID has changed from "${previous}" to "${latest}".`;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (89E7EB38)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return '';
   }
 });
@@ -644,8 +645,8 @@ const title = computed(() => {
 
     return `Tunables changes between ${previousDate} and ${latestDate}`;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (72AAD81D)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -658,8 +659,8 @@ const files = computed(() => {
 
     return tunables.value.all?.all;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (FAD94F03)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
     return null;
   }
 });
@@ -677,8 +678,8 @@ watch(game, () => {
       handleGameUpdate();
     }
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (3F39BDB8)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 });
 
@@ -690,8 +691,8 @@ watch(platform, () => {
     Sentry.setTag('platform', platform.value);
     handleGameUpdate();
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (F37CAEAF)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 });
 
@@ -702,8 +703,8 @@ watch(title, (state) => {
   try {
     document.title = state;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (8C4AE3EA)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 });
 
@@ -719,10 +720,11 @@ watch(
         if (errorModal.value.show) return;
         errorModal.value.title = null;
         errorModal.value.body = null;
+        errorModal.value.eventId = null;
       }, 500);
     } catch (error) {
-      Sentry.captureException(error);
-      showErrorModal('An unknown error occurred. (E6B7C58D)');
+      const eventId = Sentry.captureException(error);
+      showErrorModal('An unknown error occurred.', eventId);
     }
   },
   { deep: true }
@@ -736,8 +738,8 @@ onMounted(() => {
     handleGameUpdate(true);
     handleGetTunableTypes();
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (6D1FCF8B)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 });
 
@@ -757,8 +759,8 @@ async function handleGameUpdate(init = false) {
     try {
       tunables.value.all = await cachedRequest(`${game.value}-${platform.value}`, allUrl.value);
     } catch (error) {
-      Sentry.captureException(error);
-      showErrorModal('We were unable to retrieve some required data needed to display the tunables. Please try again later.');
+      const eventId = Sentry.captureException(error);
+      showErrorModal('We were unable to retrieve some required data needed to display the tunables. Please try again later.', eventId);
       return;
     }
 
@@ -778,9 +780,10 @@ async function handleGameUpdate(init = false) {
     try {
       tunables.value.previous = await cachedRequest(`${game.value}-${platform.value}-${previous.value}`, previousUrl.value);
     } catch (error) {
-      Sentry.captureException(error);
+      const eventId = Sentry.captureException(error);
       showErrorModal(
-        'We were unable to retrieve the previous tunables. If the tunables were recently updated, please try again in a few minutes.'
+        'We were unable to retrieve the previous tunables. If the tunables were recently updated, please try again in a few minutes.',
+        eventId
       );
       return;
     }
@@ -789,9 +792,10 @@ async function handleGameUpdate(init = false) {
     try {
       tunables.value.latest = await cachedRequest(`${game.value}-${platform.value}-${latest.value}`, latestUrl.value);
     } catch (error) {
-      Sentry.captureException(error);
+      const eventId = Sentry.captureException(error);
       showErrorModal(
-        'We were unable to retrieve the latest tunables. If the tunables were recently updated, please try again in a few minutes.'
+        'We were unable to retrieve the latest tunables. If the tunables were recently updated, please try again in a few minutes.',
+        eventId
       );
       return;
     }
@@ -799,8 +803,8 @@ async function handleGameUpdate(init = false) {
     // Step 6. Update the difference display.
     updateDifference();
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (E36D0DE5)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -810,8 +814,8 @@ async function handleGetTunableTypes() {
     const tunableTypes = response.map((item) => item.key);
     tunables.value.types = [...new Set(tunableTypes)];
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (A71F58E8)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -877,8 +881,8 @@ async function updateDifference() {
     difference.value.html = html.innerHTML;
     difference.value.loading = false;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (6FB55B6B)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -908,8 +912,8 @@ function updateQuery() {
 
     window.history.pushState({}, '', url);
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (9C38DA33)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -922,8 +926,8 @@ function handleToggleTunables() {
   try {
     settings.tunablesPanel = !settings.tunablesPanel;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (0D12A77A)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -936,8 +940,8 @@ function handleMoveTunables() {
   try {
     settings.quickViewBelowTunables = !settings.quickViewBelowTunables;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (D3957015)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -963,8 +967,8 @@ function handleComparePrevious() {
     latest.value = all[previousIndex].hash;
     handleGameUpdate(true);
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (484502F6)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -990,8 +994,8 @@ function handleCompareNext() {
     latest.value = all[previousIndex - 1].hash;
     handleGameUpdate(true);
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (1B375526)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -1011,8 +1015,8 @@ function handleCompareLatest() {
     latest.value = all[0].hash;
     handleGameUpdate(true);
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (F44CB414)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -1029,8 +1033,8 @@ function handleCompareWeeklyChange() {
     latest.value = latestTarget.hash;
     handleGameUpdate(true);
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (F44CB414)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -1044,8 +1048,8 @@ function handleResetSettingsClick() {
     settings.$reset();
     settingsModal.value.show = false;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (64594DC6)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -1122,8 +1126,8 @@ function formatJson(json, parentKey = null) {
 
     return json;
   } catch (error) {
-    Sentry.captureException(error);
-    showErrorModal('An unknown error occurred. (896DFD93)');
+    const eventId = Sentry.captureException(error);
+    showErrorModal('An unknown error occurred.', eventId);
   }
 }
 
@@ -1133,10 +1137,11 @@ function formatJson(json, parentKey = null) {
  * @param {string} body The body of the error modal.
  * @returns {void}
  */
-function showErrorModal(body) {
+function showErrorModal(body, eventId = null) {
   try {
     errorModal.value.body = body;
     errorModal.value.show = true;
+    errorModal.value.eventId = eventId;
   } catch (error) {
     Sentry.captureException(error);
   }
@@ -1420,7 +1425,7 @@ function showErrorModal(body) {
   <LicenseModal :open="licenseModal.show" @close="licenseModal.show = false"></LicenseModal>
   <DownloadModal :files="files" :open="downloadModal.show" @close="downloadModal.show = false"></DownloadModal>
 
-  <ErrorModal :open="errorModal.show" @reset="handleEmergencyResetClick">
+  <ErrorModal :open="errorModal.show" :event-id="errorModal.eventId" @reset="handleEmergencyResetClick">
     {{ errorModal.body }}
   </ErrorModal>
 
