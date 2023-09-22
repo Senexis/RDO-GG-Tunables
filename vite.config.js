@@ -37,7 +37,7 @@ export default defineConfig({
     APP_COMMIT_LONG: JSON.stringify(commitLong),
     APP_COMMIT_SHORT: JSON.stringify(commitShort),
     APP_COPYRIGHT_YEAR: JSON.stringify(new Date().getFullYear()),
-    APP_UPDATED: JSON.stringify(new Date().toLocaleString('en-US')),
+    APP_UPDATED: JSON.stringify(new Date().toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'medium' })),
     SENTRY_DSN: JSON.stringify(sentryDsn),
   },
   resolve: {
