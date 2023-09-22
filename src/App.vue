@@ -349,7 +349,7 @@ const saleStyles = computed(() => {
  */
 function getGameBadgeLabel() {
   const value = game.value;
-  return gameBadges.value[value]?.label ?? value;
+  return gameBadges.value[value]?.label ?? 'Invalid';
 }
 
 /**
@@ -359,7 +359,7 @@ function getGameBadgeLabel() {
  */
 function getGameBadgeBackground() {
   const value = game.value;
-  const type = gameBadges.value[value]?.background ?? 'primary';
+  const type = gameBadges.value[value]?.background ?? 'danger';
   return `badge-${type}`;
 }
 
@@ -370,7 +370,7 @@ function getGameBadgeBackground() {
  */
 function getGameBadgeTooltip() {
   const value = game.value;
-  return gameBadges.value[value]?.tooltip ?? value;
+  return gameBadges.value[value]?.tooltip ?? 'Invalid';
 }
 
 /**
@@ -403,7 +403,7 @@ const platformBadges = computed(() => ({
  */
 function getPlatformBadgeLabel() {
   const value = platform.value;
-  return platformBadges.value[value]?.label ?? value;
+  return platformBadges.value[value]?.label ?? 'Invalid';
 }
 
 /**
@@ -413,7 +413,7 @@ function getPlatformBadgeLabel() {
  */
 function getPlatformBadgeBackground() {
   const value = platform.value;
-  const type = platformBadges.value[value]?.background ?? 'primary';
+  const type = platformBadges.value[value]?.background ?? 'danger';
   return `badge-${type}`;
 }
 
@@ -424,7 +424,7 @@ function getPlatformBadgeBackground() {
  */
 function getPlatformBadgeTooltip() {
   const value = platform.value;
-  return platformBadges.value[value]?.tooltip ?? value;
+  return platformBadges.value[value]?.tooltip ?? 'Invalid';
 }
 
 /**
@@ -1067,6 +1067,8 @@ function handleEmergencyResetClick() {
 
   try {
     const url = new URL(window.location);
+    url.searchParams.delete('game');
+    url.searchParams.delete('platform');
     url.searchParams.delete('previous');
     url.searchParams.delete('latest');
 

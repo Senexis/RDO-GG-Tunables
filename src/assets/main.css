@@ -35,6 +35,10 @@ code {
   @apply bg-sky-700 text-white;
 }
 
+.badge-danger {
+  @apply bg-red-700 text-white;
+}
+
 .badge-plus {
   @apply bg-[#fcaf17] text-black;
 }
