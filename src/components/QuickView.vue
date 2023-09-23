@@ -8,11 +8,11 @@ import {
   ArrowsPointingOutIcon,
   ArrowPathIcon,
   CurrencyDollarIcon,
-  InformationCircleIcon,
   EllipsisVerticalIcon,
 } from '@heroicons/vue/24/outline';
 
 import Accordion from './Accordion.vue';
+import AlertWithLink from './Alerts/WithLink.vue';
 import Card from './Cards/Card.vue';
 import CardHeader from './Cards/CardHeader.vue';
 import CardFooter from './Cards/CardFooter.vue';
@@ -198,6 +198,15 @@ function handleCollapseAllExceptSalesQuickView() {
 function handleExpandAllQuickView() {
   try {
     settings.accordionsDismissed = [];
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+  }
+}
+
+function handleDismissSalesDisclaimer() {
+  try {
+    settings.salesDisclaimer = false;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -1002,7 +1011,7 @@ const rdoEvent = computed(() => getRdoEvent());
             <div>
               <MenuButton
                 v-tooltip="'Quick View options'"
-                class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+                class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
               >
                 <span class="sr-only">Quick View options</span>
                 <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
@@ -1017,13 +1026,13 @@ const rdoEvent = computed(() => getRdoEvent());
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
                 <MenuItem>
                   <button
                     @click="handleToggleQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <template v-if="settings.quickView">
                       <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
@@ -1039,7 +1048,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleMoveQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <template v-if="settings.quickViewBelowTunables">
                       <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
@@ -1052,13 +1061,13 @@ const rdoEvent = computed(() => getRdoEvent());
                   </button>
                 </MenuItem>
                 <MenuItem>
-                  <hr class="my-1 border-slate-400 dark:border-slate-600" />
+                  <hr class="my-1 border-slate-200 dark:border-slate-600" />
                 </MenuItem>
                 <MenuItem>
                   <button
                     @click="handleCollapseAllQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
                     Collapse all sections
@@ -1068,7 +1077,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleCollapseAllExceptSalesQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <CurrencyDollarIcon class="h-4 w-4" aria-hidden="true" />
                     Collapse all except Sales
@@ -1078,7 +1087,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <button
                     @click="handleExpandAllQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
                     Expand all sections
@@ -1097,33 +1106,31 @@ const rdoEvent = computed(() => getRdoEvent());
           <Accordion :id="Accordions.Sales">
             <template #title>Sales & Bonuses</template>
             <template #default>
-              <div
-                class="mb-4 text-sm text-slate-600 dark:text-slate-400 border border-sky-600 rounded-lg bg-sky-500/5 p-2 flex items-center gap-2"
-              >
-                <InformationCircleIcon class="hidden md:block w-6 h-6 text-sky-600" />
-                <div>
+              <template v-if="settings.salesDisclaimer">
+                <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissSalesDisclaimer">
                   <p>
                     This is an automatically generated list of sales and bonuses. Some items may be missing, especially right after the game
                     is updated.<br />
-                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer"
+                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer" class="text-white font-bold"
                       >Follow @TezFunz2 on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
                     /></a>
                     for the latest, more accurate, manually written sales and bonuses.
                   </p>
-                  <p class="mt-0.5 text-xs text-slate-500">
+                  <p class="mt-0.5 text-xs text-slate-200">
                     Currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
                     <a
                       href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
                       target="_blank"
                       rel="noopener noreferrer"
+                      class="text-white font-bold"
                       >Help increase this number by contributing here!</a
                     >
                   </p>
-                </div>
-              </div>
+                </AlertWithLink>
+              </template>
 
               <div
-                class="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
+                class="rounded-lg overflow-hidden bg-white dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
               >
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`${Accordions.Sales}_${key}`">
@@ -1143,9 +1150,14 @@ const rdoEvent = computed(() => getRdoEvent());
                       </div>
                     </template>
                     <template #default>
-                      <ul class="list-disc">
+                      <ul :class="[
+                        Object.keys(category).length >= 8 ? 'grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4' : '',
+                        'list-disc'
+                      ]">
                         <template v-for="(discounts, item) in category" :key="item">
-                          <li class="ml-5">{{ getLabel(item) }}: {{ formatCurrency(discounts) }}</li>
+                          <li class="ml-5">
+                            <p class="mr-2 truncate" v-tooltip.top-start="`${getLabel(item)}: ${formatCurrency(discounts)}`">{{ getLabel(item) }}: {{ formatCurrency(discounts) }}</p>
+                          </li>
                         </template>
                       </ul>
                     </template>
@@ -1165,7 +1177,7 @@ const rdoEvent = computed(() => getRdoEvent());
                     </template>
                     <template #default>
                       <div
-                        class="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
+                        class="rounded-lg overflow-hidden bg-white dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
                       >
                         <template v-for="(list, index) in ugcBonuses" :key="index">
                           <Accordion :id="`${Accordions.UgcBonuses}_${index}`">
@@ -1190,7 +1202,7 @@ const rdoEvent = computed(() => getRdoEvent());
                               </div>
                             </template>
                             <template #default>
-                              <h3 class="my-1 font-bold">Modifiers</h3>
+                              <h3 class="my-1 font-semibold">Modifiers</h3>
                               <div class="mb-4">
                                 <template v-for="(modifier, item) in list.modifiers" :key="item">
                                   <template v-if="modifier.plus">
@@ -1210,10 +1222,15 @@ const rdoEvent = computed(() => getRdoEvent());
                                   </template>
                                 </template>
                               </div>
-                              <h3 class="my-1 font-bold">Missions</h3>
-                              <ul class="list-disc grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 mb-2">
+                              <h3 class="my-1 font-semibold">Missions</h3>
+                              <ul :class="[
+                                Object.keys(list.ugc).length >= 8 ? 'grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4' : '',
+                                'list-disc'
+                              ]">
                                 <template v-for="(mission, item) in list.ugc" :key="item">
-                                  <li class="ml-5">{{ mission }}</li>
+                                  <li class="ml-5">
+                                    <p class="mr-2 truncate" v-tooltip.top-start="mission">{{ mission }}</p>
+                                  </li>
                                 </template>
                               </ul>
                             </template>
@@ -1252,7 +1269,7 @@ const rdoEvent = computed(() => getRdoEvent());
           <Accordion :id="Accordions.GunVan">
             <template #title>Gun Van</template>
             <template #default>
-              <h3 class="my-1 font-bold">Weapons</h3>
+              <h3 class="my-1 font-semibold">Weapons</h3>
               <ul class="list-disc">
                 <template v-for="item in gunVan.weapons" :key="item">
                   <li class="ml-5">
@@ -1267,7 +1284,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   </li>
                 </template>
               </ul>
-              <h3 class="my-1 font-bold">Throwables</h3>
+              <h3 class="my-1 font-semibold">Throwables</h3>
               <ul class="list-disc">
                 <template v-for="item in gunVan.throwables" :key="item">
                   <li class="ml-5">
@@ -1282,7 +1299,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   </li>
                 </template>
               </ul>
-              <h3 class="my-1 font-bold">Body Armor</h3>
+              <h3 class="my-1 font-semibold">Body Armor</h3>
               <ul class="list-disc">
                 <template v-for="item in gunVan.body_armor" :key="item">
                   <li class="ml-5">
@@ -1327,7 +1344,7 @@ const rdoEvent = computed(() => getRdoEvent());
             <template #title>LS Car Meet</template>
             <template #default>
               <template v-if="carMeetPrizeObjective || carMeetPrizeVehicle">
-                <h3 class="my-1 font-bold">Prize Ride</h3>
+                <h3 class="my-1 font-semibold">Prize Ride</h3>
                 <ul class="list-disc">
                   <template v-if="carMeetPrizeVehicle">
                     <li class="ml-5">{{ carMeetPrizeVehicle }}</li>
@@ -1341,7 +1358,7 @@ const rdoEvent = computed(() => getRdoEvent());
                 </ul>
               </template>
               <template v-if="promoTestDriveVehicle1 || promoTestDriveVehicle2 || promoTestDriveVehicle3 || hswTestRide">
-                <h3 class="my-1 font-bold">Test Rides</h3>
+                <h3 class="my-1 font-semibold">Test Rides</h3>
                 <ul class="list-disc">
                   <template v-if="promoTestDriveVehicle1">
                     <li class="ml-5">{{ promoTestDriveVehicle1 }}</li>
@@ -1473,15 +1490,15 @@ const rdoEvent = computed(() => getRdoEvent());
           <Accordion :id="Accordions.RecordAStudios">
             <template #title>Record A Studios</template>
             <template #default>
-              <h3 class="my-1 font-bold">Dr. Dre Studio Appearances:</h3>
+              <h3 class="my-1 font-semibold">Dr. Dre Studio Appearances:</h3>
               <ul class="list-disc">
-                <li class="ml-5">Monday: {{ studioAppearanceEnabledMon ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-5">Tuesday: {{ studioAppearanceEnabledTue ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-5">Wednesday: {{ studioAppearanceEnabledWed ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-5">Thursday: {{ studioAppearanceEnabledThu ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-5">Friday: {{ studioAppearanceEnabledFri ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-5">Saturday: {{ studioAppearanceEnabledSat ? 'Enabled' : 'Disabled' }}</li>
-                <li class="ml-5">Sunday: {{ studioAppearanceEnabledSun ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Monday:</strong> {{ studioAppearanceEnabledMon ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Tuesday:</strong> {{ studioAppearanceEnabledTue ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Wednesday:</strong> {{ studioAppearanceEnabledWed ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Thursday:</strong> {{ studioAppearanceEnabledThu ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Friday:</strong> {{ studioAppearanceEnabledFri ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Saturday:</strong> {{ studioAppearanceEnabledSat ? 'Enabled' : 'Disabled' }}</li>
+                <li class="ml-5"><strong>Sunday:</strong> {{ studioAppearanceEnabledSun ? 'Enabled' : 'Disabled' }}</li>
               </ul>
             </template>
           </Accordion>

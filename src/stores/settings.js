@@ -31,9 +31,10 @@ export const useStore = defineStore('settings', {
       tunables: true,
       verbose: false,
 
-      // Miscellanous tunables settings.
+      // Miscellanous settings.
       goToWeek: true,
       meta: true,
+      salesDisclaimer: true,
     };
   },
 });

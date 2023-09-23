@@ -1171,8 +1171,10 @@ function showErrorModal(body, eventId = null) {
           :buttonText="`Show changes for week ${showGoToEventWeeklyChange.weekly_id}`"
           :buttonHandler="handleCompareWeeklyChange"
         >
-          These tunables changes are minor updates to week <strong>{{ showGoToEventWeeklyChange.weekly_id }}</strong
-          >. You can browse the weekly changes themselves by clicking the button.
+          <p>
+            These tunables changes are minor updates to week <strong>{{ showGoToEventWeeklyChange.weekly_id }}</strong
+            >. You can browse the weekly changes themselves by clicking the button.
+          </p>
         </AlertWithLink>
       </template>
       <Card>
@@ -1210,7 +1212,7 @@ function showErrorModal(body, eventId = null) {
                 <div>
                   <MenuButton
                     v-tooltip="'Tunables options'"
-                    class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+                    class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
                   >
                     <span class="sr-only">Tunables options</span>
                     <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
@@ -1225,13 +1227,13 @@ function showErrorModal(body, eventId = null) {
                   leave-to-class="transform opacity-0 scale-95"
                 >
                   <MenuItems
-                    class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-slate-200 dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
                     <MenuItem>
                       <button
                         @click="handleToggleTunables"
                         type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                       >
                         <template v-if="settings.tunablesPanel">
                           <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
@@ -1247,7 +1249,7 @@ function showErrorModal(body, eventId = null) {
                       <button
                         @click="handleMoveTunables"
                         type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                       >
                         <template v-if="settings.quickViewBelowTunables">
                           <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
@@ -1260,13 +1262,13 @@ function showErrorModal(body, eventId = null) {
                       </button>
                     </MenuItem>
                     <MenuItem>
-                      <hr class="my-1 border-slate-400 dark:border-slate-600" />
+                      <hr class="my-1 border-slate-200 dark:border-slate-600" />
                     </MenuItem>
                     <MenuItem v-if="!previousDisabled">
                       <button
                         @click="handleComparePrevious"
                         type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                       >
                         <ChevronLeftIcon class="h-4 w-4" aria-hidden="true" />
                         Compare previous
@@ -1276,7 +1278,7 @@ function showErrorModal(body, eventId = null) {
                       <button
                         @click="handleCompareNext"
                         type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                       >
                         <ChevronRightIcon class="h-4 w-4" aria-hidden="true" />
                         Compare next
@@ -1286,7 +1288,7 @@ function showErrorModal(body, eventId = null) {
                       <button
                         @click="handleCompareLatest"
                         type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                       >
                         <ChevronDoubleRightIcon class="h-4 w-4" aria-hidden="true" />
                         Compare latest
@@ -1382,7 +1384,7 @@ function showErrorModal(body, eventId = null) {
       Welcome to the new website! Check out all the settings using the
       <Cog6ToothIcon class="inline w-5 h-5" /> button.
       <br />
-      <span class="text-sm text-slate-300">
+      <span class="text-sm text-slate-200">
         Tip: Looking for tunables like <code class="text-inherit">0x8B7D3320</code>? Toggle the <strong>Verbose</strong>
         tunables setting.
       </span>
@@ -1392,7 +1394,7 @@ function showErrorModal(body, eventId = null) {
       Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it using the
       <EllipsisVerticalIcon class="inline w-5 h-5" /> button.
       <br />
-      <span class="text-sm text-slate-300">
+      <span class="text-sm text-slate-200">
         Tip: Change your mind? You can always <strong>Expand</strong> the Quick View panel by clicking the
         <EllipsisVerticalIcon class="inline w-5 h-5" /> button again.
       </span>
@@ -1411,7 +1413,7 @@ function showErrorModal(body, eventId = null) {
     <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
       Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
       <br />
-      <span class="text-sm text-slate-300"
+      <span class="text-sm text-slate-200"
         >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
         <strong>Quick View</strong> tunables setting.
       </span>
@@ -1439,9 +1441,9 @@ function showErrorModal(body, eventId = null) {
     :commitLong="appCommitLong"
     :updated="appUpdated"
   >
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">General</h3>
+    <h3 class="font-lg font-semibold pb-2 border-b-2 border-slate-200 dark:border-slate-600">General</h3>
 
-    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-200 dark:divide-slate-600 mb-4">
       <SettingsModalSelect v-model="game" :options="gameOptions">
         <template #title>Game</template>
         <template #description> Select the game to compare tunables for. </template>
@@ -1462,9 +1464,9 @@ function showErrorModal(body, eventId = null) {
       </div>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Personalization</h3>
+    <h3 class="font-lg font-semibold pb-2 border-b-2 border-slate-200 dark:border-slate-600">Personalization</h3>
 
-    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-200 dark:divide-slate-600 mb-4">
       <SettingsModalToggle v-model="settings.dark" :isDarkModeToggle="true">
         <template #title>Dark mode</template>
         <template #description>Whether to use dark mode for the website.</template>
@@ -1493,9 +1495,9 @@ function showErrorModal(body, eventId = null) {
       </div>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">Tunables Panel</h3>
+    <h3 class="font-lg font-semibold pb-2 border-b-2 border-slate-200 dark:border-slate-600">Tunables Panel</h3>
 
-    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-200 dark:divide-slate-600 mb-4">
       <SettingsModalToggle v-model="settings.added" :isVisibilityToggle="true">
         <template #title>Added</template>
         <template #description>Whether to show tunables that have been added.</template>
@@ -1559,7 +1561,7 @@ function showErrorModal(body, eventId = null) {
               ]"
               :key="item"
             >
-              <code>{{ item }}</code>
+              <p class="mr-2 truncate"><code>{{ item }}</code></p>
             </li>
           </ul>
         </div>
@@ -1608,7 +1610,7 @@ function showErrorModal(body, eventId = null) {
               ]"
               :key="item"
             >
-              <code>{{ item }}</code>
+              <p class="mr-2 truncate"><code>{{ item }}</code></p>
             </li>
           </ul>
           <p class="mb-1">The following miscellaneous features are hidden by toggling the <strong>Verbose</strong> setting:</p>
@@ -1644,7 +1646,7 @@ function showErrorModal(body, eventId = null) {
       </SettingsModalToggle>
     </div>
 
-    <h3 class="font-lg font-bold pb-2 border-b-2 border-slate-400 dark:border-slate-600">
+    <h3 class="font-lg font-semibold pb-2 border-b-2 border-slate-200 dark:border-slate-600">
       <a
         href="https://www.youtube.com/watch?v=yK0P1Bk8Cx4"
         target="_blank"
@@ -1655,7 +1657,7 @@ function showErrorModal(body, eventId = null) {
       </a>
     </h3>
 
-    <div class="divide-y divide-slate-400 dark:divide-slate-600 mb-4">
+    <div class="divide-y divide-slate-200 dark:divide-slate-600 mb-4">
       <div class="flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
           <span class="text-sm font-medium text-slate-900 dark:text-slate-50">Reset Settings</span>
@@ -1665,7 +1667,7 @@ function showErrorModal(body, eventId = null) {
         </div>
         <button
           @click="handleResetSettingsClick"
-          class="inline-flex justify-center rounded-md border border-red-700 bg-red-800 px-4 py-2 font-medium text-slate-200 shadow-sm hover:bg-red-700 hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
+          class="inline-flex justify-center rounded-md border border-red-600 dark:border-red-700 bg-red-600 dark:bg-red-800 px-4 py-2 font-medium text-white dark:text-slate-200 shadow-sm hover:bg-red-500 dark:hover:bg-red-700 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 mt-0 w-auto text-sm"
         >
           Reset
         </button>

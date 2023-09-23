@@ -40,7 +40,7 @@ const selected = computed({
       <div class="relative mt-1">
         <ListboxButton
           ref="listbox"
-          class="relative w-full cursor-default rounded-md border border-slate-300 dark:border-slate-700 bg-transparent py-2 pl-3 pr-8 text-left text-slate-900 dark:text-slate-200 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+          class="relative w-full cursor-pointer rounded-md border border-slate-300 dark:border-slate-700 bg-transparent py-2 pl-3 pr-8 text-left text-slate-900 dark:text-slate-200 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
         >
           <span class="block truncate">{{ selected.label }}</span>
           <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -50,7 +50,7 @@ const selected = computed({
 
         <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
           <ListboxOptions
-            class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-slate-200 dark:bg-slate-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-slate-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
           >
             <template v-for="option in props.options">
               <ListboxOption
@@ -64,9 +64,9 @@ const selected = computed({
               >
                 <li
                   :class="[
-                    active ? 'text-slate-700 dark:text-slate-300 bg-slate-300 dark:bg-slate-700' : 'text-slate-900 dark:text-slate-200',
+                    active ? 'text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-700' : 'text-slate-900 dark:text-slate-200',
                     option.disabled ? 'opacity-50' : '',
-                    'relative cursor-default select-none py-2 pl-3 pr-9',
+                    'relative cursor-pointer select-none py-2 pl-3 pr-9',
                   ]"
                 >
                   <span :class="[selected ? 'font-medium' : 'font-normal', 'block truncate']">{{ option.label }}</span>

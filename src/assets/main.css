@@ -24,7 +24,7 @@ code {
 }
 
 .dark .badge-outline {
-  @apply text-slate-400 border-slate-400;
+  @apply text-slate-400 border-slate-200;
 }
 
 .badge-outline-plus {
@@ -79,7 +79,7 @@ code {
 
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-corner {
-    @apply bg-slate-200;
+    @apply bg-white;
   }
 
   .dark ::-webkit-scrollbar-track,
@@ -88,7 +88,7 @@ code {
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 bg-clip-content border-4 border-solid border-transparent rounded-full;
+    @apply bg-slate-400 bg-clip-content border-4 border-solid border-transparent rounded-full;
   }
 
   .dark ::-webkit-scrollbar-thumb {
@@ -160,7 +160,7 @@ code {
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  @apply border-slate-100 shadow-md;
+  @apply border-slate-100;
 }
 
 .dark .v-popper--theme-tooltip .v-popper__arrow-outer {

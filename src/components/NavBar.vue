@@ -14,7 +14,7 @@ const navigation = [
 </script>
 
 <template>
-  <Disclosure as="nav" class="bg-slate-200 dark:bg-slate-800" v-slot="{ open }">
+  <Disclosure as="nav" class="bg-slate-100 dark:bg-slate-800" v-slot="{ open }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
@@ -32,7 +32,7 @@ const navigation = [
                 :class="[
                   item.current
                     ? 'bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50'
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50',
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50',
                   'px-3 py-2 rounded-md text-sm font-medium',
                 ]"
                 :target="item.external ? '_blank' : undefined"
@@ -56,7 +56,7 @@ const navigation = [
             type="button"
             @click="emit('download')"
             v-tooltip="'Download tunables'"
-            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
           >
             <span class="sr-only">Download tunables</span>
             <ArrowDownTrayIcon class="h-6 w-6" aria-hidden="true" />
@@ -66,7 +66,7 @@ const navigation = [
             type="button"
             @click="emit('configure')"
             v-tooltip="'Open settings'"
-            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
           >
             <span class="sr-only">Open settings</span>
             <Cog6ToothIcon class="h-6 w-6" aria-hidden="true" />
@@ -75,7 +75,7 @@ const navigation = [
           <!-- Mobile menu button -->
           <DisclosureButton
             v-tooltip="'Open main menu'"
-            class="inline-flex sm:hidden items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+            class="inline-flex sm:hidden items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
           >
             <span class="sr-only">Open main menu</span>
             <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
@@ -97,7 +97,7 @@ const navigation = [
           :class="[
             item.current
               ? 'bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50'
-              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50',
+              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50',
             'flex items-center justify-start gap-x-2.5 px-3 py-2 rounded-md text-base font-medium',
           ]"
           :aria-current="item.current ? 'page' : undefined"
