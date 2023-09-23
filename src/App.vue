@@ -1561,7 +1561,9 @@ function showErrorModal(body, eventId = null) {
               ]"
               :key="item"
             >
-              <p class="mr-2 truncate"><code>{{ item }}</code></p>
+              <p class="mr-2 truncate">
+                <code>{{ item }}</code>
+              </p>
             </li>
           </ul>
         </div>
@@ -1610,7 +1612,9 @@ function showErrorModal(body, eventId = null) {
               ]"
               :key="item"
             >
-              <p class="mr-2 truncate"><code>{{ item }}</code></p>
+              <p class="mr-2 truncate">
+                <code>{{ item }}</code>
+              </p>
             </li>
           </ul>
           <p class="mb-1">The following miscellaneous features are hidden by toggling the <strong>Verbose</strong> setting:</p>
