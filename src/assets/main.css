@@ -24,7 +24,7 @@ code {
 }
 
 .dark .badge-outline {
-  @apply text-slate-400 border-slate-200;
+  @apply text-slate-400 border-slate-400;
 }
 
 .badge-outline-plus {

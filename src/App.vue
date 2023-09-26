@@ -567,7 +567,7 @@ const eventWeeklyTooltip = computed(() => {
       return '';
     }
 
-    return `The weekly event ID has changed from "${previous}" to "${latest}".`;
+    return `New weekly event: #${latest}`;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     showErrorModal('An unknown error occurred.', eventId);
@@ -617,7 +617,7 @@ const eventGtaPlusTooltip = computed(() => {
       return '';
     }
 
-    return `The GTA+ event ID has changed from "${previous}" to "${latest}".`;
+    return `New GTA+ event: #${latest}`;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     showErrorModal('An unknown error occurred.', eventId);

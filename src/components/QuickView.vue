@@ -725,7 +725,7 @@ function getSalesTitle(title) {
       case 'hsw_vehicle_price_sales':
         return 'HSW Vehicle Price Sales';
       case 'kraken_upgrade_sales':
-        return 'Kraken Upgrade Sales';
+        return 'Kosatka Submarine Upgrade Sales';
       case 'moc_upgrade_sales':
         return 'MOC Upgrade Sales';
       case 'nightclub_property_sales':
@@ -1139,7 +1139,7 @@ const rdoEvent = computed(() => getRdoEvent());
                         <div class="flex gap-2 overflow-hidden">
                           <span class="truncate">{{ getSalesTitle(key) }}</span>
                           <template v-if="key.endsWith('_plus')">
-                            <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ members'">
+                            <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ Members'">
                               <font-awesome-icon icon="fa-solid fa-plus" />
                             </span>
                           </template>
@@ -1185,7 +1185,7 @@ const rdoEvent = computed(() => getRdoEvent());
                                 <div class="flex gap-2 overflow-hidden">
                                   <span class="truncate">List {{ Number(index) + 1 }}</span>
                                   <template v-if="list.plus_only">
-                                    <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ members'">
+                                    <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ Members'">
                                       <font-awesome-icon icon="fa-solid fa-plus" />
                                     </span>
                                   </template>
@@ -1208,7 +1208,7 @@ const rdoEvent = computed(() => getRdoEvent());
                                     <span
                                       :class="getUgcModifierBadge(modifier)"
                                       class="badge mr-1"
-                                      v-tooltip="'Only applies to GTA+ members'"
+                                      v-tooltip="'Only applies to GTA+ Members'"
                                     >
                                       <font-awesome-icon icon="fa-solid fa-plus" />
                                       {{ getUgcModifierLabel(modifier) }}
