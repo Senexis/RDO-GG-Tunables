@@ -23,7 +23,7 @@ const props = defineProps({
 
 <template>
   <BaseModal :open="props.open">
-    <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+    <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <div class="sm:flex sm:items-start">
         <div
           class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-red-600 sm:mx-0 sm:h-10 sm:w-10"
@@ -57,7 +57,7 @@ const props = defineProps({
       </div>
     </div>
     <div
-      class="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6"
+      class="bg-slate-50 dark:bg-slate-800 !bg-opacity-80 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6"
     >
       <div class="flex flex-row-reverse gap-3">
         <a

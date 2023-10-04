@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <BaseModal :open="props.open" @close="emit('close')">
-    <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+    <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <h3 class="text-lg font-semibold pb-2 mb-4 border-b-2 border-slate-200 dark:border-slate-600">Attribution</h3>
       <div class="text-sm">
         <p>This app wouldn't be possible if the following people and services didn't contribute. Thank you for helping out!</p>
@@ -76,7 +76,7 @@ const props = defineProps({
         </ul>
       </div>
     </div>
-    <div class="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+    <div class="bg-slate-50 dark:bg-slate-800 !bg-opacity-80 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
       <div class="flex gap-3">
         <button
           type="button"
