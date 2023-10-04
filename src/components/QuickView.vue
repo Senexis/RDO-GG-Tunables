@@ -6,7 +6,6 @@ import {
   ArrowUpIcon,
   ArrowsPointingInIcon,
   ArrowsPointingOutIcon,
-  ArrowPathIcon,
   CurrencyDollarIcon,
   EllipsisVerticalIcon,
 } from '@heroicons/vue/24/outline';
@@ -19,7 +18,7 @@ import CardFooter from './Cards/CardFooter.vue';
 
 import { useStore } from '../stores/settings.js';
 import { computed, onMounted, ref } from 'vue';
-import { orderObject } from '../utilities/general';
+import { orderObject, random } from '../utilities/general';
 
 const emit = defineEmits(['error']);
 
@@ -1566,10 +1565,11 @@ const rdoEvent = computed(() => getRdoEvent());
         </template>
       </template>
       <template v-else>
-        <div class="bg-slate-100 dark:bg-slate-900 px-2 py-2 sm:p-4 flex flex-col items-center justify-center gap-2">
-          <ArrowPathIcon class="block animate-spin h-12 w-12" aria-hidden="true" />
-          <p class="text-lg font-medium">Loading...</p>
-        </div>
+        <template v-for="n in 5" :key="n">
+          <div class="flex items-center justify-between text-sm px-3 py-2 w-full select-none">
+            <div class="rounded-sm bg-slate-300 dark:bg-slate-600 animate-pulse" :style="{ width: random(4, 20) + 'em' }">&nbsp;</div>
+          </div>
+        </template>
       </template>
     </template>
     <template #footer v-if="settings.quickView">

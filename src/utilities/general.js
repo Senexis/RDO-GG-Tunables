@@ -11,3 +11,7 @@ export function orderObject(unordered, recursive = false) {
       return obj;
     }, {});
 }
+
+export function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

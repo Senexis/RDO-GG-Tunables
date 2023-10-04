@@ -9,7 +9,6 @@ import {
   ArrowUpIcon,
   ArrowsPointingInIcon,
   ArrowsPointingOutIcon,
-  ArrowPathIcon,
   ChevronDoubleRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -18,8 +17,6 @@ import {
   NoSymbolIcon,
 } from '@heroicons/vue/24/outline';
 import { HeartIcon } from '@heroicons/vue/24/solid';
-
-import { useStore } from './stores/settings.js';
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import AlertWithLink from './components/Alerts/WithLink.vue';
@@ -36,6 +33,9 @@ import QuickView from './components/QuickView.vue';
 import SettingsModal from './components/Modals/SettingsModal.vue';
 import SettingsModalSelect from './components/Modals/SettingsModalSelect.vue';
 import SettingsModalToggle from './components/Modals/SettingsModalToggle.vue';
+
+import { useStore } from './stores/settings.js';
+import { random } from './utilities/general';
 
 const settings = useStore();
 const url = new URL(window.location);
@@ -637,13 +637,13 @@ const title = computed(() => {
     }
 
     if (!tunables.value.latest || !tunables.value.previous) {
-      return 'Loading...';
+      return 'RDO.GG Tunables';
     }
 
     const previousDate = tunables.value.previous.date;
     const latestDate = tunables.value.latest.date;
 
-    return `Tunables changes between ${previousDate} and ${latestDate}`;
+    return `RDO.GG Tunables changes between ${previousDate} and ${latestDate}`;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     showErrorModal('An unknown error occurred.', eventId);
@@ -1332,10 +1332,24 @@ function showErrorModal(body, eventId = null) {
               </template>
             </template>
             <template v-else>
-              <div class="flex flex-col items-center justify-center gap-2 p-4">
-                <ArrowPathIcon class="block animate-spin h-12 w-12" aria-hidden="true" />
-                <p class="text-lg font-medium">Loading...</p>
-              </div>
+              <template v-for="n in 20" :key="n">
+                <template v-if="n === 1 || n === 20">
+                  <div
+                    class="my-[1px] rounded-sm text-xs bg-slate-300 dark:bg-slate-600 animate-pulse"
+                    :style="{ width: random(4, 20) + 'em' }"
+                  >
+                    &nbsp;
+                  </div>
+                </template>
+                <template v-else>
+                  <div
+                    class="my-[1px] rounded-sm text-xs bg-slate-300 dark:bg-slate-600 animate-pulse"
+                    :style="{ width: random(4, 12) + 'em', 'margin-left': random(0, 1) + 'em' }"
+                  >
+                    &nbsp;
+                  </div>
+                </template>
+              </template>
             </template>
           </div>
         </template>
