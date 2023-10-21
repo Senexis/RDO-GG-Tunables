@@ -49,6 +49,7 @@
           "bunker_upgrade_sales",
           "casino_bar_sales",
           "casino_penthouse_decoration_sales",
+          "casino_penthouse_upgrade_sales",
           "eclipse_garage_sales",
           "eclipse_garage_upgrade_sales",
           "facility_property_sales",
@@ -66,6 +67,7 @@
           "office_upgrade_sales",
           "property_sales",
           "property_upgrade_sales",
+          "rc_bandito_mod_sales",
           "tattoo_sales",
           "terrorbyte_upgrade_sales",
           "vehicle_livery_sales",
@@ -73,19 +75,25 @@
           "vehicle_upgrade_sales",
           "vehicle_warehouse_sales",
           "warehouse_sales",
+          "weapon_ammo_sales",
           "weapon_sales",
+          "weapon_upgrade_sales",
           "yacht_property_sales",
           "yacht_upgrade_sales"
         ]
       },
       "display": {
         "title": "Display Hash",
-        "type": "string",
         "oneOf": [
           {
+            "type": "null"
+          },
+          {
+            "type": "string",
             "pattern": "^0x[A-F0-9]{8}$"
           },
           {
+            "type": "string",
             "pattern": "^[A-Z0-9_]+$"
           }
         ],

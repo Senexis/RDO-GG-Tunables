@@ -8,6 +8,7 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import FloatingVue from 'floating-vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import hotkeys from 'hotkeys-js';
 
 FloatingVue.options.distance = 10;
 import 'floating-vue/dist/style.css';
@@ -28,6 +29,12 @@ import { faXTwitter, faDiscord, faGithub, faPatreon } from '@fortawesome/free-br
 library.add(faXTwitter, faDiscord, faGithub, faPatreon);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
+
+// Define hotkeys
+hotkeys('ctrl+k', (event) => {
+  event.preventDefault();
+  document.dispatchEvent(new CustomEvent('hotkey-search'));
+});
 
 // Concerned about your privacy? See https://rdo.gg/privacy/.
 // We use this to link Sentry issue data to a consistent user.

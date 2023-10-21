@@ -642,17 +642,19 @@ function getSales() {
       const baseValue = getTunableDefault(tunableType.key);
 
       results[salesTitle] = results[salesTitle] || {};
-      results[salesTitle][tunableType.display] = results[salesTitle][tunableType.display] || [];
+
+      const displayKey = tunableType.display || `[${tunableType.key}]`;
+      results[salesTitle][displayKey] = results[salesTitle][displayKey] || [];
 
       if (baseValue) {
         const percentage = 100 - Math.round((tunable.value / baseValue) * 100);
         if (percentage <= 100) {
-          results[salesTitle][tunableType.display].push([tunable.value, percentage]);
+          results[salesTitle][displayKey].push([tunable.value, percentage]);
         } else {
-          results[salesTitle][tunableType.display].push([tunable.value, null]);
+          results[salesTitle][displayKey].push([tunable.value, null]);
         }
       } else {
-        results[salesTitle][tunableType.display].push([tunable.value, null]);
+        results[salesTitle][displayKey].push([tunable.value, null]);
       }
     }
 
@@ -705,6 +707,8 @@ function getSalesTitle(title) {
         return 'Casino Bar Sales';
       case 'casino_penthouse_decoration_sales':
         return 'Casino Penthouse Decoration Sales';
+      case 'casino_penthouse_upgrade_sales':
+        return 'Casino Penthouse Upgrade Sales';
       case 'eclipse_garage_sales':
         return 'Eclipse Garage Sales';
       case 'eclipse_garage_upgrade_sales':
@@ -739,6 +743,8 @@ function getSalesTitle(title) {
         return 'Property Sales';
       case 'property_upgrade_sales':
         return 'Property Upgrade Sales';
+      case 'rc_bandito_mod_sales':
+        return 'RC Bandito Mod Sales';
       case 'tattoo_sales':
         return 'Tattoo Sales';
       case 'terrorbyte_upgrade_sales':
@@ -753,8 +759,12 @@ function getSalesTitle(title) {
         return 'Vehicle Warehouse Sales';
       case 'warehouse_sales':
         return 'Warehouse Sales';
+      case 'weapon_ammo_sales':
+        return 'Weapon Ammo Sales';
       case 'weapon_sales':
         return 'Weapon Sales';
+      case 'weapon_upgrade_sales':
+        return 'Weapon Upgrade Sales';
       case 'yacht_property_sales':
         return 'Yacht Property Sales';
       case 'yacht_upgrade_sales':
@@ -884,11 +894,20 @@ function formatCurrency(discounts) {
       maximumFractionDigits: 0,
     }).format;
 
-    return discounts
+    const mappedDiscounts = discounts
       .sort((a, b) => a[0] - b[0])
       .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
-      .map((i) => `${i[0] === 0 ? 'FREE' : fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim())
-      .join(' - ');
+      .map((i) => `${i[0] === 0 ? 'FREE' : fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim());
+
+    if (mappedDiscounts.length === 0) {
+      return 'Unknown';
+    } else if (mappedDiscounts.length === 1) {
+      return mappedDiscounts.at(0);
+    } else {
+      const lowestDiscount = mappedDiscounts.at(0);
+      const highestDiscount = mappedDiscounts.at(-1);
+      return `${lowestDiscount} - ${highestDiscount}`;
+    }
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);

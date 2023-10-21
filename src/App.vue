@@ -25,6 +25,7 @@ import Banner from './components/Banner.vue';
 import Card from './components/Cards/Card.vue';
 import CardFooter from './components/Cards/CardFooter.vue';
 import CardHeader from './components/Cards/CardHeader.vue';
+import CommandPalette from './components/CommandPalette.vue';
 import DownloadModal from './components/Modals/DownloadModal.vue';
 import ErrorModal from './components/Modals/ErrorModal.vue';
 import LicenseModal from './components/Modals/LicenseModal.vue';
@@ -1698,4 +1699,6 @@ function showErrorModal(body, eventId = null) {
       </div>
     </div>
   </SettingsModal>
+
+  <CommandPalette />
 </template>

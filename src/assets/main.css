@@ -141,12 +141,17 @@ code {
 .hide-verbose [data-key*="BOOT_BUTTON_QUICK_MATCH_TYPE"],
 .hide-verbose [data-key*="CURRENTVEHICLESALESSEASON"],
 .hide-verbose [data-key*="CURRENTVEHICLESALESTUSEASON"],
+.hide-verbose [data-key*="DISPLAY_SALES"],
 .hide-verbose [data-key*="ELO_SEASON"],
-.hide-verbose [data-key*="FMCORONA"],
+.hide-verbose [data-key*="EVENT_END_DATE"],
+.hide-verbose [data-key*="EVENT_WKLY"],
 .hide-verbose [data-key*="FM_CORONA"],
+.hide-verbose [data-key*="FMCORONA"],
 .hide-verbose [data-key*="NPCFLOWINVITE"],
 .hide-verbose [data-key*="PROFESIONALCORONA"],
-.hide-verbose [data-key*="SALE_HASH_LABELS"] {
+.hide-verbose [data-key*="SALE_HASH_LABELS"],
+.hide-verbose [data-key*="SALE_WEAPON_AMMO"],
+.hide-verbose [data-key*="TUNABLE_VERSION"] {
   @apply !hidden;
 }
 

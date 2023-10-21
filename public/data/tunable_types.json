@@ -252,177 +252,177 @@
   {
     "key": "CH_ARCADE_FLOOR_1_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_1_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_2_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_2_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_3_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_3_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_4_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_4_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_5_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_5_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_6_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_6_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_7_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_7_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_8_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_8_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_FLOOR_NONE_RENOVATION_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_FLOOR_NONE_RENOVATION_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_GARAGE_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_GARAGE_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_HIGHSCORE_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_HIGHSCORE_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_1_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_1_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_2_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_2_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_3_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_3_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_4_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_4_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_5_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_5_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_6_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_6_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_7_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_7_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_8_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_8_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_MURAL_NONE_RENOVATION_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_MURAL_NONE_RENOVATION_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_1_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_1_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_2_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_2_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_3_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_3_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_4_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_4_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_5_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_5_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_6_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_6_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_7_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_7_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_8_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_8_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_NEON_NONE_RENOVATION_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_NEON_NONE_RENOVATION_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_QUARTERS_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_QUARTERS_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_STYLE_HIPSTER_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_STYLE_HIPSTER_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_STYLE_MIRRORED_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_STYLE_MIRRORED_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_STYLE_RETRO_RENOVATION_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_STYLE_RETRO_RENOVATION_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_UPGRADE_CONTROL_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_UPGRADE_CONTROL_SALE_PRICE"
+    "display": null
   },
   {
     "key": "CH_ARCADE_UPGRADE_DRONE_SALE_PRICE",
     "type": "arcade_upgrade_sales",
-    "display": "CH_ARCADE_UPGRADE_DRONE_SALE_PRICE"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_BASE_PRICE",
@@ -437,47 +437,47 @@
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_1_RENOVATION",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_1_RENOVATION"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_2",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_2"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_3",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_3"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_4",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_4"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_5",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_5"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_6",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_6"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_7",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_7"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_8",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_8"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_COLOR_9",
     "type": "arena_workshop_sales",
-    "display": "AW_WORKSHOP_PROPERTY_COLOR_9"
+    "display": null
   },
   {
     "key": "AW_WORKSHOP_PROPERTY_FLOOR_B1_GRAPHICS_1_RENOVATION",
@@ -837,7 +837,7 @@
   {
     "key": "0x59E9ED7B",
     "type": "avenger_upgrade_sales",
-    "display": "0x59E9ED7B"
+    "display": null
   },
   {
     "key": "0xB7B1B1C4",
@@ -867,47 +867,47 @@
   {
     "key": "H2_AVENGER_PRICE_STYLE_BLUE",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_BLUE"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_BROWN",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_BROWN"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_GREEN",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_GREEN"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_MAGENTA",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_MAGENTA"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_ORANGE",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_ORANGE"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_PINK",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_PINK"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_PUCE",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_PUCE"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_TEAL",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_TEAL"
+    "display": null
   },
   {
     "key": "H2_AVENGER_PRICE_STYLE_YELLOW",
     "type": "avenger_upgrade_sales",
-    "display": "H2_AVENGER_PRICE_STYLE_YELLOW"
+    "display": null
   },
   {
     "key": "BIKER_BUSINESS_CITY_COCAINE_LOCKUP",
@@ -3720,6 +3720,11 @@
     "display": "VW_AW_WV_85"
   },
   {
+    "key": "VC_PENTHOUSE_PROPERTY_GARAGE",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": "MAITRD_M_I7"
+  },
+  {
     "key": "MULTISTOREY_GARAGE_BASE_ECLIPSE_BLVD",
     "type": "eclipse_garage_sales",
     "display": "MSG_NME_1"
@@ -4332,67 +4337,67 @@
   {
     "key": "GEN9_MODS_HSW_BRAKES",
     "type": "hsw_mod_price_sales",
-    "display": "BRAKES"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_BRAKES2",
     "type": "hsw_mod_price_sales",
-    "display": "BRAKES2"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_ELITE_LIVERY",
     "type": "hsw_mod_price_sales",
-    "display": "ELITE_LIVERY"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_ENGINE",
     "type": "hsw_mod_price_sales",
-    "display": "ENGINE"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_ENGINE2",
     "type": "hsw_mod_price_sales",
-    "display": "ENGINE2"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_RACING_LIVERY",
     "type": "hsw_mod_price_sales",
-    "display": "RACING_LIVERY"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_SPOILER",
     "type": "hsw_mod_price_sales",
-    "display": "SPOILER"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_SPOILER2",
     "type": "hsw_mod_price_sales",
-    "display": "SPOILER2"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_SUSPENSION",
     "type": "hsw_mod_price_sales",
-    "display": "SUSPENSION"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_TRANSMISSION",
     "type": "hsw_mod_price_sales",
-    "display": "TRANSMISSION"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_TURBO_QUAD",
     "type": "hsw_mod_price_sales",
-    "display": "TURBO_QUAD"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_TURBO_SINGLE",
     "type": "hsw_mod_price_sales",
-    "display": "TURBO_SINGLE"
+    "display": null
   },
   {
     "key": "GEN9_MODS_HSW_TURBO_TWIN",
     "type": "hsw_mod_price_sales",
-    "display": "TURBO_TWIN"
+    "display": null
   },
   {
     "key": "SU23_HSW_UPGRADE_BUFFALO5",
@@ -4552,82 +4557,82 @@
   {
     "key": "IH_SUB_BASE_COLOR_1_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_1_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_2_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_2_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_3_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_3_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_4_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_4_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_5_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_5_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_6_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_6_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_7_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_7_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_8_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_8_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_9_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_9_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_10_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_10_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_11_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_11_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_12_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_12_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_13_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_13_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_14_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_14_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_15_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_15_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_COLOR_16_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_BASE_COLOR_16_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_BASE_CROATIA_FLAG_RENOVATION",
@@ -4887,82 +4892,82 @@
   {
     "key": "IH_SUB_SALE_COLOR_1_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_1_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_2_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_2_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_3_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_3_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_4_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_4_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_5_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_5_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_6_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_6_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_7_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_7_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_8_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_8_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_9_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_9_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_10_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_10_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_11_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_11_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_12_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_12_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_13_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_13_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_14_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_14_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_15_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_15_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_COLOR_16_RENOVATION",
     "type": "kraken_upgrade_sales",
-    "display": "IH_SUB_SALE_COLOR_16_RENOVATION"
+    "display": null
   },
   {
     "key": "IH_SUB_SALE_CROATIA_FLAG_RENOVATION",
@@ -5232,97 +5237,97 @@
   {
     "key": "0x0A85B39C",
     "type": "nightclub_upgrade_sales",
-    "display": "0x0A85B39C"
+    "display": null
   },
   {
     "key": "0x1FA09C70",
     "type": "nightclub_upgrade_sales",
-    "display": "0x1FA09C70"
+    "display": null
   },
   {
     "key": "0x2ECD29F5",
     "type": "nightclub_upgrade_sales",
-    "display": "FCCLUB_STA_1"
+    "display": null
   },
   {
     "key": "0x5E79D8F3",
     "type": "nightclub_upgrade_sales",
-    "display": "0x5E79D8F3"
+    "display": null
   },
   {
     "key": "0x6A9ED6D0",
     "type": "nightclub_upgrade_sales",
-    "display": "0x6A9ED6D0"
+    "display": null
   },
   {
     "key": "0x0579A6C9",
     "type": "nightclub_upgrade_sales",
-    "display": "0x0579A6C9"
+    "display": null
   },
   {
     "key": "0x784D9FC3",
     "type": "nightclub_upgrade_sales",
-    "display": "FCCLUB_STA_4"
+    "display": null
   },
   {
     "key": "0x5270FD6E",
     "type": "nightclub_upgrade_sales",
-    "display": "0x5270FD6E"
+    "display": null
   },
   {
     "key": "0x7775BDA6",
     "type": "nightclub_upgrade_sales",
-    "display": "0x7775BDA6"
+    "display": null
   },
   {
     "key": "0x56115A7F",
     "type": "nightclub_upgrade_sales",
-    "display": "0x56115A7F"
+    "display": null
   },
   {
     "key": "0xAAFF809D",
     "type": "nightclub_upgrade_sales",
-    "display": "0xAAFF809D"
+    "display": null
   },
   {
     "key": "0xBA612DAB",
     "type": "nightclub_upgrade_sales",
-    "display": "0xBA612DAB"
+    "display": null
   },
   {
     "key": "0xBC33B3C6",
     "type": "nightclub_upgrade_sales",
-    "display": "FCCLUB_EQU_1"
+    "display": null
   },
   {
     "key": "0xBE659834",
     "type": "nightclub_upgrade_sales",
-    "display": "0xBE659834"
+    "display": null
   },
   {
     "key": "0xCF9B24EC",
     "type": "nightclub_upgrade_sales",
-    "display": "FCCLUB_SEC_1"
+    "display": null
   },
   {
     "key": "0xD4D93345",
     "type": "nightclub_upgrade_sales",
-    "display": "FCCLUB_STA_3"
+    "display": null
   },
   {
     "key": "0xD82618B6",
     "type": "nightclub_upgrade_sales",
-    "display": "0xD82618B6"
+    "display": null
   },
   {
     "key": "0xDCF288B4",
     "type": "nightclub_upgrade_sales",
-    "display": "FCCLUB_STA_2"
+    "display": null
   },
   {
     "key": "0xE5E0F3F3",
     "type": "nightclub_upgrade_sales",
-    "display": "0xE5E0F3F3"
+    "display": null
   },
   {
     "key": "BB_NIGHTCLUB_PROPERTY_DANCERS_FEMALE",
@@ -5522,7 +5527,7 @@
   {
     "key": "DYNASTY8_OFFICE_FONT_COST",
     "type": "office_upgrade_sales",
-    "display": "DYNASTY8_OFFICE_FONT_COST"
+    "display": null
   },
   {
     "key": "DYNASTY8_OFFICE_GUNLOCKER",
@@ -5562,217 +5567,217 @@
   {
     "key": "IMPEXP_GARAGE_INTERIOR1_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_INTERIOR1_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_INTERIOR2_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_INTERIOR2_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_INTERIOR3_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_INTERIOR3_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_INTERIOR4_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_INTERIOR4_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING1_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING1_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING2_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING2_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING3_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING3_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING4_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING4_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING5_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING5_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING6_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING6_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING7_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING7_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING8_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING8_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_LIGHTING9_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_LIGHTING9_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE1_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE1_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE2_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE2_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE3_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE3_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE4_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE4_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE5_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE5_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE6_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE6_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE7_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE7_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE8_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE8_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_GARAGE_SIGNAGE9_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_GARAGE_SIGNAGE9_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING1_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING1_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING2_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING2_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING3_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING3_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING4_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING4_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING5_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING5_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING6_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING6_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING7_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING7_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING8_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING8_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING9_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING9_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING10_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING10_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING11_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING11_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING12_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING12_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING13_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING13_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING14_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING14_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING15_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING15_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING16_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING16_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING17_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING17_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING18_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING18_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING19_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING19_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_MODSHOP_FLOORING20_PURCHASE_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_MODSHOP_FLOORING20_PURCHASE_COST"
+    "display": null
   },
   {
     "key": "IMPEXP_OFFICE_MODSHOP_COST",
     "type": "office_upgrade_sales",
-    "display": "IMPEXP_OFFICE_MODSHOP_COST"
+    "display": null
   },
   {
     "key": "APARTMENT_CAR_MODSECLIPSE_TOWERS_PENTHOUSE_SUITE_1",
@@ -6238,6 +6243,156 @@
     "key": "APARTMENT_CAR_MODSHIGH_END_INTERIOR_VIBRANT",
     "type": "property_upgrade_sales",
     "display": "PM_APT_VAR_2"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_BIG_BRAT",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_RAT"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_BIG_BRAT_BULLBAR",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_RAT3"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_BIG_BRAT_CAGE",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_RAT2"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_BIG_BRAT_COMBINED",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_RAT4"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_EMP_MINES",
+    "type": "rc_bandito_mod_sales",
+    "display": "EMP_MINE"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_GANG_BURRITO",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_BUR"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_GANG_BURRITO_BULLBAR",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_BUR3"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_GANG_BURRITO_COMBINED",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_BUR4"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_GANG_BURRITO_SPOILER",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_BUR2"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_JUMP_UPGRADE_20_PERCENT",
+    "type": "rc_bandito_mod_sales",
+    "display": "CMOD_JUM_1"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_JUMP_UPGRADE_60_PERCENT",
+    "type": "rc_bandito_mod_sales",
+    "display": "CMOD_JUM_2"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_JUMP_UPGRADE_100_PERCENT",
+    "type": "rc_bandito_mod_sales",
+    "display": "CMOD_JUM_3"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_KINETIC_MINES",
+    "type": "rc_bandito_mod_sales",
+    "display": "RC_VEH_MINE"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_MIDNIGHT_PUMPING",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_MID"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_MIDNIGHT_PUMPING_CAGE",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_MID2"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_MIDNIGHT_PUMPING_COMBINED",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_MID4"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_MIDNIGHT_PUMPING_FLAMES",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_MID3"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_NO_BOMB",
+    "type": "rc_bandito_mod_sales",
+    "display": "AW_NONE"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_NO_JUMP",
+    "type": "rc_bandito_mod_sales",
+    "display": "AW_NONE"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_NO_MINE",
+    "type": "rc_bandito_mod_sales",
+    "display": "AW_NONE"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_OFFROAD",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_OFF"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_OFFROAD_COMBINED",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_OFF4"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_OFFROAD_NETS",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_OFF3"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_OFFROAD_SPOILER",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_OFF2"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_REMOTE_BOMB",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_BOMB"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_STOCK_LID",
+    "type": "rc_bandito_mod_sales",
+    "display": "CMOD_LID_S"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_TROPHY_TRUCK",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_TRO"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_TROPHY_TRUCK_COMBINED",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_TRO4"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_TROPHY_TRUCK_NETS",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_TRO3"
+  },
+  {
+    "key": "AW_SALE_PRICE_MODS_RC_BANDITO_TROPHY_TRUCK_SPOILER",
+    "type": "rc_bandito_mod_sales",
+    "display": "BAND_CHASS_TRO2"
   },
   {
     "key": "TATTOO_MP_FM_01_EXPENDITURE_TUNABLE",
@@ -6917,7 +7072,7 @@
   {
     "key": "LOWRIDER_FACTION2_LIVERY_SPECIAL10",
     "type": "vehicle_livery_sales",
-    "display": "LOWRIDER_FACTION2_LIVERY_SPECIAL10"
+    "display": null
   },
   {
     "key": "PS_SWIFT_LIVERY_1",
@@ -11360,6 +11515,541 @@
     "display": "MP_WHOUSE_21"
   },
   {
+    "key": "ADVANCED_RIFLE_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RIFLE_ADV"
+  },
+  {
+    "key": "AMMO_COMPACT_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SG_COMPR"
+  },
+  {
+    "key": "AMMO_DOUBLE_BARREL_SHOTGUN_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SG_BBSHOT"
+  },
+  {
+    "key": "AMMO_MACHINE_PISTOL_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MACHPIST"
+  },
+  {
+    "key": "AP_PISTOL_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PIST_AP"
+  },
+  {
+    "key": "ASSAULT_RIFLE_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RIFLE_ASL"
+  },
+  {
+    "key": "ASSAULT_SHOTGUN_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SG_ASL"
+  },
+  {
+    "key": "ASSAULT_SMG_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SMG_ASL"
+  },
+  {
+    "key": "AW_WEAPON_AMMO_PRICE_UNHOLY_HELLBRINGER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RAYCARBINE"
+  },
+  {
+    "key": "AW_WEAPON_AMMO_PRICE_WIDOWMAKER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RAYMINIGUN"
+  },
+  {
+    "key": "BIKER_AMMO_COMPACT_GRENADE_LAUNCHER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_CMPLAUNC"
+  },
+  {
+    "key": "BIKER_AMMO_MINI_SMG_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MINISMG"
+  },
+  {
+    "key": "BIKER_AMMO_SWEEPER_SHOTGUN_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_AUTOSHOT"
+  },
+  {
+    "key": "BULLPUP_SHOTGUN_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SG_BLP"
+  },
+  {
+    "key": "CARBINE_RIFLE_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RIFLE_CBN"
+  },
+  {
+    "key": "COMBAT_MG_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MG_CBT"
+  },
+  {
+    "key": "COMBAT_PISTOL_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PIST_CBT"
+  },
+  {
+    "key": "DLC_WEAPON_ADDON_BULLPUP_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_BULLRIFLE"
+  },
+  {
+    "key": "DLC_WEAPON_ADDON_HEAVY_PISTOL_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_HVYPISTOL"
+  },
+  {
+    "key": "DLC_WEAPON_ADDON_SNS_PISTOL_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SNSPISTOL"
+  },
+  {
+    "key": "DLC_WEAPON_ADDON_SPECIAL_CARBINE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SPCARBINE"
+  },
+  {
+    "key": "DLC_WEAPON_ADDON_VINTAGE_PISTOL_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_VINTPSTL"
+  },
+  {
+    "key": "DLC_WEAPON_MARKSMAN_PISTOL_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MKPISTOL"
+  },
+  {
+    "key": "DLC_WEAPON_REVOLVER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_REVLVR"
+  },
+  {
+    "key": "FIXER_EMP_LAUNCHER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_EMPL"
+  },
+  {
+    "key": "FIXER_HEAVY_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_HEAVYRIFLE"
+  },
+  {
+    "key": "FLAREGUN_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_FLAREGUN"
+  },
+  {
+    "key": "GANGOPS_DOUBLE_ACTION_REVOLVER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_REV_DA"
+  },
+  {
+    "key": "GO_BULLPUP_RIFLE_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GO_BULLPUP_RIFLE_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GO_BULLPUP_RIFLE_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GO_BULLPUP_RIFLE_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GO_HEAVY_REVOLVER_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GO_HEAVY_REVOLVER_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GO_HEAVY_REVOLVER_MK2_HOLLOW_POINT_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_HP"
+  },
+  {
+    "key": "GO_HEAVY_REVOLVER_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GO_MARKSMAN_RIFLE_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GO_MARKSMAN_RIFLE_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GO_MARKSMAN_RIFLE_MK2_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GO_MARKSMAN_RIFLE_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GO_PUMP_SHOTGUN_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GO_PUMP_SHOTGUN_MK2_EXPLOSIVE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_EX"
+  },
+  {
+    "key": "GO_PUMP_SHOTGUN_MK2_HOLLOW_POINT_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_HP"
+  },
+  {
+    "key": "GO_PUMP_SHOTGUN_MK2_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GO_SNS_PISTOL_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GO_SNS_PISTOL_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GO_SNS_PISTOL_MK2_HOLLOW_POINT_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_HP"
+  },
+  {
+    "key": "GO_SNS_PISTOL_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GO_SPECIAL_CARBINE_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GO_SPECIAL_CARBINE_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GO_SPECIAL_CARBINE_MK2_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GO_SPECIAL_CARBINE_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GR_ASSAULT_RIFLE_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GR_ASSAULT_RIFLE_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GR_ASSAULT_RIFLE_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GR_ASSAULT_RIFLE_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GR_CARBINE_RIFLE_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GR_CARBINE_RIFLE_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GR_CARBINE_RIFLE_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GR_CARBINE_RIFLE_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GR_COMBAT_MG_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GR_COMBAT_MG_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GR_COMBAT_MG_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GR_COMBAT_MG_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GR_HEAVY_SNIPER_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GR_HEAVY_SNIPER_MK2_ARMOR_PIERCING_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_AP"
+  },
+  {
+    "key": "GR_HEAVY_SNIPER_MK2_EXPLOSIVE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_EX"
+  },
+  {
+    "key": "GR_HEAVY_SNIPER_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GR_PISTOL_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GR_PISTOL_MK2_HOLLOW_POINT_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_HP"
+  },
+  {
+    "key": "GR_PISTOL_MK2_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GR_PISTOL_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GR_SMG_MK2_FMJ_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_FMJ"
+  },
+  {
+    "key": "GR_SMG_MK2_HOLLOW_POINT_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_HP"
+  },
+  {
+    "key": "GR_SMG_MK2_INCENDIARY_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_INC"
+  },
+  {
+    "key": "GR_SMG_MK2_TRACER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WCT_CLIP_TR"
+  },
+  {
+    "key": "GRENADE_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GNADE"
+  },
+  {
+    "key": "GRENADE_LAUNCHER_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GL"
+  },
+  {
+    "key": "HEAVY_SNIPER_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SNIP_HVY"
+  },
+  {
+    "key": "IH_COMBAT_SHOTGUN_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_CMBSHGN"
+  },
+  {
+    "key": "IH_MILITARY_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MLTRYRFL"
+  },
+  {
+    "key": "IH_PERICO_PISTOL_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GDGTPST"
+  },
+  {
+    "key": "JERRYCANFUEL_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PETROL"
+  },
+  {
+    "key": "LTS_HEAVY_SHOTGUN_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_HVYSHOT"
+  },
+  {
+    "key": "LTS_MARKSMAN_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MKRIFLE"
+  },
+  {
+    "key": "LUXE1_AMMO_COMBAT_PDW_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_COMBATPDW"
+  },
+  {
+    "key": "MG_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MG"
+  },
+  {
+    "key": "MICRO_SMG_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SMG_MCR"
+  },
+  {
+    "key": "MINIGUN_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MINIGUN"
+  },
+  {
+    "key": "PISTOL_AMMO_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PIST"
+  },
+  {
+    "key": "PISTOL50_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PIST_50"
+  },
+  {
+    "key": "PUMP_SHOTGUN_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SG_PMP"
+  },
+  {
+    "key": "RPG_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RPG"
+  },
+  {
+    "key": "SAWEDOFF_SHOTGUN_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SG_SOF"
+  },
+  {
+    "key": "SMG_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SMG"
+  },
+  {
+    "key": "SNIPER_RIFLE_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_SNIP_RIF"
+  },
+  {
+    "key": "STICKYBOMB_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GNADE_STK"
+  },
+  {
+    "key": "SU22_PRECISION_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PRECRIFLE"
+  },
+  {
+    "key": "SU22_SERVICE_CARBINE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_TACRIFLE"
+  },
+  {
+    "key": "SU23_TACTICAL_SMG_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_TECPISTOL"
+  },
+  {
+    "key": "TEARGAS_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GNADE_SMK"
+  },
+  {
+    "key": "VALENTINE_GUSENBERG_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GUSENBERG"
+  },
+  {
+    "key": "WEAPONS_INDEPENDENCEDAY_FIREWORKLAUNCHER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_FWRKLNCHR"
+  },
+  {
+    "key": "WEAPONS_INDEPENDENCEDAY_MUSKET_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_MUSKET"
+  },
+  {
+    "key": "WEAPONS_XMAS14_HOMING_LAUNCHER_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_HOMING"
+  },
+  {
+    "key": "XM22_RAILGUN_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_RAILGUNXM3"
+  },
+  {
+    "key": "XM22_WM29_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PISTOLXM3"
+  },
+  {
     "key": "0x49842672",
     "type": "weapon_sales",
     "display": "WEAPON_CERAMICPISTOL"
@@ -11785,6 +12475,66 @@
     "display": "WEAPON_PISTOLXM3"
   },
   {
+    "key": "GO_WEAPON_UPGRADES_BULLPUP_RIFLE_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_BULLRIFLE2"
+  },
+  {
+    "key": "GO_WEAPON_UPGRADES_HEAVY_REVOVLER_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_REVOLVER2"
+  },
+  {
+    "key": "GO_WEAPON_UPGRADES_MARKSMAN_RIFLE_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_MKRIFLE2"
+  },
+  {
+    "key": "GO_WEAPON_UPGRADES_PUMP_SHOTGUN_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_SG_PMP2"
+  },
+  {
+    "key": "GO_WEAPON_UPGRADES_SNS_PISTOL_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_SNSPISTOL2"
+  },
+  {
+    "key": "GO_WEAPON_UPGRADES_SPECIAL_CARBINE_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_SPCARBINE2"
+  },
+  {
+    "key": "GR_WEAPON_UPGRADES_ASSAULT_RIFLE_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_RIFLE_ASL2"
+  },
+  {
+    "key": "GR_WEAPON_UPGRADES_CARBINE_RIFLE_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_RIFLE_CBN2"
+  },
+  {
+    "key": "GR_WEAPON_UPGRADES_COMBAT_MG_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_MG_CBT2"
+  },
+  {
+    "key": "GR_WEAPON_UPGRADES_HEAVY_SNIPER_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_SNIP_HVY2"
+  },
+  {
+    "key": "GR_WEAPON_UPGRADES_PISTOL_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_PIST2"
+  },
+  {
+    "key": "GR_WEAPON_UPGRADES_SMG_MK_II",
+    "type": "weapon_upgrade_sales",
+    "display": "WT_SMG2"
+  },
+  {
     "key": "APARTMENT_PURCHASE_MODEL_THE_AQUARIUS_FIRST_PURCHASE",
     "type": "yacht_property_sales",
     "display": "BOAT_YACHT_MODEL_2"
@@ -11807,7 +12557,7 @@
   {
     "key": "APARTMENT_MOD_UPGRADE_FLAG",
     "type": "yacht_upgrade_sales",
-    "display": "APARTMENT_MOD_UPGRADE_FLAG"
+    "display": null
   },
   {
     "key": "APARTMENT_MOD_UPGRADE_GOLD_FITTINGS",
@@ -11852,7 +12602,7 @@
   {
     "key": "APARTMENT_MOD_UPGRADE_NAME_YACHT",
     "type": "yacht_upgrade_sales",
-    "display": "APARTMENT_MOD_UPGRADE_NAME_YACHT"
+    "display": null
   },
   {
     "key": "APARTMENT_MOD_UPGRADE_VIVACIOUS_BLUE",

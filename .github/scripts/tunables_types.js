@@ -74,10 +74,12 @@ function run() {
     }
 
     for (const item of publicTunableTypes) {
+        if (item.display === null) continue;
         if (inputLabelKeys.includes(item.display)) {
             inputLabelsUsed[item.display] = inputLabelsFlat[item.display];
         } else if (!publicLabelKeys.includes(item.display)) {
             console.warn(`[${item.key}] "${item.display}" isn't a valid label.`);
+            item.display = null;
         }
     }
 
@@ -85,10 +87,16 @@ function run() {
 
     if (Object.keys(inputLabelsUsed).length > 0) {
         const outputLabels = orderObject({ ...inputLabelsUsed, ...publicLabels });
+        const outputValues = Object.values(outputLabels);
 
-        if (Object.values(outputLabels).some(x => x === String(x).toUpperCase())) {
+        if (outputValues.some(x => x === String(x).toUpperCase())) {
             console.warn(`Some labels are uppercase.`);
-            console.log(Object.values(outputLabels).filter(x => x === String(x).toUpperCase()));
+            console.log(outputValues.filter(x => x === String(x).toUpperCase()));
+        }
+
+        if (outputValues.length !== [...new Set(outputValues)].length) {
+            console.warn('Some labels have duplicate values.');
+            console.log(outputValues.filter((item, index) => outputValues.indexOf(item) !== index));
         }
 
         fs.writeFileSync(publicLabelsPath, JSON.stringify(outputLabels, null, 2));
