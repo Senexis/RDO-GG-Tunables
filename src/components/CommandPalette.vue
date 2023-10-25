@@ -105,14 +105,14 @@ onBeforeUnmount(() => {
     <Dialog as="div" class="relative z-10" @close="open = false">
       <TransitionChild
         as="template"
-        enter="ease-out duration-200"
+        enter="ease-out duration-300"
         enter-from="opacity-0"
         enter-to="opacity-100"
-        leave="ease-in duration-100"
+        leave="ease-in duration-200"
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-slate-500 bg-opacity-25 transition-opacity" />
+        <div class="fixed inset-0 bg-slate-500/75 dark:bg-slate-800/75 transition-opacity" />
       </TransitionChild>
 
       <div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
@@ -126,16 +126,16 @@ onBeforeUnmount(() => {
           leave-to="opacity-0 scale-95"
         >
           <DialogPanel
-            class="mx-auto max-w-2xl transform divide-y divide-slate-500 divide-opacity-10 overflow-hidden rounded-xl bg-white bg-opacity-70 shadow-2xl ring-1 ring-black ring-opacity-5 backdrop-blur backdrop-filter transition-all"
+            class="mx-auto max-w-2xl transform divide-y overflow-hidden rounded-xl backdrop-blur backdrop-filter shadow-2xl transition-all divide-slate-100 ring-1 ring-black ring-opacity-5 dark:divide-slate-500 dark:divide-opacity-20 bg-white dark:bg-slate-900 !bg-opacity-80"
           >
             <Combobox @update:modelValue="onSelect">
               <div class="relative">
                 <MagnifyingGlassIcon
-                  class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-slate-900 text-opacity-40"
+                  class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100"
                   aria-hidden="true"
                 />
                 <ComboboxInput
-                  class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-slate-900 focus:ring-0 sm:text-sm"
+                  class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-slate-900 dark:text-slate-400 focus:ring-0 sm:text-sm"
                   placeholder="Search..."
                   @change="query = $event.target.value"
                 />
@@ -148,7 +148,7 @@ onBeforeUnmount(() => {
               >
                 <li class="p-2">
                   <h2 class="sr-only">Quick actions</h2>
-                  <ul class="text-sm text-slate-700">
+                  <ul class="text-sm text-slate-700 dark:text-slate-400">
                     <ComboboxOption
                       v-for="action in query === '' ? featured : filtered"
                       :key="action.name"
@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
                       <li :class="['flex cursor-pointer select-none items-center rounded-md px-3 py-2', active && 'bg-sky-600 text-white']">
                         <component
                           :is="action.icon || BoltIcon"
-                          :class="['h-6 w-6 flex-none', active ? 'text-white text-opacity-100' : 'text-slate-900 text-opacity-40']"
+                          :class="['h-6 w-6 flex-none', active ? 'text-white text-opacity-100' : 'text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100']"
                           aria-hidden="true"
                         />
                         <span class="ml-3 flex-auto truncate">{{ action.name }}</span>
@@ -175,11 +175,11 @@ onBeforeUnmount(() => {
               </ComboboxOptions>
 
               <div v-if="query !== '' && filtered.length === 0" class="px-6 py-14 text-center sm:px-14">
-                <BoltSlashIcon class="mx-auto h-6 w-6 text-slate-900 text-opacity-40" aria-hidden="true" />
-                <p class="mt-4 text-sm text-slate-900">No Quick Actions found. Please try again.</p>
+                <BoltSlashIcon class="mx-auto h-6 w-6 text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100" aria-hidden="true" />
+                <p class="mt-4 text-sm text-slate-900 dark:text-slate-400">No Quick Actions found. Please try again.</p>
               </div>
 
-              <div class="flex flex-row items-center gap-1 px-2 py-1.5 border-t border-slate-500 border-opacity-10">
+              <div class="flex flex-row items-center gap-1 px-2 py-1.5 border-t border-slate-500 border-opacity-10 bg-slate-50 dark:bg-slate-800 !bg-opacity-80">
                 <div class="flex-shrink-0 rounded bg-amber-800 p-0.5">
                   <BoltIcon class="h-4 w-4 text-slate-50" aria-hidden="true" />
                 </div>

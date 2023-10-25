@@ -8,6 +8,7 @@ const navigation = [
   { name: 'API', href: 'https://rdo.gg/api/#tag/tunables', external: true },
   { name: 'Patreon', href: 'https://rdo.gg/patreon/', icon: 'fa-brands fa-patreon', external: true },
   { name: 'X', href: 'https://x.com/Tunables', icon: 'fa-brands fa-x-twitter', external: true },
+  { name: 'Bluesky', href: 'https://bsky.app/profile/tunables.rdo.gg', icon: 'fa-solid fa-cloud', external: true },
   { name: 'Discord', href: 'https://rdo.gg/discord/', icon: 'fa-brands fa-discord', external: true },
   { name: 'GitHub', href: 'https://github.com/Senexis/RDO-GG-Tunables', icon: 'fa-brands fa-github', external: true },
 ];
