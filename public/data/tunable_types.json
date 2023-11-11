@@ -3720,9 +3720,104 @@
     "display": "VW_AW_WV_85"
   },
   {
+    "key": "VC_PENTHOUSE_PROPERTY_BAR",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_BEDROOM",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_COLOR_1",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_COLOR_2",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_COLOR_3",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_DEALER",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
     "key": "VC_PENTHOUSE_PROPERTY_GARAGE",
     "type": "casino_penthouse_upgrade_sales",
     "display": "MAITRD_M_I7"
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_LOUNGE",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_MEDIA",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_OFFICE",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_1",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_2",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_3",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_4",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_5",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_6",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_7",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_8",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_PATTERN_9",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
+  },
+  {
+    "key": "VC_PENTHOUSE_PROPERTY_SPA",
+    "type": "casino_penthouse_upgrade_sales",
+    "display": null
   },
   {
     "key": "MULTISTOREY_GARAGE_BASE_ECLIPSE_BLVD",
@@ -12550,9 +12645,74 @@
     "display": "BOAT_YACHT_MODEL_1"
   },
   {
+    "key": "APARTMENT_MOD_UPGRADE_ARGENTINA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_5"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_AUSTRALIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_11"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_AUSTRIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_31"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_BELGIUM_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_14"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_BRAZIL_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_20"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_CANADA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_37"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_CHINA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_16"
+  },
+  {
     "key": "APARTMENT_MOD_UPGRADE_CHROME_FITTINGS",
     "type": "yacht_upgrade_sales",
     "display": "BOAT_YACHT_FITTINGS_CHROME"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_COLOMBIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_30"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_CROATIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_25"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_CZECH_REPUBLIC_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_33"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_DENMARK_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_42"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_ENGLAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_41"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_FINLAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_7"
   },
   {
     "key": "APARTMENT_MOD_UPGRADE_FLAG",
@@ -12560,9 +12720,54 @@
     "display": null
   },
   {
+    "key": "APARTMENT_MOD_UPGRADE_FRANCE_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_2"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_GERMANY_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_12"
+  },
+  {
     "key": "APARTMENT_MOD_UPGRADE_GOLD_FITTINGS",
     "type": "yacht_upgrade_sales",
     "display": "BOAT_YACHT_FITTINGS_GOLD"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_HUNGARY_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_17"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_IRELAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_24"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_ISRAEL_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_26"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_ITALY_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_3"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_JAMAICA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_22"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_JAPAN_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_21"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_LIECHTENSTEIN_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_34"
   },
   {
     "key": "APARTMENT_MOD_UPGRADE_LIGHTS_PRESIDENTIAL_BLUE",
@@ -12585,6 +12790,16 @@
     "display": "YACHT_LIGHTING_2"
   },
   {
+    "key": "APARTMENT_MOD_UPGRADE_MALTA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_43"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_MEXICO_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_23"
+  },
+  {
     "key": "APARTMENT_MOD_UPGRADE_MODEL_THE_AQUARIUS_MOD",
     "type": "yacht_upgrade_sales",
     "display": "BOAT_YACHT_MODEL_2"
@@ -12605,6 +12820,106 @@
     "display": null
   },
   {
+    "key": "APARTMENT_MOD_UPGRADE_NETHERLANDS_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_8"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_NEW_ZEALAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_18"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_NIGERIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_27"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_NORWAY_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_39"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_PALESTINE_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_35"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_POLAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_44"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_PORTUGAL_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_9"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_PUERTO_RICO_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_19"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_RUSSIAN_FEDERATION_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_40"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SCOTLAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_0"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SLOVAKIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_28"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SLOVENIA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_45"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SOUTH_AFRICA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_36"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SOUTH_KOREA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_10"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SPAIN_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_29"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SWEDEN_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_4"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_SWITZERLAND_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_13"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_TURKEY_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_15"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_UNITED_KINGDOM_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_38"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_USA_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_1"
+  },
+  {
     "key": "APARTMENT_MOD_UPGRADE_VIVACIOUS_BLUE",
     "type": "yacht_upgrade_sales",
     "display": "YACHT_LIGHTING_5"
@@ -12623,6 +12938,11 @@
     "key": "APARTMENT_MOD_UPGRADE_VIVACIOUS_ROSE",
     "type": "yacht_upgrade_sales",
     "display": "YACHT_LIGHTING_6"
+  },
+  {
+    "key": "APARTMENT_MOD_UPGRADE_WALES_FLAG",
+    "type": "yacht_upgrade_sales",
+    "display": "BOAT_YACHT_FLAG_32"
   },
   {
     "key": "APARTMENT_MOD_UPGRADE_YACHT_COLOR_AZURE",
