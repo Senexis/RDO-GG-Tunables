@@ -62,7 +62,7 @@ jobs:
           path: dist
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
   release:
     name: Create Sentry release
     needs: [validate]
