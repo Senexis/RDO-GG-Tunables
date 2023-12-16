@@ -1,9 +1,9 @@
-const path = require("path");
-const Ajv = require("ajv");
+const path = require('path');
+const Ajv = require('ajv');
 
 const ajv = new Ajv();
-const dataPath = path.join(__dirname, "..", "..", "public", "data");
-const schemaPath = path.join(__dirname, "..", "..", "schemas");
+const dataPath = path.join(__dirname, '..', '..', 'public', 'data');
+const schemaPath = path.join(__dirname, '..', '..', 'schemas');
 
 const filesToValidate = {
     'hash_dictionary': [
@@ -11,6 +11,7 @@ const filesToValidate = {
     ],
     'string_array': [
         'daily_objectives',
+        'weekly_objectives',
         'hsw_time_trials',
         'rc_time_trials',
         'time_trials',
@@ -34,15 +35,15 @@ for (const schemaName in filesToValidate) {
             continue;
         }
 
-        console.error(`❌ ${schemaName}: ${fileName}.json\n\n${JSON.stringify(validate.errors, null, "  ")}\n`);
+        console.error(`❌ ${schemaName}: ${fileName}.json\n\n${JSON.stringify(validate.errors, null, '  ')}\n`);
         isValid = false;
     }
 }
 
 if (!isValid) {
-    console.error("\nValidation failed.");
+    console.error('\nValidation failed.');
     process.exit(1);
 } else {
-    console.log("\nValidation succeeded.");
+    console.log('\nValidation succeeded.');
     process.exit(0);
 }

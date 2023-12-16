@@ -6,8 +6,8 @@
     "dev": "vite",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "preview": "vite preview",
-    "validate": "node .github/scripts/validate_json.js",
-    "types": "node .github/scripts/tunables_types.js"
+    "validate": "node .github/scripts/validate_json.cjs",
+    "types": "node .github/scripts/tunables_types.cjs"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.2.1",
