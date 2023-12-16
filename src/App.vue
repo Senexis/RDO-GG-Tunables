@@ -1,6 +1,6 @@
 <script setup>
 import * as Sentry from '@sentry/vue';
-import { create } from 'jsondiffpatch/dist/jsondiffpatch.umd.slim.js';
+import { create } from 'jsondiffpatch';
 import * as htmlExtended from './utilities/html-formatter';
 import { computed, onMounted, ref, watch } from 'vue';
 
@@ -855,18 +855,23 @@ async function updateDifference() {
       const tunableKey = item.getAttribute('data-key');
       if (!tunableKey) return;
 
+      // Try to get the tunable's value.
+      let tunableValue = item.querySelector('.jsondiffpatch-value');
+      if (tunableValue) tunableValue = tunableValue.textContent;
+
       // Try to find the tunable's default value.
       let defaultValue = defaults[tunableKey];
       if (defaultValue === undefined) return;
 
-      // Format timestamps into readable dates.
       if (tunableKey.includes('POSIX') || tunableKey.includes('TIMESTAMP')) {
-        defaultValue = new Date(defaultValue * 1000).toISOString();
-      }
-
-      // Format string values to include quotes.
-      if (typeof defaultValue === 'string') {
+        // Format timestamps into readable dates.
+        defaultValue = `"${new Date(defaultValue * 1000).toISOString()}"`;
+      } else if (typeof defaultValue === 'string') {
+        // Format string values to include quotes.
         defaultValue = `"${defaultValue}"`.toUpperCase();
+      } else if (typeof defaultValue === 'number' && (tunableValue === 'true' || tunableValue === 'false')) {
+        // Format bool values to be displayed as bools.
+        defaultValue = Boolean(defaultValue);
       }
 
       // Create the meta element.

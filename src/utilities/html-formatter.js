@@ -1,9 +1,9 @@
-import { formatters } from 'jsondiffpatch/dist/jsondiffpatch.umd.slim.js';
+import * as html from 'jsondiffpatch/formatters/html';
 
 // This is a custom formatter that extends the default HTML formatter. It adds
 // the ability to show unchanged arrays and objects in the diff just like any
 // other node. This allows users to browser the diff in a more consistent way.
-class ExtendedHtmlFormatter extends formatters.html.default {
+class ExtendedHtmlFormatter extends html.default {
   format_unchanged(context, delta, left) {
     if (typeof left !== 'object') {
       return super.format_unchanged(context, delta, left);
@@ -103,9 +103,9 @@ class ExtendedHtmlFormatter extends formatters.html.default {
   }
 }
 
-export const showUnchanged = formatters.html.showUnchanged;
+export const showUnchanged = html.showUnchanged;
 
-export const hideUnchanged = formatters.html.hideUnchanged;
+export const hideUnchanged = html.hideUnchanged;
 
 export default ExtendedHtmlFormatter;
 

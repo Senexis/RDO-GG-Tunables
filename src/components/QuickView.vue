@@ -64,6 +64,7 @@ const Accordions = Object.freeze({
   VinewoodCarClub: 'vinewood_car_club',
   RecordAStudios: 'record_a_studios',
   DailyObjectives: 'daily_objectives',
+  WeeklyObjectives: 'weekly_objectives',
   RdoEvent: 'rdo_event',
 });
 
@@ -88,6 +89,7 @@ async function handleQuickViewInit() {
 
     const tunableDefaults = await request('https://api.rdo.gg/tunables/gta/defaults.json');
     const dailyObjectives = await request('/data/daily_objectives.json');
+    const weeklyObjectives = await request('/data/weekly_objectives.json');
     const hswTimeTrials = await request('/data/hsw_time_trials.json');
     const labels = await request('/data/labels.json');
     const rcTimeTrials = await request('/data/rc_time_trials.json');
@@ -98,6 +100,7 @@ async function handleQuickViewInit() {
       loading: false,
       tunableDefaults,
       dailyObjectives,
+      weeklyObjectives,
       hswTimeTrials,
       labels,
       rcTimeTrials,
@@ -381,6 +384,40 @@ function getDailyObjective(day) {
 }
 
 /**
+ * Retrieves the weekly objective.
+ *
+ * @returns {string|null}
+ */
+function getWeeklyObjective() {
+  try {
+    const value = getTunable('0xA859D82D');
+    if (value === null || value === -1) return null;
+    if (!data.value.weeklyObjectives) return value;
+    return data.value.weeklyObjectives[value] ?? value;
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+  }
+}
+
+/**
+ * Retrieves the weekly objective override.
+ *
+ * @returns {string|null}
+ */
+function getWeeklyObjectiveOverride() {
+  try {
+    const value = getTunable('0x05828BD9');
+    if (value === null || value === -1) return null;
+    if (!data.value.weeklyObjectives) return value;
+    return data.value.weeklyObjectives[value] ?? value;
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+  }
+}
+
+/**
  * Retrieves the RC time trial for a tunable.
  *
  * @returns {string|null}
@@ -498,6 +535,30 @@ function getCarMeetPrizeObjective() {
           return `Sprints: Win ${paramOne} race.`;
         } else {
           return `Sprints: Win ${paramOne} races.`;
+        }
+      case 8:
+        if (paramTwo === 1) {
+          return `Drag Race Series: Place top ${paramOne}.`;
+        } else {
+          return `Drag Race Series: Place top ${paramOne} for ${paramTwo} days in a row.`;
+        }
+      case 9:
+        if (paramTwo === 1) {
+          return `Drag Race Series: Place top ${paramOne}.`;
+        } else {
+          return `Drag Race Series: Place top ${paramOne} in ${paramTwo} races.`;
+        }
+      case 10:
+        if (paramTwo === 1) {
+          return `Drift Race: Place top ${paramOne}.`;
+        } else {
+          return `Drift Race: Place top ${paramOne} for ${paramTwo} days in a row.`;
+        }
+      case 11:
+        if (paramTwo === 1) {
+          return `Drift Race: Place top ${paramOne}.`;
+        } else {
+          return `Drift Race: Place top ${paramOne} in ${paramTwo} races.`;
         }
       default:
         return null;
@@ -1001,6 +1062,8 @@ const dailyObjectiveThu = computed(() => getDailyObjective('TUE'));
 const dailyObjectiveFri = computed(() => getDailyObjective('WED'));
 const dailyObjectiveSat = computed(() => getDailyObjective('THU'));
 const dailyObjectiveSun = computed(() => getDailyObjective('FRI'));
+const weeklyObjective = computed(() => getWeeklyObjective());
+const weeklyObjectiveOverride = computed(() => getWeeklyObjectiveOverride());
 const timeTrial = computed(() => getTimeTrial());
 const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
@@ -1360,7 +1423,14 @@ const rdoEvent = computed(() => getRdoEvent());
           "
         >
           <Accordion :id="Accordions.LsCarMeet">
-            <template #title>LS Car Meet</template>
+            <template #title>
+              <div class="flex justify-between items-center w-full overflow-hidden">
+                <div class="flex gap-2 overflow-hidden">
+                  <span class="truncate">LS Car Meet</span>
+                </div>
+                <span class="badge badge-primary ml-2" v-tooltip="'Updated with new Chop Shop objectives'">Updated</span>
+              </div>
+            </template>
             <template #default>
               <template v-if="carMeetPrizeObjective || carMeetPrizeVehicle">
                 <h3 class="my-1 font-semibold">Prize Ride</h3>
@@ -1534,7 +1604,14 @@ const rdoEvent = computed(() => getRdoEvent());
           "
         >
           <Accordion :id="Accordions.DailyObjectives">
-            <template #title>Daily Objectives</template>
+            <template #title>
+              <div class="flex justify-between items-center w-full overflow-hidden">
+                <div class="flex gap-2 overflow-hidden">
+                  <span class="truncate">Daily Objectives</span>
+                </div>
+                <span class="badge badge-primary ml-2" v-tooltip="'Updated with new Chop Shop objectives'">Updated</span>
+              </div>
+            </template>
             <template #default>
               <ul class="list-disc">
                 <template v-if="dailyObjectiveMon">
@@ -1557,6 +1634,28 @@ const rdoEvent = computed(() => getRdoEvent());
                 </template>
                 <template v-if="dailyObjectiveSun">
                   <li class="ml-5"><strong>Sunday:</strong> {{ dailyObjectiveSun }}</li>
+                </template>
+              </ul>
+            </template>
+          </Accordion>
+        </template>
+        <template v-if="weeklyObjective">
+          <Accordion :id="Accordions.WeeklyObjectives">
+            <template #title>
+              <div class="flex justify-between items-center w-full overflow-hidden">
+                <div class="flex gap-2 overflow-hidden">
+                  <span class="truncate">Weekly Objective</span>
+                </div>
+                <span class="badge badge-plus ml-2" v-tooltip="'Newly added in Chop Shop'">New</span>
+              </div>
+            </template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-if="weeklyObjective">
+                  <li class="ml-5">{{ weeklyObjective }}</li>
+                </template>
+                <template v-if="weeklyObjectiveOverride">
+                  <li class="ml-5"><strong>Objective override:</strong> {{ formatNumber(weeklyObjectiveOverride) }}</li>
                 </template>
               </ul>
             </template>

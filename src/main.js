@@ -13,7 +13,7 @@ import hotkeys from 'hotkeys-js';
 FloatingVue.options.distance = 10;
 import 'floating-vue/dist/style.css';
 
-import 'jsondiffpatch/dist/formatters-styles/html.css';
+import 'jsondiffpatch/formatters/styles/html.css';
 import './assets/main.css';
 
 const pinia = createPinia();

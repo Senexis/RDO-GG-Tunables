@@ -159,7 +159,12 @@ onBeforeUnmount(() => {
                       <li :class="['flex cursor-pointer select-none items-center rounded-md px-3 py-2', active && 'bg-sky-600 text-white']">
                         <component
                           :is="action.icon || BoltIcon"
-                          :class="['h-6 w-6 flex-none', active ? 'text-white text-opacity-100' : 'text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100']"
+                          :class="[
+                            'h-6 w-6 flex-none',
+                            active
+                              ? 'text-white text-opacity-100'
+                              : 'text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100',
+                          ]"
                           aria-hidden="true"
                         />
                         <span class="ml-3 flex-auto truncate">{{ action.name }}</span>
@@ -175,11 +180,16 @@ onBeforeUnmount(() => {
               </ComboboxOptions>
 
               <div v-if="query !== '' && filtered.length === 0" class="px-6 py-14 text-center sm:px-14">
-                <BoltSlashIcon class="mx-auto h-6 w-6 text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100" aria-hidden="true" />
+                <BoltSlashIcon
+                  class="mx-auto h-6 w-6 text-slate-900 text-opacity-40 dark:text-slate-400 dark:text-opacity-100"
+                  aria-hidden="true"
+                />
                 <p class="mt-4 text-sm text-slate-900 dark:text-slate-400">No Quick Actions found. Please try again.</p>
               </div>
 
-              <div class="flex flex-row items-center gap-1 px-2 py-1.5 border-t border-slate-500 border-opacity-10 bg-slate-50 dark:bg-slate-800 !bg-opacity-80">
+              <div
+                class="flex flex-row items-center gap-1 px-2 py-1.5 border-t border-slate-500 border-opacity-10 bg-slate-50 dark:bg-slate-800 !bg-opacity-80"
+              >
                 <div class="flex-shrink-0 rounded bg-amber-800 p-0.5">
                   <BoltIcon class="h-4 w-4 text-slate-50" aria-hidden="true" />
                 </div>
