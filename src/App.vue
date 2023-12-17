@@ -1387,9 +1387,7 @@ function showErrorModal(body, eventId = null) {
         <span>
           <HeartIcon class="inline w-4 h-4 text-red-500 animate-pulse" /> from
           <a href="https://github.com/Senexis" target="_blank" rel="noopener noreferrer">Senexis</a> and
-          <a href="https://github.com/Senexis/RDO-GG-Tunables/graphs/contributors" target="_blank" rel="noopener noreferrer"
-            >contributors</a
-          >
+          <button @click="attributionModal.show = true" class="text-sky-600 hover:text-sky-400">contributors</button>
         </span>
       </div>
       <div class="flex space-x-4">
