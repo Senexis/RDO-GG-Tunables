@@ -747,7 +747,7 @@ onMounted(() => {
 /**
  * The logic to execute when the game is updated.
  *
- * @param {boolean} init Whether or not the app is being initialized.
+ * @param {boolean} init Whether or not the website is being initialized.
  * @returns {Promise<void>}
  */
 async function handleGameUpdate(init = false) {
@@ -1164,6 +1164,7 @@ function showErrorModal(body, eventId = null) {
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <template v-if="!settings.quickViewBelowTunables">
       <QuickView
+        :game="game"
         :loading="difference.loading"
         :tunables="tunables?.latest?.contents?.tunables"
         :ugc="tunables?.latest?.contents?.contentlists"
@@ -1370,6 +1371,7 @@ function showErrorModal(body, eventId = null) {
 
     <template v-if="settings.quickViewBelowTunables">
       <QuickView
+        :game="game"
         :loading="difference.loading"
         :tunables="tunables?.latest?.contents?.tunables"
         :ugc="tunables?.latest?.contents?.contentlists"

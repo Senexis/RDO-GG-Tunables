@@ -17,8 +17,8 @@ const props = defineProps({
       <h3 class="text-lg font-semibold pb-2 mb-4 border-b-2 border-slate-200 dark:border-slate-600">License</h3>
       <div class="text-sm">
         <p>
-          This app is licensed under the MIT License, a short and simple permissive license with conditions only requiring preservation of
-          copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and
+          This website is licensed under the MIT License, a short and simple permissive license with conditions only requiring preservation
+          of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and
           without source code.
         </p>
         <h4 class="text-md font-semibold pb-2 my-4 border-b border-slate-200 dark:border-slate-600">MIT License</h4>

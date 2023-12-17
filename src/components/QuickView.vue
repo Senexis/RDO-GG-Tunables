@@ -23,6 +23,10 @@ import { orderObject, random } from '../utilities/general';
 const emit = defineEmits(['error']);
 
 const props = defineProps({
+  game: {
+    type: String,
+    default: null,
+  },
   loading: {
     type: Boolean,
     required: true,
@@ -1611,6 +1615,7 @@ const rdoEvent = computed(() => getRdoEvent());
                 <li class="ml-5"><strong>Saturday:</strong> {{ studioAppearanceEnabledSat ? 'Enabled' : 'Disabled' }}</li>
                 <li class="ml-5"><strong>Sunday:</strong> {{ studioAppearanceEnabledSun ? 'Enabled' : 'Disabled' }}</li>
               </ul>
+              <a href="https://gtaweb.eu/gtao-map/ls/-/studio" target="_blank" rel="noopener noreferrer">Get notifications on GTAWeb.eu</a>
             </template>
           </Accordion>
         </template>
@@ -1658,6 +1663,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <li class="ml-5"><strong>Sunday:</strong> {{ dailyObjectiveSun }}</li>
                 </template>
               </ul>
+              <a href="https://gtaweb.eu/gtao-toolkit" target="_blank" rel="noopener noreferrer">Track on GTAWeb.eu</a>
             </template>
           </Accordion>
         </template>
@@ -1680,6 +1686,7 @@ const rdoEvent = computed(() => getRdoEvent());
                   <li class="ml-5"><strong>Objective override:</strong> {{ formatNumber(weeklyObjectiveCount) }}</li>
                 </template>
               </ul>
+              <a href="https://gtaweb.eu/gtao-toolkit" target="_blank" rel="noopener noreferrer">Track on GTAWeb.eu</a>
             </template>
           </Accordion>
         </template>
@@ -1715,6 +1722,13 @@ const rdoEvent = computed(() => getRdoEvent());
     <template #footer v-if="settings.quickView">
       <CardFooter>
         <div class="truncate">
+          <template v-if="game === 'gta'">
+            Find more locations and details on <a href="https://gtaweb.eu/gtav-map" target="_blank" rel="noopener noreferrer">GTAWeb.eu</a>.
+          </template>
+          <template v-if="game === 'rdo'">
+            Find more locations and details on
+            <a href="https://jeanropke.github.io/RDOMap/" target="_blank" rel="noopener noreferrer">the RDO map</a>.
+          </template>
           <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer"
             >Contact us on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
           /></a>
