@@ -384,14 +384,36 @@ function getDailyObjective(day) {
 }
 
 /**
- * Retrieves the weekly objective.
+ * Retrieves the weekly objective ID when there's no override using script logic.
+ *
+ * @returns {number}
+ */
+function getWeeklyObjectiveIdNoOverride() {
+  try {
+    // TODO: Untested due to not being used yet, needs to be verified.
+    // Might not be correct, the scripts seem to use NETWORK_SEED_RANDOM_NUMBER_GENERATOR and NETWORK_GET_RANDOM_INT_RANGED along the process.
+    // Perhaps the picked option is correct but the actual result is fully randomized (scrambled array), in which case this isn't possible anyway.
+    const date = new Date();
+    const time = Math.floor(date.getTime() / 1000);
+    const offset = time - 580608000;
+    const days = offset / 86400;
+    const weeks = days / 7;
+    return Math.floor(weeks) % 93;
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+  }
+}
+
+/**
+ * Retrieves the weekly objective ID.
  *
  * @returns {string|null}
  */
-function getWeeklyObjective() {
+function getWeeklyObjectiveId() {
   try {
-    const value = getTunable('0xA859D82D');
-    if (value === null || value === -1) return null;
+    let value = getTunable('MP_WEEKLY_OBJECTIVE_ID_OVERRIDE');
+    if (value === null || value === -1) value = getWeeklyObjectiveIdNoOverride();
     if (!data.value.weeklyObjectives) return value;
     return data.value.weeklyObjectives[value] ?? value;
   } catch (error) {
@@ -401,13 +423,13 @@ function getWeeklyObjective() {
 }
 
 /**
- * Retrieves the weekly objective override.
+ * Retrieves the weekly objective count.
  *
  * @returns {string|null}
  */
-function getWeeklyObjectiveOverride() {
+function getWeeklyObjectiveCount() {
   try {
-    const value = getTunable('0x05828BD9');
+    const value = getTunable('MP_WEEKLY_OBJECTIVE_COUNT_OVERRIDE');
     if (value === null || value === -1) return null;
     if (!data.value.weeklyObjectives) return value;
     return data.value.weeklyObjectives[value] ?? value;
@@ -1062,8 +1084,8 @@ const dailyObjectiveThu = computed(() => getDailyObjective('TUE'));
 const dailyObjectiveFri = computed(() => getDailyObjective('WED'));
 const dailyObjectiveSat = computed(() => getDailyObjective('THU'));
 const dailyObjectiveSun = computed(() => getDailyObjective('FRI'));
-const weeklyObjective = computed(() => getWeeklyObjective());
-const weeklyObjectiveOverride = computed(() => getWeeklyObjectiveOverride());
+const weeklyObjectiveId = computed(() => getWeeklyObjectiveId());
+const weeklyObjectiveCount = computed(() => getWeeklyObjectiveCount());
 const timeTrial = computed(() => getTimeTrial());
 const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
@@ -1639,7 +1661,7 @@ const rdoEvent = computed(() => getRdoEvent());
             </template>
           </Accordion>
         </template>
-        <template v-if="weeklyObjective">
+        <template v-if="weeklyObjectiveId">
           <Accordion :id="Accordions.WeeklyObjectives">
             <template #title>
               <div class="flex justify-between items-center w-full overflow-hidden">
@@ -1651,11 +1673,11 @@ const rdoEvent = computed(() => getRdoEvent());
             </template>
             <template #default>
               <ul class="list-disc">
-                <template v-if="weeklyObjective">
-                  <li class="ml-5">{{ weeklyObjective }}</li>
+                <template v-if="weeklyObjectiveId">
+                  <li class="ml-5">{{ weeklyObjectiveId }}</li>
                 </template>
-                <template v-if="weeklyObjectiveOverride">
-                  <li class="ml-5"><strong>Objective override:</strong> {{ formatNumber(weeklyObjectiveOverride) }}</li>
+                <template v-if="weeklyObjectiveCount">
+                  <li class="ml-5"><strong>Objective override:</strong> {{ formatNumber(weeklyObjectiveCount) }}</li>
                 </template>
               </ul>
             </template>
