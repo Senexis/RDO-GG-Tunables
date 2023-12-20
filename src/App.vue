@@ -234,7 +234,7 @@ const typesUrl = computed(() => `/data/tunable_types.json?${allUrlCacheKey.value
  * @type {import("vue").ComputedRef<string | null>}
  */
 const activeBanner = computed(() => {
-  const banners = ['new-site', 'new-quick-view', 'open-source', 'hide-quick-view-items', 'more-personalization'];
+  const banners = ['new-site', 'new-quick-view', 'open-source', 'hide-quick-view-items', 'more-personalization', 'game-platform-defaults'];
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
   return activeBanners.length > 0 ? activeBanners[0] : null;
 });
@@ -1448,6 +1448,11 @@ function showErrorModal(body, eventId = null) {
 
     <Banner id="more-personalization" :show="activeBanner === 'more-personalization'">
       Newly added: light mode, collapsible tunables panel, revamped settings, and more. Check out the new options using the
+      <Cog6ToothIcon class="inline w-5 h-5" /> button!
+    </Banner>
+
+    <Banner id="game-platform-defaults" :show="activeBanner === 'game-platform-defaults'">
+      Tired of picking your game and platform every time you visit? You can now set your default game and platform using the
       <Cog6ToothIcon class="inline w-5 h-5" /> button!
     </Banner>
   </template>
