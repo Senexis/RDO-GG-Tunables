@@ -675,7 +675,6 @@ watch(game, () => {
     Sentry.setTag('game', game.value);
     if (platform.value !== 'pcros') {
       platform.value = 'pcros';
-      settings.platform = 'pcros';
     } else {
       handleGameUpdate();
     }
@@ -760,7 +759,10 @@ async function handleGameUpdate(init = false) {
     // Ensure RDO is always loaded as PC.
     if (game.value === 'rdo') {
       platform.value = 'pcros';
-      settings.platform = 'pcros';
+
+      if (settings.game === 'rdo') {
+        settings.platform = 'pcros';
+      }
     }
 
     // Step 1. Retrieve the meta file for tunables.
