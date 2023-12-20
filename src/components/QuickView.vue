@@ -1026,6 +1026,8 @@ function formatNumber(value) {
  */
 function getRdoEvent() {
   try {
+    if (props.game !== 'rdo') return null;
+
     const event = getTunable('BGS_SpecialEvent');
     if (!event) return null;
 
@@ -1060,6 +1062,8 @@ function getRdoEvent() {
 
 function getRdoStamps() {
   try {
+    if (props.game !== 'rdo') return null;
+
     const stampLabels = {
       net_playlist_race_series: 'NM_PLAYLIST_RACE',
       net_playlist_featured_series_001: 'NM_PLAYLIST_FEATURED_001',
@@ -1758,7 +1762,14 @@ const rdoStamps = computed(() => getRdoStamps());
         <!-- RDO -->
         <template v-if="rdoStamps">
           <Accordion :id="Accordions.RdoStamps">
-            <template #title>Bonuses</template>
+            <template #title>
+              <div class="flex justify-between items-center w-full overflow-hidden">
+                <div class="flex gap-2 overflow-hidden">
+                  <span class="truncate">Bonuses</span>
+                </div>
+                <span class="badge badge-plus ml-2">New</span>
+              </div>
+            </template>
             <template #default>
               <ul class="list-disc">
                 <template v-for="stamp in rdoStamps" :key="stamp">
