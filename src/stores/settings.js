@@ -5,6 +5,8 @@ export const useStore = defineStore('settings', {
   state: () => {
     return {
       dark: true,
+      game: 'gta',
+      platform: 'pcros',
 
       // Open/close accordions.
       accordionsDismissed: [],

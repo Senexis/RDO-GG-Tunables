@@ -63,6 +63,20 @@ if (settings.dark) {
   document.documentElement.classList.remove('dark');
 }
 
+/**
+ * Contains the selected previous tunables hash.
+ *
+ * @type {import("vue").Ref<string | null>}
+ */
+const previous = ref(url.searchParams.get('previous') || null);
+
+/**
+ * Contains the selected latest tunables hash.
+ *
+ * @type {import("vue").Ref<string | null>}
+ */
+const latest = ref(url.searchParams.get('latest') || null);
+
 // Watch the theme toggle.
 settings.$subscribe(
   (_mutation, state) => {
@@ -80,28 +94,14 @@ settings.$subscribe(
  *
  * @type {import("vue").Ref<"gta" | "rdo">}
  */
-const game = ref(url.searchParams.get('game') || 'gta');
+const game = ref(url.searchParams.get('game') || settings.game || 'gta');
 
 /**
  * Contains the selected platform.
  *
  * @type {import("vue").Ref<"pcros" | "ps4" | "ps5" | "xboxone" | "xboxsx">}
  */
-const platform = ref(url.searchParams.get('platform') || 'pcros');
-
-/**
- * Contains the selected previous tunables hash.
- *
- * @type {import("vue").Ref<string | null>}
- */
-const previous = ref(url.searchParams.get('previous') || null);
-
-/**
- * Contains the selected latest tunables hash.
- *
- * @type {import("vue").Ref<string | null>}
- */
-const latest = ref(url.searchParams.get('latest') || null);
+const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcros');
 
 /**
  * Contains the difference between the previous and latest tunables in HTML.
@@ -675,6 +675,7 @@ watch(game, () => {
     Sentry.setTag('game', game.value);
     if (platform.value !== 'pcros') {
       platform.value = 'pcros';
+      settings.platform = 'pcros';
     } else {
       handleGameUpdate();
     }
@@ -752,9 +753,15 @@ onMounted(() => {
  */
 async function handleGameUpdate(init = false) {
   try {
-    // Step 0. Reset the difference display.
+    // Reset the difference display.
     difference.value.loading = true;
     difference.value.html = null;
+
+    // Ensure RDO is always loaded as PC.
+    if (game.value === 'rdo') {
+      platform.value = 'pcros';
+      settings.platform = 'pcros';
+    }
 
     // Step 1. Retrieve the meta file for tunables.
     try {
@@ -1466,12 +1473,32 @@ function showErrorModal(body, eventId = null) {
     <div class="divide-y divide-slate-200 dark:divide-slate-600 mb-4">
       <SettingsModalSelect v-model="game" :options="gameOptions">
         <template #title>Game</template>
-        <template #description> Select the game to compare tunables for. </template>
+        <template #description>
+          Select the game to compare tunables for.
+          <template v-if="settings.game !== game">
+            <button @click.stop="settings.game = game" class="text-sky-600 hover:text-sky-400">Set as your default game</button>
+          </template>
+          <template v-else>This is set as your default game.</template>
+        </template>
       </SettingsModalSelect>
       <SettingsModalSelect v-model="platform" :options="platformOptions">
         <template #title>Platform</template>
-        <template #description> Select the platform to compare tunables for. </template>
+        <template #description>
+          Select the platform to compare tunables for.
+          <template v-if="settings.platform !== platform">
+            <button @click.stop="settings.platform = platform" class="text-sky-600 hover:text-sky-400">Set as your default platform</button>
+          </template>
+          <template v-else>This is set as your default platform.</template>
+        </template>
       </SettingsModalSelect>
+      <div class="flex items-center justify-between gap-2 py-2">
+        <p class="text-xs text-slate-500">
+          Your default game and platform settings will be used when you browse to the website manually (eg. visiting
+          <code>tunables.rdo.gg</code>). Full links, like the ones posted on
+          <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />, will override your preferences for that visit only. When a
+          game does not support the platform you've picked, it will use PC instead and update your preferences.
+        </p>
+      </div>
       <SettingsModalToggle v-model="settings.bannersBlocked">
         <template #title>Block Banners</template>
         <template #description>Whether to block all banners for website updates.</template>
