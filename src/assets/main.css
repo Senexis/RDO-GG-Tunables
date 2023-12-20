@@ -14,6 +14,10 @@ code {
   @apply text-red-400 font-mono;
 }
 
+kbd {
+  @apply px-1.5 py-0.5 text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 rounded-lg dark:bg-slate-600 dark:text-slate-100 dark:border-slate-500;
+}
+
 .badge {
   @apply inline-flex items-center gap-x-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap select-none;
 }

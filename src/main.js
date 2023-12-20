@@ -57,7 +57,10 @@ const fpPromise = FingerprintJS.load({ monitoring: false });
     Sentry.init({
       app,
       dsn: SENTRY_DSN,
-      integrations: [new Sentry.BrowserTracing({ tracePropagationTargets: ['localhost', 'tunables.rdo.gg', /^\//] }), new Sentry.Replay()],
+      integrations: [
+        new Sentry.BrowserTracing({ tracePropagationTargets: ['localhost', 'tunables.rdo.gg', /^\//] }),
+        new Sentry.Replay({ blockAllMedia: false, maskAllInputs: false, maskAllText: false }),
+      ],
       release: APP_COMMIT_LONG,
       replaysOnErrorSampleRate: 1.0,
       replaysSessionSampleRate: 0.1,

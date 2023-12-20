@@ -35,6 +35,10 @@ function getUrl(url) {
 
 <template>
   <template v-if="props.files?.length">
+    <p class="text-sm text-slate-700 dark:text-slate-300 mb-6">
+      Tunables will open in a new tab. You can then use <kbd>Ctrl</kbd> + <kbd>S</kbd> to save them as JSON. Feel free to use and/or edit
+      them as needed. Mentioning the <code>provider</code> and <code>special_thanks</code> sections would be appreciated though!
+    </p>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <div
         v-for="file in filesForPage"
@@ -45,7 +49,7 @@ function getUrl(url) {
           <DocumentTextIcon class="h-6 w-6" />
         </div>
         <div class="min-w-0 flex-1">
-          <a :href="getUrl(file.url)" class="focus:outline-none">
+          <a :href="getUrl(file.url)" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
             <p class="text-sm font-medium text-slate-700 dark:text-slate-300">{{ file.date }}</p>
             <template v-if="file.weekly_event_id || file.membership_event_id">
@@ -84,7 +88,7 @@ function getUrl(url) {
   <template v-else>
     <div class="relative block w-full rounded-lg border-2 border-dashed border-slate-500 dark:border-slate-500 p-12 text-center">
       <DocumentMagnifyingGlassIcon class="mx-auto h-12 w-12 text-slate-500" />
-      <span class="mt-2 block text-sm font-medium text-slate-500"> No files available to download. </span>
+      <span class="mt-2 block text-sm font-medium text-slate-500">No files available to download.</span>
     </div>
   </template>
 </template>

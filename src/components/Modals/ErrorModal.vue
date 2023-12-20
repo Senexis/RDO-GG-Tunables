@@ -26,7 +26,7 @@ const props = defineProps({
     <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <div class="sm:flex sm:items-start">
         <div
-          class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-red-600 sm:mx-0 sm:h-10 sm:w-10"
+          class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-white sm:mx-0 sm:h-10 sm:w-10"
         >
           <font-awesome-icon icon="fa-solid fa-bug h-6 w-6" aria-hidden="true" />
         </div>
