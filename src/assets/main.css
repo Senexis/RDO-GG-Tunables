@@ -121,9 +121,13 @@ code {
 }
 
 /* Hide individual keys. */
+.hide-quick-view [data-key^="BGS_SpecialEvent"],
+.hide-quick-view [data-key$="CASH_STAMP_TYPE"],
+.hide-quick-view [data-key$="XP_STAMP_TYPE"],
 .hide-quick-view [data-key*="CAR_MEET_PRIZE_VEHICLE"],
 .hide-quick-view [data-key*="CASINO_PRIZE_VEHICLE"],
 .hide-quick-view [data-key*="DAILY_OBJECTIVE"],
+.hide-quick-view [data-key*="WEEKLY_OBJECTIVE"],
 .hide-quick-view [data-key*="FIXER_STUDIO_APPEARANCE"],
 .hide-quick-view [data-key*="HSW_TEST_RIDE"],
 .hide-quick-view [data-key*="HSW_TIME_TRIAL_SUBVARIATION"],

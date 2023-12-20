@@ -70,6 +70,7 @@ const Accordions = Object.freeze({
   DailyObjectives: 'daily_objectives',
   WeeklyObjectives: 'weekly_objectives',
   RdoEvent: 'rdo_event',
+  RdoStamps: 'rdo_stamps',
 });
 
 /**
@@ -1057,6 +1058,67 @@ function getRdoEvent() {
   }
 }
 
+function getRdoStamps() {
+  try {
+    const stampLabels = {
+      net_playlist_race_series: 'NM_PLAYLIST_RACE',
+      net_playlist_featured_series_001: 'NM_PLAYLIST_FEATURED_001',
+      net_playlist_adversary_small: 'NM_PLAYLIST_ADVERSARY_SMALL',
+      net_playlist_adversary_medium: 'NM_PLAYLIST_ADVERSARY_MEDIUM',
+      net_playlist_adversary_large: 'NM_PLAYLIST_ADVERSARY_LARGE',
+      net_playlist_gun_rush_free_for_all: 'NM_PLAYLIST_GUN_RUSH',
+      net_playlist_gun_rush_teams: 'NM_PLAYLIST_GUN_RUSH_TEAMS',
+      net_playlist_elimination_small: 'NM_PLAYLIST_ELIMINATION_SMALL',
+      net_playlist_elimination_medium: 'NM_PLAYLIST_ELIMINATION_MEDIUM',
+      net_playlist_elimination_large: 'NM_PLAYLIST_ELIMINATION_LARGE',
+      net_playlist_nominated_series: 'NM_PLAYLIST_NOMINATED',
+      net_playlist_nominated_series_small: 'NM_PLAYLIST_NOMINATED_SMALL',
+      net_playlist_nominated_series_medium: 'NM_PLAYLIST_NOMINATED_MEDIUM',
+      net_playlist_nominated_series_large: 'NM_PLAYLIST_NOMINATED_LARGE',
+      net_playlist_shootout: 'NM_PLAYLIST_SHOOTOUT',
+      net_playlist_capture: 'NM_PLAYLIST_CAPTURE',
+    };
+
+    const stampValues = [
+      'STAMP_INVALID',
+      'STAMP_CASH',
+      'STAMP_CASH_2',
+      'STAMP_CASH_3',
+      'STAMP_XP',
+      'STAMP_XP_2',
+      'STAMP_XP_3',
+      'STAMP_DISC_25',
+      'STAMP_DISC_50',
+      'STAMP_GOLD',
+      'STAMP_LOCK',
+      'STAMP_LOCKED_RANK',
+      'STAMP_LOCKED_RANK_GOLD',
+      'STAMP_NEW',
+      'STAMP_UNLOCKED_RANK',
+      'STAMP_WISHLIST',
+    ];
+
+    const tunables = findContext('MP_UI_GLOBALS');
+    const stamps = [];
+
+    for (const key in tunables.value) {
+      if (!key.endsWith('_CASH_STAMP_TYPE') && !key.endsWith('_XP_STAMP_TYPE')) continue;
+      const tunable = getTunable(key, 'MP_UI_GLOBALS');
+      const type = key.toLowerCase().replace('_cash_stamp_type', '').replace('_xp_stamp_type', '');
+
+      const value = getLabel(stampValues[tunable] ?? tunable);
+      const label = getLabel(stampLabels[type] ?? type);
+
+      stamps.push(`${value} on ${label}`);
+    }
+
+    return stamps;
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+  }
+}
+
 // GTA
 const carMeetPrizeObjective = computed(() => getCarMeetPrizeObjective());
 const carMeetPrizeVehicle = computed(() => getVehicleTunable('CAR_MEET_PRIZE_VEHICLE'));
@@ -1107,6 +1169,7 @@ const ugcBonuses = computed(() => getUgcBonuses());
 
 // RDO
 const rdoEvent = computed(() => getRdoEvent());
+const rdoStamps = computed(() => getRdoStamps());
 </script>
 
 <template>
@@ -1693,6 +1756,21 @@ const rdoEvent = computed(() => getRdoEvent());
         </template>
 
         <!-- RDO -->
+        <template v-if="rdoStamps">
+          <Accordion :id="Accordions.RdoStamps">
+            <template #title>Bonuses</template>
+            <template #default>
+              <ul class="list-disc">
+                <template v-for="stamp in rdoStamps" :key="stamp">
+                  <li class="ml-5">{{ stamp }}</li>
+                </template>
+              </ul>
+              <p class="mt-2 text-xs text-slate-500">
+                Since the detailed bonuses are not included in the tunables for Red Dead Online, this is not the full list.
+              </p>
+            </template>
+          </Accordion>
+        </template>
         <template v-if="rdoEvent">
           <Accordion :id="Accordions.RdoEvent">
             <template #title>Active Event</template>

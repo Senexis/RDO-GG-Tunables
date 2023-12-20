@@ -1542,51 +1542,56 @@ function showErrorModal(body, eventId = null) {
         </p>
       </div>
 
+      <SettingsModalToggle v-model="settings.quickViewItems" :isVisibilityToggle="true">
+        <template #title>Quick View</template>
+        <template #description>
+          Whether to show tunables that are
+          <button
+            @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail"
+            class="text-sky-600 hover:text-sky-400"
+          >
+            available in Quick View</button
+          >.
+        </template>
+      </SettingsModalToggle>
+      <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
+        <p class="mb-1">
+          Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong>
+          setting:
+        </p>
+        <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
+          <li
+            v-for="item in [
+              'BGS_SpecialEvent_*',
+              'CAR_MEET_PRIZE_VEHICLE',
+              '*_CASH_STAMP_TYPE',
+              'CASINO_PRIZE_VEHICLE',
+              'DAILY_OBJECTIVE',
+              'FIXER_STUDIO_APPEARANCE',
+              'HSW_TEST_RIDE',
+              'HSW_TIME_TRIAL_SUBVARIATION',
+              'LUXURY_SHOWCASE_VEHICLE',
+              'PRIZE_VEHICLE_Z_OFFSET',
+              'PROMO_TEST_DRIVE_VEHICLE',
+              'SIMEON_TEST_DRIVE_VEHICLE',
+              'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
+              'SOCIAL_CLUB_GARAGE_VEHICLE',
+              'TIMETRIALVARIATION',
+              'WEEKLY_OBJECTIVE',
+              'XM22_GUN_VAN_SLOT',
+              'XM22_GUN_VAN_STOCK_ID',
+              '*_XP_STAMP_TYPE',
+            ]"
+            :key="item"
+          >
+            <p class="mr-2 truncate">
+              <code>{{ item }}</code>
+            </p>
+          </li>
+        </ul>
+      </div>
+
       <template v-if="game === 'gta'">
-        <SettingsModalToggle v-model="settings.quickViewItems" :isVisibilityToggle="true">
-          <template #title>Quick View</template>
-          <template #description>
-            Whether to show tunables that are
-            <button
-              @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail"
-              class="text-sky-600 hover:text-sky-400"
-            >
-              available in Quick View</button
-            >.
-          </template>
-        </SettingsModalToggle>
-        <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-slate-700 dark:text-slate-300 py-2 overflow-hidden">
-          <p class="mb-1">
-            Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong>
-            setting:
-          </p>
-          <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
-            <li
-              v-for="item in [
-                'CAR_MEET_PRIZE_VEHICLE',
-                'CASINO_PRIZE_VEHICLE',
-                'DAILY_OBJECTIVE',
-                'FIXER_STUDIO_APPEARANCE',
-                'HSW_TEST_RIDE',
-                'HSW_TIME_TRIAL_SUBVARIATION',
-                'LUXURY_SHOWCASE_VEHICLE',
-                'PRIZE_VEHICLE_Z_OFFSET',
-                'PROMO_TEST_DRIVE_VEHICLE',
-                'SIMEON_TEST_DRIVE_VEHICLE',
-                'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
-                'SOCIAL_CLUB_GARAGE_VEHICLE',
-                'TIMETRIALVARIATION',
-                'XM22_GUN_VAN_SLOT',
-                'XM22_GUN_VAN_STOCK_ID',
-              ]"
-              :key="item"
-            >
-              <p class="mr-2 truncate">
-                <code>{{ item }}</code>
-              </p>
-            </li>
-          </ul>
-        </div>
         <SettingsModalToggle v-model="settings.sales" :isVisibilityToggle="true">
           <template #title>Sales & Bonuses</template>
           <template #description>
