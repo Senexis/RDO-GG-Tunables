@@ -416,6 +416,7 @@ function getWeeklyObjectiveIdNoOverride() {
  */
 function getWeeklyObjectiveId() {
   try {
+    if (props.game !== 'gta') return null;
     let value = getTunable('MP_WEEKLY_OBJECTIVE_ID_OVERRIDE');
     if (value === null || value === -1) value = getWeeklyObjectiveIdNoOverride();
     if (!data.value.weeklyObjectives) return value;
