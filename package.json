@@ -19,7 +19,7 @@
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@sentry/tracing": "^7.88.0",
-    "@sentry/vue": "^7.88.0",
+    "@sentry/vue": "^7.90.0",
     "ajv": "^8.12.0",
     "floating-vue": "^2.0.0-beta.24",
     "hotkeys-js": "^3.13.2",
