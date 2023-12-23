@@ -8,6 +8,7 @@ import {
   ArrowsPointingOutIcon,
   CurrencyDollarIcon,
   EllipsisVerticalIcon,
+  QuestionMarkCircleIcon,
 } from '@heroicons/vue/24/outline';
 
 import Accordion from './Accordion.vue';
@@ -437,8 +438,7 @@ function getWeeklyObjectiveCount() {
   try {
     const value = getTunable('MP_WEEKLY_OBJECTIVE_COUNT_OVERRIDE');
     if (value === null || value === -1) return null;
-    if (!data.value.weeklyObjectives) return value;
-    return data.value.weeklyObjectives[value] ?? value;
+    return value;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -1751,7 +1751,17 @@ const rdoStamps = computed(() => getRdoStamps());
                   <li class="ml-5">{{ weeklyObjectiveId }}</li>
                 </template>
                 <template v-if="weeklyObjectiveCount">
-                  <li class="ml-5"><strong>Objective override:</strong> {{ formatNumber(weeklyObjectiveCount) }}</li>
+                  <li class="ml-5">
+                    <strong>Objective override:</strong>
+                    {{ formatNumber(weeklyObjectiveCount) }}
+                    <QuestionMarkCircleIcon
+                      class="inline h-5 w-5"
+                      v-tooltip="{
+                        html: true,
+                        content: `This means the amount in the objective above is set to this value instead of the default.<br />For example, if the above objective is 'Complete <strong>3</strong> missions' and this is set to <strong>4</strong>, the objective would be 'Complete <strong>4</strong> missions'.`,
+                      }"
+                    />
+                  </li>
                 </template>
               </ul>
               <a href="https://gtaweb.eu/gtao-toolkit" target="_blank" rel="noopener noreferrer">Track on GTAWeb.eu</a>
