@@ -38,7 +38,7 @@ const props = defineProps({
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg backdrop-blur backdrop-filter bg-white dark:bg-slate-900 !bg-opacity-80 text-slate-900 dark:text-slate-50 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+              class="relative transform overflow-hidden rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
             >
               <slot></slot>
             </DialogPanel>

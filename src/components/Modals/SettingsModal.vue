@@ -32,7 +32,7 @@ const props = defineProps({
     <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
       <div
-        class="text-xs text-slate-900/60 dark:text-slate-50/60 bg-slate-50 dark:bg-slate-800 !bg-opacity-80 px-4 py-3 rounded-lg shadow-sm transition-opacity opacity-50 hover:opacity-100"
+        class="text-xs text-slate-900/60 dark:text-slate-50/60 bg-slate-50 dark:bg-slate-800 px-4 py-3 rounded-lg shadow-sm transition-opacity opacity-50 hover:opacity-100"
       >
         <p class="break-words">
           <template v-if="props.commitLong && props.commitShort">
@@ -56,9 +56,7 @@ const props = defineProps({
         </p>
       </div>
     </div>
-    <div
-      class="bg-slate-50 dark:bg-slate-800 !bg-opacity-80 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
-    >
+    <div class="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
       <div class="flex gap-3">
         <button
           type="button"

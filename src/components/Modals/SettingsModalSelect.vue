@@ -29,7 +29,7 @@ const selected = computed({
       <span class="text-sm font-medium text-slate-900 dark:text-slate-50">
         <slot name="title"></slot>
       </span>
-      <span class="hidden sm:inline text-sm text-slate-700 dark:text-slate-300">
+      <span class="text-sm text-slate-700 dark:text-slate-300">
         <slot name="description"></slot>
       </span>
     </div>

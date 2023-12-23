@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
           leave-to="opacity-0 scale-95"
         >
           <DialogPanel
-            class="mx-auto max-w-2xl transform divide-y overflow-hidden rounded-xl backdrop-blur backdrop-filter shadow-2xl transition-all divide-slate-100 ring-1 ring-black ring-opacity-5 dark:divide-slate-500 dark:divide-opacity-20 bg-white dark:bg-slate-900 !bg-opacity-80"
+            class="mx-auto max-w-2xl transform divide-y overflow-hidden rounded-xl shadow-2xl transition-all divide-slate-100 ring-1 ring-black ring-opacity-5 dark:divide-slate-500 dark:divide-opacity-20 bg-white dark:bg-slate-900"
           >
             <Combobox @update:modelValue="onSelect">
               <div class="relative">
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
               </div>
 
               <div
-                class="flex flex-row items-center gap-1 px-2 py-1.5 border-t border-slate-500 border-opacity-10 bg-slate-50 dark:bg-slate-800 !bg-opacity-80"
+                class="flex flex-row items-center gap-1 px-2 py-1.5 border-t border-slate-500 border-opacity-10 bg-slate-50 dark:bg-slate-800"
               >
                 <div class="flex-shrink-0 rounded bg-amber-800 p-0.5">
                   <BoltIcon class="h-4 w-4 text-slate-50" aria-hidden="true" />

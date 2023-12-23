@@ -57,7 +57,7 @@ const props = defineProps({
       </div>
     </div>
     <div
-      class="bg-slate-50 dark:bg-slate-800 !bg-opacity-80 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6"
+      class="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6"
     >
       <div class="flex flex-row-reverse gap-3">
         <a
