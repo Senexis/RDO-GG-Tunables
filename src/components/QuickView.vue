@@ -991,10 +991,10 @@ function formatCurrency(discounts) {
     if (mappedDiscounts.length === 0) {
       return 'Unknown';
     } else if (mappedDiscounts.length === 1) {
-      return mappedDiscounts.at(0);
+      return mappedDiscounts[0];
     } else {
-      const lowestDiscount = mappedDiscounts.at(0);
-      const highestDiscount = mappedDiscounts.at(-1);
+      const lowestDiscount = mappedDiscounts[0];
+      const highestDiscount = mappedDiscounts[mappedDiscounts.length - 1];
       return `${lowestDiscount} - ${highestDiscount}`;
     }
   } catch (error) {
