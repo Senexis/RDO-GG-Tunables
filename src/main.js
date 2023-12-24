@@ -118,7 +118,7 @@ try {
           x: Math.random(),
           y: Math.random() * skew - 0.2,
         },
-        colors: ['#ffffff'],
+        colors: ['#cbd5e1'],
         shapes: [box, cane, flake, man],
         gravity: randomInRange(0.4, 0.6),
         scalar: randomInRange(0.4, 1.2),
