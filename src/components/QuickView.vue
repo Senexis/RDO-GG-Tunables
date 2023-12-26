@@ -83,6 +83,7 @@ onMounted(() => {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 });
 
@@ -116,6 +117,7 @@ async function handleQuickViewInit() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -132,6 +134,7 @@ async function request(url) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'We were unable to retrieve some required data needed to display the tunables. Please try again later.', eventId);
+    console.error(error);
   }
 }
 
@@ -146,6 +149,7 @@ function handleToggleQuickView() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -160,6 +164,7 @@ function handleMoveQuickView() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -178,6 +183,7 @@ function handleCollapseAllQuickView() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -195,6 +201,7 @@ function handleCollapseAllExceptSalesQuickView() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -209,6 +216,7 @@ function handleExpandAllQuickView() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -218,6 +226,7 @@ function handleDismissSalesDisclaimer() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -253,6 +262,7 @@ function getTunable(key, context = null) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -269,6 +279,7 @@ function getLabel(value) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -306,6 +317,7 @@ function findTunable(query) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -334,6 +346,7 @@ function findContext(query) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -350,6 +363,7 @@ function getTunableDefault(key) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -368,6 +382,7 @@ function getVehicleTunable(tunable) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -386,6 +401,7 @@ function getDailyObjective(day) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -408,6 +424,7 @@ function getWeeklyObjectiveIdNoOverride() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -426,6 +443,7 @@ function getWeeklyObjectiveId() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -442,6 +460,7 @@ function getWeeklyObjectiveCount() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -459,6 +478,7 @@ function getRcTimeTrial() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -476,6 +496,7 @@ function getHswTimeTrial() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -493,6 +514,7 @@ function getTimeTrial() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -594,6 +616,7 @@ function getCarMeetPrizeObjective() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -695,6 +718,7 @@ function getGunVan() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -712,6 +736,7 @@ function getStudioAppearanceEnabled(day) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -751,6 +776,7 @@ function getSales() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -864,6 +890,7 @@ function getSalesTitle(title) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -934,6 +961,7 @@ function getUgcBonuses() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -950,6 +978,7 @@ function getUgcModifierBadge(modifier) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -966,6 +995,7 @@ function getUgcModifierLabel(modifier) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -1000,6 +1030,7 @@ function formatCurrency(discounts) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 /**
@@ -1016,6 +1047,7 @@ function formatNumber(value) {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -1057,6 +1089,7 @@ function getRdoEvent() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
@@ -1102,10 +1135,12 @@ function getRdoStamps() {
       'STAMP_WISHLIST',
     ];
 
-    const tunables = findContext('MP_UI_GLOBALS');
+    const context = findContext('MP_UI_GLOBALS');
     const stamps = [];
 
-    for (const key in tunables.value) {
+    if (!context) return stamps;
+
+    for (const key in context.value) {
       if (!key.endsWith('_CASH_STAMP_TYPE') && !key.endsWith('_XP_STAMP_TYPE')) continue;
       const tunable = getTunable(key, 'MP_UI_GLOBALS');
       const type = key.toLowerCase().replace('_cash_stamp_type', '').replace('_xp_stamp_type', '');
@@ -1120,6 +1155,7 @@ function getRdoStamps() {
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
   }
 }
 
