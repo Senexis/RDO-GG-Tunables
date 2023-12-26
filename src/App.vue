@@ -638,13 +638,13 @@ const title = computed(() => {
     }
 
     if (!tunables.value.latest || !tunables.value.previous) {
-      return 'RDO.GG Tunables';
+      return 'Changes';
     }
 
     const previousDate = tunables.value.previous.date;
     const latestDate = tunables.value.latest.date;
 
-    return `RDO.GG Tunables changes between ${previousDate} and ${latestDate}`;
+    return `Changes between ${previousDate} and ${latestDate}`;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     showErrorModal('An unknown error occurred.', eventId);
@@ -702,7 +702,7 @@ watch(platform, () => {
  */
 watch(title, (state) => {
   try {
-    document.title = state;
+    document.title = `${state} - RDO.GG Tunables`;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     showErrorModal('An unknown error occurred.', eventId);
