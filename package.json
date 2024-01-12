@@ -27,7 +27,7 @@
     "jsondiffpatch": "^0.6.0",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "vue": "^3.3.13"
+    "vue": "^3.4.10"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.6.1",
