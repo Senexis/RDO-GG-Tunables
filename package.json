@@ -22,7 +22,7 @@
     "@sentry/vue": "^7.98.0",
     "ajv": "^8.12.0",
     "canvas-confetti": "^1.9.2",
-    "floating-vue": "^5.2.0",
+    "floating-vue": "^5.2.2",
     "hotkeys-js": "^3.13.5",
     "jsondiffpatch": "^0.6.0",
     "pinia": "^2.1.7",
