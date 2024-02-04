@@ -31,7 +31,10 @@ const props = defineProps({
             <strong><a href="https://alloc8or.re/" target="_blank" rel="noopener noreferrer">Alloc8or</a>:</strong> Thanks for helping with
             the parsing of the tunable files.
           </li>
-          <li><strong>Ghost:</strong> Thanks for helping fix the dates of each tunable file.</li>
+          <li>
+            <strong><a href="https://github.com/AlanXYLi" target="_blank" rel="noopener noreferrer">Ghost</a>:</strong> Thanks for helping
+            fix the dates of each tunable file.
+          </li>
           <li>
             <strong
               ><a href="https://github.com/Senexis/RDO-GG-Tunables/graphs/contributors" target="_blank" rel="noopener noreferrer"
