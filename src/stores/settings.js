@@ -32,6 +32,7 @@ export const useStore = defineStore('settings', {
       sales: true,
       tunables: true,
       verbose: false,
+      gen9Bonuses: false,
 
       // Miscellanous settings.
       goToWeek: true,

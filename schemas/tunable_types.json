@@ -101,6 +101,10 @@
           "0xAFB83BD5",
           "BRICKADE2"
         ]
+      },
+      "gen_9_bonus": {
+        "title": "Tunable is a Gen 9 Bonus",
+        "type": "boolean"
       }
     }
   }

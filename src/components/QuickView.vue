@@ -28,6 +28,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  platform: {
+    type: String,
+    default: null,
+  },
   loading: {
     type: Boolean,
     required: true,
@@ -751,6 +755,10 @@ function getSales() {
     for (const tunableType of data.value.tunableTypes) {
       const tunable = findTunable(tunableType.key);
       if (!tunable) continue;
+
+      if (props.game === 'gta' && (props.platform === 'ps5' || props.platform === 'xboxsx')) {
+        if (!settings.gen9Bonuses && tunableType.gen_9_bonus) continue;
+      }
 
       const salesTitle = tunable.context === 'MP_FM_MEMBERSHIP' ? `${tunableType.type}_plus` : tunableType.type;
       const baseValue = getTunableDefault(tunableType.key);

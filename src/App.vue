@@ -1206,6 +1206,7 @@ function showErrorModal(body, eventId = null) {
     <template v-if="!settings.quickViewBelowTunables">
       <QuickView
         :game="game"
+        :platform="platform"
         :loading="difference.loading"
         :tunables="tunables?.latest?.contents?.tunables"
         :ugc="tunables?.latest?.contents?.contentlists"
@@ -1413,6 +1414,7 @@ function showErrorModal(body, eventId = null) {
     <template v-if="settings.quickViewBelowTunables">
       <QuickView
         :game="game"
+        :platform="platform"
         :loading="difference.loading"
         :tunables="tunables?.latest?.contents?.tunables"
         :ugc="tunables?.latest?.contents?.contentlists"
@@ -1740,6 +1742,21 @@ function showErrorModal(body, eventId = null) {
         <template #description>Whether to show tunable metadata such as the default value.</template>
       </SettingsModalToggle>
     </div>
+
+    <template v-if="game === 'gta'">
+      <h3 class="font-lg font-semibold pb-2 border-b-2 border-slate-200 dark:border-slate-600">Quick View Panel</h3>
+
+      <div class="divide-y divide-slate-200 dark:divide-slate-600 mb-4">
+        <SettingsModalToggle v-model="settings.salesDisclaimer" :isVisibilityToggle="true">
+          <template #title>Sales Disclaimer</template>
+          <template #description> Whether to show the sales disclaimer banner.</template>
+        </SettingsModalToggle>
+        <SettingsModalToggle v-model="settings.gen9Bonuses" :isVisibilityToggle="true">
+          <template #title>Gen 9 Benefits</template>
+          <template #description> Whether to show tunables in Sales & Bonuses that are PlayStation 5 or Xbox Series S|X benefits.</template>
+        </SettingsModalToggle>
+      </div>
+    </template>
 
     <h3 class="font-lg font-semibold pb-2 border-b-2 border-slate-200 dark:border-slate-600">
       <a
