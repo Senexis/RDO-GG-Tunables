@@ -234,7 +234,16 @@ const typesUrl = computed(() => `/data/tunable_types.json?${allUrlCacheKey.value
  * @type {import("vue").ComputedRef<string | null>}
  */
 const activeBanner = computed(() => {
-  const banners = ['new-site', 'new-quick-view', 'open-source', 'hide-quick-view-items', 'more-personalization', 'game-platform-defaults'];
+  const banners = [
+    'new-site',
+    'new-quick-view',
+    'open-source',
+    'hide-quick-view-items',
+    'more-personalization',
+    'game-platform-defaults',
+    'gen-9-bonuses',
+  ];
+
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
   return activeBanners.length > 0 ? activeBanners[0] : null;
 });
@@ -1476,8 +1485,8 @@ function showErrorModal(body, eventId = null) {
     <Banner id="hide-quick-view-items" :show="activeBanner === 'hide-quick-view-items'">
       Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
       <br />
-      <span class="text-sm text-slate-200"
-        >You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
+      <span class="text-sm text-slate-200">
+        You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
         <strong>Quick View</strong> tunables setting.
       </span>
     </Banner>
@@ -1491,6 +1500,17 @@ function showErrorModal(body, eventId = null) {
       Tired of picking your game and platform every time you visit? You can now set your default game and platform using the
       <Cog6ToothIcon class="inline w-5 h-5" /> button!
     </Banner>
+
+    <template v-if="game === 'gta'">
+      <Banner id="gen-9-bonuses" :show="activeBanner === 'gen-9-bonuses'">
+        Missing some items in the Sales & Bonuses section?
+        <br />
+        <span class="text-sm text-slate-200">
+          We've hidden the PlayStation 5 and Xbox Series X|S benefits that never change to reduce clutter. You can re-enable them using the
+          <Cog6ToothIcon class="inline w-5 h-5" /> button.
+        </span>
+      </Banner>
+    </template>
   </template>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
@@ -1575,9 +1595,9 @@ function showErrorModal(body, eventId = null) {
         <p class="text-xs text-slate-500">
           More options for Quick View are available by clicking the <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View
           panel.
-          <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer"
-            >Contact us on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
-          /></a>
+          <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer">
+            Contact us on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />
+          </a>
           if you have suggestions for more personalization options!
         </p>
       </div>
@@ -1669,8 +1689,7 @@ function showErrorModal(body, eventId = null) {
               target="_blank"
               rel="noopener noreferrer"
               class="text-sky-600 hover:text-sky-400"
-            >
-              available in Sales & Bonuses</a
+              >available in Sales & Bonuses</a
             >.
           </template>
         </SettingsModalToggle>
@@ -1773,9 +1792,9 @@ function showErrorModal(body, eventId = null) {
       <div class="flex items-center justify-between gap-2 py-2">
         <div class="flex flex-grow flex-col">
           <span class="text-sm font-medium text-slate-900 dark:text-slate-50">Reset Settings</span>
-          <span class="text-sm text-slate-700 dark:text-slate-300"
-            >Reset all settings to their defaults, expand all collapsed content, and show all dismissed banners.</span
-          >
+          <span class="text-sm text-slate-700 dark:text-slate-300">
+            Reset all settings to their defaults, expand all collapsed content, and show all dismissed banners.
+          </span>
         </div>
         <button
           @click="handleResetSettingsClick"
