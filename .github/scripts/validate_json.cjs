@@ -14,6 +14,7 @@ const filesToValidate = {
         'hsw_time_trials',
         'rc_time_trials',
         'time_trials',
+        'salvage_yard',
     ],
     'tunable_types': [
         'tunable_types',

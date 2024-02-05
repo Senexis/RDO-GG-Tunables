@@ -59,6 +59,7 @@ const data = ref({
   vehicles: null,
   weapons: null,
   tunableTypes: null,
+  salvageYard: null,
 });
 
 const Accordions = Object.freeze({
@@ -72,6 +73,7 @@ const Accordions = Object.freeze({
   PremiumDeluxeMotorsportShowroom: 'premium_deluxe_motorsport_showroom',
   VinewoodCarClub: 'vinewood_car_club',
   RecordAStudios: 'record_a_studios',
+  SalvageYard: 'salvage_yard',
   DailyObjectives: 'daily_objectives',
   WeeklyObjectives: 'weekly_objectives',
   RdoEvent: 'rdo_event',
@@ -106,6 +108,7 @@ async function handleQuickViewInit() {
     const rcTimeTrials = await request('/data/rc_time_trials.json');
     const timeTrials = await request('/data/time_trials.json');
     const tunableTypes = await request('/data/tunable_types.json');
+    const salvageYard = await request('/data/salvage_yard.json');
 
     data.value = {
       loading: false,
@@ -117,6 +120,7 @@ async function handleQuickViewInit() {
       rcTimeTrials,
       timeTrials,
       tunableTypes,
+      salvageYard,
     };
   } catch (error) {
     const eventId = Sentry.captureException(error);
@@ -388,6 +392,44 @@ function getVehicleTunable(tunable) {
     emit('error', 'An unknown error occurred.', eventId);
     console.error(error);
   }
+}
+
+function getSalvageYardVehicleMission(index) {
+  const value = getTunable(`SALV23_VEHICLE_ROBBERY_${index}`);
+  if (value === null || value === -1) return null;
+  return getLabel(`JAMAL_ROB_CAN${value}`);
+}
+
+function getSalvageYardVehicleCanKeep(index) {
+  const value = getTunable(`SALV23_VEHICLE_ROBBERY_CAN_KEEP_${index}`);
+  return Boolean(value);
+}
+
+function getSalvageYardVehicleName(index) {
+  const value = getTunable(`SALV23_VEHICLE_ROBBERY_ID_${index}`);
+  if (value === null || value === -1) return null;
+
+  if (!data.value.salvageYard) return null;
+  const length = data.value.salvageYard.length;
+
+  // TODO: Were R* just drunk when they scripted this or is there actually a situation where the other stuff is needed?
+  // See vehrob_planning:0x2F6BA in case their stuff is different from just this.
+  const vehicleIndex = (value % length) - 1;
+  const vehicle = data.value.salvageYard[vehicleIndex];
+
+  return getLabel(vehicle);
+}
+
+function getSalvageYardVehicle(index) {
+  const mission = getSalvageYardVehicleMission(index);
+  const canKeep = getSalvageYardVehicleCanKeep(index);
+  const name = getSalvageYardVehicleName(index);
+
+  if (canKeep) {
+    return `${mission}: ${name} (claimable)`;
+  }
+  
+  return `${mission}: ${name}`;
 }
 
 /**
@@ -1184,6 +1226,9 @@ const socialClubGarageVehicle6 = computed(() => getVehicleTunable('SOCIAL_CLUB_G
 const socialClubGarageVehicle7 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_7'));
 const socialClubGarageVehicle8 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_8'));
 const socialClubGarageVehicle9 = computed(() => getVehicleTunable('SOCIAL_CLUB_GARAGE_VEHICLE_9'));
+const salvageYardVehicle1 = computed(() => getSalvageYardVehicle(0));
+const salvageYardVehicle2 = computed(() => getSalvageYardVehicle(1));
+const salvageYardVehicle3 = computed(() => getSalvageYardVehicle(2));
 const dailyObjectiveMon = computed(() => getDailyObjective('SAT'));
 const dailyObjectiveTue = computed(() => getDailyObjective('SUN'));
 const dailyObjectiveWed = computed(() => getDailyObjective('MON'));
@@ -1552,14 +1597,7 @@ const rdoStamps = computed(() => getRdoStamps());
           "
         >
           <Accordion :id="Accordions.LsCarMeet">
-            <template #title>
-              <div class="flex justify-between items-center w-full overflow-hidden">
-                <div class="flex gap-2 overflow-hidden">
-                  <span class="truncate">LS Car Meet</span>
-                </div>
-                <span class="badge badge-primary ml-2" v-tooltip="'Updated with new Chop Shop objectives'">Updated</span>
-              </div>
-            </template>
+            <template #title>LS Car Meet</template>
             <template #default>
               <template v-if="carMeetPrizeObjective || carMeetPrizeVehicle">
                 <h3 class="my-1 font-semibold">Prize Ride</h3>
@@ -1722,6 +1760,29 @@ const rdoStamps = computed(() => getRdoStamps());
             </template>
           </Accordion>
         </template>
+        <template v-if="salvageYardVehicle1 || salvageYardVehicle2 || salvageYardVehicle3">
+          <Accordion :id="Accordions.SalvageYard">
+            <template #title>
+              <div class="flex justify-between items-center w-full overflow-hidden">
+                <div class="flex gap-2 overflow-hidden">
+                  <span class="truncate">Salvage Yard</span>
+                </div>
+                <span class="badge badge-plus ml-2" v-tooltip="'Newly added in Chop Shop'">New</span>
+              </div>
+            </template>
+            <template #default>
+              <h3 class="my-1 font-semibold">Robbery Vehicles:</h3>
+              <ul class="list-disc">
+                <li class="ml-5">{{ salvageYardVehicle1 }}</li>
+                <li class="ml-5">{{ salvageYardVehicle2 }}</li>
+                <li class="ml-5">{{ salvageYardVehicle3 }}</li>
+              </ul>
+              <a href="https://gtaweb.eu/gtao-map/ls/-/salvage-yards" target="_blank" rel="noopener noreferrer"
+                >More information on GTAWeb.eu</a
+              >
+            </template>
+          </Accordion>
+        </template>
         <template
           v-if="
             dailyObjectiveMon ||
@@ -1734,14 +1795,7 @@ const rdoStamps = computed(() => getRdoStamps());
           "
         >
           <Accordion :id="Accordions.DailyObjectives">
-            <template #title>
-              <div class="flex justify-between items-center w-full overflow-hidden">
-                <div class="flex gap-2 overflow-hidden">
-                  <span class="truncate">Daily Objectives</span>
-                </div>
-                <span class="badge badge-primary ml-2" v-tooltip="'Updated with new Chop Shop objectives'">Updated</span>
-              </div>
-            </template>
+            <template #title>Daily Objectives</template>
             <template #default>
               <ul class="list-disc">
                 <template v-if="dailyObjectiveMon">
@@ -1772,14 +1826,7 @@ const rdoStamps = computed(() => getRdoStamps());
         </template>
         <template v-if="weeklyObjective">
           <Accordion :id="Accordions.WeeklyObjectives">
-            <template #title>
-              <div class="flex justify-between items-center w-full overflow-hidden">
-                <div class="flex gap-2 overflow-hidden">
-                  <span class="truncate">Weekly Objective</span>
-                </div>
-                <span class="badge badge-plus ml-2" v-tooltip="'Newly added in Chop Shop'">New</span>
-              </div>
-            </template>
+            <template #title>Weekly Objective</template>
             <template #default>
               <ul class="list-disc">
                 <template v-if="weeklyObjective">
@@ -1794,14 +1841,7 @@ const rdoStamps = computed(() => getRdoStamps());
         <!-- RDO -->
         <template v-if="rdoStamps">
           <Accordion :id="Accordions.RdoStamps">
-            <template #title>
-              <div class="flex justify-between items-center w-full overflow-hidden">
-                <div class="flex gap-2 overflow-hidden">
-                  <span class="truncate">Bonuses</span>
-                </div>
-                <span class="badge badge-plus ml-2">New</span>
-              </div>
-            </template>
+            <template #title>Bonuses</template>
             <template #default>
               <ul class="list-disc">
                 <template v-for="stamp in rdoStamps" :key="stamp">
