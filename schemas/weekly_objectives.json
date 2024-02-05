@@ -1,0 +1,19 @@
+{
+  "$id": "weekly_objectives",
+  "title": "Weekly Objectives",
+  "type": "array",
+  "default": [],
+  "items": {
+    "type": "array",
+    "minItems": 2,
+    "maxItems": 2,
+    "items": [
+      {
+        "type": "string"
+      },
+      {
+        "type": "number"
+      }
+    ]
+  }
+}

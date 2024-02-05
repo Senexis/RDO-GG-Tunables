@@ -11,13 +11,15 @@ const filesToValidate = {
     ],
     'string_array': [
         'daily_objectives',
-        'weekly_objectives',
         'hsw_time_trials',
         'rc_time_trials',
         'time_trials',
     ],
     'tunable_types': [
         'tunable_types',
+    ],
+    'weekly_objectives': [
+        'weekly_objectives',
     ],
 };
 

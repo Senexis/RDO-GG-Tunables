@@ -410,29 +410,6 @@ function getDailyObjective(day) {
 }
 
 /**
- * Retrieves the weekly objective ID when there's no override using script logic.
- *
- * @returns {number}
- */
-function getWeeklyObjectiveIdNoOverride() {
-  try {
-    // TODO: Untested due to not being used yet, needs to be verified.
-    // Might not be correct, the scripts seem to use NETWORK_SEED_RANDOM_NUMBER_GENERATOR and NETWORK_GET_RANDOM_INT_RANGED along the process.
-    // Perhaps the picked option is correct but the actual result is fully randomized (scrambled array), in which case this isn't possible anyway.
-    const date = new Date();
-    const time = Math.floor(date.getTime() / 1000);
-    const offset = time - 580608000;
-    const days = offset / 86400;
-    const weeks = days / 7;
-    return Math.floor(weeks) % 93;
-  } catch (error) {
-    const eventId = Sentry.captureException(error);
-    emit('error', 'An unknown error occurred.', eventId);
-    console.error(error);
-  }
-}
-
-/**
  * Retrieves the weekly objective ID.
  *
  * @returns {string|null}
@@ -441,7 +418,7 @@ function getWeeklyObjectiveId() {
   try {
     if (props.game !== 'gta') return null;
     let value = getTunable('MP_WEEKLY_OBJECTIVE_ID_OVERRIDE');
-    if (value === null || value === -1) value = getWeeklyObjectiveIdNoOverride();
+    if (value === null || value === -1) return null;
     if (!data.value.weeklyObjectives) return value;
     return data.value.weeklyObjectives[value] ?? value;
   } catch (error) {
@@ -449,6 +426,21 @@ function getWeeklyObjectiveId() {
     emit('error', 'An unknown error occurred.', eventId);
     console.error(error);
   }
+}
+
+/**
+ * Retrieves the weekly objective.
+ *
+ * @returns {string|null}
+ */
+function getWeeklyObjective() {
+  const objective = getWeeklyObjectiveId();
+  if (objective === null) return null;
+  const override = getWeeklyObjectiveCount();
+
+  return getLabel(objective[0])
+    .replace('~a~', '')
+    .replace('~1~', formatNumber(override ?? objective[1]));
 }
 
 /**
@@ -1199,8 +1191,7 @@ const dailyObjectiveThu = computed(() => getDailyObjective('TUE'));
 const dailyObjectiveFri = computed(() => getDailyObjective('WED'));
 const dailyObjectiveSat = computed(() => getDailyObjective('THU'));
 const dailyObjectiveSun = computed(() => getDailyObjective('FRI'));
-const weeklyObjectiveId = computed(() => getWeeklyObjectiveId());
-const weeklyObjectiveCount = computed(() => getWeeklyObjectiveCount());
+const weeklyObjective = computed(() => getWeeklyObjective());
 const timeTrial = computed(() => getTimeTrial());
 const hswTimeTrial = computed(() => getHswTimeTrial());
 const rcTimeTrial = computed(() => getRcTimeTrial());
@@ -1779,7 +1770,7 @@ const rdoStamps = computed(() => getRdoStamps());
             </template>
           </Accordion>
         </template>
-        <template v-if="weeklyObjectiveId">
+        <template v-if="weeklyObjective">
           <Accordion :id="Accordions.WeeklyObjectives">
             <template #title>
               <div class="flex justify-between items-center w-full overflow-hidden">
@@ -1791,21 +1782,8 @@ const rdoStamps = computed(() => getRdoStamps());
             </template>
             <template #default>
               <ul class="list-disc">
-                <template v-if="weeklyObjectiveId">
-                  <li class="ml-5">{{ weeklyObjectiveId }}</li>
-                </template>
-                <template v-if="weeklyObjectiveCount">
-                  <li class="ml-5">
-                    <strong>Objective override:</strong>
-                    {{ formatNumber(weeklyObjectiveCount) }}
-                    <QuestionMarkCircleIcon
-                      class="inline h-5 w-5"
-                      v-tooltip="{
-                        html: true,
-                        content: `This means the amount in the objective above is set to this value instead of the default.<br />For example, if the above objective is 'Complete <strong>3</strong> missions' and this is set to <strong>4</strong>, the objective would be 'Complete <strong>4</strong> missions'.`,
-                      }"
-                    />
-                  </li>
+                <template v-if="weeklyObjective">
+                  <li class="ml-5">{{ weeklyObjective }}</li>
                 </template>
               </ul>
               <a href="https://gtaweb.eu/gtao-toolkit" target="_blank" rel="noopener noreferrer">Track on GTAWeb.eu</a>
