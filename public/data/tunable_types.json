@@ -1383,7 +1383,7 @@
     "key": "BIKER_CLUBHOUSE_CLUB_NAME",
     "type": "biker_clubhouse_upgrade_sales",
     "display": "FORECLOSURES_CLUB_NAME",
-    "gen_9_bonus": false
+    "gen_9_bonus": true
   },
   {
     "key": "BIKER_CLUBHOUSE_CLUB_NAME_FONT",
