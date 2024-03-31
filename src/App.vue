@@ -1661,6 +1661,8 @@ function showErrorModal(body, eventId = null) {
               'LUXURY_SHOWCASE_VEHICLE',
               'PRIZE_VEHICLE_Z_OFFSET',
               'PROMO_TEST_DRIVE_VEHICLE',
+              'SALV23_ROBBERY_VEHICLE',
+              'SALV23_VEHICLE_ROBBERY',
               'SIMEON_TEST_DRIVE_VEHICLE',
               'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
               'SOCIAL_CLUB_GARAGE_VEHICLE',

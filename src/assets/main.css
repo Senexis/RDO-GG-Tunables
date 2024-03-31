@@ -118,9 +118,9 @@ kbd {
 }
 
 /* Hide individual sections. */
-.hide-content [data-key="contentlists"],
-.hide-content [data-key*="CONTENT_MODIFIER"],
-.hide-tunables [data-key="tunables"] {
+.hide-content .jsondiffpatch-node[data-key="contentlists"],
+.hide-content .jsondiffpatch-node[data-key^="CONTENT_MODIFIER"],
+.hide-tunables .jsondiffpatch-node[data-key="tunables"] {
   @apply !hidden;
 }
 
@@ -138,6 +138,8 @@ kbd {
 .hide-quick-view [data-key*="LUXURY_SHOWCASE_VEHICLE"],
 .hide-quick-view [data-key*="PRIZE_VEHICLE_Z_OFFSET"],
 .hide-quick-view [data-key*="PROMO_TEST_DRIVE_VEHICLE"],
+.hide-quick-view [data-key*="SALV23_ROBBERY_VEHICLE"],
+.hide-quick-view [data-key*="SALV23_VEHICLE_ROBBERY"],
 .hide-quick-view [data-key*="SIMEON_TEST_DRIVE_VEHICLE"],
 .hide-quick-view [data-key*="SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE"],
 .hide-quick-view [data-key*="SOCIAL_CLUB_GARAGE_VEHICLE"],

@@ -428,7 +428,7 @@ function getSalvageYardVehicle(index) {
   if (canKeep) {
     return `${mission}: ${name} (claimable)`;
   }
-  
+
   return `${mission}: ${name}`;
 }
 
@@ -978,10 +978,13 @@ function getUgcBonuses() {
 
       if (modifiersPlus && modifiersPlus.value) {
         for (const [modifierKey, modifierValue] of Object.entries(modifiersPlus.value)) {
-          if (modifierKey.includes('RP_CAP')) continue;
-          if (isNaN(modifierValue)) continue;
-          let formattedValue = Number(modifierValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
-          if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
+          if (!settings.verbose && modifierKey.includes('RP_CAP')) continue;
+          let formattedValue = modifierValue;
+          if (!settings.verbose && isNaN(modifierValue)) continue;
+          if (!isNaN(modifierValue)) {
+            formattedValue = Number(formattedValue).toLocaleString('en-US', { maximumFractionDigits: 2 });
+            if (modifierKey.includes('MULTIPLIER')) formattedValue += 'x';
+          }
           if (results[contentListKey].modifiers.some((i) => i.type === modifierKey && i.value === formattedValue)) continue;
           results[contentListKey].modifiers.push({
             type: modifierKey,
@@ -1014,8 +1017,8 @@ function getUgcBonuses() {
  */
 function getUgcModifierBadge(modifier) {
   try {
-    if (modifier.type === 'CASH_MULTIPLIER') return 'badge-cash';
-    if (modifier.type === 'XP_MULTIPLIER') return 'badge-rp';
+    if (modifier.type.endsWith('CASH_MULTIPLIER')) return 'badge-cash';
+    if (modifier.type.endsWith('XP_MULTIPLIER')) return 'badge-rp';
     return 'badge-primary';
   } catch (error) {
     const eventId = Sentry.captureException(error);
@@ -1762,14 +1765,7 @@ const rdoStamps = computed(() => getRdoStamps());
         </template>
         <template v-if="salvageYardVehicle1 || salvageYardVehicle2 || salvageYardVehicle3">
           <Accordion :id="Accordions.SalvageYard">
-            <template #title>
-              <div class="flex justify-between items-center w-full overflow-hidden">
-                <div class="flex gap-2 overflow-hidden">
-                  <span class="truncate">Salvage Yard</span>
-                </div>
-                <span class="badge badge-plus ml-2" v-tooltip="'Newly added in Chop Shop'">New</span>
-              </div>
-            </template>
+            <template #title>Salvage Yard</template>
             <template #default>
               <h3 class="my-1 font-semibold">Robbery Vehicles:</h3>
               <ul class="list-disc">
