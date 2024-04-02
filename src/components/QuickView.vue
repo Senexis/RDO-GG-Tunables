@@ -425,6 +425,8 @@ function getSalvageYardVehicle(index) {
   const canKeep = getSalvageYardVehicleCanKeep(index);
   const name = getSalvageYardVehicleName(index);
 
+  if (!mission || !name) return null;
+
   if (canKeep) {
     return `${mission}: ${name} (claimable)`;
   }
@@ -1143,22 +1145,23 @@ function getRdoStamps() {
     if (props.game !== 'rdo') return null;
 
     const stampLabels = {
-      net_playlist_race_series: 'NM_PLAYLIST_RACE',
-      net_playlist_featured_series_001: 'NM_PLAYLIST_FEATURED_001',
-      net_playlist_adversary_small: 'NM_PLAYLIST_ADVERSARY_SMALL',
-      net_playlist_adversary_medium: 'NM_PLAYLIST_ADVERSARY_MEDIUM',
+      net_on_call: 'NM_PLAYLIST_STORY_MISSION_ON_CALL',
       net_playlist_adversary_large: 'NM_PLAYLIST_ADVERSARY_LARGE',
+      net_playlist_adversary_medium: 'NM_PLAYLIST_ADVERSARY_MEDIUM',
+      net_playlist_adversary_small: 'NM_PLAYLIST_ADVERSARY_SMALL',
+      net_playlist_capture: 'NM_PLAYLIST_CAPTURE',
+      net_playlist_elimination_large: 'NM_PLAYLIST_ELIMINATION_LARGE',
+      net_playlist_elimination_medium: 'NM_PLAYLIST_ELIMINATION_MEDIUM',
+      net_playlist_elimination_small: 'NM_PLAYLIST_ELIMINATION_SMALL',
+      net_playlist_featured_series_001: 'NM_PLAYLIST_FEATURED_001',
       net_playlist_gun_rush_free_for_all: 'NM_PLAYLIST_GUN_RUSH',
       net_playlist_gun_rush_teams: 'NM_PLAYLIST_GUN_RUSH_TEAMS',
-      net_playlist_elimination_small: 'NM_PLAYLIST_ELIMINATION_SMALL',
-      net_playlist_elimination_medium: 'NM_PLAYLIST_ELIMINATION_MEDIUM',
-      net_playlist_elimination_large: 'NM_PLAYLIST_ELIMINATION_LARGE',
       net_playlist_nominated_series: 'NM_PLAYLIST_NOMINATED',
-      net_playlist_nominated_series_small: 'NM_PLAYLIST_NOMINATED_SMALL',
-      net_playlist_nominated_series_medium: 'NM_PLAYLIST_NOMINATED_MEDIUM',
       net_playlist_nominated_series_large: 'NM_PLAYLIST_NOMINATED_LARGE',
+      net_playlist_nominated_series_medium: 'NM_PLAYLIST_NOMINATED_MEDIUM',
+      net_playlist_nominated_series_small: 'NM_PLAYLIST_NOMINATED_SMALL',
+      net_playlist_race_series: 'NM_PLAYLIST_RACE',
       net_playlist_shootout: 'NM_PLAYLIST_SHOOTOUT',
-      net_playlist_capture: 'NM_PLAYLIST_CAPTURE',
     };
 
     const stampValues = [
