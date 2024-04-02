@@ -1405,9 +1405,16 @@ const rdoStamps = computed(() => getRdoStamps());
                             </span>
                           </template>
                         </div>
-                        <span class="badge badge-primary ml-2">
-                          {{ Object.keys(category).length === 1 ? '1 item' : `${Object.keys(category).length} items` }}
-                        </span>
+                        <div class="hidden sm:block">
+                          <span class="badge badge-primary ml-2">
+                            {{ Object.keys(category).length === 1 ? '1 item' : `${Object.keys(category).length} items` }}
+                          </span>
+                        </div>
+                        <div class="block sm:hidden">
+                          <span class="badge badge-primary ml-2">
+                            {{ Object.keys(category).length }}
+                          </span>
+                        </div>
                       </div>
                     </template>
                     <template #default>
@@ -1430,9 +1437,16 @@ const rdoStamps = computed(() => getRdoStamps());
                         <div class="flex gap-2 overflow-hidden">
                           <span class="truncate">Mission Bonuses</span>
                         </div>
-                        <span class="badge badge-primary ml-2">
-                          {{ Object.keys(ugcBonuses).length === 1 ? '1 list' : `${Object.keys(ugcBonuses).length} lists` }}
-                        </span>
+                        <div class="hidden sm:block">
+                          <span class="badge badge-primary ml-2">
+                            {{ Object.keys(ugcBonuses).length === 1 ? '1 list' : `${Object.keys(ugcBonuses).length} lists` }}
+                          </span>
+                        </div>
+                        <div class="block sm:hidden">
+                          <span class="badge badge-primary ml-2">
+                            {{ Object.keys(ugcBonuses).length }}
+                          </span>
+                        </div>
                       </div>
                     </template>
                     <template #default>
@@ -1451,12 +1465,17 @@ const rdoStamps = computed(() => getRdoStamps());
                                     </span>
                                   </template>
                                 </div>
-                                <div>
+                                <div class="whitespace-nowrap hidden sm:block">
                                   <span class="badge badge-primary ml-2">
                                     {{ list.ugc.length === 1 ? '1 mission' : `${list.ugc.length} missions` }}
                                   </span>
                                   <span class="badge badge-primary ml-2">
                                     {{ list.modifiers.length === 1 ? '1 modifier' : `${list.modifiers.length} modifiers` }}
+                                  </span>
+                                </div>
+                                <div class="block sm:hidden">
+                                  <span class="badge badge-primary ml-2">
+                                    {{ list.ugc.length }} mis. | {{ list.modifiers.length }} mod.
                                   </span>
                                 </div>
                               </div>

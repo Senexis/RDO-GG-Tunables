@@ -41,9 +41,9 @@ const props = defineProps({
                 >Contributors</a
               >:</strong
             >
-            Thanks for improving the app!
+            Thanks for improving the website!
           </li>
-          <li><strong>You:</strong> Yes, you. Thanks for using the app!</li>
+          <li><strong>You:</strong> Yes, you. Thanks for using the website!</li>
         </ul>
         <h4 class="text-md font-semibold pb-2 my-4 border-b border-slate-200 dark:border-slate-600">Services</h4>
         <ul class="list-disc ml-6">
@@ -60,7 +60,7 @@ const props = defineProps({
             website with hosting, source control, and more.
           </li>
           <li>
-            <strong><a href="https://sentry.io/" target="_blank" rel="noopener noreferrer">Sentry</a>:</strong> Thanks for allowing the app
+            <strong><a href="https://sentry.io/" target="_blank" rel="noopener noreferrer">Sentry</a>:</strong> Thanks for allowing the website
             to detect errors in order to improve it.
           </li>
         </ul>
@@ -76,7 +76,7 @@ const props = defineProps({
                 >Open Source packages</a
               >:</strong
             >
-            Thanks for laying the groundwork for the app's functionality.
+            Thanks for laying the groundwork for the website's functionality.
           </li>
         </ul>
         <p class="mt-4 text-xs text-slate-500">
