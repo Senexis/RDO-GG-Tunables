@@ -34,33 +34,37 @@ app.component('font-awesome-icon', FontAwesomeIcon);
 const fpPromise = FingerprintJS.load({ monitoring: false });
 
 (async () => {
-  const fp = await fpPromise;
-  const result = await fp.get();
+  try {
+    const fp = await fpPromise;
+    const result = await fp.get();
 
-  // We care about your privacy.
-  // To opt out of being tracked, enable the "Do Not Track" setting in your browser.
-  let userId = result.visitorId;
-  if (navigator.doNotTrack === '1') {
-    userId = 'do-not-track';
-  }
+    // We care about your privacy.
+    // To opt out of being tracked, enable the "Do Not Track" setting in your browser.
+    let userId = result.visitorId;
+    if (navigator.doNotTrack === '1') {
+      userId = 'do-not-track';
+    }
 
-  // Concerned about your privacy? See https://rdo.gg/privacy/.
-  // We use this to be able to fix issues that occur in production.
-  if (SENTRY_DSN) {
-    Sentry.init({
-      app,
-      dsn: SENTRY_DSN,
-      integrations: [
-        new Sentry.browserTracingIntegration({ tracePropagationTargets: ['localhost', 'tunables.rdo.gg', /^\//] }),
-        new Sentry.replayIntegration({ blockAllMedia: false, maskAllInputs: false, maskAllText: false }),
-      ],
-      release: APP_COMMIT_LONG,
-      replaysOnErrorSampleRate: 1.0,
-      replaysSessionSampleRate: 0.1,
-      tracesSampleRate: 0.3,
-      trackComponents: true,
-      initialScope: { user: { id: userId } },
-    });
+    // Concerned about your privacy? See https://rdo.gg/privacy/.
+    // We use this to be able to fix issues that occur in production.
+    if (SENTRY_DSN) {
+      Sentry.init({
+        app,
+        dsn: SENTRY_DSN,
+        integrations: [
+          Sentry.browserTracingIntegration({ tracePropagationTargets: ['localhost', 'tunables.rdo.gg', /^\//] }),
+          Sentry.replayIntegration({ blockAllMedia: false, maskAllInputs: false, maskAllText: false }),
+        ],
+        release: APP_COMMIT_LONG,
+        replaysOnErrorSampleRate: 1.0,
+        replaysSessionSampleRate: 0.1,
+        tracesSampleRate: 0.3,
+        trackComponents: true,
+        initialScope: { user: { id: userId } },
+      });
+    }
+  } catch (error) {
+    // Sentry is an optional feature.
   }
 
   app.use(pinia);
