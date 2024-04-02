@@ -1,6 +1,6 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { ArrowDownTrayIcon, Bars3Icon, Cog6ToothIcon, BoltIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { ArrowDownTrayIcon, Bars3Icon, Cog6ToothIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
 const emit = defineEmits(['configure', 'download']);
 

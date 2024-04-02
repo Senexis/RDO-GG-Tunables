@@ -60,8 +60,8 @@ const props = defineProps({
             website with hosting, source control, and more.
           </li>
           <li>
-            <strong><a href="https://sentry.io/" target="_blank" rel="noopener noreferrer">Sentry</a>:</strong> Thanks for allowing the website
-            to detect errors in order to improve it.
+            <strong><a href="https://sentry.io/" target="_blank" rel="noopener noreferrer">Sentry</a>:</strong> Thanks for allowing the
+            website to detect errors in order to improve it.
           </li>
         </ul>
         <h4 class="text-md font-semibold pb-2 my-4 border-b border-slate-200 dark:border-slate-600">Other</h4>

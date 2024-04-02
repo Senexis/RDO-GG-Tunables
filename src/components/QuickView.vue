@@ -8,7 +8,6 @@ import {
   ArrowsPointingOutIcon,
   CurrencyDollarIcon,
   EllipsisVerticalIcon,
-  QuestionMarkCircleIcon,
 } from '@heroicons/vue/24/outline';
 
 import Accordion from './Accordion.vue';
