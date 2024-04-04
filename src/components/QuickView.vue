@@ -1,4 +1,5 @@
 <script setup>
+import prettyMilliseconds from 'pretty-ms';
 import * as Sentry from '@sentry/vue';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import {
@@ -1001,6 +1002,11 @@ function formatSaleValue(format, value, percentage) {
       return `${fn(value)} RP (${multiplier}x)`;
     case 'bonus_cash':
       return `${fc(value)} (${multiplier}x)`;
+    case 'bonus_time_m':
+      if (value === 1) return `1 minute (${percentage}%)`;
+      return `${fn(value)} minutes (${percentage}%)`;
+    case 'bonus_time_ms':
+      return `${prettyMilliseconds(value, {verbose: true})} (${percentage}%)`;
     case 'sale_chips':
       if (value === 0) return `FREE (${percentage}%)`;
       return `${fn(value)} Chips (${percentage}%)`;

@@ -3,7 +3,7 @@ export function orderObject(unordered, recursive = false) {
   return Object.keys(unordered)
     .sort((a, b) => collator.compare(a, b))
     .reduce((obj, key) => {
-      if (recursive && typeof unordered[key] === 'object' && !Array.isArray(unordered[key])) {
+      if (recursive && typeof unordered[key] === 'object' && !Array.isArray(unordered[key]) && unordered[key] !== null) {
         obj[key] = orderObject(unordered[key], recursive);
       } else {
         obj[key] = unordered[key];

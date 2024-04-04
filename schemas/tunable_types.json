@@ -41,10 +41,12 @@
           "auto_shop_property_sales",
           "auto_shop_upgrade_sales",
           "avenger_upgrade_sales",
+          "biker_business_bonus",
           "biker_business_sales",
           "biker_business_upgrade_sales",
           "biker_clubhouse_sales",
           "biker_clubhouse_upgrade_sales",
+          "bunker_bonus",
           "bunker_sales",
           "bunker_upgrade_sales",
           "car_meet_sales",
@@ -63,6 +65,7 @@
           "hsw_vehicle_price_sales",
           "kraken_upgrade_sales",
           "moc_upgrade_sales",
+          "nightclub_bonus",
           "nightclub_property_sales",
           "nightclub_upgrade_sales",
           "office_sales",
@@ -76,6 +79,7 @@
           "vehicle_sales",
           "vehicle_upgrade_sales",
           "vehicle_warehouse_sales",
+          "warehouse_bonus",
           "warehouse_sales",
           "weapon_ammo_sales",
           "weapon_sales",
@@ -110,6 +114,8 @@
         "enum": [
           "bonus_cash",
           "bonus_rp",
+          "bonus_time_m",
+          "bonus_time_ms",
           "sale_cash",
           "sale_chips"
         ]

@@ -1274,6 +1274,111 @@
     "gen_9_bonus": false
   },
   {
+    "key": "BIKER_COUNTERCASH_PRODUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_COUNTERCASH_PRODUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_COUNTERCASH_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_COUNTERCASH_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_COUNTERCASH_UPGRADE_STAFF_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_COUNTERCASH_UPGRADE_STAFF_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_CRACK_PRODUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_CRACK_PRODUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_CRACK_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_CRACK_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_CRACK_UPGRADE_STAFF_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_CRACK_UPGRADE_STAFF_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_FAKEIDS_PRODUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_FAKEIDS_PRODUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_FAKEIDS_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_FAKEIDS_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_FAKEIDS_UPGRADE_STAFF_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_FAKEIDS_UPGRADE_STAFF_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_METH_PRODUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_METH_PRODUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_METH_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_METH_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_METH_UPGRADE_STAFF_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_METH_UPGRADE_STAFF_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_WEED_PRODUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_WEED_PRODUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_WEED_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_WEED_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_WEED_UPGRADE_STAFF_REDUCTION_TIME",
+    "type": "biker_business_bonus",
+    "display": "BIKER_WEED_UPGRADE_STAFF_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
     "key": "BIKER_BUSINESS_CITY_COCAINE_LOCKUP",
     "type": "biker_business_sales",
     "display": "MP_BWH_CRACK_2",
@@ -1810,6 +1915,27 @@
     "type": "biker_clubhouse_upgrade_sales",
     "display": "FC_WALL_1",
     "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "GR_MANU_PRODUCTION_TIME",
+    "type": "bunker_bonus",
+    "display": "GR_MANU_PRODUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "GR_MANU_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "type": "bunker_bonus",
+    "display": "GR_MANU_UPGRADE_EQUIPMENT_REDUCTION_TIME",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "GR_MANU_UPGRADE_STAFF_REDUCTION_TIME",
+    "type": "bunker_bonus",
+    "display": "GR_MANU_UPGRADE_STAFF_REDUCTION_TIME",
+    "format": "bonus_time_ms",
     "gen_9_bonus": false
   },
   {
@@ -7424,6 +7550,55 @@
     "type": "moc_upgrade_sales",
     "display": "CANDC_VSTORAGE",
     "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_CARGO",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_CARGO",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_COKE",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_COKE",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_COUNTERFEIT_CASH",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_COUNTERFEIT_CASH",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_FORGED_DOCUMENTS",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_FORGED_DOCUMENTS",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_METH",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_METH",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_WEAPONS",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_WEAPONS",
+    "format": "bonus_time_ms",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_WEED",
+    "type": "nightclub_bonus",
+    "display": "BB_BUSINESS_DEFAULT_ACCRUE_TIME_WEED",
+    "format": "bonus_time_ms",
     "gen_9_bonus": false
   },
   {
@@ -15981,6 +16156,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "WAREHOUSE_CARGO_SOURCING_TIME",
+    "type": "warehouse_bonus",
+    "display": "WAREHOUSE_CARGO_SOURCING_TIME",
+    "format": "bonus_time_m",
+    "gen_9_bonus": false
+  },
+  {
     "key": "SECUROSERV_BASE_WAREHOUSE_WAREHOUSE0",
     "type": "warehouse_sales",
     "display": "MP_WHOUSE_0",
@@ -17286,6 +17468,13 @@
     "key": "FLAREGUN_PRICE",
     "type": "weapon_sales",
     "display": "WEAPON_FLAREGUN",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "GR_BALLISTIC_EQ_PRICE",
+    "type": "weapon_sales",
+    "display": "WT_BALLISTIC",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
