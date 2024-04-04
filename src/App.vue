@@ -1716,12 +1716,20 @@ function showErrorModal(body, eventId = null) {
                 'BOOT_BUTTON_QUICK_MATCH_TYPE',
                 'CURRENTVEHICLESALESSEASON',
                 'CURRENTVEHICLESALESTUSEASON',
+                'DISPLAY_SALES',
                 'ELO_SEASON',
-                'FMCORONA',
+                'EVENT_END_DATE',
+                'EVENT_MBSP',
+                'EVENT_WKLY',
                 'FM_CORONA',
+                'FMCORONA',
+                'GTAO_MEMBERSHIP_EVENT_ID',
+                'GTAO_MEMBERSHIP_PERIOD_MESSAGE',
                 'NPCFLOWINVITE',
                 'PROFESIONALCORONA',
                 'SALE_HASH_LABELS',
+                'SALE_WEAPON_AMMO',
+                'TUNABLE_VERSION',
               ]"
               :key="item"
             >

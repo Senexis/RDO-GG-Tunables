@@ -47,9 +47,11 @@
           "biker_clubhouse_upgrade_sales",
           "bunker_sales",
           "bunker_upgrade_sales",
+          "car_meet_sales",
           "casino_bar_sales",
           "casino_penthouse_decoration_sales",
           "casino_penthouse_upgrade_sales",
+          "collectible_bonus",
           "eclipse_garage_sales",
           "eclipse_garage_upgrade_sales",
           "facility_property_sales",
@@ -100,6 +102,16 @@
         "examples": [
           "0xAFB83BD5",
           "BRICKADE2"
+        ]
+      },
+      "format": {
+        "title": "Display Format",
+        "type": "string",
+        "enum": [
+          "bonus_cash",
+          "bonus_rp",
+          "sale_cash",
+          "sale_chips"
         ]
       },
       "gen_9_bonus": {

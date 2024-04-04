@@ -798,20 +798,17 @@ function getSales() {
       const salesTitle = tunable.context === 'MP_FM_MEMBERSHIP' ? `${tunableType.type}_plus` : tunableType.type;
       const baseValue = getTunableDefault(tunableType.key);
 
-      results[salesTitle] = results[salesTitle] || {};
+      tunableType.values = [];
 
-      const displayKey = tunableType.display || `[${tunableType.key}]`;
-      results[salesTitle][displayKey] = results[salesTitle][displayKey] || [];
+      const key = tunableType.display || tunableType.key;
+      results[salesTitle] = results[salesTitle] || {};
+      results[salesTitle][key] = results[salesTitle][key] || tunableType;
 
       if (baseValue) {
-        const percentage = 100 - Math.round((tunable.value / baseValue) * 100);
-        if (percentage <= 100) {
-          results[salesTitle][displayKey].push([tunable.value, percentage]);
-        } else {
-          results[salesTitle][displayKey].push([tunable.value, null]);
-        }
+        const percentage = -(100 - Math.round((tunable.value / baseValue) * 100));
+        results[salesTitle][key].values.push([tunable.value, percentage]);
       } else {
-        results[salesTitle][displayKey].push([tunable.value, null]);
+        results[salesTitle][key].values.push([tunable.value, null]);
       }
     }
 
@@ -830,106 +827,10 @@ function getSales() {
  */
 function getSalesTitle(title) {
   try {
-    switch (title.replace(/_plus$/g, '')) {
-      case 'agency_property_sales':
-        return 'Agency Property Sales';
-      case 'agency_upgrade_sales':
-        return 'Agency Upgrade Sales';
-      case 'arcade_cabinet_sales':
-        return 'Arcade Cabinet Sales';
-      case 'arcade_property_sales':
-        return 'Arcade Property Sales';
-      case 'arcade_upgrade_sales':
-        return 'Arcade Upgrade Sales';
-      case 'arena_workshop_sales':
-        return 'Arena Workshop Sales';
-      case 'auto_shop_property_sales':
-        return 'Auto Shop Property Sales';
-      case 'auto_shop_upgrade_sales':
-        return 'Auto Shop Upgrade Sales';
-      case 'avenger_upgrade_sales':
-        return 'Avenger Upgrade Sales';
-      case 'biker_business_sales':
-        return 'Biker Business Sales';
-      case 'biker_business_upgrade_sales':
-        return 'Biker Business Upgrade Sales';
-      case 'biker_clubhouse_sales':
-        return 'Biker Clubhouse Sales';
-      case 'biker_clubhouse_upgrade_sales':
-        return 'Biker Clubhouse Upgrade Sales';
-      case 'bunker_sales':
-        return 'Bunker Sales';
-      case 'bunker_upgrade_sales':
-        return 'Bunker Upgrade Sales';
-      case 'casino_bar_sales':
-        return 'Casino Bar Sales';
-      case 'casino_penthouse_decoration_sales':
-        return 'Casino Penthouse Decoration Sales';
-      case 'casino_penthouse_upgrade_sales':
-        return 'Casino Penthouse Upgrade Sales';
-      case 'eclipse_garage_sales':
-        return 'Eclipse Garage Sales';
-      case 'eclipse_garage_upgrade_sales':
-        return 'Eclipse Garage Upgrade Sales';
-      case 'facility_property_sales':
-        return 'Facility Property Sales';
-      case 'facility_upgrade_sales':
-        return 'Facility Upgrade Sales';
-      case 'hangar_property_sales':
-        return 'Hangar Property Sales';
-      case 'hangar_upgrade_sales':
-        return 'Hangar Upgrade Sales';
-      case 'hsw_mod_price_sales':
-        return 'HSW Mod Price Sales';
-      case 'hsw_upgrade_sales':
-        return 'HSW Upgrade Sales';
-      case 'hsw_vehicle_price_sales':
-        return 'HSW Vehicle Price Sales';
-      case 'kraken_upgrade_sales':
-        return 'Kosatka Submarine Upgrade Sales';
-      case 'moc_upgrade_sales':
-        return 'MOC Upgrade Sales';
-      case 'nightclub_property_sales':
-        return 'Nightclub Property Sales';
-      case 'nightclub_upgrade_sales':
-        return 'Nightclub Upgrade Sales';
-      case 'office_sales':
-        return 'Office Sales';
-      case 'office_upgrade_sales':
-        return 'Office Upgrade Sales';
-      case 'property_sales':
-        return 'Property Sales';
-      case 'property_upgrade_sales':
-        return 'Property Upgrade Sales';
-      case 'rc_bandito_mod_sales':
-        return 'RC Bandito Mod Sales';
-      case 'tattoo_sales':
-        return 'Tattoo Sales';
-      case 'terrorbyte_upgrade_sales':
-        return 'Terrorbyte Upgrade Sales';
-      case 'vehicle_livery_sales':
-        return 'Vehicle Livery Sales';
-      case 'vehicle_sales':
-        return 'Vehicle Sales';
-      case 'vehicle_upgrade_sales':
-        return 'Vehicle Upgrade Sales';
-      case 'vehicle_warehouse_sales':
-        return 'Vehicle Warehouse Sales';
-      case 'warehouse_sales':
-        return 'Warehouse Sales';
-      case 'weapon_ammo_sales':
-        return 'Weapon Ammo Sales';
-      case 'weapon_sales':
-        return 'Weapon Sales';
-      case 'weapon_upgrade_sales':
-        return 'Weapon Upgrade Sales';
-      case 'yacht_property_sales':
-        return 'Yacht Property Sales';
-      case 'yacht_upgrade_sales':
-        return 'Yacht Upgrade Sales';
-      default:
-        return 'Miscellaneous';
-    }
+    const key = 'QV_' + title.replace(/_plus$/g, '').toUpperCase();
+    const label = getLabel(key);
+    if (key === label) return getLabel('QV_MISCELLANEOUS');
+    return label;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -1050,33 +951,63 @@ function getUgcModifierLabel(modifier) {
  *
  * @returns string
  */
-function formatCurrency(discounts) {
+function formatSale(item) {
   try {
-    const fc = Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format;
-
-    const mappedDiscounts = discounts
+    const mappedDiscounts = item.values
       .sort((a, b) => a[0] - b[0])
       .filter((a, i, arr) => arr.findIndex((b) => a[0] === b[0]) === i)
-      .map((i) => `${i[0] === 0 ? 'FREE' : fc(i[0])} ${i[1] ? `(${i[1]}%)` : ''}`.trim());
+      .map((i) => formatSaleValue(item.format ?? 'sale_cash', i[0], i[1]));
+
+    let formattedLabel = item.display ? getLabel(item.display) : item.key;
+    let formattedValue = 'Unknown';
 
     if (mappedDiscounts.length === 0) {
-      return 'Unknown';
-    } else if (mappedDiscounts.length === 1) {
-      return mappedDiscounts[0];
+      return `${formattedLabel}: ${formattedValue}`;
+    }
+
+    if (mappedDiscounts.length === 1) {
+      formattedValue = mappedDiscounts[0];
     } else {
       const lowestDiscount = mappedDiscounts[0];
       const highestDiscount = mappedDiscounts[mappedDiscounts.length - 1];
-      return `${lowestDiscount} - ${highestDiscount}`;
+      formattedValue = `${lowestDiscount} - ${highestDiscount}`;
     }
+
+    return `${formattedLabel}: ${formattedValue}`;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
     console.error(error);
+  }
+}
+function formatSaleValue(format, value, percentage) {
+  const fc = Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format;
+
+  const fn = Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format;
+
+  const multiplier = fn(percentage / 100);
+  percentage = fn(percentage);
+
+  switch (format) {
+    case 'bonus_rp':
+      return `${fn(value)} RP (${multiplier}x)`;
+    case 'bonus_cash':
+      return `${fc(value)} (${multiplier}x)`;
+    case 'sale_chips':
+      if (value === 0) return `FREE (${percentage}%)`;
+      return `${fn(value)} Chips (${percentage}%)`;
+    case 'sale_cash':
+    default:
+      if (value === 0) return `FREE (${percentage}%)`;
+      return `${fc(value)} (${percentage}%)`;
   }
 }
 /**
@@ -1418,10 +1349,10 @@ const rdoStamps = computed(() => getRdoStamps());
                     </template>
                     <template #default>
                       <ul :class="[Object.keys(category).length >= 8 ? 'grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4' : '', 'list-disc']">
-                        <template v-for="(discounts, item) in category" :key="item">
+                        <template v-for="item in category" :key="item">
                           <li class="ml-5">
-                            <p class="mr-2 truncate" v-tooltip.top-start="`${getLabel(item)}: ${formatCurrency(discounts)}`">
-                              {{ getLabel(item) }}: {{ formatCurrency(discounts) }}
+                            <p class="mr-2 truncate" v-tooltip.top-start="formatSale(item)">
+                              {{ formatSale(item) }}
                             </p>
                           </li>
                         </template>
