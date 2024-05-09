@@ -2,33 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary-50: 243 251 254;
+  --color-primary-100: 231 246 253;
+  --color-primary-200: 195 233 250;
+  --color-primary-300: 159 219 246;
+  --color-primary-400: 86 192 240;
+  --color-primary-500: 14 165 233;
+  --color-primary-600: 13 149 210;
+  --color-primary-700: 8 99 140;
+  --color-primary-800: 6 74 105;
+  --color-primary-900: 4 50 70;
+
+  --color-secondary-50: 247 248 249;
+  --color-secondary-100: 240 241 243;
+  --color-secondary-200: 216 220 226;
+  --color-secondary-300: 193 199 209;
+  --color-secondary-400: 147 158 174;
+  --color-secondary-500: 100 116 139;
+  --color-secondary-600: 90 104 125;
+  --color-secondary-700: 60 70 83;
+  --color-secondary-800: 45 52 63;
+  --color-secondary-900: 30 35 42;
+
+  --color-danger-50: 254 246 246;
+  --color-danger-100: 253 236 236;
+  --color-danger-200: 251 208 208;
+  --color-danger-300: 249 180 180;
+  --color-danger-400: 244 124 124;
+  --color-danger-500: 239 68 68;
+  --color-danger-600: 215 61 61;
+  --color-danger-700: 143 41 41;
+  --color-danger-800: 108 31 31;
+  --color-danger-900: 72 20 20;
+}
+
 a {
-  @apply text-sky-600;
+  @apply text-primary-600;
 }
 
 a:hover {
-  @apply text-sky-400;
+  @apply text-primary-400;
 }
 
 code {
-  @apply text-red-400 font-mono;
+  @apply text-[#f87171] font-mono;
 }
 
 kbd {
-  @apply px-1.5 py-0.5 text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 rounded-lg dark:bg-slate-600 dark:text-slate-100 dark:border-slate-500;
+  @apply px-1.5 py-0.5 text-xs font-semibold text-secondary-800 bg-secondary-100 border border-secondary-200 rounded-lg dark:bg-secondary-600 dark:text-secondary-100 dark:border-secondary-500;
 }
 
 .badge {
   @apply inline-flex items-center gap-x-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap select-none;
 }
 
-/* Badge colors. */
+/* Text colors */
+.text-heart {
+  @apply text-[#ef4444];
+}
+
+.text-plus {
+  @apply text-[#fcaf17];
+}
+
+/* Badge colors */
 .badge-outline {
-  @apply bg-transparent text-slate-600 border border-slate-600;
+  @apply bg-transparent text-secondary-600 border border-secondary-600;
 }
 
 .dark .badge-outline {
-  @apply text-slate-400 border-slate-400;
+  @apply text-secondary-400 border-secondary-400;
 }
 
 .badge-outline-plus {
@@ -36,11 +80,11 @@ kbd {
 }
 
 .badge-primary {
-  @apply bg-sky-700 text-white;
+  @apply bg-primary-700 text-white;
 }
 
 .badge-danger {
-  @apply bg-red-700 text-white;
+  @apply bg-danger-700 text-white;
 }
 
 .badge-plus {
@@ -48,7 +92,7 @@ kbd {
 }
 
 .badge-gta {
-  @apply bg-sky-700 text-white;
+  @apply bg-[#0369a1] text-white;
 }
 
 .badge-rp {
@@ -88,23 +132,23 @@ kbd {
 
   .dark ::-webkit-scrollbar-track,
   .dark ::-webkit-scrollbar-corner {
-    @apply bg-slate-800;
+    @apply bg-secondary-800;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-400 bg-clip-content border-4 border-solid border-transparent rounded-full;
+    @apply bg-secondary-400 bg-clip-content border-4 border-solid border-transparent rounded-full;
   }
 
   .dark ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700;
+    @apply bg-secondary-700;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-500;
+    @apply bg-secondary-500;
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-500;
+    @apply bg-secondary-500;
   }
 }
 
@@ -170,19 +214,19 @@ kbd {
 
 /* Custom Float Vue tweaks. */
 .v-popper--theme-tooltip .v-popper__inner {
-  @apply py-1.5 px-3 bg-slate-100 text-slate-700 text-sm rounded-md leading-none shadow-md;
+  @apply py-1.5 px-3 bg-secondary-100 text-secondary-700 text-sm rounded-md leading-none shadow-md;
 }
 
 .dark .v-popper--theme-tooltip .v-popper__inner {
-  @apply bg-slate-900 text-slate-300;
+  @apply bg-secondary-900 text-secondary-300;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  @apply border-slate-100;
+  @apply border-secondary-100;
 }
 
 .dark .v-popper--theme-tooltip .v-popper__arrow-outer {
-  @apply border-slate-900;
+  @apply border-secondary-900;
 }
 
 /* Custom JSON diff patch tweaks. */
@@ -269,22 +313,22 @@ kbd {
 .jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after,
 .jsondiffpatch-property-name:after,
 .jsondiffpatch-value pre:after {
-  @apply text-slate-900;
+  @apply text-secondary-900;
 }
 
 .dark .jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after,
 .dark .jsondiffpatch-property-name:after,
 .dark .jsondiffpatch-value pre:after {
-  @apply text-slate-50;
+  @apply text-secondary-50;
 }
 
 .jsondiffpatch-property-name:before {
   content: '"';
-  @apply text-slate-900;
+  @apply text-secondary-900;
 }
 
 .dark .jsondiffpatch-property-name:before {
-  @apply text-slate-50;
+  @apply text-secondary-50;
 }
 
 .jsondiffpatch-property-name:after {

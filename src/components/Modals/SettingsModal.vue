@@ -32,7 +32,7 @@ const props = defineProps({
     <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <slot></slot>
       <div
-        class="text-xs text-slate-900/60 dark:text-slate-50/60 bg-slate-50 dark:bg-slate-800 px-4 py-3 rounded-lg shadow-sm transition-opacity opacity-50 hover:opacity-100"
+        class="text-xs text-secondary-900/60 dark:text-secondary-50/60 bg-secondary-50 dark:bg-secondary-800 px-4 py-3 rounded-lg shadow-sm transition-opacity opacity-50 hover:opacity-100"
       >
         <p class="break-words">
           <template v-if="props.commitLong && props.commitShort">
@@ -56,11 +56,11 @@ const props = defineProps({
         </p>
       </div>
     </div>
-    <div class="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+    <div class="bg-secondary-50 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
       <div class="flex gap-3">
         <button
           type="button"
-          class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-base font-medium text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
+          class="mt-3 inline-flex w-full justify-center rounded-md border border-secondary-300 dark:border-secondary-700 bg-white dark:bg-secondary-800 px-4 py-2 text-base font-medium text-secondary-800 dark:text-secondary-200 shadow-sm hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-800 dark:hover:text-secondary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
           @click="emit('close')"
         >
           Close

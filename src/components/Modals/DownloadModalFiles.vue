@@ -35,7 +35,7 @@ function getUrl(url) {
 
 <template>
   <template v-if="props.files?.length">
-    <p class="text-sm text-slate-700 dark:text-slate-300 mb-6">
+    <p class="text-sm text-secondary-700 dark:text-secondary-300 mb-6">
       Tunables will open in a new tab. You can then use <kbd>Ctrl</kbd> + <kbd>S</kbd> to save them as JSON. Feel free to use and/or edit
       them as needed. Mentioning the <code>provider</code> and <code>special_thanks</code> sections would be appreciated though!
     </p>
@@ -43,7 +43,7 @@ function getUrl(url) {
       <div
         v-for="file in filesForPage"
         :key="file.hash"
-        class="relative flex items-center space-x-3 rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-3 shadow-sm focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:border-slate-600 dark:hover:border-slate-400"
+        class="relative flex items-center space-x-3 rounded-lg border border-secondary-300 dark:border-secondary-700 px-3 py-3 shadow-sm focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 hover:border-secondary-600 dark:hover:border-secondary-400"
       >
         <div class="flex-shrink-0">
           <DocumentTextIcon class="h-6 w-6" />
@@ -51,15 +51,15 @@ function getUrl(url) {
         <div class="min-w-0 flex-1">
           <a :href="getUrl(file.url)" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
-            <p class="text-sm font-medium text-slate-700 dark:text-slate-300">{{ file.date }}</p>
+            <p class="text-sm font-medium text-secondary-700 dark:text-secondary-300">{{ file.date }}</p>
             <template v-if="file.weekly_event_id || file.membership_event_id">
-              <p class="truncate text-xs font-medium my-1 text-slate-700 dark:text-slate-300">
+              <p class="truncate text-xs font-medium my-1 text-secondary-700 dark:text-secondary-300">
                 Weekly ID: {{ file.weekly_event_id ?? 'N/A' }}
                 <br />
                 GTA+ ID: {{ file.membership_event_id ?? 'N/A' }}
               </p>
             </template>
-            <p class="truncate text-xs font-mono text-slate-500">
+            <p class="truncate text-xs font-mono text-secondary-500">
               {{ file.hash }}
             </p>
           </a>
@@ -71,7 +71,7 @@ function getUrl(url) {
         @click="page--"
         :disabled="previousDisabled"
         type="button"
-        class="relative inline-flex items-center rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:border-slate-600 dark:hover:border-slate-400 disabled:opacity-50 disabled:pointer-events-none"
+        class="relative inline-flex items-center rounded-md border border-secondary-300 dark:border-secondary-700 px-4 py-2 text-sm font-medium text-secondary-700 dark:text-secondary-300 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 hover:border-secondary-600 dark:hover:border-secondary-400 disabled:opacity-50 disabled:pointer-events-none"
       >
         Previous
       </button>
@@ -79,16 +79,16 @@ function getUrl(url) {
         @click="page++"
         :disabled="nextDisabled"
         type="button"
-        class="relative ml-3 inline-flex items-center rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:border-slate-600 dark:hover:border-slate-400 disabled:opacity-50 disabled:pointer-events-none"
+        class="relative ml-3 inline-flex items-center rounded-md border border-secondary-300 dark:border-secondary-700 px-4 py-2 text-sm font-medium text-secondary-700 dark:text-secondary-300 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 hover:border-secondary-600 dark:hover:border-secondary-400 disabled:opacity-50 disabled:pointer-events-none"
       >
         Next
       </button>
     </div>
   </template>
   <template v-else>
-    <div class="relative block w-full rounded-lg border-2 border-dashed border-slate-500 dark:border-slate-500 p-12 text-center">
-      <DocumentMagnifyingGlassIcon class="mx-auto h-12 w-12 text-slate-500" />
-      <span class="mt-2 block text-sm font-medium text-slate-500">No files available to download.</span>
+    <div class="relative block w-full rounded-lg border-2 border-dashed border-secondary-500 dark:border-secondary-500 p-12 text-center">
+      <DocumentMagnifyingGlassIcon class="mx-auto h-12 w-12 text-secondary-500" />
+      <span class="mt-2 block text-sm font-medium text-secondary-500">No files available to download.</span>
     </div>
   </template>
 </template>

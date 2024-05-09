@@ -1,5 +1,5 @@
 <script setup>
-import { MegaphoneIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { NoSymbolIcon, MegaphoneIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { useStore } from '../stores/settings.js';
 
 const emit = defineEmits(['close']);
@@ -30,18 +30,23 @@ function dismiss() {
   settings.bannersDismissed = [...settings.bannersDismissed, props.id];
   emit('close');
 }
+
+function block() {
+  settings.bannersBlocked = true;
+  emit('close');
+}
 </script>
 
 <template>
   <div v-if="show" class="fixed inset-x-0 bottom-0 pb-2 sm:pb-5">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="rounded-lg bg-sky-600 p-2 shadow-lg sm:p-3">
+      <div class="rounded-lg bg-primary-600 p-2 shadow-lg sm:p-3">
         <div class="flex flex-wrap items-center justify-between">
           <div class="flex w-0 flex-1 items-center">
-            <span class="flex rounded-lg bg-sky-800 p-2">
-              <MegaphoneIcon class="h-6 w-6 text-slate-50" aria-hidden="true" />
+            <span class="flex rounded-lg bg-primary-800 p-2">
+              <MegaphoneIcon class="h-6 w-6 text-secondary-50" aria-hidden="true" />
             </span>
-            <p class="ml-3 font-medium text-slate-50 leading-tight">
+            <p class="ml-3 font-medium text-secondary-50 leading-tight">
               <span class="inline">
                 <slot></slot>
               </span>
@@ -52,20 +57,30 @@ function dismiss() {
               :href="props.buttonLink"
               :target="props.buttonExternal ? '_blank' : undefined"
               :rel="props.buttonExternal ? 'noopener noreferrer' : undefined"
-              class="flex items-center justify-center rounded-md border border-transparent bg-slate-50 px-4 py-2 text-sm font-medium text-sky-600 shadow-sm hover:bg-sky-50"
+              class="flex items-center justify-center rounded-md border border-transparent bg-secondary-50 px-4 py-2 text-sm font-medium text-primary-600 shadow-sm hover:bg-primary-50"
             >
               {{ props.buttonText }}
             </a>
           </div>
-          <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-2">
+          <div class="order-2 flex flex-row-reverse gap-2 flex-shrink-0 sm:order-3 sm:ml-2">
             <button
               type="button"
-              class="-mr-1 flex rounded-md p-2 hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-slate-50"
+              class="-mr-1 flex rounded-md p-2 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-secondary-50"
               v-tooltip="'Dismiss'"
               @click="dismiss"
             >
               <span class="sr-only">Dismiss</span>
-              <XMarkIcon class="h-6 w-6 text-slate-50" aria-hidden="true" />
+              <XMarkIcon class="h-6 w-6 text-secondary-50" aria-hidden="true" />
+            </button>
+
+            <button
+              type="button"
+              class="-mr-1 flex rounded-md p-2 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-secondary-50"
+              v-tooltip="'Block all banners'"
+              @click="block"
+            >
+              <span class="sr-only">Block all banners</span>
+              <NoSymbolIcon class="h-6 w-6 text-secondary-50" aria-hidden="true" />
             </button>
           </div>
         </div>

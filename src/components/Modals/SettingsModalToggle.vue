@@ -28,10 +28,10 @@ watch(enabled, (value) => {
 <template>
   <SwitchGroup as="div" class="flex items-center justify-between gap-2 py-2">
     <span class="flex flex-grow flex-col cursor-pointer select-none" @click="$refs.switch.el.click()">
-      <SwitchLabel as="span" class="text-sm font-medium text-slate-900 dark:text-slate-50" passive>
+      <SwitchLabel as="span" class="text-sm font-medium text-secondary-900 dark:text-secondary-50" passive>
         <slot name="title"></slot>
       </SwitchLabel>
-      <SwitchDescription as="span" class="text-sm text-slate-700 dark:text-slate-300">
+      <SwitchDescription as="span" class="text-sm text-secondary-700 dark:text-secondary-300">
         <slot name="description"></slot>
       </SwitchDescription>
     </span>
@@ -39,8 +39,8 @@ watch(enabled, (value) => {
       ref="switch"
       v-model="enabled"
       :class="[
-        enabled ? 'bg-sky-600' : 'bg-slate-400 dark:bg-slate-300',
-        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2',
+        enabled ? 'bg-primary-600' : 'bg-secondary-400 dark:bg-secondary-300',
+        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
       ]"
     >
       <span
@@ -57,13 +57,13 @@ watch(enabled, (value) => {
           aria-hidden="true"
         >
           <template v-if="props.isVisibilityToggle">
-            <EyeSlashIcon class="h-3 w-3 text-slate-400" />
+            <EyeSlashIcon class="h-3 w-3 text-secondary-400" />
           </template>
           <template v-else-if="props.isDarkModeToggle">
-            <SunIcon class="h-3 w-3 text-slate-400" />
+            <SunIcon class="h-3 w-3 text-secondary-400" />
           </template>
           <template v-else>
-            <XMarkIcon class="h-3 w-3 text-slate-400" />
+            <XMarkIcon class="h-3 w-3 text-secondary-400" />
           </template>
         </span>
         <span
@@ -74,13 +74,13 @@ watch(enabled, (value) => {
           aria-hidden="true"
         >
           <template v-if="props.isVisibilityToggle">
-            <EyeIcon class="h-3 w-3 text-sky-600" />
+            <EyeIcon class="h-3 w-3 text-primary-600" />
           </template>
           <template v-else-if="props.isDarkModeToggle">
-            <MoonIcon class="h-3 w-3 text-sky-600" />
+            <MoonIcon class="h-3 w-3 text-primary-600" />
           </template>
           <template v-else>
-            <CheckIcon class="h-3 w-3 text-sky-600" />
+            <CheckIcon class="h-3 w-3 text-primary-600" />
           </template>
         </span>
       </span>

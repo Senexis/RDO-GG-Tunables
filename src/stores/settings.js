@@ -38,6 +38,7 @@ export const useStore = defineStore('settings', {
       goToWeek: true,
       meta: true,
       salesDisclaimer: true,
+      tunablesDisclaimer: true,
     };
   },
 });

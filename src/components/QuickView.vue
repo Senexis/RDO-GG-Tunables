@@ -994,26 +994,33 @@ function formatSaleValue(format, value, percentage) {
     maximumFractionDigits: 2,
   }).format;
 
-  const multiplier = fn(percentage / 100);
-  percentage = fn(percentage);
+  let multiplier = null;
+
+  if (percentage < -100 || percentage > 100) {
+    multiplier = '';
+    percentage = '';
+  } else {
+    multiplier = `(${fn(percentage / 100)}x)`;
+    percentage = `(${fn(percentage)}%)`;
+  }
 
   switch (format) {
     case 'bonus_rp':
-      return `${fn(value)} RP (${multiplier}x)`;
+      return `${fn(value)} RP ${multiplier}`;
     case 'bonus_cash':
-      return `${fc(value)} (${multiplier}x)`;
+      return `${fc(value)} ${multiplier}`;
     case 'bonus_time_m':
-      if (value === 1) return `1 minute (${percentage}%)`;
-      return `${fn(value)} minutes (${percentage}%)`;
+      if (value === 1) return `1 minute ${percentage}`;
+      return `${fn(value)} minutes ${percentage}`;
     case 'bonus_time_ms':
-      return `${prettyMilliseconds(value, {verbose: true})} (${percentage}%)`;
+      return `${prettyMilliseconds(value, { verbose: true })} ${percentage}`;
     case 'sale_chips':
-      if (value === 0) return `FREE (${percentage}%)`;
-      return `${fn(value)} Chips (${percentage}%)`;
+      if (value === 0) return `FREE ${percentage}`;
+      return `${fn(value)} Chips ${percentage}`;
     case 'sale_cash':
     default:
-      if (value === 0) return `FREE (${percentage}%)`;
-      return `${fc(value)} (${percentage}%)`;
+      if (value === 0) return `FREE ${percentage}`;
+      return `${fc(value)} ${percentage}`;
   }
 }
 /**
@@ -1208,7 +1215,7 @@ const rdoStamps = computed(() => getRdoStamps());
             <div>
               <MenuButton
                 v-tooltip="'Quick View options'"
-                class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-600 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+                class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-600 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
               >
                 <span class="sr-only">Quick View options</span>
                 <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
@@ -1223,13 +1230,13 @@ const rdoStamps = computed(() => getRdoStamps());
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-secondary-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
                 <MenuItem>
                   <button
                     @click="handleToggleQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <template v-if="settings.quickView">
                       <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
@@ -1245,7 +1252,7 @@ const rdoStamps = computed(() => getRdoStamps());
                   <button
                     @click="handleMoveQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <template v-if="settings.quickViewBelowTunables">
                       <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
@@ -1258,13 +1265,13 @@ const rdoStamps = computed(() => getRdoStamps());
                   </button>
                 </MenuItem>
                 <MenuItem>
-                  <hr class="my-1 border-slate-200 dark:border-slate-600" />
+                  <hr class="my-1 border-secondary-200 dark:border-secondary-600" />
                 </MenuItem>
                 <MenuItem>
                   <button
                     @click="handleCollapseAllQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
                     Collapse all sections
@@ -1274,7 +1281,7 @@ const rdoStamps = computed(() => getRdoStamps());
                   <button
                     @click="handleCollapseAllExceptSalesQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <CurrencyDollarIcon class="h-4 w-4" aria-hidden="true" />
                     Collapse all except Sales
@@ -1284,7 +1291,7 @@ const rdoStamps = computed(() => getRdoStamps());
                   <button
                     @click="handleExpandAllQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
                   >
                     <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
                     Expand all sections
@@ -1313,7 +1320,7 @@ const rdoStamps = computed(() => getRdoStamps());
                     /></a>
                     for the latest, more accurate, manually written sales and bonuses.
                   </p>
-                  <p class="mt-0.5 text-xs text-slate-200">
+                  <p class="mt-0.5 text-xs text-secondary-200">
                     Currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
                     <a
                       href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
@@ -1327,7 +1334,7 @@ const rdoStamps = computed(() => getRdoStamps());
               </template>
 
               <div
-                class="rounded-lg overflow-hidden bg-white dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
+                class="rounded-lg overflow-hidden bg-white dark:bg-secondary-800 divide-y divide-secondary-300 dark:divide-secondary-700 border border-secondary-300 dark:border-secondary-700"
               >
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`${Accordions.Sales}_${key}`">
@@ -1387,7 +1394,7 @@ const rdoStamps = computed(() => getRdoStamps());
                     </template>
                     <template #default>
                       <div
-                        class="rounded-lg overflow-hidden bg-white dark:bg-slate-800 divide-y divide-slate-300 dark:divide-slate-700 border border-slate-300 dark:border-slate-700"
+                        class="rounded-lg overflow-hidden bg-white dark:bg-secondary-800 divide-y divide-secondary-300 dark:divide-secondary-700 border border-secondary-300 dark:border-secondary-700"
                       >
                         <template v-for="(list, index) in ugcBonuses" :key="index">
                           <Accordion :id="`${Accordions.UgcBonuses}_${index}`">
@@ -1493,7 +1500,7 @@ const rdoStamps = computed(() => getRdoStamps());
                     {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
-                      <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
+                      <span class="text-plus">{{ Math.floor(item.discount_plus * 100) }}%</span>)
                     </template>
                     <template v-else-if="item.discount">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>)
@@ -1508,7 +1515,7 @@ const rdoStamps = computed(() => getRdoStamps());
                     {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
-                      <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
+                      <span class="text-plus">{{ Math.floor(item.discount_plus * 100) }}%</span>)
                     </template>
                     <template v-else-if="item.discount">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>)
@@ -1523,7 +1530,7 @@ const rdoStamps = computed(() => getRdoStamps());
                     {{ getLabel(item.item) }}
                     <template v-if="item.discount && item.discount_plus">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>,
-                      <span class="text-yellow-500">{{ Math.floor(item.discount_plus * 100) }}%</span>)
+                      <span class="text-plus">{{ Math.floor(item.discount_plus * 100) }}%</span>)
                     </template>
                     <template v-else-if="item.discount">
                       (<span>{{ Math.floor(item.discount * 100) }}%</span>)
@@ -1802,7 +1809,7 @@ const rdoStamps = computed(() => getRdoStamps());
                   <li class="ml-5">{{ stamp }}</li>
                 </template>
               </ul>
-              <p class="mt-2 text-xs text-slate-500">
+              <p class="mt-2 text-xs text-secondary-500">
                 Since the detailed bonuses are not included in the tunables for Red Dead Online, this is not the full list.
               </p>
             </template>
@@ -1830,7 +1837,7 @@ const rdoStamps = computed(() => getRdoStamps());
       <template v-else>
         <template v-for="n in 5" :key="n">
           <div class="flex items-center justify-between text-sm px-3 py-2 w-full select-none">
-            <div class="rounded-sm bg-slate-300 dark:bg-slate-600 animate-pulse" :style="{ width: random(4, 20) + 'em' }">&nbsp;</div>
+            <div class="rounded-sm bg-secondary-300 dark:bg-secondary-600 animate-pulse" :style="{ width: random(4, 20) + 'em' }">&nbsp;</div>
           </div>
         </template>
       </template>

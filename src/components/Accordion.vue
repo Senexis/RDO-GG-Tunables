@@ -34,7 +34,7 @@ function toggleOpen() {
     <button
       @click="toggleOpen"
       type="button"
-      class="flex items-center justify-between text-sm px-3 py-2 w-full select-none hover:bg-slate-50 dark:hover:bg-slate-600"
+      class="flex items-center justify-between text-sm px-3 py-2 w-full select-none hover:bg-secondary-50 dark:hover:bg-secondary-600"
     >
       <slot name="title"></slot>
       <div class="px-2" v-tooltip="open ? 'Collapse' : 'Expand'">
@@ -42,7 +42,7 @@ function toggleOpen() {
         <MinusIcon v-else class="inline-block w-4 h-4" />
       </div>
     </button>
-    <div v-show="open" class="bg-white dark:bg-slate-900 px-3 py-4">
+    <div v-show="open" class="bg-white dark:bg-secondary-900 px-3 py-4">
       <slot></slot>
     </div>
   </div>
