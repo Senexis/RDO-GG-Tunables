@@ -406,7 +406,7 @@ const platformBadges = computed(() => ({
   ps4: { label: 'PS4', background: 'playstation', tooltip: 'PlayStation 4' },
   ps5: { label: 'PS5', background: 'playstation', tooltip: 'PlayStation 5' },
   xboxone: { label: 'One', background: 'xbox', tooltip: 'Xbox One' },
-  xboxsx: { label: 'S|X', background: 'xbox', tooltip: 'Xbox Series S|X' },
+  xboxsx: { label: 'X|S', background: 'xbox', tooltip: 'Xbox Series X|S' },
 }));
 
 /**
@@ -468,7 +468,7 @@ const platformOptions = computed(() => [
   },
   {
     value: 'xboxsx',
-    label: 'Xbox Series S|X',
+    label: 'Xbox Series X|S',
     hidden: game.value !== 'gta',
   },
 ]);
@@ -1819,7 +1819,7 @@ function showErrorModal(body, eventId = null) {
         </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.gen9Bonuses" :isVisibilityToggle="true">
           <template #title>Gen 9 Benefits</template>
-          <template #description> Whether to show tunables in Sales & Bonuses that are PlayStation 5 or Xbox Series S|X benefits.</template>
+          <template #description> Whether to show tunables in Sales & Bonuses that are PlayStation 5 or Xbox Series X|S benefits.</template>
         </SettingsModalToggle>
       </div>
     </template>
