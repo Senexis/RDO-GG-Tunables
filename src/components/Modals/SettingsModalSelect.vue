@@ -64,14 +64,19 @@ const selected = computed({
               >
                 <li
                   :class="[
-                    active ? 'text-secondary-700 dark:text-secondary-300 bg-secondary-50 dark:bg-secondary-700' : 'text-secondary-900 dark:text-secondary-200',
+                    active
+                      ? 'text-secondary-700 dark:text-secondary-300 bg-secondary-50 dark:bg-secondary-700'
+                      : 'text-secondary-900 dark:text-secondary-200',
                     option.disabled ? 'opacity-50' : '',
                     'relative cursor-pointer select-none py-2 pl-3 pr-9',
                   ]"
                 >
                   <span :class="[selected ? 'font-medium' : 'font-normal', 'block truncate']">{{ option.label }}</span>
 
-                  <span v-if="selected" class="text-secondary-900 dark:text-secondary-200 absolute inset-y-0 right-0 flex items-center pr-4">
+                  <span
+                    v-if="selected"
+                    class="text-secondary-900 dark:text-secondary-200 absolute inset-y-0 right-0 flex items-center pr-4"
+                  >
                     <CheckIcon class="h-5 w-5" aria-hidden="true" />
                   </span>
                 </li>

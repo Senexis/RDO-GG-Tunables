@@ -1837,7 +1837,9 @@ const rdoStamps = computed(() => getRdoStamps());
       <template v-else>
         <template v-for="n in 5" :key="n">
           <div class="flex items-center justify-between text-sm px-3 py-2 w-full select-none">
-            <div class="rounded-sm bg-secondary-300 dark:bg-secondary-600 animate-pulse" :style="{ width: random(4, 20) + 'em' }">&nbsp;</div>
+            <div class="rounded-sm bg-secondary-300 dark:bg-secondary-600 animate-pulse" :style="{ width: random(4, 20) + 'em' }">
+              &nbsp;
+            </div>
           </div>
         </template>
       </template>

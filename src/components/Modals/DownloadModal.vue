@@ -22,7 +22,9 @@ const props = defineProps({
       <h3 class="font-lg font-semibold pb-2 mb-4 border-b-2 border-secondary-200 dark:border-secondary-600">Download tunables</h3>
       <DownloadModalFiles :files="files" />
     </div>
-    <div class="bg-secondary-50 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+    <div
+      class="bg-secondary-50 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+    >
       <div class="flex gap-3">
         <button
           type="button"

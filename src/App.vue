@@ -1096,7 +1096,7 @@ function handleDismissTunablesDisclaimer() {
     settings.tunablesDisclaimer = false;
   } catch (error) {
     const eventId = Sentry.captureException(error);
-    emit('error', 'An unknown error occurred.', eventId);
+    showErrorModal('An unknown error occurred.', eventId);
     console.error(error);
   }
 }
@@ -1567,7 +1567,9 @@ function showErrorModal(body, eventId = null) {
         <template #description>
           Select the platform to compare tunables for.
           <template v-if="settings.platform !== platform">
-            <button @click.stop="settings.platform = platform" class="text-primary-600 hover:text-primary-400">Set as your default platform</button>
+            <button @click.stop="settings.platform = platform" class="text-primary-600 hover:text-primary-400">
+              Set as your default platform
+            </button>
           </template>
           <template v-else>This is set as your default platform.</template>
         </template>
@@ -1626,6 +1628,18 @@ function showErrorModal(body, eventId = null) {
     <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">Tunables Panel</h3>
 
     <div class="divide-y divide-secondary-200 dark:divide-secondary-600 mb-4">
+      <SettingsModalToggle v-model="settings.tunablesDisclaimer" :isVisibilityToggle="true">
+        <template #title>Tunables Disclaimer</template>
+        <template #description> Whether to show the tunables disclaimer banner.</template>
+      </SettingsModalToggle>
+
+      <div class="flex items-center justify-between gap-2 py-2">
+        <p class="text-xs text-secondary-500">
+          The following options control the visibility of all tunables in the panel. You can use these to reduce the amount of tunables you
+          see.
+        </p>
+      </div>
+
       <SettingsModalToggle v-model="settings.added" :isVisibilityToggle="true">
         <template #title>Added</template>
         <template #description>Whether to show tunables that have been added.</template>
@@ -1719,7 +1733,10 @@ function showErrorModal(body, eventId = null) {
           <template #title>Verbose</template>
           <template #description>
             Whether to show tunables that are
-            <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail" class="text-primary-600 hover:text-primary-400">
+            <button
+              @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail"
+              class="text-primary-600 hover:text-primary-400"
+            >
               verbose</button
             >.
           </template>
@@ -1780,11 +1797,6 @@ function showErrorModal(body, eventId = null) {
           The following options allow you to configure various miscellaneous features of the tunables panel.
         </p>
       </div>
-
-      <SettingsModalToggle v-model="settings.tunablesDisclaimer" :isVisibilityToggle="true">
-        <template #title>Tunables Disclaimer</template>
-        <template #description> Whether to show the tunables disclaimer banner.</template>
-      </SettingsModalToggle>
 
       <SettingsModalToggle v-model="settings.goToWeek" :isVisibilityToggle="true">
         <template #title>"Go to week" banner</template>
@@ -1847,7 +1859,3 @@ function showErrorModal(body, eventId = null) {
     </div>
   </SettingsModal>
 </template>
-
-<style>
-
-</style>
