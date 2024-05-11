@@ -5495,6 +5495,20 @@
     "gen_9_bonus": false
   },
   {
+    "key": "HEIST_ISLAND_HIDDEN_CACHES_CASH",
+    "type": "collectible_bonus",
+    "display": "PIM_HIDCA_CASH",
+    "format": "bonus_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "HEIST_ISLAND_HIDDEN_CACHES_RP",
+    "type": "collectible_bonus",
+    "display": "PIM_HIDCA_RP",
+    "format": "bonus_rp",
+    "gen_9_bonus": false
+  },
+  {
     "key": "SHIPWRECKCASH",
     "type": "collectible_bonus",
     "display": "PIM_SHIPWCOL_CASH",
@@ -7515,6 +7529,13 @@
     "type": "kraken_upgrade_sales",
     "display": "CANDC_SUB_FLG_DESC_32",
     "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM22_TAXI_DRIVER_FARE_MULTIPLIER",
+    "type": "miscellaneous_bonus",
+    "display": "TAXI_DRIVER_FARE_CASH",
+    "format": "bonus_cash_multiplier",
     "gen_9_bonus": false
   },
   {

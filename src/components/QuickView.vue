@@ -65,6 +65,7 @@ const data = ref({
 const Accordions = Object.freeze({
   Sales: 'sales',
   UgcBonuses: 'ugc_bonuses',
+  PeyotePlants: 'peyote_plants',
   TimeTrials: 'time_trials',
   GunVan: 'gun_van',
   Casino: 'casino',
@@ -322,6 +323,41 @@ function findTunable(query) {
     }
 
     return null;
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
+  }
+}
+
+function findTunables(query) {
+  try {
+    if (typeof query === 'number') {
+      try {
+        query = '0x' + (query >>> 0).toString(16).toUpperCase().padStart(8, '0');
+      } catch (error) {
+        return null;
+      }
+    }
+
+    const tunables = props.tunables;
+    if (tunables === undefined) return null;
+
+    const results = [];
+
+    for (const item in tunables) {
+      for (const key in tunables[item]) {
+        if (key.toLowerCase().includes(query.toLowerCase())) {
+          results.push({
+            key,
+            value: tunables[item][key],
+            context: item,
+          });
+        }
+      }
+    }
+
+    return results;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -780,6 +816,25 @@ function getStudioAppearanceEnabled(day) {
   }
 }
 
+function getPeyotePlants() {
+  try {
+    const isEnabled = getTunable('VC_PEYOTE_ENABLE');
+    if (!isEnabled) return null;
+
+    const tunables = findTunables('VC_PEYOTE_DISABLE_');
+    if (!tunables.length) return null;
+
+    return {
+      enabled: tunables.filter((i) => i.value === false).map((i) => getLabel('PEYOTE_' + i.key.replace('VC_PEYOTE_DISABLE_', ''))),
+      disabled: tunables.filter((i) => i.value === true).map((i) => getLabel('PEYOTE_' + i.key.replace('VC_PEYOTE_DISABLE_', ''))),
+    };
+  } catch (error) {
+    const eventId = Sentry.captureException(error);
+    emit('error', 'An unknown error occurred.', eventId);
+    console.error(error);
+  }
+}
+
 /**
  * Retrieves the sales for the current tunables.
  *
@@ -981,6 +1036,7 @@ function formatSale(item) {
     console.error(error);
   }
 }
+
 function formatSaleValue(format, value, percentage) {
   const fc = Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -1007,8 +1063,12 @@ function formatSaleValue(format, value, percentage) {
   switch (format) {
     case 'bonus_rp':
       return `${fn(value)} RP ${multiplier}`;
+    case 'bonus_rp_multiplier':
+      return `${fn(value)}x RP`;
     case 'bonus_cash':
       return `${fc(value)} ${multiplier}`;
+    case 'bonus_cash_multiplier':
+      return `${fn(value)}x Cash`;
     case 'bonus_time_m':
       if (value === 1) return `1 minute ${percentage}`;
       return `${fn(value)} minutes ${percentage}`;
@@ -1197,6 +1257,7 @@ const studioAppearanceEnabledThu = computed(() => getStudioAppearanceEnabled('TH
 const studioAppearanceEnabledFri = computed(() => getStudioAppearanceEnabled('FRI'));
 const studioAppearanceEnabledSat = computed(() => getStudioAppearanceEnabled('SAT'));
 const studioAppearanceEnabledSun = computed(() => getStudioAppearanceEnabled('SUN'));
+const peyotePlants = computed(() => getPeyotePlants());
 const sales = computed(() => getSales());
 const ugcBonuses = computed(() => getUgcBonuses());
 
@@ -1465,6 +1526,41 @@ const rdoStamps = computed(() => getRdoStamps());
                   </Accordion>
                 </template>
               </div>
+            </template>
+          </Accordion>
+        </template>
+        <template v-if="peyotePlants">
+          <Accordion :id="Accordions.PeyotePlants">
+            <template #title>
+              <div class="flex justify-between items-center w-full overflow-hidden">
+                <div class="flex gap-2 overflow-hidden">
+                  <span class="truncate">Peyote Plants</span>
+                </div>
+                <span class="badge badge-plus ml-2" v-tooltip="'This section is enabled on special occasions'">Seasonal</span>
+              </div>
+            </template>
+            <template #default>
+              <template v-if="peyotePlants.enabled.length">
+                <h3 class="my-1 font-semibold">Enabled Peyote Plants</h3>
+                <ul class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 list-disc">
+                  <template v-for="item in peyotePlants.enabled" :key="item">
+                    <li class="ml-5">
+                      <p class="mr-2 truncate v-popper--has-tooltip">{{ item }}</p>
+                    </li>
+                  </template>
+                </ul>
+              </template>
+              <template v-if="peyotePlants.disabled.length">
+                <h3 class="my-1 font-semibold">Disabled Peyote Plants</h3>
+                <ul class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 list-disc">
+                  <template v-for="item in peyotePlants.disabled" :key="item">
+                    <li class="ml-5">
+                      <p class="mr-2 truncate v-popper--has-tooltip">{{ item }}</p>
+                    </li>
+                  </template>
+                </ul>
+              </template>
+              <a href="https://gtaweb.eu/gtao-map/ls/2dc" target="_blank" rel="noopener noreferrer"> See the locations on GTAWeb.eu </a>
             </template>
           </Accordion>
         </template>
