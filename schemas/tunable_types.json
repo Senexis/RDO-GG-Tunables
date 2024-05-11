@@ -114,7 +114,9 @@
         "type": "string",
         "enum": [
           "bonus_cash",
+          "bonus_cash_multiplier",
           "bonus_rp",
+          "bonus_rp_multiplier",
           "bonus_time_m",
           "bonus_time_ms",
           "sale_cash",
