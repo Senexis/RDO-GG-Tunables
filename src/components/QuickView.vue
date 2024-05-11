@@ -1550,7 +1550,7 @@ const rdoStamps = computed(() => getRdoStamps());
                   </template>
                 </ul>
               </template>
-              <template v-if="peyotePlants.disabled.length">
+              <template v-if="settings.verbose && peyotePlants.disabled.length">
                 <h3 class="my-1 font-semibold">Disabled Peyote Plants</h3>
                 <ul class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 list-disc">
                   <template v-for="item in peyotePlants.disabled" :key="item">
