@@ -6468,6 +6468,20 @@
     "gen_9_bonus": false
   },
   {
+    "key": "BOUNTY24_HSW_UPGRADE_EUROSX32",
+    "type": "hsw_upgrade_sales",
+    "display": "EUROSX32",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_HSW_UPGRADE_NIOBE",
+    "type": "hsw_upgrade_sales",
+    "display": "NIOBE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "SU23_HSW_UPGRADE_BUFFALO5",
     "type": "hsw_upgrade_sales",
     "display": "BUFFALO5",
@@ -11501,6 +11515,160 @@
     "gen_9_bonus": false
   },
   {
+    "key": "BOUNTY24_BIN_PRICE_CASTIGATOR",
+    "type": "vehicle_sales",
+    "display": "CASTIGATOR",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_COQUETTE5",
+    "type": "vehicle_sales",
+    "display": "COQUETTE5",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_DOMINATOR10",
+    "type": "vehicle_sales",
+    "display": "DOMINATOR10",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_ENVISAGE",
+    "type": "vehicle_sales",
+    "display": "ENVISAGE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_EUROSX32",
+    "type": "vehicle_sales",
+    "display": "EUROSX32",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_NIOBE",
+    "type": "vehicle_sales",
+    "display": "NIOBE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_PARAGON3",
+    "type": "vehicle_sales",
+    "display": "PARAGON3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_PIPISTRELLO",
+    "type": "vehicle_sales",
+    "display": "PIPISTRELLO",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_PIZZABOY",
+    "type": "vehicle_sales",
+    "display": "PIZZABOY",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_POLDOMINATOR10",
+    "type": "vehicle_sales",
+    "display": "POLDOMINATOR10",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_POLDORADO",
+    "type": "vehicle_sales",
+    "display": "POLDORADO",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_POLGREENWOOD",
+    "type": "vehicle_sales",
+    "display": "POLGREENWOOD",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_POLIMPALER5",
+    "type": "vehicle_sales",
+    "display": "POLIMPALER5",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_POLIMPALER6",
+    "type": "vehicle_sales",
+    "display": "POLIMPALER6",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_VORSCHLAGHAMMER",
+    "type": "vehicle_sales",
+    "display": "VORSCHLAGHAMMER",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_BIN_PRICE_YOSEMITE1500",
+    "type": "vehicle_sales",
+    "display": "YOSEMITE1500",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_TRADE_PRICE_PIZZABOY",
+    "type": "vehicle_sales",
+    "display": "PIZZABOY",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_TRADE_PRICE_POLDOMINATOR10",
+    "type": "vehicle_sales",
+    "display": "POLDOMINATOR10",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_TRADE_PRICE_POLDORADO",
+    "type": "vehicle_sales",
+    "display": "POLDORADO",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_TRADE_PRICE_POLGREENWOOD",
+    "type": "vehicle_sales",
+    "display": "POLGREENWOOD",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_TRADE_PRICE_POLIMPALER5",
+    "type": "vehicle_sales",
+    "display": "POLIMPALER5",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BOUNTY24_TRADE_PRICE_POLIMPALER6",
+    "type": "vehicle_sales",
+    "display": "POLIMPALER6",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "BULLET_EXPENDITURE_MODIFIER",
     "type": "vehicle_sales",
     "display": "BULLET",
@@ -16026,6 +16194,34 @@
     "key": "SUM2_UPGRADE_PRICE_WEEVIL2",
     "type": "vehicle_upgrade_sales",
     "display": "WEEVIL2",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "SUM24_DRIFT_UPGRADE_DRIFTCYPHER",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTCYPHER",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "SUM24_DRIFT_UPGRADE_DRIFTNEBULA",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTNEBULA",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "SUM24_DRIFT_UPGRADE_DRIFTSENTINEL",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTSENTINEL",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "SUM24_DRIFT_UPGRADE_DRIFTVORSCHLAG",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTVORSCHLAG",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
