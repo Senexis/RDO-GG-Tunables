@@ -16723,6 +16723,20 @@
     "gen_9_bonus": false
   },
   {
+    "key": "ARCADE_WEAPON_AMMO_PRICE_CERAMIC_PISTOL",
+    "type": "weapon_ammo_sales",
+    "display": "WEAPON_CERAMICPISTOL",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "ARCADE_WEAPON_AMMO_PRICE_NAVY_REVOLVER",
+    "type": "weapon_ammo_sales",
+    "display": "WEAPON_NAVYREVOLVER",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "ASSAULT_RIFLE_AMMO_MODIFIER",
     "type": "weapon_ammo_sales",
     "display": "WT_RIFLE_ASL",
@@ -16775,6 +16789,13 @@
     "key": "BIKER_AMMO_SWEEPER_SHOTGUN_AMMO",
     "type": "weapon_ammo_sales",
     "display": "WT_AUTOSHOT",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "BIKER_PRIMARY_PIPE_BOMB",
+    "type": "weapon_ammo_sales",
+    "display": "WEAPON_PIPEBOMB",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17234,6 +17255,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "GRENADE_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GNADE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "HEAVY_SNIPER_AMMO_MODIFIER",
     "type": "weapon_ammo_sales",
     "display": "WT_SNIP_HVY",
@@ -17258,6 +17286,13 @@
     "key": "IH_PERICO_PISTOL_AMMO",
     "type": "weapon_ammo_sales",
     "display": "WT_GDGTPST",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "JERRYCAN_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_PETROL",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17367,6 +17402,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "STICKYBOMB_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GNADE_STK",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "SU22_PRECISION_RIFLE_AMMO",
     "type": "weapon_ammo_sales",
     "display": "WT_PRECRIFLE",
@@ -17389,6 +17431,13 @@
   },
   {
     "key": "TEARGAS_AMMO_MODIFIER",
+    "type": "weapon_ammo_sales",
+    "display": "WT_GNADE_SMK",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "TEARGAS_MODIFIER",
     "type": "weapon_ammo_sales",
     "display": "WT_GNADE_SMK",
     "format": "sale_cash",
@@ -17423,6 +17472,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "WEAPONS_XMAS14_PROXIMITY_MINE",
+    "type": "weapon_ammo_sales",
+    "display": "WEAPON_PROXMINE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "XM22_RAILGUN_AMMO",
     "type": "weapon_ammo_sales",
     "display": "WT_RAILGUNXM3",
@@ -17433,6 +17489,13 @@
     "key": "XM22_WM29_AMMO",
     "type": "weapon_ammo_sales",
     "display": "WT_PISTOLXM3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BATTLE_RIFLE_AMMO",
+    "type": "weapon_ammo_sales",
+    "display": "WEAPON_BATTLERIFLE",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17517,13 +17580,6 @@
     "key": "BIKER_PRIMARY_MINI_SMG",
     "type": "weapon_sales",
     "display": "WEAPON_MINISMG",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
-    "key": "BIKER_PRIMARY_PIPE_BOMB",
-    "type": "weapon_sales",
-    "display": "WEAPON_PIPEBOMB",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17703,13 +17759,6 @@
     "gen_9_bonus": false
   },
   {
-    "key": "GRENADE_MODIFIER",
-    "type": "weapon_sales",
-    "display": "WEAPON_GRENADE",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
     "key": "HALLOWEEN_2015_FLASHLIGHT",
     "type": "weapon_sales",
     "display": "WEAPON_FLASHLIGHT",
@@ -17748,13 +17797,6 @@
     "key": "IH_PERICO_PISTOL_COST",
     "type": "weapon_sales",
     "display": "WEAPON_GADGETPISTOL",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
-    "key": "JERRYCAN_MODIFIER",
-    "type": "weapon_sales",
-    "display": "WEAPON_PETROLCAN",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17941,13 +17983,6 @@
     "gen_9_bonus": false
   },
   {
-    "key": "STICKYBOMB_MODIFIER",
-    "type": "weapon_sales",
-    "display": "WEAPON_STICKYBOMB",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
     "key": "SU22_PRECISION_RIFLE_COST",
     "type": "weapon_sales",
     "display": "WEAPON_PRECISIONRIFLE",
@@ -17958,13 +17993,6 @@
     "key": "SU22_SERVICE_CARBINE_COST",
     "type": "weapon_sales",
     "display": "WEAPON_TACTICALRIFLE",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
-    "key": "TEARGAS_MODIFIER",
-    "type": "weapon_sales",
-    "display": "WEAPON_SMOKEGRENADE",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17993,13 +18021,6 @@
     "key": "WEAPONS_XMAS14_HOMING_LAUNCHER",
     "type": "weapon_sales",
     "display": "WEAPON_HOMINGLAUNCHER",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
-    "key": "WEAPONS_XMAS14_PROXIMITY_MINE",
-    "type": "weapon_sales",
-    "display": "WEAPON_PROXMINE",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
