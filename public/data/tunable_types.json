@@ -11445,6 +11445,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "BIKER_WEBSITE_WESTERN_BAGGER_DISC_VEHICLE",
+    "type": "vehicle_sales",
+    "display": "BAGGER",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "BIKER_WEBSITE_WESTERN_DAEMON_CUSTOM",
     "type": "vehicle_sales",
     "display": "DAEMON2",
@@ -15232,6 +15239,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "VC_SALE_UPGRADE_PRICE_ISSI_CUSTOM",
+    "type": "vehicle_sales",
+    "display": "ISSI7",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "VEHICLE_INDEPENDENCEDAY_MONSTER",
     "type": "vehicle_sales",
     "display": "MONSTER",
@@ -15792,6 +15806,181 @@
     "gen_9_bonus": false
   },
   {
+    "key": "XM23_BIN_PRICE_ALEUTIAN",
+    "type": "vehicle_sales",
+    "display": "ALEUTIAN",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_ASTEROPE2",
+    "type": "vehicle_sales",
+    "display": "ASTEROPE2",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_BALLER8",
+    "type": "vehicle_sales",
+    "display": "BALLER8",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_BENSON2",
+    "type": "vehicle_sales",
+    "display": "BENSON2",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_BOXVILLE6",
+    "type": "vehicle_sales",
+    "display": "BOXVILLE6",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_CAVALCADE3",
+    "type": "vehicle_sales",
+    "display": "CAVALCADE3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_DOMINATOR9",
+    "type": "vehicle_sales",
+    "display": "DOMINATOR9",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_DORADO",
+    "type": "vehicle_sales",
+    "display": "DORADO",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_FR36",
+    "type": "vehicle_sales",
+    "display": "FR36",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_IMPALER5",
+    "type": "vehicle_sales",
+    "display": "IMPALER5",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_IMPALER6",
+    "type": "vehicle_sales",
+    "display": "IMPALER6",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_POLGAUNTLET",
+    "type": "vehicle_sales",
+    "display": "POLGAUNTLET",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_POLICE4",
+    "type": "vehicle_sales",
+    "display": "POLICE4",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_POLICE5",
+    "type": "vehicle_sales",
+    "display": "POLICE5",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_RIOT",
+    "type": "vehicle_sales",
+    "display": "RIOT",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_TERMINUS",
+    "type": "vehicle_sales",
+    "display": "TERMINUS",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_TURISMO3",
+    "type": "vehicle_sales",
+    "display": "TURISMO3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_VIGERO3",
+    "type": "vehicle_sales",
+    "display": "VIGERO3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_BIN_PRICE_VIVANITE",
+    "type": "vehicle_sales",
+    "display": "VIVANITE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_TRADE_PRICE_BENSON2",
+    "type": "vehicle_sales",
+    "display": "BENSON2",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_TRADE_PRICE_BOXVILLE6",
+    "type": "vehicle_sales",
+    "display": "BOXVILLE6",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_TRADE_PRICE_POLGAUNTLET",
+    "type": "vehicle_sales",
+    "display": "POLGAUNTLET",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_TRADE_PRICE_POLICE4",
+    "type": "vehicle_sales",
+    "display": "POLICE4",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_TRADE_PRICE_POLICE5",
+    "type": "vehicle_sales",
+    "display": "POLICE5",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_TRADE_PRICE_RIOT",
+    "type": "vehicle_sales",
+    "display": "RIOT",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "XMAS2015_DECLASSE_TAMPA",
     "type": "vehicle_sales",
     "display": "TAMPA",
@@ -16037,6 +16226,20 @@
     "gen_9_bonus": false
   },
   {
+    "key": "GR_EXISTING_FULLY_WEAPONIZED_VEHICLE_UPRGRADES_HVY_INSURGENT_PICK_UP_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "INSURGENT3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "GR_EXISTING_FULLY_WEAPONIZED_VEHICLE_UPRGRADES_KARIN_TECHNICAL_CUSTOM",
+    "type": "vehicle_upgrade_sales",
+    "display": "TECHNICAL3",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "IMPEXP_COMET3_UPGRADE_PRICE",
     "type": "vehicle_upgrade_sales",
     "display": "COMET3",
@@ -16229,6 +16432,62 @@
     "key": "UPGRADE_BRAVADO_BANSHEE_900R_UPGRADE",
     "type": "vehicle_upgrade_sales",
     "display": "BANSHEE2",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTEUROS",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTEUROS",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTFR36",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTFR36",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTFUTO",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTFUTO",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTJESTER",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTJESTER",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTREMUS",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTREMUS",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTTAMPA",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTTAMPA",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTYOSEMITE",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTYOSEMITE",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
+    "key": "XM23_DRIFT_UPGRADE_DRIFTZR350",
+    "type": "vehicle_upgrade_sales",
+    "display": "DRIFTZR350",
     "format": "sale_cash",
     "gen_9_bonus": false
   },
@@ -17479,6 +17738,13 @@
     "gen_9_bonus": false
   },
   {
+    "key": "XM22_MOLOTOV_SINGLE_COST",
+    "type": "weapon_ammo_sales",
+    "display": "WEAPON_MOLOTOV",
+    "format": "sale_cash",
+    "gen_9_bonus": false
+  },
+  {
     "key": "XM22_RAILGUN_AMMO",
     "type": "weapon_ammo_sales",
     "display": "WT_RAILGUNXM3",
@@ -18035,13 +18301,6 @@
     "key": "XM22_CROWBAR_COST",
     "type": "weapon_sales",
     "display": "WEAPON_CROWBAR",
-    "format": "sale_cash",
-    "gen_9_bonus": false
-  },
-  {
-    "key": "XM22_MOLOTOV_SINGLE_COST",
-    "type": "weapon_sales",
-    "display": "WEAPON_MOLOTOV",
     "format": "sale_cash",
     "gen_9_bonus": false
   },

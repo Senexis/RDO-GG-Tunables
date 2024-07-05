@@ -181,6 +181,7 @@ kbd {
 .hide-quick-view [data-key*="PRIZE_VEHICLE_Z_OFFSET"],
 .hide-quick-view [data-key*="PROMO_TEST_DRIVE_VEHICLE"],
 .hide-quick-view [data-key*="SALV23_ROBBERY_VEHICLE"],
+.hide-quick-view [data-key*="SALV23_VEH_ROBBERY_WEEK_ID"],
 .hide-quick-view [data-key*="SALV23_VEHICLE_ROBBERY"],
 .hide-quick-view [data-key*="SIMEON_TEST_DRIVE_VEHICLE"],
 .hide-quick-view [data-key*="SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE"],
