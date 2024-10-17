@@ -480,8 +480,12 @@ function getDailyObjective(day) {
   try {
     const value = getTunable(`DAILY_OBJECTIVE_${day.toUpperCase()}_1`);
     if (value === null || value === -1) return null;
-    if (!data.value.dailyObjectives) return value;
-    return data.value.dailyObjectives[value] ?? value;
+    if (!data.value.dailyObjectives) return null;
+    if (!data.value.dailyObjectives[value]) {
+      emit('error', `Daily objective [${value}] not found, was there an update recently?`, null);
+      return null;
+    }
+    return data.value.dailyObjectives[value] ?? null;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -499,8 +503,12 @@ function getWeeklyObjectiveId() {
     if (props.game !== 'gta') return null;
     let value = getTunable('MP_WEEKLY_OBJECTIVE_ID_OVERRIDE');
     if (value === null || value === -1) return null;
-    if (!data.value.weeklyObjectives) return value;
-    return data.value.weeklyObjectives[value] ?? value;
+    if (!data.value.weeklyObjectives) return null;
+    if (!data.value.weeklyObjectives[value]) {
+      emit('error', `Weekly objective [${value}] not found, was there an update recently?`, null);
+      return null;
+    }
+    return data.value.weeklyObjectives[value] ?? null;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -549,8 +557,12 @@ function getRcTimeTrial() {
   try {
     const value = getTunable('RCTIMETRIALVARIATION');
     if (value === null || value === -1) return null;
-    if (!data.value.rcTimeTrials) return value;
-    return data.value.rcTimeTrials[value] ?? value;
+    if (!data.value.rcTimeTrials) return null;
+    if (!data.value.rcTimeTrials[value]) {
+      emit('error', `RC time trial [${value}] not found, was there an update recently?`, null);
+      return null;
+    }
+    return data.value.rcTimeTrials[value] ?? null;
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -567,8 +579,12 @@ function getHswTimeTrial() {
   try {
     const value = getTunable('HSW_TIME_TRIAL_SUBVARIATION');
     if (value === null || value === -1) return null;
-    if (!data.value.hswTimeTrials) return value;
-    return data.value.hswTimeTrials[value] ?? value;
+    if (!data.value.hswTimeTrials) return null;
+    if (!data.value.hswTimeTrials[value]) {
+      emit('error', `HSW time trial [${value}] not found, was there an update recently?`, null);
+      return null;
+    }
+    return data.value.hswTimeTrials[value];
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
@@ -585,8 +601,12 @@ function getTimeTrial() {
   try {
     const value = getTunable('TIMETRIALVARIATION');
     if (value === null || value === -1) return null;
-    if (!data.value.timeTrials) return value;
-    return data.value.timeTrials[value] ?? value;
+    if (!data.value.timeTrials) return null;
+    if (!data.value.timeTrials[value]) {
+      emit('error', `Time trial [${value}] not found, was there an update recently?`, null);
+      return null;
+    }
+    return data.value.timeTrials[value];
   } catch (error) {
     const eventId = Sentry.captureException(error);
     emit('error', 'An unknown error occurred.', eventId);
