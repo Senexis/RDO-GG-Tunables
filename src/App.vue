@@ -813,11 +813,12 @@ async function handleGameUpdate(init = false) {
     difference.value.html = null;
 
     // Run a one-time migration to the new GTA Online platform.
-    if (!settings.oneTimePcUpgrade && game.value === 'gta' && platform.value === 'pcros') {
-      platform.value = 'pcrosalt';
-      settings.platform = 'pcrosalt';
-      settings.oneTimePcUpgrade = true;
-    }
+    // TODO: Enable on March 4th when the version launches.
+    // if (!settings.oneTimePcUpgrade && game.value === 'gta' && platform.value === 'pcros') {
+    //   platform.value = 'pcrosalt';
+    //   settings.platform = 'pcrosalt';
+    //   settings.oneTimePcUpgrade = true;
+    // }
 
     // Ensure RDO is always loaded as PC.
     if (game.value === 'rdo') {
@@ -1385,20 +1386,33 @@ function showErrorModal(body, eventId = null) {
           <div
             class="relative bg-secondary-100 dark:bg-secondary-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]">
             <template v-if="!difference.loading">
+              <template v-if="settings.tunablesDisclaimer">
+                <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissTunablesDisclaimer">
+                  <p>
+                    Some tunables may be hidden by default, such as ones available in the <strong>Quick View
+                      panel</strong> or ones that
+                    are verbose and aren't relevant to most users.
+                  </p>
+                  <p class="mt-0.5 text-xs text-secondary-200">
+                    Tip: You can change which tunables to show using the
+                    <Cog6ToothIcon class="inline w-4 h-4" /> button.
+                  </p>
+                </AlertWithLink>
+              </template>
+              <!-- TODO: Remove on March 4th -->
+              <template v-if="game === 'gta' && platform === 'pcrosalt'">
+                <AlertWithLink buttonText="Dismiss" :buttonHandler="void">
+                  <p>
+                    You are currently viewing the <strong>Upgraded</strong> version of GTA Online on PC launching on
+                    March 4th. The tunables displayed here may not be accurate until then.
+                  </p>
+                  <p class="mt-0.5 text-xs text-secondary-200">
+                    Tip: You can change which version of GTA online to show using the
+                    <Cog6ToothIcon class="inline w-4 h-4" /> button.
+                  </p>
+                </AlertWithLink>
+              </template>
               <template v-if="difference.html">
-                <template v-if="settings.tunablesDisclaimer">
-                  <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissTunablesDisclaimer">
-                    <p>
-                      Some tunables may be hidden by default, such as ones available in the <strong>Quick View
-                        panel</strong> or ones that
-                      are verbose and aren't relevant to most users.
-                    </p>
-                    <p class="mt-0.5 text-xs text-secondary-200">
-                      Tip: You can change which tunables to show using the
-                      <Cog6ToothIcon class="inline w-4 h-4" /> button.
-                    </p>
-                  </AlertWithLink>
-                </template>
                 <!-- eslint-disable vue/no-v-text-v-html-on-component -->
                 <component :is="`style`" v-html="saleStyles"></component>
                 <div :class="[
