@@ -813,7 +813,7 @@ async function handleGameUpdate(init = false) {
     difference.value.html = null;
 
     // Run a one-time migration to the new GTA Online platform.
-    if (!settings.oneTimePcUpgrade && game.value === 'gta' && game.platform === 'pcros') {
+    if (!settings.oneTimePcUpgrade && game.value === 'gta' && platform.value === 'pcros') {
       platform.value = 'pcrosalt';
       settings.platform = 'pcrosalt';
       settings.oneTimePcUpgrade = true;
