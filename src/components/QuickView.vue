@@ -867,7 +867,7 @@ function getSales() {
       const tunable = findTunable(tunableType.key);
       if (!tunable) continue;
 
-      if (props.game === 'gta' && (props.platform === 'ps5' || props.platform === 'xboxsx')) {
+      if (props.game === 'gta' && ['pcrosalt', 'ps5', 'xboxsx'].includes(props.platform)) {
         if (!settings.gen9Bonuses && tunableType.gen_9_bonus) continue;
       }
 

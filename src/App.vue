@@ -98,9 +98,9 @@ const game = ref(url.searchParams.get('game') || settings.game || 'gta');
 /**
  * Contains the selected platform.
  *
- * @type {import("vue").Ref<"pcros" | "ps4" | "ps5" | "xboxone" | "xboxsx">}
+ * @type {import("vue").Ref<"pcrosalt" | "pcros" | "ps4" | "ps5" | "xboxone" | "xboxsx">}
  */
-const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcros');
+const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcrosalt');
 
 /**
  * Contains the difference between the previous and latest tunables in HTML.
@@ -241,6 +241,7 @@ const activeBanner = computed(() => {
     'more-personalization',
     'game-platform-defaults',
     'gen-9-bonuses',
+    'gen-9-pc',
   ];
 
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
@@ -402,11 +403,36 @@ const gameOptions = computed(() => [
  * @type {import("vue").ComputedRef<Object>}
  */
 const platformBadges = computed(() => ({
-  pcros: { label: 'PC', background: 'pc', tooltip: 'PC' },
-  ps4: { label: 'PS4', background: 'playstation', tooltip: 'PlayStation 4' },
-  ps5: { label: 'PS5', background: 'playstation', tooltip: 'PlayStation 5' },
-  xboxone: { label: 'One', background: 'xbox', tooltip: 'Xbox One' },
-  xboxsx: { label: 'X|S', background: 'xbox', tooltip: 'Xbox Series X|S' },
+  pcrosalt: {
+    label: 'PC',
+    background: 'pc',
+    tooltip: 'PC',
+  },
+  pcros: {
+    label: game.value === 'gta' ? 'PC (L)' : 'PC',
+    background: 'pc',
+    tooltip: game.value === 'gta' ? 'PC (Legacy)' : 'PC',
+  },
+  ps4: {
+    label: 'PS4',
+    background: 'playstation',
+    tooltip: 'PlayStation 4',
+  },
+  ps5: {
+    label: 'PS5',
+    background: 'playstation',
+    tooltip: 'PlayStation 5',
+  },
+  xboxone: {
+    label: 'One',
+    background: 'xbox',
+    tooltip: 'Xbox One',
+  },
+  xboxsx: {
+    label: 'X|S',
+    background: 'xbox',
+    tooltip: 'Xbox Series X|S',
+  },
 }));
 
 /**
@@ -447,8 +473,13 @@ function getPlatformBadgeTooltip() {
  */
 const platformOptions = computed(() => [
   {
-    value: 'pcros',
+    value: 'pcrosalt',
     label: 'PC',
+    hidden: game.value !== 'gta',
+  },
+  {
+    value: 'pcros',
+    label: game.value === 'gta' ? 'PC (Legacy)' : 'PC',
     hidden: false,
   },
   {
@@ -693,10 +724,10 @@ const files = computed(() => {
 watch(game, () => {
   try {
     Sentry.setTag('game', game.value);
-    if (platform.value !== 'pcros') {
+    if (game.value === 'rdo') {
       platform.value = 'pcros';
     } else {
-      handleGameUpdate();
+      platform.value = 'pcrosalt';
     }
   } catch (error) {
     const eventId = Sentry.captureException(error);
@@ -781,6 +812,13 @@ async function handleGameUpdate(init = false) {
     difference.value.loading = true;
     difference.value.html = null;
 
+    // Run a one-time migration to the new GTA Online platform.
+    if (!settings.oneTimePcUpgrade && game.value === 'gta' && game.platform === 'pcros') {
+      platform.value = 'pcrosalt';
+      settings.platform = 'pcrosalt';
+      settings.oneTimePcUpgrade = true;
+    }
+
     // Ensure RDO is always loaded as PC.
     if (game.value === 'rdo') {
       platform.value = 'pcros';
@@ -807,6 +845,11 @@ async function handleGameUpdate(init = false) {
 
     if (!init || !latest.value) {
       latest.value = tunables.value.all.latest?.hash;
+    }
+
+    // If there are no previous tunables, set the latest tunables as the previous tunables.
+    if (!previous.value && latest.value) {
+      previous.value = latest.value;
     }
 
     // Step 3. Update the query string.
@@ -1222,25 +1265,18 @@ function showErrorModal(body, eventId = null) {
 
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <template v-if="!settings.quickViewBelowTunables">
-      <QuickView
-        :game="game"
-        :platform="platform"
-        :loading="difference.loading"
-        :tunables="tunables?.latest?.contents?.tunables"
-        :ugc="tunables?.latest?.contents?.contentlists"
-        @error="showErrorModal"
-      />
+      <QuickView :game="game" :platform="platform" :loading="difference.loading"
+        :tunables="tunables?.latest?.contents?.tunables" :ugc="tunables?.latest?.contents?.contentlists"
+        @error="showErrorModal" />
     </template>
 
     <div>
       <template v-if="settings.goToWeek && !difference.loading && showGoToEventWeeklyChange">
-        <AlertWithLink
-          :buttonText="`Show changes for week ${showGoToEventWeeklyChange.weekly_id}`"
-          :buttonHandler="handleCompareWeeklyChange"
-        >
+        <AlertWithLink :buttonText="`Show changes for week ${showGoToEventWeeklyChange.weekly_id}`"
+          :buttonHandler="handleCompareWeeklyChange">
           <p>
-            These tunables changes are minor updates to week <strong>{{ showGoToEventWeeklyChange.weekly_id }}</strong
-            >. You can browse the weekly changes themselves by clicking the button.
+            These tunables changes are minor updates to week <strong>{{ showGoToEventWeeklyChange.weekly_id }}</strong>.
+            You can browse the weekly changes themselves by clicking the button.
           </p>
         </AlertWithLink>
       </template>
@@ -1277,89 +1313,67 @@ function showErrorModal(body, eventId = null) {
             <div class="whitespace-nowrap">
               <Menu as="div" class="relative ml-3">
                 <div>
-                  <MenuButton
-                    v-tooltip="'Tunables options'"
-                    class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-600 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
-                  >
+                  <MenuButton v-tooltip="'Tunables options'"
+                    class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-600 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none">
                     <span class="sr-only">Tunables options</span>
                     <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
                   </MenuButton>
                 </div>
-                <transition
-                  enter-active-class="transition ease-out duration-100"
-                  enter-from-class="transform opacity-0 scale-95"
-                  enter-to-class="transform opacity-100 scale-100"
-                  leave-active-class="transition ease-in duration-75"
-                  leave-from-class="transform opacity-100 scale-100"
-                  leave-to-class="transform opacity-0 scale-95"
-                >
+                <transition enter-active-class="transition ease-out duration-100"
+                  enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
+                  leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100"
+                  leave-to-class="transform opacity-0 scale-95">
                   <MenuItems
-                    class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-secondary-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  >
+                    class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-secondary-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <MenuItem>
-                      <button
-                        @click="handleToggleTunables"
-                        type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                      >
-                        <template v-if="settings.tunablesPanel">
-                          <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
-                          Collapse Tunables
-                        </template>
-                        <template v-else>
-                          <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
-                          Expand Tunables
-                        </template>
-                      </button>
+                    <button @click="handleToggleTunables" type="button"
+                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky">
+                      <template v-if="settings.tunablesPanel">
+                        <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
+                        Collapse Tunables
+                      </template>
+                      <template v-else>
+                        <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
+                        Expand Tunables
+                      </template>
+                    </button>
                     </MenuItem>
                     <MenuItem>
-                      <button
-                        @click="handleMoveTunables"
-                        type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                      >
-                        <template v-if="settings.quickViewBelowTunables">
-                          <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
-                          Move below Quick View
-                        </template>
-                        <template v-else>
-                          <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
-                          Move above Quick View
-                        </template>
-                      </button>
+                    <button @click="handleMoveTunables" type="button"
+                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky">
+                      <template v-if="settings.quickViewBelowTunables">
+                        <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
+                        Move below Quick View
+                      </template>
+                      <template v-else>
+                        <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
+                        Move above Quick View
+                      </template>
+                    </button>
                     </MenuItem>
                     <MenuItem>
-                      <hr class="my-1 border-secondary-200 dark:border-secondary-600" />
+                    <hr class="my-1 border-secondary-200 dark:border-secondary-600" />
                     </MenuItem>
                     <MenuItem v-if="!previousDisabled">
-                      <button
-                        @click="handleComparePrevious"
-                        type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                      >
-                        <ChevronLeftIcon class="h-4 w-4" aria-hidden="true" />
-                        Compare previous
-                      </button>
+                    <button @click="handleComparePrevious" type="button"
+                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky">
+                      <ChevronLeftIcon class="h-4 w-4" aria-hidden="true" />
+                      Compare previous
+                    </button>
                     </MenuItem>
                     <MenuItem v-if="!nextDisabled">
-                      <button
-                        @click="handleCompareNext"
-                        type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                      >
-                        <ChevronRightIcon class="h-4 w-4" aria-hidden="true" />
-                        Compare next
-                      </button>
+                    <button @click="handleCompareNext" type="button"
+                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky">
+                      <ChevronRightIcon class="h-4 w-4" aria-hidden="true" />
+                      Compare next
+                    </button>
                     </MenuItem>
                     <MenuItem v-if="!latestDisabled">
-                      <button
-                        @click="handleCompareLatest"
-                        type="button"
-                        class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
-                      >
-                        <ChevronDoubleRightIcon class="h-4 w-4" aria-hidden="true" />
-                        Compare latest
-                      </button>
+                    <button @click="handleCompareLatest" type="button"
+                      class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky">
+                      <ChevronDoubleRightIcon class="h-4 w-4" aria-hidden="true" />
+                      Compare latest
+                    </button>
                     </MenuItem>
                   </MenuItems>
                 </transition>
@@ -1369,38 +1383,36 @@ function showErrorModal(body, eventId = null) {
         </template>
         <template #default v-if="settings.tunablesPanel">
           <div
-            class="relative bg-secondary-100 dark:bg-secondary-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]"
-          >
+            class="relative bg-secondary-100 dark:bg-secondary-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]">
             <template v-if="!difference.loading">
               <template v-if="difference.html">
                 <template v-if="settings.tunablesDisclaimer">
                   <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissTunablesDisclaimer">
                     <p>
-                      Some tunables may be hidden by default, such as ones available in the <strong>Quick View panel</strong> or ones that
+                      Some tunables may be hidden by default, such as ones available in the <strong>Quick View
+                        panel</strong> or ones that
                       are verbose and aren't relevant to most users.
                     </p>
                     <p class="mt-0.5 text-xs text-secondary-200">
-                      Tip: You can change which tunables to show using the <Cog6ToothIcon class="inline w-4 h-4" /> button.
+                      Tip: You can change which tunables to show using the
+                      <Cog6ToothIcon class="inline w-4 h-4" /> button.
                     </p>
                   </AlertWithLink>
                 </template>
                 <!-- eslint-disable vue/no-v-text-v-html-on-component -->
                 <component :is="`style`" v-html="saleStyles"></component>
-                <div
-                  :class="[
-                    settings.added ? '' : 'hide-added',
-                    settings.deleted ? '' : 'hide-deleted',
-                    settings.modified ? '' : 'hide-modified',
-                    settings.unchanged ? '' : 'hide-unchanged',
-                    settings.meta ? '' : 'hide-meta',
-                    settings.content ? '' : 'hide-content',
-                    settings.quickViewItems ? '' : 'hide-quick-view',
-                    settings.sales ? '' : 'hide-sales',
-                    settings.tunables ? '' : 'hide-tunables',
-                    settings.verbose ? '' : 'hide-verbose',
-                  ]"
-                  v-html="difference.html"
-                ></div>
+                <div :class="[
+                  settings.added ? '' : 'hide-added',
+                  settings.deleted ? '' : 'hide-deleted',
+                  settings.modified ? '' : 'hide-modified',
+                  settings.unchanged ? '' : 'hide-unchanged',
+                  settings.meta ? '' : 'hide-meta',
+                  settings.content ? '' : 'hide-content',
+                  settings.quickViewItems ? '' : 'hide-quick-view',
+                  settings.sales ? '' : 'hide-sales',
+                  settings.tunables ? '' : 'hide-tunables',
+                  settings.verbose ? '' : 'hide-verbose',
+                ]" v-html="difference.html"></div>
               </template>
               <template v-else>
                 <div class="flex flex-col items-center justify-center gap-2 p-4">
@@ -1412,18 +1424,14 @@ function showErrorModal(body, eventId = null) {
             <template v-else>
               <template v-for="n in 20" :key="n">
                 <template v-if="n === 1 || n === 20">
-                  <div
-                    class="my-[1px] rounded-sm text-xs bg-secondary-300 dark:bg-secondary-600 animate-pulse"
-                    :style="{ width: random(4, 20) + 'em' }"
-                  >
+                  <div class="my-[1px] rounded-sm text-xs bg-secondary-300 dark:bg-secondary-600 animate-pulse"
+                    :style="{ width: random(4, 20) + 'em' }">
                     &nbsp;
                   </div>
                 </template>
                 <template v-else>
-                  <div
-                    class="my-[1px] rounded-sm text-xs bg-secondary-300 dark:bg-secondary-600 animate-pulse"
-                    :style="{ width: random(4, 12) + 'em', 'margin-left': random(0, 1) + 'em' }"
-                  >
+                  <div class="my-[1px] rounded-sm text-xs bg-secondary-300 dark:bg-secondary-600 animate-pulse"
+                    :style="{ width: random(4, 12) + 'em', 'margin-left': random(0, 1) + 'em' }">
                     &nbsp;
                   </div>
                 </template>
@@ -1441,32 +1449,28 @@ function showErrorModal(body, eventId = null) {
     </div>
 
     <template v-if="settings.quickViewBelowTunables">
-      <QuickView
-        :game="game"
-        :platform="platform"
-        :loading="difference.loading"
-        :tunables="tunables?.latest?.contents?.tunables"
-        :ugc="tunables?.latest?.contents?.contentlists"
-        @error="showErrorModal"
-      />
+      <QuickView :game="game" :platform="platform" :loading="difference.loading"
+        :tunables="tunables?.latest?.contents?.tunables" :ugc="tunables?.latest?.contents?.contentlists"
+        @error="showErrorModal" />
     </template>
 
     <div
-      class="mt-8 border-t border-secondary-800/10 dark:border-secondary-200/10 py-4 text-xs leading-5 text-secondary-500 sm:flex sm:items-center sm:justify-between"
-    >
+      class="mt-8 border-t border-secondary-800/10 dark:border-secondary-200/10 py-4 text-xs leading-5 text-secondary-500 sm:flex sm:items-center sm:justify-between">
       <div class="flex space-x-4">
         <span>&copy; {{ appCopyrightYear }} RDO.GG</span>
         <span>
           <HeartIcon class="inline w-4 h-4 text-heart animate-pulse" /> from
           <a href="https://github.com/Senexis" target="_blank" rel="noopener noreferrer">Senexis</a> and
-          <button @click="attributionModal.show = true" class="text-primary-600 hover:text-primary-400">contributors</button>
+          <button @click="attributionModal.show = true"
+            class="text-primary-600 hover:text-primary-400">contributors</button>
         </span>
       </div>
       <div class="flex space-x-4">
         <a href="https://rdo.gg/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
         <a href="https://rdo.gg/terms/" target="_blank" rel="noopener noreferrer">Terms of Service</a>
         <button @click="licenseModal.show = true" class="text-primary-600 hover:text-primary-400">License</button>
-        <button @click="attributionModal.show = true" class="text-primary-600 hover:text-primary-400">Attribution</button>
+        <button @click="attributionModal.show = true"
+          class="text-primary-600 hover:text-primary-400">Attribution</button>
       </div>
     </div>
   </main>
@@ -1483,7 +1487,8 @@ function showErrorModal(body, eventId = null) {
     </Banner>
 
     <Banner id="new-quick-view" :show="activeBanner === 'new-quick-view'">
-      Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it using the
+      Newly added: the Quick View panel! See some popular items at a glance. Feel free to <strong>Collapse</strong> it
+      using the
       <EllipsisVerticalIcon class="inline w-5 h-5" /> button.
       <br />
       <span class="text-sm text-secondary-200">
@@ -1492,13 +1497,8 @@ function showErrorModal(body, eventId = null) {
       </span>
     </Banner>
 
-    <Banner
-      id="open-source"
-      :show="activeBanner === 'open-source'"
-      button-text="Visit GitHub"
-      button-link="https://github.com/Senexis/RDO-GG-Tunables"
-      :button-external="true"
-    >
+    <Banner id="open-source" :show="activeBanner === 'open-source'" button-text="Visit GitHub"
+      button-link="https://github.com/Senexis/RDO-GG-Tunables" :button-external="true">
       This website is now open source! Feel free to browse or contribute to the project on GitHub.
     </Banner>
 
@@ -1506,18 +1506,20 @@ function showErrorModal(body, eventId = null) {
       Tunables also available in the Quick View panel (excluding sales) are now hidden by default to reduce clutter.
       <br />
       <span class="text-sm text-secondary-200">
-        You can re-enable them using the <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the
-        <strong>Quick View</strong> tunables setting.
+        You can re-enable them using the
+        <Cog6ToothIcon class="inline w-5 h-5" /> button, then enabling the <strong>Quick View</strong> tunables setting.
       </span>
     </Banner>
 
     <Banner id="more-personalization" :show="activeBanner === 'more-personalization'">
-      Newly added: light mode, collapsible tunables panel, revamped settings, and more. Check out the new options using the
+      Newly added: light mode, collapsible tunables panel, revamped settings, and more. Check out the new options using
+      the
       <Cog6ToothIcon class="inline w-5 h-5" /> button!
     </Banner>
 
     <Banner id="game-platform-defaults" :show="activeBanner === 'game-platform-defaults'">
-      Tired of picking your game and platform every time you visit? You can now set your default game and platform using the
+      Tired of picking your game and platform every time you visit? You can now set your default game and platform using
+      the
       <Cog6ToothIcon class="inline w-5 h-5" /> button!
     </Banner>
 
@@ -1526,7 +1528,19 @@ function showErrorModal(body, eventId = null) {
         Missing some items in the Sales & Bonuses section?
         <br />
         <span class="text-sm text-secondary-200">
-          We've hidden the PlayStation 5 and Xbox Series X|S benefits that never change to reduce clutter. You can re-enable them using the
+          We've hidden the PC, PlayStation 5 and Xbox Series X|S benefits that never change to reduce clutter. You can
+          re-enable them using the
+          <Cog6ToothIcon class="inline w-5 h-5" /> button.
+        </span>
+      </Banner>
+    </template>
+
+    <template v-if="game === 'gta'">
+      <Banner id="gen-9-pc" :show="activeBanner === 'gen-9-pc'">
+        Now available: Tunables for the upgraded version of GTA Online on PC launching on March 4th!
+        <br />
+        <span class="text-sm text-secondary-200">
+          The upgraded version is now the default for GTA Online. You can still switch to the legacy version using the
           <Cog6ToothIcon class="inline w-5 h-5" /> button.
         </span>
       </Banner>
@@ -1541,14 +1555,8 @@ function showErrorModal(body, eventId = null) {
     {{ errorModal.body }}
   </ErrorModal>
 
-  <SettingsModal
-    :open="settingsModal.show"
-    @close="settingsModal.show = false"
-    :change="appChange"
-    :commitShort="appCommitShort"
-    :commitLong="appCommitLong"
-    :updated="appUpdated"
-  >
+  <SettingsModal :open="settingsModal.show" @close="settingsModal.show = false" :change="appChange"
+    :commitShort="appCommitShort" :commitLong="appCommitLong" :updated="appUpdated">
     <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">General</h3>
 
     <div class="divide-y divide-secondary-200 dark:divide-secondary-600 mb-4">
@@ -1557,7 +1565,8 @@ function showErrorModal(body, eventId = null) {
         <template #description>
           Select the game to compare tunables for.
           <template v-if="settings.game !== game">
-            <button @click.stop="settings.game = game" class="text-primary-600 hover:text-primary-400">Set as your default game</button>
+            <button @click.stop="settings.game = game" class="text-primary-600 hover:text-primary-400">Set as your
+              default game</button>
           </template>
           <template v-else>This is set as your default game.</template>
         </template>
@@ -1578,7 +1587,8 @@ function showErrorModal(body, eventId = null) {
         <p class="text-xs text-secondary-500">
           Your default game and platform settings will be used when you browse to the website manually (eg. visiting
           <code>tunables.rdo.gg</code>). Full links, like the ones posted on
-          <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />, will override your preferences for that visit only. When a
+          <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />, will override your preferences for that
+          visit only. When a
           game does not support the platform you've picked, it will use PC instead and update your preferences.
         </p>
       </div>
@@ -1588,13 +1598,15 @@ function showErrorModal(body, eventId = null) {
       </SettingsModalToggle>
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-secondary-500">
-          You can use <strong>Block Banners</strong> if you do not want to be notified of new features or changes to the website. You can
+          You can use <strong>Block Banners</strong> if you do not want to be notified of new features or changes to the
+          website. You can
           always re-enable the option to be notified of any changes you missed.
         </p>
       </div>
     </div>
 
-    <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">Personalization</h3>
+    <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">Personalization
+    </h3>
 
     <div class="divide-y divide-secondary-200 dark:divide-secondary-600 mb-4">
       <SettingsModalToggle v-model="settings.dark" :isDarkModeToggle="true">
@@ -1615,8 +1627,8 @@ function showErrorModal(body, eventId = null) {
       </SettingsModalToggle>
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-secondary-500">
-          More options for Quick View are available by clicking the <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View
-          panel.
+          More options for Quick View are available by clicking the
+          <EllipsisVerticalIcon class="inline w-4 h-4" /> button on the Quick View panel.
           <a href="https://x.com/Tunables" target="_blank" rel="noopener noreferrer">
             Contact us on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />
           </a>
@@ -1635,7 +1647,8 @@ function showErrorModal(body, eventId = null) {
 
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-secondary-500">
-          The following options control the visibility of all tunables in the panel. You can use these to reduce the amount of tunables you
+          The following options control the visibility of all tunables in the panel. You can use these to reduce the
+          amount of tunables you
           see.
         </p>
       </div>
@@ -1659,7 +1672,9 @@ function showErrorModal(body, eventId = null) {
 
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-secondary-500">
-          Rather than applying to all tunables, the following options hide specific types of tunables. This can be used to reduce the amount
+          Rather than applying to all tunables, the following options hide specific types of tunables. This can be used
+          to
+          reduce the amount
           of tunables you see.
         </p>
       </div>
@@ -1668,48 +1683,43 @@ function showErrorModal(body, eventId = null) {
         <template #title>Quick View</template>
         <template #description>
           Whether to show tunables that are
-          <button
-            @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail"
-            class="text-primary-600 hover:text-primary-400"
-          >
-            available in Quick View</button
-          >.
+          <button @click.stop="settingsModal.quickViewItemsDetail = !settingsModal.quickViewItemsDetail"
+            class="text-primary-600 hover:text-primary-400">
+            available in Quick View</button>.
         </template>
       </SettingsModalToggle>
-      <div v-if="settingsModal.quickViewItemsDetail" class="text-sm text-secondary-700 dark:text-secondary-300 py-2 overflow-hidden">
+      <div v-if="settingsModal.quickViewItemsDetail"
+        class="text-sm text-secondary-700 dark:text-secondary-300 py-2 overflow-hidden">
         <p class="mb-1">
           Tunables containing the following text in their key are hidden by toggling the <strong>Quick View</strong>
           setting:
         </p>
         <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
-          <li
-            v-for="item in [
-              'BGS_SpecialEvent_*',
-              'CAR_MEET_PRIZE_VEHICLE',
-              '*_CASH_STAMP_TYPE',
-              'CASINO_PRIZE_VEHICLE',
-              'DAILY_OBJECTIVE',
-              'FIXER_STUDIO_APPEARANCE',
-              'HSW_TEST_RIDE',
-              'HSW_TIME_TRIAL_SUBVARIATION',
-              'LUXURY_SHOWCASE_VEHICLE',
-              'PRIZE_VEHICLE_Z_OFFSET',
-              'PROMO_TEST_DRIVE_VEHICLE',
-              'SALV23_ROBBERY_VEHICLE',
-              'SALV23_VEH_ROBBERY_WEEK_ID',
-              'SALV23_VEHICLE_ROBBERY',
-              'SIMEON_TEST_DRIVE_VEHICLE',
-              'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
-              'SOCIAL_CLUB_GARAGE_VEHICLE',
-              'TIMETRIALVARIATION',
-              'VC_PEYOTE_*',
-              'WEEKLY_OBJECTIVE',
-              'XM22_GUN_VAN_SLOT',
-              'XM22_GUN_VAN_STOCK_ID',
-              '*_XP_STAMP_TYPE',
-            ]"
-            :key="item"
-          >
+          <li v-for="item in [
+            'BGS_SpecialEvent_*',
+            'CAR_MEET_PRIZE_VEHICLE',
+            '*_CASH_STAMP_TYPE',
+            'CASINO_PRIZE_VEHICLE',
+            'DAILY_OBJECTIVE',
+            'FIXER_STUDIO_APPEARANCE',
+            'HSW_TEST_RIDE',
+            'HSW_TIME_TRIAL_SUBVARIATION',
+            'LUXURY_SHOWCASE_VEHICLE',
+            'PRIZE_VEHICLE_Z_OFFSET',
+            'PROMO_TEST_DRIVE_VEHICLE',
+            'SALV23_ROBBERY_VEHICLE',
+            'SALV23_VEH_ROBBERY_WEEK_ID',
+            'SALV23_VEHICLE_ROBBERY',
+            'SIMEON_TEST_DRIVE_VEHICLE',
+            'SOCIAL_CLUB_GARAGE_PRIZE_VEHICLE',
+            'SOCIAL_CLUB_GARAGE_VEHICLE',
+            'TIMETRIALVARIATION',
+            'VC_PEYOTE_*',
+            'WEEKLY_OBJECTIVE',
+            'XM22_GUN_VAN_SLOT',
+            'XM22_GUN_VAN_STOCK_ID',
+            '*_XP_STAMP_TYPE',
+          ]" :key="item">
             <p class="mr-2 truncate">
               <code>{{ item }}</code>
             </p>
@@ -1722,71 +1732,66 @@ function showErrorModal(body, eventId = null) {
           <template #title>Sales & Bonuses</template>
           <template #description>
             Whether to show tunables that are
-            <a
-              href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-primary-600 hover:text-primary-400"
-              >available in Sales & Bonuses</a
-            >.
+            <a href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
+              target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-400">available in
+              Sales & Bonuses</a>.
           </template>
         </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.verbose" :isVisibilityToggle="true">
           <template #title>Verbose</template>
           <template #description>
             Whether to show tunables that are
-            <button
-              @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail"
-              class="text-primary-600 hover:text-primary-400"
-            >
-              verbose</button
-            >.
+            <button @click.stop="settingsModal.verboseDetail = !settingsModal.verboseDetail"
+              class="text-primary-600 hover:text-primary-400">
+              verbose</button>.
           </template>
         </SettingsModalToggle>
-        <div v-if="settingsModal.verboseDetail" class="text-sm text-secondary-700 dark:text-secondary-300 py-2 overflow-hidden">
+        <div v-if="settingsModal.verboseDetail"
+          class="text-sm text-secondary-700 dark:text-secondary-300 py-2 overflow-hidden">
           <p class="mb-1">
             Tunables containing the following text in their key are hidden by toggling the <strong>Verbose</strong>
             setting:
           </p>
           <ul class="pl-5 list-disc grid sm:grid-cols-2 sm:gap-x-4 mb-2">
             <li><code>bonus</code> section</li>
-            <li
-              v-for="item in [
-                '0x8B7D3320',
-                'BOOT_BUTTON_QUICK_MATCH_TYPE',
-                'CURRENTVEHICLESALESSEASON',
-                'CURRENTVEHICLESALESTUSEASON',
-                'DISPLAY_SALES',
-                'ELO_SEASON',
-                'EVENT_END_DATE',
-                'EVENT_MBSP',
-                'EVENT_WKLY',
-                'FM_CORONA',
-                'FMCORONA',
-                'GTAO_MEMBERSHIP_EVENT_ID',
-                'GTAO_MEMBERSHIP_PERIOD_MESSAGE',
-                'NEW_VC_PEYOTE_TEXT',
-                'NPCFLOWINVITE',
-                'PROFESIONALCORONA',
-                'SALE_HASH_LABELS',
-                'SALE_WEAPON_AMMO',
-                'TUNABLE_VERSION',
-              ]"
-              :key="item"
-            >
+            <li v-for="item in [
+              '0x8B7D3320',
+              'BOOT_BUTTON_QUICK_MATCH_TYPE',
+              'CURRENTVEHICLESALESSEASON',
+              'CURRENTVEHICLESALESTUSEASON',
+              'DISPLAY_SALES',
+              'ELO_SEASON',
+              'EVENT_END_DATE',
+              'EVENT_MBSP',
+              'EVENT_WKLY',
+              'FM_CORONA',
+              'FMCORONA',
+              'GTAO_MEMBERSHIP_EVENT_ID',
+              'GTAO_MEMBERSHIP_PERIOD_MESSAGE',
+              'NEW_VC_PEYOTE_TEXT',
+              'NPCFLOWINVITE',
+              'PROFESIONALCORONA',
+              'SALE_HASH_LABELS',
+              'SALE_WEAPON_AMMO',
+              'TUNABLE_VERSION',
+            ]" :key="item">
               <p class="mr-2 truncate">
                 <code>{{ item }}</code>
               </p>
             </li>
           </ul>
-          <p class="mb-1">The following miscellaneous features are hidden by toggling the <strong>Verbose</strong> setting:</p>
+          <p class="mb-1">
+            The following miscellaneous features are hidden by toggling the <strong>Verbose</strong>
+            setting:
+          </p>
           <ul class="pl-5 list-disc mb-2">
             <li><strong>Mission Bonuses:</strong> Non-numeric and the RP Cap modifiers.</li>
           </ul>
         </div>
         <SettingsModalToggle v-model="settings.content" :isVisibilityToggle="true">
           <template #title>Content Lists</template>
-          <template #description> Whether to show tunables that are in the <code>contentlists</code> section. </template>
+          <template #description> Whether to show tunables that are in the <code>contentlists</code> section.
+          </template>
         </SettingsModalToggle>
       </template>
 
@@ -1803,7 +1808,8 @@ function showErrorModal(body, eventId = null) {
 
       <SettingsModalToggle v-model="settings.goToWeek" :isVisibilityToggle="true">
         <template #title>"Go to week" banner</template>
-        <template #description>Whether to show the banner that allows you to quickly jump to the weekly changes.</template>
+        <template #description>Whether to show the banner that allows you to quickly jump to the weekly
+          changes.</template>
       </SettingsModalToggle>
 
       <SettingsModalToggle v-model="settings.meta" :isVisibilityToggle="true">
@@ -1813,7 +1819,8 @@ function showErrorModal(body, eventId = null) {
     </div>
 
     <template v-if="game === 'gta'">
-      <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">Quick View Panel</h3>
+      <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">Quick View Panel
+      </h3>
 
       <div class="divide-y divide-secondary-200 dark:divide-secondary-600 mb-4">
         <SettingsModalToggle v-model="settings.salesDisclaimer" :isVisibilityToggle="true">
@@ -1822,18 +1829,15 @@ function showErrorModal(body, eventId = null) {
         </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.gen9Bonuses" :isVisibilityToggle="true">
           <template #title>Gen 9 Benefits</template>
-          <template #description> Whether to show tunables in Sales & Bonuses that are PlayStation 5 or Xbox Series X|S benefits.</template>
+          <template #description> Whether to show tunables in Sales & Bonuses that are PlayStation 5 or Xbox Series X|S
+            benefits.</template>
         </SettingsModalToggle>
       </div>
     </template>
 
     <h3 class="font-lg font-semibold pb-2 border-b-2 border-secondary-200 dark:border-secondary-600">
-      <a
-        href="https://www.youtube.com/watch?v=yK0P1Bk8Cx4"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-inherit hover:text-inherit"
-      >
+      <a href="https://www.youtube.com/watch?v=yK0P1Bk8Cx4" target="_blank" rel="noopener noreferrer"
+        class="text-inherit hover:text-inherit">
         Danger Zone
       </a>
     </h3>
@@ -1846,17 +1850,15 @@ function showErrorModal(body, eventId = null) {
             Reset all settings to their defaults, expand all collapsed content, and show all dismissed banners.
           </span>
         </div>
-        <button
-          @click="handleResetSettingsClick"
-          class="inline-flex justify-center rounded-md border border-danger-600 dark:border-danger-700 bg-danger-600 dark:bg-danger-700 px-4 py-2 font-medium text-white dark:text-secondary-200 shadow-sm hover:bg-danger-500 dark:hover:bg-danger-600 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 mt-0 w-auto text-sm"
-        >
+        <button @click="handleResetSettingsClick"
+          class="inline-flex justify-center rounded-md border border-danger-600 dark:border-danger-700 bg-danger-600 dark:bg-danger-700 px-4 py-2 font-medium text-white dark:text-secondary-200 shadow-sm hover:bg-danger-500 dark:hover:bg-danger-600 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 mt-0 w-auto text-sm">
           Reset
         </button>
       </div>
       <div class="flex items-center justify-between gap-2 py-2">
         <p class="text-xs text-secondary-500">
-          Try <strong>Reset Settings</strong> if you are experiencing issues while using the website. You can also use it to start fresh.
-          While this cannot be undone, you can always tweak the settings to your liking again.
+          Try <strong>Reset Settings</strong> if you are experiencing issues while using the website. You can also use
+          it to start fresh. While this cannot be undone, you can always tweak the settings to your liking again.
         </p>
       </div>
     </div>

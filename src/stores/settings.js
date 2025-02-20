@@ -6,7 +6,7 @@ export const useStore = defineStore('settings', {
     return {
       dark: true,
       game: 'gta',
-      platform: 'pcros',
+      platform: 'pcrosalt',
 
       // Open/close accordions.
       accordionsDismissed: [],
@@ -39,6 +39,7 @@ export const useStore = defineStore('settings', {
       meta: true,
       salesDisclaimer: true,
       tunablesDisclaimer: true,
+      oneTimePcUpgrade: false,
     };
   },
 });
