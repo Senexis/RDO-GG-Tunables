@@ -6,7 +6,10 @@ export const useStore = defineStore('settings', {
     return {
       dark: true,
       game: 'gta',
-      platform: 'pcrosalt',
+      platform: 'pcros',
+
+      // TODO: Enable on March 4th.
+      // platform: 'pcrosalt',
 
       // Open/close accordions.
       accordionsDismissed: [],

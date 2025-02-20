@@ -100,7 +100,8 @@ const game = ref(url.searchParams.get('game') || settings.game || 'gta');
  *
  * @type {import("vue").Ref<"pcrosalt" | "pcros" | "ps4" | "ps5" | "xboxone" | "xboxsx">}
  */
-const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcrosalt');
+// TODO: Move to pcrosalt on March 4th.
+const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcros');
 
 /**
  * Contains the difference between the previous and latest tunables in HTML.
@@ -1272,6 +1273,19 @@ function showErrorModal(body, eventId = null) {
     </template>
 
     <div>
+      <!-- TODO: Remove on March 4th -->
+      <template v-if="game === 'gta' && platform === 'pcrosalt'">
+        <AlertWithLink :buttonText="null" :buttonHandler="null">
+          <p>
+            You are currently viewing the <strong>Upgraded</strong> version of GTA Online on PC launching on
+            March 4th. The tunables displayed here may not be accurate until then.
+          </p>
+          <p class="mt-0.5 text-xs text-secondary-200">
+            Tip: You can change which version of GTA online to show using the
+            <Cog6ToothIcon class="inline w-4 h-4" /> button.
+          </p>
+        </AlertWithLink>
+      </template>
       <template v-if="settings.goToWeek && !difference.loading && showGoToEventWeeklyChange">
         <AlertWithLink :buttonText="`Show changes for week ${showGoToEventWeeklyChange.weekly_id}`"
           :buttonHandler="handleCompareWeeklyChange">
@@ -1386,33 +1400,20 @@ function showErrorModal(body, eventId = null) {
           <div
             class="relative bg-secondary-100 dark:bg-secondary-900 px-2 py-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-190px)]">
             <template v-if="!difference.loading">
-              <template v-if="settings.tunablesDisclaimer">
-                <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissTunablesDisclaimer">
-                  <p>
-                    Some tunables may be hidden by default, such as ones available in the <strong>Quick View
-                      panel</strong> or ones that
-                    are verbose and aren't relevant to most users.
-                  </p>
-                  <p class="mt-0.5 text-xs text-secondary-200">
-                    Tip: You can change which tunables to show using the
-                    <Cog6ToothIcon class="inline w-4 h-4" /> button.
-                  </p>
-                </AlertWithLink>
-              </template>
-              <!-- TODO: Remove on March 4th -->
-              <template v-if="game === 'gta' && platform === 'pcrosalt'">
-                <AlertWithLink buttonText="Dismiss" :buttonHandler="void">
-                  <p>
-                    You are currently viewing the <strong>Upgraded</strong> version of GTA Online on PC launching on
-                    March 4th. The tunables displayed here may not be accurate until then.
-                  </p>
-                  <p class="mt-0.5 text-xs text-secondary-200">
-                    Tip: You can change which version of GTA online to show using the
-                    <Cog6ToothIcon class="inline w-4 h-4" /> button.
-                  </p>
-                </AlertWithLink>
-              </template>
               <template v-if="difference.html">
+                <template v-if="settings.tunablesDisclaimer">
+                  <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissTunablesDisclaimer">
+                    <p>
+                      Some tunables may be hidden by default, such as ones available in the <strong>Quick View
+                        panel</strong> or ones that
+                      are verbose and aren't relevant to most users.
+                    </p>
+                    <p class="mt-0.5 text-xs text-secondary-200">
+                      Tip: You can change which tunables to show using the
+                      <Cog6ToothIcon class="inline w-4 h-4" /> button.
+                    </p>
+                  </AlertWithLink>
+                </template>
                 <!-- eslint-disable vue/no-v-text-v-html-on-component -->
                 <component :is="`style`" v-html="saleStyles"></component>
                 <div :class="[
