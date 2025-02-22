@@ -27,7 +27,7 @@ watch(enabled, (value) => {
 
 <template>
   <SwitchGroup as="div" class="flex items-center justify-between gap-2 py-2">
-    <span class="flex flex-grow flex-col cursor-pointer select-none" @click="$refs.switch.el.click()">
+    <span class="flex flex-grow cursor-pointer select-none flex-col" @click="$refs.switch.el.click()">
       <SwitchLabel as="span" class="text-sm font-medium text-secondary-900 dark:text-secondary-50" passive>
         <slot name="title"></slot>
       </SwitchLabel>
@@ -46,41 +46,41 @@ watch(enabled, (value) => {
       <span
         :class="[
           enabled ? 'translate-x-5' : 'translate-x-0',
-          'pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+          'pointer-events-none relative inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
         ]"
       >
         <span
           :class="[
             enabled ? 'opacity-0 duration-100 ease-out' : 'opacity-100 duration-200 ease-in',
-            'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity',
+            'absolute inset-0 flex size-full items-center justify-center transition-opacity',
           ]"
           aria-hidden="true"
         >
           <template v-if="props.isVisibilityToggle">
-            <EyeSlashIcon class="h-3 w-3 text-secondary-400" />
+            <EyeSlashIcon class="size-3 text-secondary-400" />
           </template>
           <template v-else-if="props.isDarkModeToggle">
-            <SunIcon class="h-3 w-3 text-secondary-400" />
+            <SunIcon class="size-3 text-secondary-400" />
           </template>
           <template v-else>
-            <XMarkIcon class="h-3 w-3 text-secondary-400" />
+            <XMarkIcon class="size-3 text-secondary-400" />
           </template>
         </span>
         <span
           :class="[
             enabled ? 'opacity-100 duration-200 ease-in' : 'opacity-0 duration-100 ease-out',
-            'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity',
+            'absolute inset-0 flex size-full items-center justify-center transition-opacity',
           ]"
           aria-hidden="true"
         >
           <template v-if="props.isVisibilityToggle">
-            <EyeIcon class="h-3 w-3 text-primary-600" />
+            <EyeIcon class="size-3 text-primary-600" />
           </template>
           <template v-else-if="props.isDarkModeToggle">
-            <MoonIcon class="h-3 w-3 text-primary-600" />
+            <MoonIcon class="size-3 text-primary-600" />
           </template>
           <template v-else>
-            <CheckIcon class="h-3 w-3 text-primary-600" />
+            <CheckIcon class="size-3 text-primary-600" />
           </template>
         </span>
       </span>

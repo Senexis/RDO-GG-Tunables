@@ -7,7 +7,7 @@ import { useStore } from '../stores/settings.js';
 const props = defineProps({
   id: {
     type: String,
-    required: false,
+    required: true,
   },
 });
 
@@ -32,17 +32,17 @@ function toggleOpen() {
 <template>
   <div>
     <button
-      @click="toggleOpen"
       type="button"
-      class="flex items-center justify-between text-sm px-3 py-2 w-full select-none hover:bg-secondary-50 dark:hover:bg-secondary-600"
+      class="flex w-full select-none items-center justify-between px-3 py-2 text-sm hover:bg-secondary-50 dark:hover:bg-secondary-600"
+      @click="toggleOpen"
     >
       <slot name="title"></slot>
-      <div class="px-2" v-tooltip="open ? 'Collapse' : 'Expand'">
-        <PlusIcon v-if="!open" class="inline-block w-4 h-4" />
-        <MinusIcon v-else class="inline-block w-4 h-4" />
+      <div v-tooltip="open ? 'Collapse' : 'Expand'" class="px-2">
+        <PlusIcon v-if="!open" class="inline-block size-4" />
+        <MinusIcon v-else class="inline-block size-4" />
       </div>
     </button>
-    <div v-show="open" class="bg-white dark:bg-secondary-900 px-3 py-4">
+    <div v-show="open" class="bg-white px-3 py-4 dark:bg-secondary-900">
       <slot></slot>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="divide-y divide-secondary-200 dark:divide-secondary-600 rounded-lg bg-white dark:bg-secondary-700 mb-4 shadow-md">
+  <div class="mb-4 divide-y divide-secondary-200 rounded-lg bg-white shadow-md dark:divide-secondary-600 dark:bg-secondary-700">
     <slot name="header"></slot>
     <slot></slot>
     <slot name="footer"></slot>

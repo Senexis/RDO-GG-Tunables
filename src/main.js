@@ -24,10 +24,10 @@ const app = createApp(App);
 import { faAsterisk, faBug, faPlus } from '@fortawesome/free-solid-svg-icons';
 library.add(faAsterisk, faBug, faPlus);
 
-import { faXTwitter, faDiscord, faGithub, faPatreon } from '@fortawesome/free-brands-svg-icons';
-library.add(faXTwitter, faDiscord, faGithub, faPatreon);
+import { faXTwitter, faDiscord, faGithub, faPatreon, faBluesky } from '@fortawesome/free-brands-svg-icons';
+library.add(faXTwitter, faDiscord, faGithub, faPatreon, faBluesky);
 
-app.component('font-awesome-icon', FontAwesomeIcon);
+app.component('FontAwesomeIcon', FontAwesomeIcon);
 
 // Concerned about your privacy? See https://rdo.gg/privacy/.
 // We use this to link Sentry issue data to a consistent user.
@@ -63,7 +63,7 @@ const fpPromise = FingerprintJS.load({ monitoring: false });
         initialScope: { user: { id: userId } },
       });
     }
-  } catch (error) {
+  } catch {
     // Sentry is an optional feature.
   }
 

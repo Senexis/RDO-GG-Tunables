@@ -1,5 +1,5 @@
 <template>
-  <div class="px-3 py-2.5 rounded-t-lg">
+  <div class="rounded-t-lg px-3 py-2.5">
     <slot></slot>
   </div>
 </template>

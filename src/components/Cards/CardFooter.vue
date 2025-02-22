@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white dark:bg-secondary-700 text-secondary-600/80 dark:text-secondary-400/80 text-xs px-3 py-2 sm:flex items-center justify-between leading-tight gap-2 rounded-b-lg"
+    class="items-center justify-between gap-2 rounded-b-lg bg-white px-3 py-2 text-xs leading-tight text-secondary-600/80 dark:bg-secondary-700 dark:text-secondary-400/80 sm:flex"
   >
     <slot></slot>
   </div>

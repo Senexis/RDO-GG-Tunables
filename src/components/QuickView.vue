@@ -302,7 +302,7 @@ function findTunable(query) {
     if (typeof query === 'number') {
       try {
         query = '0x' + (query >>> 0).toString(16).toUpperCase().padStart(8, '0');
-      } catch (error) {
+      } catch {
         return null;
       }
     }
@@ -335,7 +335,7 @@ function findTunables(query) {
     if (typeof query === 'number') {
       try {
         query = '0x' + (query >>> 0).toString(16).toUpperCase().padStart(8, '0');
-      } catch (error) {
+      } catch {
         return null;
       }
     }
@@ -1296,10 +1296,10 @@ const rdoStamps = computed(() => getRdoStamps());
             <div>
               <MenuButton
                 v-tooltip="'Quick View options'"
-                class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-600 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky disabled:opacity-50 disabled:pointer-events-none"
+                class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 disabled:pointer-events-none disabled:opacity-50 dark:text-secondary-400 dark:hover:bg-secondary-600 dark:hover:text-secondary-50"
               >
                 <span class="sr-only">Quick View options</span>
-                <EllipsisVerticalIcon class="h-4 w-4" aria-hidden="true" />
+                <EllipsisVerticalIcon class="size-4" aria-hidden="true" />
               </MenuButton>
             </div>
             <transition
@@ -1311,36 +1311,36 @@ const rdoStamps = computed(() => getRdoStamps());
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="origin-top-right mt-2 absolute right-0 z-10 w-56 rounded-md bg-white dark:bg-secondary-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-secondary-800"
               >
                 <MenuItem>
                   <button
-                    @click="handleToggleQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    @click="handleToggleQuickView"
                   >
                     <template v-if="settings.quickView">
-                      <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
+                      <ArrowsPointingInIcon class="size-4" aria-hidden="true" />
                       Collapse Quick View
                     </template>
                     <template v-else>
-                      <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
+                      <ArrowsPointingOutIcon class="size-4" aria-hidden="true" />
                       Expand Quick View
                     </template>
                   </button>
                 </MenuItem>
                 <MenuItem>
                   <button
-                    @click="handleMoveQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    @click="handleMoveQuickView"
                   >
                     <template v-if="settings.quickViewBelowTunables">
-                      <ArrowUpIcon class="h-4 w-4" aria-hidden="true" />
+                      <ArrowUpIcon class="size-4" aria-hidden="true" />
                       Move above Tunables
                     </template>
                     <template v-else>
-                      <ArrowDownIcon class="h-4 w-4" aria-hidden="true" />
+                      <ArrowDownIcon class="size-4" aria-hidden="true" />
                       Move below Tunables
                     </template>
                   </button>
@@ -1350,31 +1350,31 @@ const rdoStamps = computed(() => getRdoStamps());
                 </MenuItem>
                 <MenuItem>
                   <button
-                    @click="handleCollapseAllQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    @click="handleCollapseAllQuickView"
                   >
-                    <ArrowsPointingInIcon class="h-4 w-4" aria-hidden="true" />
+                    <ArrowsPointingInIcon class="size-4" aria-hidden="true" />
                     Collapse all sections
                   </button>
                 </MenuItem>
                 <MenuItem>
                   <button
-                    @click="handleCollapseAllExceptSalesQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    @click="handleCollapseAllExceptSalesQuickView"
                   >
-                    <CurrencyDollarIcon class="h-4 w-4" aria-hidden="true" />
+                    <CurrencyDollarIcon class="size-4" aria-hidden="true" />
                     Collapse all except Sales
                   </button>
                 </MenuItem>
                 <MenuItem>
                   <button
-                    @click="handleExpandAllQuickView"
                     type="button"
-                    class="flex items-center gap-x-2.5 w-full px-4 py-2 text-left text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:text-secondary-900 dark:hover:text-secondary-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    @click="handleExpandAllQuickView"
                   >
-                    <ArrowsPointingOutIcon class="h-4 w-4" aria-hidden="true" />
+                    <ArrowsPointingOutIcon class="size-4" aria-hidden="true" />
                     Expand all sections
                   </button>
                 </MenuItem>
@@ -1384,7 +1384,7 @@ const rdoStamps = computed(() => getRdoStamps());
         </div>
       </CardHeader>
     </template>
-    <template #default v-if="settings.quickView">
+    <template v-if="settings.quickView" #default>
       <template v-if="!loading && !data.loading && tunables">
         <!-- GTA -->
         <template v-if="(sales && Object.keys(sales).length) || (ugcBonuses && Object.keys(ugcBonuses).length)">
@@ -1392,11 +1392,11 @@ const rdoStamps = computed(() => getRdoStamps());
             <template #title>Sales & Bonuses</template>
             <template #default>
               <template v-if="settings.salesDisclaimer">
-                <AlertWithLink buttonText="Dismiss" :buttonHandler="handleDismissSalesDisclaimer">
+                <AlertWithLink button-text="Dismiss" :button-handler="handleDismissSalesDisclaimer">
                   <p>
                     This is an automatically generated list of sales and bonuses. Some items may be missing, especially right after the game
                     is updated.<br />
-                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer" class="text-white font-bold"
+                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer" class="font-bold text-white"
                       >Follow @TezFunz2 on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
                     /></a>
                     for the latest, more accurate, manually written sales and bonuses.
@@ -1407,7 +1407,7 @@ const rdoStamps = computed(() => getRdoStamps());
                       href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-white font-bold"
+                      class="font-bold text-white"
                       >Help increase this number by contributing here!</a
                     >
                   </p>
@@ -1415,16 +1415,16 @@ const rdoStamps = computed(() => getRdoStamps());
               </template>
 
               <div
-                class="rounded-lg overflow-hidden bg-white dark:bg-secondary-800 divide-y divide-secondary-300 dark:divide-secondary-700 border border-secondary-300 dark:border-secondary-700"
+                class="divide-y divide-secondary-300 overflow-hidden rounded-lg border border-secondary-300 bg-white dark:divide-secondary-700 dark:border-secondary-700 dark:bg-secondary-800"
               >
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`${Accordions.Sales}_${key}`">
                     <template #title>
-                      <div class="flex justify-between items-center w-full overflow-hidden">
+                      <div class="flex w-full items-center justify-between overflow-hidden">
                         <div class="flex gap-2 overflow-hidden">
                           <span class="truncate">{{ getSalesTitle(key) }}</span>
                           <template v-if="key.endsWith('_plus')">
-                            <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ Members'">
+                            <span v-tooltip="'Only applies to GTA+ Members'" class="badge badge-plus">
                               <font-awesome-icon icon="fa-solid fa-plus" />
                             </span>
                           </template>
@@ -1442,10 +1442,10 @@ const rdoStamps = computed(() => getRdoStamps());
                       </div>
                     </template>
                     <template #default>
-                      <ul :class="[Object.keys(category).length >= 8 ? 'grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4' : '', 'list-disc']">
+                      <ul :class="[Object.keys(category).length >= 8 ? 'grid sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3' : '', 'list-disc']">
                         <template v-for="item in category" :key="item">
                           <li class="ml-5">
-                            <p class="mr-2 truncate" v-tooltip.top-start="formatSale(item)">
+                            <p v-tooltip.top-start="formatSale(item)" class="mr-2 truncate">
                               {{ formatSale(item) }}
                             </p>
                           </li>
@@ -1457,7 +1457,7 @@ const rdoStamps = computed(() => getRdoStamps());
                 <template v-if="ugcBonuses && Object.keys(ugcBonuses).length">
                   <Accordion :id="Accordions.UgcBonuses">
                     <template #title>
-                      <div class="flex justify-between items-center w-full overflow-hidden">
+                      <div class="flex w-full items-center justify-between overflow-hidden">
                         <div class="flex gap-2 overflow-hidden">
                           <span class="truncate">Mission Bonuses</span>
                         </div>
@@ -1475,21 +1475,21 @@ const rdoStamps = computed(() => getRdoStamps());
                     </template>
                     <template #default>
                       <div
-                        class="rounded-lg overflow-hidden bg-white dark:bg-secondary-800 divide-y divide-secondary-300 dark:divide-secondary-700 border border-secondary-300 dark:border-secondary-700"
+                        class="divide-y divide-secondary-300 overflow-hidden rounded-lg border border-secondary-300 bg-white dark:divide-secondary-700 dark:border-secondary-700 dark:bg-secondary-800"
                       >
                         <template v-for="(list, index) in ugcBonuses" :key="index">
                           <Accordion :id="`${Accordions.UgcBonuses}_${index}`">
                             <template #title>
-                              <div class="flex justify-between items-center w-full overflow-hidden">
+                              <div class="flex w-full items-center justify-between overflow-hidden">
                                 <div class="flex gap-2 overflow-hidden">
                                   <span class="truncate">List {{ Number(index) + 1 }}</span>
                                   <template v-if="list.plus_only">
-                                    <span class="badge badge-plus" v-tooltip="'Only applies to GTA+ Members'">
+                                    <span v-tooltip="'Only applies to GTA+ Members'" class="badge badge-plus">
                                       <font-awesome-icon icon="fa-solid fa-plus" />
                                     </span>
                                   </template>
                                 </div>
-                                <div class="whitespace-nowrap hidden sm:block">
+                                <div class="hidden whitespace-nowrap sm:block">
                                   <span class="badge badge-primary ml-2">
                                     {{ list.ugc.length === 1 ? '1 mission' : `${list.ugc.length} missions` }}
                                   </span>
@@ -1510,9 +1510,9 @@ const rdoStamps = computed(() => getRdoStamps());
                                 <template v-for="(modifier, item) in list.modifiers" :key="item">
                                   <template v-if="modifier.plus">
                                     <span
+                                      v-tooltip="'Only applies to GTA+ Members'"
                                       :class="getUgcModifierBadge(modifier)"
                                       class="badge mr-1"
-                                      v-tooltip="'Only applies to GTA+ Members'"
                                     >
                                       <font-awesome-icon icon="fa-solid fa-plus" />
                                       {{ getUgcModifierLabel(modifier) }}
@@ -1528,13 +1528,13 @@ const rdoStamps = computed(() => getRdoStamps());
                               <h3 class="my-1 font-semibold">Missions</h3>
                               <ul
                                 :class="[
-                                  Object.keys(list.ugc).length >= 8 ? 'grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4' : '',
+                                  Object.keys(list.ugc).length >= 8 ? 'grid sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3' : '',
                                   'list-disc',
                                 ]"
                               >
                                 <template v-for="(mission, item) in list.ugc" :key="item">
                                   <li class="ml-5">
-                                    <p class="mr-2 truncate" v-tooltip.top-start="mission">{{ mission }}</p>
+                                    <p v-tooltip.top-start="mission" class="mr-2 truncate">{{ mission }}</p>
                                   </li>
                                 </template>
                               </ul>
@@ -1552,30 +1552,30 @@ const rdoStamps = computed(() => getRdoStamps());
         <template v-if="peyotePlants">
           <Accordion :id="Accordions.PeyotePlants">
             <template #title>
-              <div class="flex justify-between items-center w-full overflow-hidden">
+              <div class="flex w-full items-center justify-between overflow-hidden">
                 <div class="flex gap-2 overflow-hidden">
                   <span class="truncate">Peyote Plants</span>
                 </div>
-                <span class="badge badge-plus ml-2" v-tooltip="'This section is enabled on special occasions'">Seasonal</span>
+                <span v-tooltip="'This section is enabled on special occasions'" class="badge badge-plus ml-2">Seasonal</span>
               </div>
             </template>
             <template #default>
               <template v-if="peyotePlants.enabled.length">
                 <h3 class="my-1 font-semibold">Enabled Peyote Plants</h3>
-                <ul class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 list-disc">
+                <ul class="grid list-disc sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3">
                   <template v-for="item in peyotePlants.enabled" :key="item">
                     <li class="ml-5">
-                      <p class="mr-2 truncate v-popper--has-tooltip">{{ item }}</p>
+                      <p class="v-popper--has-tooltip mr-2 truncate">{{ item }}</p>
                     </li>
                   </template>
                 </ul>
               </template>
               <template v-if="settings.verbose && peyotePlants.disabled.length">
                 <h3 class="my-1 font-semibold">Disabled Peyote Plants</h3>
-                <ul class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 list-disc">
+                <ul class="grid list-disc sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3">
                   <template v-for="item in peyotePlants.disabled" :key="item">
                     <li class="ml-5">
-                      <p class="mr-2 truncate v-popper--has-tooltip">{{ item }}</p>
+                      <p class="v-popper--has-tooltip mr-2 truncate">{{ item }}</p>
                     </li>
                   </template>
                 </ul>
@@ -1952,15 +1952,15 @@ const rdoStamps = computed(() => getRdoStamps());
       </template>
       <template v-else>
         <template v-for="n in 5" :key="n">
-          <div class="flex items-center justify-between text-sm px-3 py-2 w-full select-none">
-            <div class="rounded-sm bg-secondary-300 dark:bg-secondary-600 animate-pulse" :style="{ width: random(4, 20) + 'em' }">
+          <div class="flex w-full select-none items-center justify-between px-3 py-2 text-sm">
+            <div class="animate-pulse rounded-sm bg-secondary-300 dark:bg-secondary-600" :style="{ width: random(4, 20) + 'em' }">
               &nbsp;
             </div>
           </div>
         </template>
       </template>
     </template>
-    <template #footer v-if="settings.quickView">
+    <template v-if="settings.quickView" #footer>
       <CardFooter>
         <div class="truncate">
           <template v-if="game === 'gta'">

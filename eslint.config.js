@@ -63,7 +63,19 @@ export default [
       'tailwindcss/no-custom-classname': [
         'warn',
         {
-          whitelist: ['active', 'favorite', 'swiper-button_next', 'swiper-button_prev', 'swiper-lazy-preloader', 'swiper-lazy-preloader-white', 'vehicle-img\\-(transparent|background)'],
+          whitelist: [
+            'hide-added',
+            'hide-deleted',
+            'hide-modified',
+            'hide-unchanged',
+            'hide-meta',
+            'hide-content',
+            'hide-quick-view',
+            'hide-sales',
+            'hide-tunables',
+            'hide-verbose',
+            'v-popper--has-tooltip',
+          ],
         },
       ],
 

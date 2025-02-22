@@ -12,95 +12,91 @@ let publicTunableTypes = require(publicTunableTypesPath);
 let publicLabels = require(publicLabelsPath);
 
 function flattenObject(ob) {
-    let result = {};
+  let result = {};
 
-    for (const i in ob) {
-        if ((typeof ob[i]) === 'object' && !Array.isArray(ob[i])) {
-            const temp = flattenObject(ob[i]);
-            for (const j in temp) {
-                result[j] = temp[j];
-            }
-        } else {
-            result[i] = ob[i];
-        }
+  for (const i in ob) {
+    if (typeof ob[i] === 'object' && !Array.isArray(ob[i])) {
+      const temp = flattenObject(ob[i]);
+      for (const j in temp) {
+        result[j] = temp[j];
+      }
+    } else {
+      result[i] = ob[i];
     }
+  }
 
-    return result;
-};
+  return result;
+}
 
 function orderObject(unordered) {
-    const collator = new Intl.Collator('en', {
-        numeric: true,
-        sensitivity: 'base',
-    });
+  const collator = new Intl.Collator('en', {
+    numeric: true,
+    sensitivity: 'base',
+  });
 
-    return Object.keys(unordered)
-        .sort((a, b) => collator.compare(a, b))
-        .reduce((obj, key) => {
-            obj[key] = unordered[key];
-            return obj;
-        }, {});
-};
+  return Object.keys(unordered)
+    .sort((a, b) => collator.compare(a, b))
+    .reduce((obj, key) => {
+      obj[key] = unordered[key];
+      return obj;
+    }, {});
+}
 
 function sortTypes(unordered) {
-    const collator = new Intl.Collator('en', {
-        numeric: true,
-        sensitivity: 'base',
-    });
+  const collator = new Intl.Collator('en', {
+    numeric: true,
+    sensitivity: 'base',
+  });
 
-    return unordered.sort((a, b) => {
-        if (a.type === b.type) {
-            return collator.compare(a.key, b.key);
-        }
+  return unordered.sort((a, b) => {
+    if (a.type === b.type) {
+      return collator.compare(a.key, b.key);
+    }
 
-        return collator.compare(a.type, b.type);
-    });
+    return collator.compare(a.type, b.type);
+  });
 }
 
 function run() {
-    const inputLabelsFlat = flattenObject(labels);
-    const inputLabelKeys = Object.keys(inputLabelsFlat);
-    const inputLabelsUsed = {};
-    const publicLabelKeys = Object.keys(publicLabels);
+  const inputLabelsFlat = flattenObject(labels);
+  const inputLabelKeys = Object.keys(inputLabelsFlat);
+  const inputLabelsUsed = {};
+  const publicLabelKeys = Object.keys(publicLabels);
 
-    if (publicTunableTypes.length !== [...new Set(publicTunableTypes.map(x => x.key))].length) {
-        console.warn(`Tunable types contains duplicate keys.`);
+  if (publicTunableTypes.length !== [...new Set(publicTunableTypes.map((x) => x.key))].length) {
+    console.warn(`Tunable types contains duplicate keys.`);
 
-        publicTunableTypes = publicTunableTypes.filter((item, index, self) =>
-            index === self.findIndex((t) => (
-                t.key === item.key
-            ))
-        );
+    publicTunableTypes = publicTunableTypes.filter((item, index, self) => index === self.findIndex((t) => t.key === item.key));
+  }
+
+  for (const item of publicTunableTypes) {
+    if (item.display === null) continue;
+    if (inputLabelKeys.includes(item.display)) {
+      inputLabelsUsed[item.display] = inputLabelsFlat[item.display];
+    } else if (!publicLabelKeys.includes(item.display)) {
+      console.warn(`[${item.key}] "${item.display}" isn't a valid label.`);
+      item.display = null;
+    }
+  }
+
+  fs.writeFileSync(publicTunableTypesPath, JSON.stringify(sortTypes(publicTunableTypes), null, 2));
+
+  if (Object.keys(inputLabelsUsed).length > 0) {
+    const outputLabels = orderObject({ ...inputLabelsUsed, ...publicLabels });
+    const outputValues = Object.values(outputLabels);
+
+    if (outputValues.some((x) => x === String(x).toUpperCase())) {
+      console.warn(`Some labels are uppercase.`);
+      console.log(outputValues.filter((x) => x === String(x).toUpperCase()));
     }
 
-    for (const item of publicTunableTypes) {
-        if (item.display === null) continue;
-        if (inputLabelKeys.includes(item.display)) {
-            inputLabelsUsed[item.display] = inputLabelsFlat[item.display];
-        } else if (!publicLabelKeys.includes(item.display)) {
-            console.warn(`[${item.key}] "${item.display}" isn't a valid label.`);
-            item.display = null;
-        }
+    if (outputValues.length !== [...new Set(outputValues)].length) {
+      console.warn('Some labels have duplicate values.');
+      console.log(outputValues.filter((item, index) => outputValues.indexOf(item) !== index));
     }
 
-    fs.writeFileSync(publicTunableTypesPath, JSON.stringify(sortTypes(publicTunableTypes), null, 2));
-
-    if (Object.keys(inputLabelsUsed).length > 0) {
-        const outputLabels = orderObject({ ...inputLabelsUsed, ...publicLabels });
-        const outputValues = Object.values(outputLabels);
-
-        if (outputValues.some(x => x === String(x).toUpperCase())) {
-            console.warn(`Some labels are uppercase.`);
-            console.log(outputValues.filter(x => x === String(x).toUpperCase()));
-        }
-
-        if (outputValues.length !== [...new Set(outputValues)].length) {
-            console.warn('Some labels have duplicate values.');
-            console.log(outputValues.filter((item, index) => outputValues.indexOf(item) !== index));
-        }
-
-        fs.writeFileSync(publicLabelsPath, JSON.stringify(outputLabels, null, 2));
-    }
+    fs.writeFileSync(publicLabelsPath, JSON.stringify(outputLabels, null, 2));
+  }
 }
 
 run();

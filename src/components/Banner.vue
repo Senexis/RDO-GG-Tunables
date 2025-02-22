@@ -17,7 +17,10 @@ const props = defineProps({
     type: String,
     default: 'Learn more',
   },
-  buttonLink: String,
+  buttonLink: {
+    type: String,
+    default: null,
+  },
   buttonExternal: {
     type: Boolean,
     default: false,
@@ -44,9 +47,9 @@ function block() {
         <div class="flex flex-wrap items-center justify-between">
           <div class="flex w-0 flex-1 items-center">
             <span class="flex rounded-lg bg-primary-800 p-2">
-              <MegaphoneIcon class="h-6 w-6 text-secondary-50" aria-hidden="true" />
+              <MegaphoneIcon class="size-6 text-secondary-50" aria-hidden="true" />
             </span>
-            <p class="ml-3 font-medium text-secondary-50 leading-tight">
+            <p class="ml-3 font-medium leading-tight text-secondary-50">
               <span class="inline">
                 <slot></slot>
               </span>
@@ -62,25 +65,25 @@ function block() {
               {{ props.buttonText }}
             </a>
           </div>
-          <div class="order-2 flex flex-row-reverse gap-2 flex-shrink-0 sm:order-3 sm:ml-2">
+          <div class="order-2 flex flex-shrink-0 flex-row-reverse gap-2 sm:order-3 sm:ml-2">
             <button
+              v-tooltip="'Dismiss'"
               type="button"
               class="-mr-1 flex rounded-md p-2 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-secondary-50"
-              v-tooltip="'Dismiss'"
               @click="dismiss"
             >
               <span class="sr-only">Dismiss</span>
-              <XMarkIcon class="h-6 w-6 text-secondary-50" aria-hidden="true" />
+              <XMarkIcon class="size-6 text-secondary-50" aria-hidden="true" />
             </button>
 
             <button
+              v-tooltip="'Block all banners'"
               type="button"
               class="-mr-1 flex rounded-md p-2 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-secondary-50"
-              v-tooltip="'Block all banners'"
               @click="block"
             >
               <span class="sr-only">Block all banners</span>
-              <NoSymbolIcon class="h-6 w-6 text-secondary-50" aria-hidden="true" />
+              <NoSymbolIcon class="size-6 text-secondary-50" aria-hidden="true" />
             </button>
           </div>
         </div>

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { execSync } from 'node:child_process';
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
