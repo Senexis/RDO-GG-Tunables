@@ -100,8 +100,7 @@ const game = ref(url.searchParams.get('game') || settings.game || 'gta');
  *
  * @type {import("vue").Ref<"pcrosalt" | "pcros" | "ps4" | "ps5" | "xboxone" | "xboxsx">}
  */
-// TODO: Move to pcrosalt on March 4th.
-const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcros');
+const platform = ref(url.searchParams.get('platform') || settings.platform || 'pcrosalt');
 
 /**
  * Contains the difference between the previous and latest tunables in HTML.
@@ -814,12 +813,11 @@ async function handleGameUpdate(init = false) {
     difference.value.html = null;
 
     // Run a one-time migration to the new GTA Online platform.
-    // TODO: Enable on March 4th when the version launches.
-    // if (!settings.oneTimePcUpgrade && game.value === 'gta' && platform.value === 'pcros') {
-    //   platform.value = 'pcrosalt';
-    //   settings.platform = 'pcrosalt';
-    //   settings.oneTimePcUpgrade = true;
-    // }
+    if (!settings.oneTimePcUpgrade && game.value === 'gta' && platform.value === 'pcros') {
+      platform.value = 'pcrosalt';
+      settings.platform = 'pcrosalt';
+      settings.oneTimePcUpgrade = true;
+    }
 
     // Ensure RDO is always loaded as PC.
     if (game.value === 'rdo') {
@@ -1278,19 +1276,6 @@ function showErrorModal(body, eventId = null) {
     </template>
 
     <div>
-      <!-- TODO: Remove on March 4th -->
-      <template v-if="game === 'gta' && platform === 'pcrosalt'">
-        <AlertWithLink :button-text="null" :button-handler="null">
-          <p>
-            You are currently viewing the <strong>Upgraded</strong> version of GTA Online on PC launching on March 4th. The tunables
-            displayed here may not be accurate until then.
-          </p>
-          <p class="mt-0.5 text-xs text-secondary-200">
-            Tip: You can change which version of GTA online to show using the
-            <Cog6ToothIcon class="inline size-4" /> button.
-          </p>
-        </AlertWithLink>
-      </template>
       <template v-if="settings.goToWeek && !difference.loading && showGoToEventWeeklyChange">
         <AlertWithLink
           :button-text="`Show changes for week ${showGoToEventWeeklyChange.weekly_id}`"
@@ -1593,14 +1578,11 @@ function showErrorModal(body, eventId = null) {
     </template>
 
     <template v-if="game === 'gta'">
-      <!-- TODO: Remove on March 4th -->
       <Banner id="gen-9-pc" :show="activeBanner === 'gen-9-pc'">
-        Now available: Tunables for the Upgraded version of GTA Online on PC launching on March 4th!
+        Now available: Tunables for the Upgraded version of GTA Online on PC!
         <br />
         <span class="text-sm text-secondary-200">
-          We will automatically migrate you to the Upgraded version starting March 4th. You can switch between the Legacy and Upgraded
-          versions using the
-          <Cog6ToothIcon class="inline size-5" /> button.
+          You can switch between the Upgraded and Legacy versions using the <Cog6ToothIcon class="inline size-5" /> button.
         </span>
       </Banner>
     </template>
