@@ -5,12 +5,11 @@ import { ArrowDownTrayIcon, Bars3Icon, Cog6ToothIcon, XMarkIcon } from '@heroico
 const emit = defineEmits(['configure', 'download']);
 
 const navigation = [
-  { name: 'API', href: 'https://rdo.gg/api/#tag/tunables', external: true },
   { name: 'Patreon', href: 'https://rdo.gg/patreon/', icon: 'fa-brands fa-patreon', external: true },
   { name: 'X', href: 'https://x.com/Tunables', icon: 'fa-brands fa-x-twitter', external: true },
-  { name: 'Bluesky', href: 'https://bsky.app/profile/tunables.rdo.gg', icon: 'fa-brands fa-bluesky', external: true },
   { name: 'Discord', href: 'https://rdo.gg/discord/', icon: 'fa-brands fa-discord', external: true },
   { name: 'GitHub', href: 'https://github.com/Senexis/RDO-GG-Tunables', icon: 'fa-brands fa-github', external: true },
+  { name: 'API', href: 'https://rdo.gg/api/#tag/tunables', external: true },
 ];
 </script>
 
@@ -19,7 +18,7 @@ const navigation = [
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
-          <div class="mr-4 flex flex-shrink-0 items-center">
+          <div class="mr-4 flex shrink-0 items-center">
             <a href="https://tunables.rdo.gg/">
               <img class="h-8 w-auto" src="https://rdo.gg/img/menu.png" alt="Tunables" />
             </a>
@@ -29,12 +28,12 @@ const navigation = [
               <a
                 v-for="item in navigation"
                 :key="item.name"
-                v-tooltip="item.name"
+                v-tooltip="item.icon ? item.name : null"
                 :href="item.href"
                 :class="[
                   item.current
-                    ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-900 dark:text-secondary-50'
-                    : 'text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50',
+                    ? 'bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-50'
+                    : 'text-slate-700! hover:bg-slate-50 hover:text-slate-900! dark:text-slate-300! dark:hover:bg-slate-700 dark:hover:text-slate-50!',
                   'rounded-md px-3 py-2 text-sm font-medium',
                 ]"
                 :target="item.external ? '_blank' : undefined"
@@ -56,7 +55,7 @@ const navigation = [
           <button
             v-tooltip="'Download tunables'"
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-400 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-50"
             @click="emit('download')"
           >
             <span class="sr-only">Download tunables</span>
@@ -66,7 +65,7 @@ const navigation = [
           <button
             v-tooltip="'Settings'"
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-400 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-50"
             @click="emit('configure')"
           >
             <span class="sr-only">Settings</span>
@@ -76,7 +75,7 @@ const navigation = [
           <!-- Mobile menu button -->
           <DisclosureButton
             v-tooltip="'Open main menu'"
-            class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-400 dark:hover:bg-secondary-700 dark:hover:text-secondary-50 sm:hidden"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset sm:hidden dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-50"
           >
             <span class="sr-only">Open main menu</span>
             <Bars3Icon v-if="!open" class="block size-6" aria-hidden="true" />
@@ -87,7 +86,7 @@ const navigation = [
     </div>
 
     <DisclosurePanel class="sm:hidden">
-      <div class="mb-4 space-y-1 border-y border-secondary-800/10 px-2 py-3 dark:border-secondary-200/10">
+      <div class="mb-4 space-y-1 border-y border-slate-800/10 px-2 py-3 dark:border-slate-200/10">
         <DisclosureButton
           v-for="item in navigation"
           :key="item.name"
@@ -97,8 +96,8 @@ const navigation = [
           :rel="item.external ? 'noopener noreferrer' : undefined"
           :class="[
             item.current
-              ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-900 dark:text-secondary-50'
-              : 'text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50',
+              ? 'bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-50'
+              : 'text-slate-700! hover:bg-slate-50 hover:text-slate-900! dark:text-slate-300! dark:hover:bg-slate-700 dark:hover:text-slate-50!',
             'flex items-center justify-start gap-x-2.5 rounded-md px-3 py-2 text-base font-medium',
           ]"
           :aria-current="item.current ? 'page' : undefined"

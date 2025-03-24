@@ -33,7 +33,7 @@ function toggleOpen() {
   <div>
     <button
       type="button"
-      class="flex w-full select-none items-center justify-between px-3 py-2 text-sm hover:bg-secondary-50 dark:hover:bg-secondary-600"
+      class="flex w-full items-center justify-between px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-600"
       @click="toggleOpen"
     >
       <slot name="title"></slot>
@@ -42,7 +42,7 @@ function toggleOpen() {
         <MinusIcon v-else class="inline-block size-4" />
       </div>
     </button>
-    <div v-show="open" class="bg-white px-3 py-4 dark:bg-secondary-900">
+    <div v-show="open" class="bg-white px-3 py-4 dark:bg-slate-900">
       <slot></slot>
     </div>
   </div>

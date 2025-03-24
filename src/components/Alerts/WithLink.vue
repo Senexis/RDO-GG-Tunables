@@ -22,21 +22,21 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-if="show" class="mb-2 rounded-lg bg-primary-600 p-2 shadow-md sm:p-3">
+  <div v-if="show" class="mb-2 rounded-lg bg-sky-600 p-2 shadow-md sm:p-3">
     <div class="flex items-center">
-      <div class="flex-shrink-0 rounded-lg bg-primary-800 p-2">
-        <InformationCircleIcon class="size-5 text-secondary-50" aria-hidden="true" />
+      <div class="shrink-0 rounded-lg bg-sky-800 p-2">
+        <InformationCircleIcon class="size-5 text-slate-50" aria-hidden="true" />
       </div>
       <div class="ml-3 flex-1 md:flex md:items-center md:justify-between">
-        <div class="text-sm leading-tight text-secondary-50">
+        <div class="text-sm leading-tight text-slate-50">
           <slot></slot>
         </div>
         <template v-if="props.buttonHandler">
-          <p class="mt-1 text-sm md:ml-6 md:mt-0">
+          <p class="mt-1 text-sm md:mt-0 md:ml-6">
             <button
               :href="props.buttonHandler"
               type="button"
-              class="flex items-center whitespace-nowrap rounded-md font-medium text-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-50 md:p-2 md:hover:bg-primary-500"
+              class="flex items-center rounded-md font-medium whitespace-nowrap text-slate-50 focus:ring-2 focus:ring-slate-50 focus:outline-hidden md:p-2 md:hover:bg-sky-500"
               @click="props.buttonHandler"
             >
               {{ props.buttonText }}

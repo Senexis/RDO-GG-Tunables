@@ -24,8 +24,8 @@ const app = createApp(App);
 import { faAsterisk, faBug, faPlus } from '@fortawesome/free-solid-svg-icons';
 library.add(faAsterisk, faBug, faPlus);
 
-import { faXTwitter, faDiscord, faGithub, faPatreon, faBluesky } from '@fortawesome/free-brands-svg-icons';
-library.add(faXTwitter, faDiscord, faGithub, faPatreon, faBluesky);
+import { faXTwitter, faDiscord, faGithub, faPatreon } from '@fortawesome/free-brands-svg-icons';
+library.add(faXTwitter, faDiscord, faGithub, faPatreon);
 
 app.component('FontAwesomeIcon', FontAwesomeIcon);
 

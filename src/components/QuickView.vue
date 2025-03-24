@@ -1296,7 +1296,7 @@ const rdoStamps = computed(() => getRdoStamps());
             <div>
               <MenuButton
                 v-tooltip="'Quick View options'"
-                class="inline-flex items-center justify-center rounded-md p-2 text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 disabled:pointer-events-none disabled:opacity-50 dark:text-secondary-400 dark:hover:bg-secondary-600 dark:hover:text-secondary-50"
+                class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset disabled:pointer-events-none disabled:opacity-50 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-slate-50"
               >
                 <span class="sr-only">Quick View options</span>
                 <EllipsisVerticalIcon class="size-4" aria-hidden="true" />
@@ -1311,12 +1311,12 @@ const rdoStamps = computed(() => getRdoStamps());
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-secondary-800"
+                class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-hidden dark:bg-slate-800"
               >
                 <MenuItem>
                   <button
                     type="button"
-                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-50"
                     @click="handleToggleQuickView"
                   >
                     <template v-if="settings.quickView">
@@ -1332,7 +1332,7 @@ const rdoStamps = computed(() => getRdoStamps());
                 <MenuItem>
                   <button
                     type="button"
-                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-50"
                     @click="handleMoveQuickView"
                   >
                     <template v-if="settings.quickViewBelowTunables">
@@ -1346,12 +1346,12 @@ const rdoStamps = computed(() => getRdoStamps());
                   </button>
                 </MenuItem>
                 <MenuItem>
-                  <hr class="my-1 border-secondary-200 dark:border-secondary-600" />
+                  <hr class="my-1 border-slate-200 dark:border-slate-600" />
                 </MenuItem>
                 <MenuItem>
                   <button
                     type="button"
-                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-50"
                     @click="handleCollapseAllQuickView"
                   >
                     <ArrowsPointingInIcon class="size-4" aria-hidden="true" />
@@ -1361,7 +1361,7 @@ const rdoStamps = computed(() => getRdoStamps());
                 <MenuItem>
                   <button
                     type="button"
-                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-50"
                     @click="handleCollapseAllExceptSalesQuickView"
                   >
                     <CurrencyDollarIcon class="size-4" aria-hidden="true" />
@@ -1371,7 +1371,7 @@ const rdoStamps = computed(() => getRdoStamps());
                 <MenuItem>
                   <button
                     type="button"
-                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-secondary-700 hover:bg-secondary-50 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-secondary-50"
+                    class="flex w-full items-center gap-x-2.5 px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 focus:ring-2 focus:ring-sky-500 focus:outline-hidden focus:ring-inset dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-50"
                     @click="handleExpandAllQuickView"
                   >
                     <ArrowsPointingOutIcon class="size-4" aria-hidden="true" />
@@ -1396,18 +1396,18 @@ const rdoStamps = computed(() => getRdoStamps());
                   <p>
                     This is an automatically generated list of sales and bonuses. Some items may be missing, especially right after the game
                     is updated.<br />
-                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer" class="font-bold text-white"
+                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer" class="font-bold text-white!"
                       >Follow @TezFunz2 on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
                     /></a>
                     for the latest, more accurate, manually written sales and bonuses.
                   </p>
-                  <p class="mt-0.5 text-xs text-secondary-200">
+                  <p class="mt-0.5 text-xs text-slate-200">
                     Currently known sales and bonuses: {{ formatNumber(data?.tunableTypes?.length ?? 0) }}.
                     <a
                       href="https://github.com/Senexis/RDO-GG-Tunables/blob/main/public/data/tunable_types.json"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="font-bold text-white"
+                      class="font-bold text-white!"
                       >Help increase this number by contributing here!</a
                     >
                   </p>
@@ -1415,7 +1415,7 @@ const rdoStamps = computed(() => getRdoStamps());
               </template>
 
               <div
-                class="divide-y divide-secondary-300 overflow-hidden rounded-lg border border-secondary-300 bg-white dark:divide-secondary-700 dark:border-secondary-700 dark:bg-secondary-800"
+                class="divide-y divide-slate-300 overflow-hidden rounded-lg border border-slate-300 bg-white dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-800"
               >
                 <template v-for="(category, key) in sales" :key="key">
                   <Accordion :id="`${Accordions.Sales}_${key}`">
@@ -1475,7 +1475,7 @@ const rdoStamps = computed(() => getRdoStamps());
                     </template>
                     <template #default>
                       <div
-                        class="divide-y divide-secondary-300 overflow-hidden rounded-lg border border-secondary-300 bg-white dark:divide-secondary-700 dark:border-secondary-700 dark:bg-secondary-800"
+                        class="divide-y divide-slate-300 overflow-hidden rounded-lg border border-slate-300 bg-white dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-800"
                       >
                         <template v-for="(list, index) in ugcBonuses" :key="index">
                           <Accordion :id="`${Accordions.UgcBonuses}_${index}`">
@@ -1507,22 +1507,27 @@ const rdoStamps = computed(() => getRdoStamps());
                             <template #default>
                               <h3 class="my-1 font-semibold">Modifiers</h3>
                               <div class="mb-4">
-                                <template v-for="(modifier, item) in list.modifiers" :key="item">
-                                  <template v-if="modifier.plus">
-                                    <span
-                                      v-tooltip="'Only applies to GTA+ Members'"
-                                      :class="getUgcModifierBadge(modifier)"
-                                      class="badge mr-1"
-                                    >
-                                      <font-awesome-icon icon="fa-solid fa-plus" />
-                                      {{ getUgcModifierLabel(modifier) }}
-                                    </span>
+                                <template v-if="list.modifiers.length">
+                                  <template v-for="(modifier, item) in list.modifiers" :key="item">
+                                    <template v-if="modifier.plus">
+                                      <span
+                                        v-tooltip="'Only applies to GTA+ Members'"
+                                        :class="getUgcModifierBadge(modifier)"
+                                        class="badge mr-1"
+                                      >
+                                        <font-awesome-icon icon="fa-solid fa-plus" />
+                                        {{ getUgcModifierLabel(modifier) }}
+                                      </span>
+                                    </template>
+                                    <template v-else>
+                                      <span :class="getUgcModifierBadge(modifier)" class="badge mr-1">{{
+                                        getUgcModifierLabel(modifier)
+                                      }}</span>
+                                    </template>
                                   </template>
-                                  <template v-else>
-                                    <span :class="getUgcModifierBadge(modifier)" class="badge mr-1">{{
-                                      getUgcModifierLabel(modifier)
-                                    }}</span>
-                                  </template>
+                                </template>
+                                <template v-else>
+                                  <span class="text-slate-600 dark:text-slate-400">No modifiers detected.</span>
                                 </template>
                               </div>
                               <h3 class="my-1 font-semibold">Missions</h3>
@@ -1532,10 +1537,15 @@ const rdoStamps = computed(() => getRdoStamps());
                                   'list-disc',
                                 ]"
                               >
-                                <template v-for="(mission, item) in list.ugc" :key="item">
-                                  <li class="ml-5">
-                                    <p v-tooltip.top-start="mission" class="mr-2 truncate">{{ mission }}</p>
-                                  </li>
+                                <template v-if="Object.keys(list.ugc).length">
+                                  <template v-for="(mission, item) in list.ugc" :key="item">
+                                    <li class="ml-5">
+                                      <p v-tooltip.top-start="mission" class="mr-2 truncate">{{ mission }}</p>
+                                    </li>
+                                  </template>
+                                </template>
+                                <template v-else>
+                                  <span class="text-slate-600 dark:text-slate-400">No missions detected.</span>
                                 </template>
                               </ul>
                             </template>
@@ -1925,7 +1935,7 @@ const rdoStamps = computed(() => getRdoStamps());
                   <li class="ml-5">{{ stamp }}</li>
                 </template>
               </ul>
-              <p class="mt-2 text-xs text-secondary-500">
+              <p class="mt-2 text-xs text-slate-500">
                 Since the detailed bonuses are not included in the tunables for Red Dead Online, this is not the full list.
               </p>
             </template>
@@ -1952,10 +1962,8 @@ const rdoStamps = computed(() => getRdoStamps());
       </template>
       <template v-else>
         <template v-for="n in 5" :key="n">
-          <div class="flex w-full select-none items-center justify-between px-3 py-2 text-sm">
-            <div class="animate-pulse rounded-sm bg-secondary-300 dark:bg-secondary-600" :style="{ width: random(4, 20) + 'em' }">
-              &nbsp;
-            </div>
+          <div class="flex w-full items-center justify-between px-3 py-2 text-sm">
+            <div class="animate-pulse rounded-xs bg-slate-300 dark:bg-slate-600" :style="{ width: random(4, 20) + 'em' }">&nbsp;</div>
           </div>
         </template>
       </template>

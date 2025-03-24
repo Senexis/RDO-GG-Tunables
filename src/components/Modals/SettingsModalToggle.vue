@@ -27,11 +27,11 @@ watch(enabled, (value) => {
 
 <template>
   <SwitchGroup as="div" class="flex items-center justify-between gap-2 py-2">
-    <span class="flex flex-grow cursor-pointer select-none flex-col" @click="$refs.switch.el.click()">
-      <SwitchLabel as="span" class="text-sm font-medium text-secondary-900 dark:text-secondary-50" passive>
+    <span class="flex grow cursor-pointer flex-col" @click="$refs.switch.el.click()">
+      <SwitchLabel as="span" class="text-sm font-medium text-slate-900 dark:text-slate-50" passive>
         <slot name="title"></slot>
       </SwitchLabel>
-      <SwitchDescription as="span" class="text-sm text-secondary-700 dark:text-secondary-300">
+      <SwitchDescription as="span" class="text-sm text-slate-700 dark:text-slate-300">
         <slot name="description"></slot>
       </SwitchDescription>
     </span>
@@ -39,14 +39,14 @@ watch(enabled, (value) => {
       ref="switch"
       v-model="enabled"
       :class="[
-        enabled ? 'bg-primary-600' : 'bg-secondary-400 dark:bg-secondary-300',
-        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
+        enabled ? 'bg-sky-600' : 'bg-slate-400 dark:bg-slate-300',
+        'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:outline-hidden',
       ]"
     >
       <span
         :class="[
           enabled ? 'translate-x-5' : 'translate-x-0',
-          'pointer-events-none relative inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+          'pointer-events-none relative inline-block size-5 transform rounded-full bg-white shadow-sm ring-0 transition duration-200 ease-in-out',
         ]"
       >
         <span
@@ -57,13 +57,13 @@ watch(enabled, (value) => {
           aria-hidden="true"
         >
           <template v-if="props.isVisibilityToggle">
-            <EyeSlashIcon class="size-3 text-secondary-400" />
+            <EyeSlashIcon class="size-3 text-slate-400" />
           </template>
           <template v-else-if="props.isDarkModeToggle">
-            <SunIcon class="size-3 text-secondary-400" />
+            <SunIcon class="size-3 text-slate-400" />
           </template>
           <template v-else>
-            <XMarkIcon class="size-3 text-secondary-400" />
+            <XMarkIcon class="size-3 text-slate-400" />
           </template>
         </span>
         <span
@@ -74,13 +74,13 @@ watch(enabled, (value) => {
           aria-hidden="true"
         >
           <template v-if="props.isVisibilityToggle">
-            <EyeIcon class="size-3 text-primary-600" />
+            <EyeIcon class="size-3 text-sky-600" />
           </template>
           <template v-else-if="props.isDarkModeToggle">
-            <MoonIcon class="size-3 text-primary-600" />
+            <MoonIcon class="size-3 text-sky-600" />
           </template>
           <template v-else>
-            <CheckIcon class="size-3 text-primary-600" />
+            <CheckIcon class="size-3 text-sky-600" />
           </template>
         </span>
       </span>

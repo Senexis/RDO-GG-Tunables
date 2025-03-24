@@ -3,7 +3,6 @@ import pluginJs from '@eslint/js';
 import pluginVue from 'eslint-plugin-vue';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
-import tailwind from 'eslint-plugin-tailwindcss';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -24,7 +23,6 @@ export default [
   // Plugins
   pluginJs.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
-  ...tailwind.configs['flat/recommended'],
   eslintPluginPrettier,
 
   {
@@ -55,29 +53,6 @@ export default [
 
       'no-undef': 'warn',
       'no-unused-expressions': 'warn',
-
-      // Saves performance and is broken since we use 'class-[var()]' which is incompatible with this rule
-      'tailwindcss/migration-from-tailwind-2': 'off',
-
-      // Ignore custom classnames that are for utility purposes
-      'tailwindcss/no-custom-classname': [
-        'warn',
-        {
-          whitelist: [
-            'hide-added',
-            'hide-deleted',
-            'hide-modified',
-            'hide-unchanged',
-            'hide-meta',
-            'hide-content',
-            'hide-quick-view',
-            'hide-sales',
-            'hide-tunables',
-            'hide-verbose',
-            'v-popper--has-tooltip',
-          ],
-        },
-      ],
 
       // Prettier integration
       'prettier/prettier': 'warn',
