@@ -7,6 +7,8 @@ const emit = defineEmits(['configure', 'download']);
 const navigation = [
   { name: 'Patreon', href: 'https://rdo.gg/patreon/', icon: 'fa-brands fa-patreon', external: true },
   { name: 'X', href: 'https://x.com/Tunables', icon: 'fa-brands fa-x-twitter', external: true },
+  { name: 'Mastodon', href: 'https://mastodon.social/@Tunables', icon: 'fa-brands fa-mastodon', external: true },
+  { name: 'BlueSky', href: 'https://bsky.app/profile/tunables.rdo.gg', icon: 'fa-brands fa-bluesky', external: true },
   { name: 'Discord', href: 'https://rdo.gg/discord/', icon: 'fa-brands fa-discord', external: true },
   { name: 'GitHub', href: 'https://github.com/Senexis/RDO-GG-Tunables', icon: 'fa-brands fa-github', external: true },
   { name: 'API', href: 'https://rdo.gg/api/#tag/tunables', external: true },
