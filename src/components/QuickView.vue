@@ -482,7 +482,7 @@ function getDailyObjective(day) {
     if (value === null || value === -1) return null;
     if (!data.value.dailyObjectives) return null;
     if (!data.value.dailyObjectives[value]) {
-      emit('error', `Daily objective [${value}] not found, was there an update recently?`, null);
+      console.warn(`Daily objective [${value}] not found, was there an update recently?`);
       return null;
     }
     return data.value.dailyObjectives[value] ?? null;
@@ -505,7 +505,7 @@ function getWeeklyObjectiveId() {
     if (value === null || value === -1) return null;
     if (!data.value.weeklyObjectives) return null;
     if (!data.value.weeklyObjectives[value]) {
-      emit('error', `Weekly objective [${value}] not found, was there an update recently?`, null);
+      console.warn(`Weekly objective [${value}] not found, was there an update recently?`);
       return null;
     }
     return data.value.weeklyObjectives[value] ?? null;
