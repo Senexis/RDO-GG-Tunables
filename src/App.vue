@@ -243,6 +243,7 @@ const activeBanner = computed(() => {
     'gen-9-bonuses',
     'gen-9-pc',
     'opt-out-sales',
+    'twitter-issues-060426',
   ];
 
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
@@ -1591,10 +1592,22 @@ function showErrorModal(body, eventId = null) {
         New setting: Hide opt-out vehicle sales from the Quick View panel!
         <br />
         <span class="text-sm text-slate-200">
-          Hidden by default, vehicles that are on hidden (opt-out) sales can be shown using the <Cog6ToothIcon class="inline size-5" /> button.
+          Hidden by default, vehicles that are on hidden (opt-out) sales can be shown using the
+          <Cog6ToothIcon class="inline size-5" /> button.
         </span>
       </Banner>
     </template>
+
+    <Banner
+      id="twitter-issues-060426"
+      :show="activeBanner === 'twitter-issues-060426'"
+      button-text="More info"
+      button-link="https://x.com/Tunables/status/2062529533215928355"
+      :button-external="true"
+    >
+      Due to ongoing issues with <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />'s API, Tweets are currently not being
+      sent from @Tunables. The other social media accounts are unaffected.
+    </Banner>
   </template>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>

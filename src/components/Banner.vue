@@ -55,7 +55,7 @@ function block() {
               </span>
             </p>
           </div>
-          <div v-if="props.buttonLink" class="order-3 mt-2 w-full shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
+          <div v-if="props.buttonLink" class="order-3 mt-2 ml-0 w-full shrink-0 sm:order-2 sm:mt-0 sm:ml-3 sm:w-auto">
             <a
               :href="props.buttonLink"
               :target="props.buttonExternal ? '_blank' : undefined"

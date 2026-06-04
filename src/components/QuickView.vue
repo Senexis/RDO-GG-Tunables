@@ -868,8 +868,8 @@ function getSales() {
     for (const tunableType of data.value.tunableTypes) {
       if (
         !settings.saleOptouts &&
-        (tunableType.type === 'vehicle_sales' || tunableType.type === 'hsw_vehicle_price_sales')
-        && vehicleOptouts.some((optout) => optout.value === tunableType.display)
+        (tunableType.type === 'vehicle_sales' || tunableType.type === 'hsw_vehicle_price_sales') &&
+        vehicleOptouts.some((optout) => optout.value === tunableType.display)
       ) {
         continue;
       }
@@ -1406,8 +1406,8 @@ const rdoStamps = computed(() => getRdoStamps());
                   <p>
                     This is an automatically generated list of sales and bonuses. Some items may be missing, especially right after the game
                     is updated.<br />
-                    <a href="https://x.com/TezFunz2" target="_blank" rel="noopener noreferrer" class="font-bold text-white!"
-                      >Follow @TezFunz2 on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
+                    <a href="https://x.com/TexFunz2" target="_blank" rel="noopener noreferrer" class="font-bold text-white!"
+                      >Follow @TexFunz2 on <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X"
                     /></a>
                     for the latest, more accurate, manually written sales and bonuses.
                   </p>
