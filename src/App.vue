@@ -242,6 +242,7 @@ const activeBanner = computed(() => {
     'game-platform-defaults',
     'gen-9-bonuses',
     'gen-9-pc',
+    'opt-out-sales',
   ];
 
   const activeBanners = banners.filter((banner) => !settings.bannersDismissed.includes(banner));
@@ -1584,6 +1585,16 @@ function showErrorModal(body, eventId = null) {
         </span>
       </Banner>
     </template>
+
+    <template v-if="game === 'gta'">
+      <Banner id="opt-out-sales" :show="activeBanner === 'opt-out-sales'">
+        New setting: Hide opt-out vehicle sales from the Quick View panel!
+        <br />
+        <span class="text-sm text-slate-200">
+          Hidden by default, vehicles that are on hidden (opt-out) sales can be shown using the <Cog6ToothIcon class="inline size-5" /> button.
+        </span>
+      </Banner>
+    </template>
   </template>
 
   <AttributionModal :open="attributionModal.show" @close="attributionModal.show = false"></AttributionModal>
@@ -1870,6 +1881,10 @@ function showErrorModal(body, eventId = null) {
         <SettingsModalToggle v-model="settings.salesDisclaimer" :is-visibility-toggle="true">
           <template #title>Sales Disclaimer</template>
           <template #description> Whether to show the sales disclaimer banner.</template>
+        </SettingsModalToggle>
+        <SettingsModalToggle v-model="settings.saleOptouts" :is-visibility-toggle="true">
+          <template #title>Opted-Out Sales</template>
+          <template #description> Whether to show vehicle sales that have been specifically hidden.</template>
         </SettingsModalToggle>
         <SettingsModalToggle v-model="settings.gen9Bonuses" :is-visibility-toggle="true">
           <template #title>Gen 9 Benefits</template>

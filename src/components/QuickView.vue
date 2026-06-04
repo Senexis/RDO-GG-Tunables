@@ -862,8 +862,18 @@ function getPeyotePlants() {
  */
 function getSales() {
   try {
+    const vehicleOptouts = findTunables('OPTOUT_VEHICLEWEBSITE_SALE');
     const results = {};
+
     for (const tunableType of data.value.tunableTypes) {
+      if (
+        !settings.saleOptouts &&
+        (tunableType.type === 'vehicle_sales' || tunableType.type === 'hsw_vehicle_price_sales')
+        && vehicleOptouts.some((optout) => optout.value === tunableType.display)
+      ) {
+        continue;
+      }
+
       const tunable = findTunable(tunableType.key);
       if (!tunable) continue;
 
