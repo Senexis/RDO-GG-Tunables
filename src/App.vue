@@ -1605,7 +1605,7 @@ function showErrorModal(body, eventId = null) {
       button-link="https://x.com/Tunables/status/2062529533215928355"
       :button-external="true"
     >
-      Due to ongoing issues with <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />'s API, Tweets are currently not being
+      Due to recent changes with <font-awesome-icon icon="fa-brands fa-x-twitter" aria-label="X" />'s API, Tweets are currently not being
       sent from @Tunables. The other social media accounts are unaffected.
     </Banner>
   </template>
