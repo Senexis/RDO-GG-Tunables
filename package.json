@@ -23,7 +23,7 @@
     "@sentry/vue": "^9.47.1",
     "ajv": "^8.20.0",
     "floating-vue": "^5.2.2",
-    "jsondiffpatch": "^0.6.2",
+    "jsondiffpatch": "^0.7.6",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
     "pretty-ms": "^9.3.0",
